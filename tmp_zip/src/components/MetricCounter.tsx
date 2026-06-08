@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface MetricCounterProps {
   value: number;
@@ -20,31 +20,45 @@ export default function MetricCounter({
   const [count, setCount] = useState(start);
   const elementRef = useRef<HTMLSpanElement>(null);
   const animationTriggered = useRef(false);
+  const frameRef = useRef<number | null>(null);
 
   useEffect(() => {
+    setCount(start);
+    animationTriggered.current = false;
+
     const observer = new IntersectionObserver(
       (entries) => {
         const [entry] = entries;
-        if (entry.isIntersecting && !animationTriggered.current) {
-          animationTriggered.current = true;
-          let startTimestamp: number | null = null;
-          
-          const step = (timestamp: number) => {
-            if (!startTimestamp) startTimestamp = timestamp;
-            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-            // Cubic ease-out
-            const easeProgress = 1 - Math.pow(1 - progress, 3);
-            setCount(Math.floor(start + easeProgress * (value - start)));
-            
-            if (progress < 1) {
-              requestAnimationFrame(step);
-            }
-          };
-          
-          requestAnimationFrame(step);
+        if (!entry.isIntersecting || animationTriggered.current) {
+          return;
         }
+
+        animationTriggered.current = true;
+        let startTimestamp: number | null = null;
+
+        const step = (timestamp: number) => {
+          if (startTimestamp === null) {
+            startTimestamp = timestamp;
+          }
+
+          const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+          const easeProgress = 1 - Math.pow(1 - progress, 3);
+          const nextCount = Math.round(start + easeProgress * (value - start));
+
+          setCount(nextCount);
+
+          if (progress < 1) {
+            frameRef.current = requestAnimationFrame(step);
+            return;
+          }
+
+          setCount(value);
+          frameRef.current = null;
+        };
+
+        frameRef.current = requestAnimationFrame(step);
       },
-      { threshold: 0.2 }
+      { threshold: 0.2 },
     );
 
     if (elementRef.current) {
@@ -52,18 +66,20 @@ export default function MetricCounter({
     }
 
     return () => {
-      if (elementRef.current) {
-        observer.unobserve(elementRef.current);
+      observer.disconnect();
+
+      if (frameRef.current !== null) {
+        cancelAnimationFrame(frameRef.current);
+        frameRef.current = null;
       }
     };
-  }, [value, start, duration]);
+  }, [duration, start, value]);
 
   const formatted = comma ? count.toLocaleString("en-GB") : count.toString();
   const safePrefix =
-    prefix && (prefix.includes("£") || prefix.includes("Â£") || prefix.includes("Ã"))
+    prefix && (prefix.includes("Â£") || prefix.includes("Ã‚Â£") || prefix.includes("Ãƒ"))
       ? "GBP "
       : prefix;
-  const normalizedPrefix = prefix === "Â£" ? "£" : prefix;
 
   return (
     <span ref={elementRef} className="font-display font-bold">
