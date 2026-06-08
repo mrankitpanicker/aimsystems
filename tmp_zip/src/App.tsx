@@ -66,7 +66,11 @@ export default function App() {
   // Keep the DOM class and persisted preference in sync with state.
   useEffect(() => {
     const isLight = theme === "light";
+    document.documentElement.classList.toggle("light", isLight);
+    document.documentElement.setAttribute("data-theme", theme);
     document.body.classList.toggle("light", isLight);
+    document.body.setAttribute("data-theme", theme);
+    document.documentElement.style.colorScheme = isLight ? "light" : "dark";
     window.localStorage.setItem("aim-theme", theme);
   }, [theme]);
 
