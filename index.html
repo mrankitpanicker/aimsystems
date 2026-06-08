@@ -392,7 +392,7 @@
       position: absolute;
       left: 0;
       right: 0;
-      top: 46%;
+      bottom: 10px;
       z-index: 1;
       width: 100%;
       height: 180px;
@@ -547,31 +547,92 @@
       content: ""
     }
 
-    .ticker {
-      margin-top: 48px;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      display: grid;
-      grid-template-columns: repeat(6, 1fr)
+    /* ── Metrics Section ── */
+    .metrics-sec {
+      padding: 120px 0;
+      background: linear-gradient(180deg, var(--navy) 0%, var(--navy-2) 100%);
     }
 
-    @media(max-width:860px) {
-      .ticker {
-        grid-template-columns: repeat(2, 1fr)
-      }
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 50px;
+    }
 
-      .ticker .cell {
-        border-top: 1px solid var(--line)
+    @media (max-width: 900px) {
+      .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
+    }
 
-      .ticker .cell:nth-child(1),
-      .ticker .cell:nth-child(2) {
-        border-top: none
+    @media (max-width: 580px) {
+      .metrics-grid {
+        grid-template-columns: 1fr;
       }
+    }
 
-      .ticker .cell:nth-child(odd) {
-        border-left: none
-      }
+    .metric-card {
+      background: rgba(27, 39, 53, 0.45);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 48px 36px;
+      backdrop-filter: blur(12px);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .metric-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(400px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(143, 208, 255, 0.08), transparent 50%);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+
+    .metric-card:hover::before {
+      opacity: 1;
+    }
+
+    .metric-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--accent);
+      box-shadow: 0 16px 40px -10px var(--accent-glow);
+      background: rgba(27, 39, 53, 0.65);
+    }
+
+    .metric-card .num {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: clamp(2.8rem, 6.2vw, 4.4rem);
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+      background: var(--aurora);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+      margin-bottom: 16px;
+      filter: drop-shadow(0 2px 10px rgba(143, 208, 255, 0.1));
+    }
+
+    .metric-card .lbl {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--mist);
+      font-weight: 500;
     }
 
     .glass {
@@ -2569,6 +2630,7 @@
   <!-- Section Nav Dots -->
   <div class="section-nav" id="section-nav" aria-label="Page navigation">
     <button class="section-nav__dot active" data-target="top" data-label="Home" aria-label="Go to Home"></button>
+    <button class="section-nav__dot" data-target="metrics" data-label="Metrics" aria-label="Go to Metrics"></button>
     <button class="section-nav__dot" data-target="offer" data-label="Engagement" aria-label="Go to Engagement"></button>
     <button class="section-nav__dot" data-target="proof" data-label="Proof" aria-label="Go to Proof"></button>
     <button class="section-nav__dot" data-target="systems" data-label="Systems" aria-label="Go to Systems"></button>
@@ -2627,38 +2689,51 @@
         <span>System Architect</span><span>E2E Delivery</span><span>Infrastructure</span><span>UK/EU Remote</span><span>Outside IR35</span><span>Reliability</span>
       </div>
     </div>
+  </header>
+
+  <main id="main-content">
+
+  <!-- KEY METRICS -->
+  <section id="metrics" class="metrics-sec" aria-label="Key Performance Metrics">
     <div class="wrap">
-      <div class="ticker reveal" id="ticker">
-        <div class="cell">
+      <p class="eyebrow reveal"><span class="idx">Metrics /</span> Performance Indicators</p>
+      <h2 class="reveal">Built for scale. <em>Verified by evidence.</em></h2>
+      
+      <div class="metrics-grid">
+        <div class="metric-card reveal">
           <div class="num" data-count="15000" data-comma="1">0</div>
           <div class="lbl">Calls / day, live</div>
         </div>
-        <div class="cell">
+        
+        <div class="metric-card reveal">
           <div class="num" data-count="200" data-prefix="&lt;" data-suffix="ms">0</div>
           <div class="lbl">First audio · cache hit</div>
         </div>
-        <div class="cell">
-          <div class="num">~1<span class="u">s</span></div>
+        
+        <div class="metric-card reveal">
+          <div class="num">~1s</div>
           <div class="lbl">E2E voice turn</div>
         </div>
-        <div class="cell">
+        
+        <div class="metric-card reveal">
           <div class="num" data-count="40" data-suffix="+">0</div>
           <div class="lbl">CI/CD deploys</div>
         </div>
-        <div class="cell">
-          <div class="num"><span class="u">£</span><span data-count="85000" data-start="150000"
-              data-comma="1">150,000</span></div>
+        
+        <div class="metric-card reveal">
+          <div class="num">
+            <span style="font-size: 0.6em; vertical-align: middle; margin-right: 4px; background: var(--aurora); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">£</span><span data-count="85000" data-start="150000" data-comma="1">150,000</span>
+          </div>
           <div class="lbl">Fixed engagement</div>
         </div>
-        <div class="cell">
-          <div class="num"><span data-count="31">0</span></div>
+        
+        <div class="metric-card reveal">
+          <div class="num" data-count="31">0</div>
           <div class="lbl">Test suites</div>
         </div>
       </div>
     </div>
-  </header>
-
-  <main id="main-content">
+  </section>
 
   <!-- OFFER -->
   <section id="offer" aria-label="Engagement Terms and Pricing">
@@ -4650,6 +4725,17 @@ speak(kokoro.tts(reply))                        <span class="c"># local Local TT
       rootMargin: '-15% 0px -40% 0px'
     });
     sections.forEach(sec => navObserver.observe(sec));
+
+    // Spotlight effect for metric cards
+    document.querySelectorAll('.metric-card').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+      });
+    });
 
     // theme toggle (persisted, respects OS preference)
     const themebtn = document.getElementById('themebtn');
