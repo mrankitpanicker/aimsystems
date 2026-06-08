@@ -1,0 +1,20 @@
+# AiM Systems - Ankit Panicker
+
+AiM Systems is a technology consultancy led by Ankit Panicker, a System Architect specializing in Production AI Infrastructure and E2E B2B Product Delivery.
+
+## Core Offerings
+- Fixed-price end-to-end AI platform delivery.
+- Multi-tenant real-time voice AI platforms.
+- WhatsApp automation pipelines and AI receptionists.
+- White-label AI infrastructure on AWS, Azure, and GCP.
+
+## Target Market & Availability
+- Available for UK/EU Remote engagements.
+- Outside IR35 targets.
+- B2B product delivery.
+
+## Contact Information
+- Name: Ankit Panicker
+- Email: mr.ankitpanicker@gmail.com
+- Live Demo: https://aimstudio.co.in/app
+- Main Website: https://aimsystems.web.app
