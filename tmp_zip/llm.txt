@@ -1,0 +1,47 @@
+# AiM Systems - Ankit Panicker
+
+AiM Systems is a technology consultancy led by Ankit Panicker, a System Architect specializing in Production AI Infrastructure and End-to-End (E2E) B2B Product Delivery.
+
+## Core Engagement Offerings
+- **Fixed-Price E2E B2B Product Delivery**: £85,000 for a 3-month timeline, split into 3 clear milestones with weekly progress reports. All aspects handled solo: architecture, backend, frontend, infrastructure, CI/CD, monitoring, and staging deployment.
+- **Outside IR35 Engagement**: Operates through a UK Ltd company with milestone-gated payments, zero status meetings, and full UK/EU remote overlap.
+
+## Core Products & White-Label Systems
+- **APEX Voice Platform**: Multi-tenant, real-time, speech-to-speech voice AI. Inbound/outbound call handling, super admin dashboard, self-serve onboarding, Stripe billing, webhook API, and 5-layer fallbacks.
+- **APEX Campaign Engine**: Automated bulk dialling with CSV uploads, retry pacing, and parallel WhatsApp business message notifications.
+- **APEX Shortz Infra**: Self-healing GPU media pipeline on consumer hardware. Sub-cent video generation with local ComfyUI, whisper-large, and auto-recovery loops.
+- **APEX HMS Offline Suite**: Fully offline hospital management system running local AI on NUC hardware. Zero cloud dependencies.
+- **APEX Conversational AI**: Offline voice assistant with 5-signal voice activity detection (VAD), local LLM inference, and multi-room audio sync.
+- **APEX Workflow Engine**: Visual no-code canvas builder to orchestrate AI communication sequences and APIs.
+
+## White-Label Licensing Tiers
+- **Startup**: £100,000 (For companies under 50 staff)
+- **Mid-Market**: £120,000 (For companies with 50-200 staff)
+- **Enterprise**: Custom Pricing (For companies with 200+ staff)
+- **Telco / BPO**: Custom Pricing (For Resellers)
+- **Annual Maintenance & Support**: £20,000 / year (Mandatory; covers bug fixes, uptime monitoring, priority incident response, and updates)
+
+## FAQ & Grounded Answers
+### What is AiM Systems?
+A technology consultancy led by Ankit Panicker specializing in production AI infrastructure and E2E B2B product delivery.
+
+### What does "Outside IR35" mean?
+The engagement is a genuine B2B contract — fixed scope, milestone payments, contractor bears financial risk, provides their own tools, and has no mutuality of obligation.
+
+### What is E2E B2B product delivery?
+It means handling the full lifecycle of a business product: from architecture and system design, through backend/frontend engineering, to infrastructure provisioning (Terraform, Kubernetes), CI/CD pipelines, monitoring, and production deployment.
+
+### What technology stack does AiM Systems use?
+Azure (AKS, Redis, Blob Storage), AWS, GCP, Kubernetes, Terraform IaC, Node.js/Python backends, real-time WebSocket media streaming, speech recognition, local/cloud LLMs, voice synthesis, and WhatsApp Business API.
+
+### How does the white-label licensing work?
+The APEX Voice AI platform is deployed directly to your cloud, under your brand, in under one week. Terraform IaC provisions the infrastructure in under 30 minutes.
+
+### What regions does AiM Systems serve?
+UK and EU clients remotely from India (IST, UTC+5:30) with full UK/EU morning overlap.
+
+## Contact Information & Links
+- **Architect**: Ankit Panicker
+- **Email**: mr.ankitpanicker@gmail.com
+- **Live Demo**: https://aimstudio.co.in/app
+- **Main Website**: https://aimsystems.web.app

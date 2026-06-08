@@ -1,0 +1,28 @@
+# AiM Systems - Ankit Panicker
+
+AiM Systems is a technology consultancy led by Ankit Panicker, a System Architect specializing in Production AI Infrastructure and End-to-End (E2E) B2B Product Delivery.
+
+## Core Engagement Offerings
+- **Fixed-Price E2E B2B Product Delivery**: GBP 85,000 for a 3-month timeline, split into 3 clear milestones with weekly progress reports. All aspects handled solo: architecture, backend, frontend, infrastructure, CI/CD, monitoring, and staging deployment.
+- **Outside IR35 Engagement**: Operates through a UK Ltd company with milestone-gated payments, zero status meetings, and full UK/EU remote overlap.
+
+## Core Products & White-Label Systems
+- **APEX Voice Platform**: Multi-tenant, real-time, speech-to-speech voice AI. Inbound/outbound call handling, super admin dashboard, self-serve onboarding, Stripe billing, webhook API, and 5-layer fallbacks.
+- **APEX Campaign Engine**: Automated bulk dialling with CSV uploads, retry pacing, and parallel WhatsApp business message notifications.
+- **APEX Shortz Infra**: Self-healing GPU media pipeline on consumer hardware. Sub-cent video generation with local ComfyUI, whisper-large, and auto-recovery loops.
+- **APEX HMS Offline Suite**: Fully offline hospital management system running local AI on NUC hardware. Zero cloud dependencies.
+- **APEX Conversational AI**: Offline voice assistant with 5-signal voice activity detection (VAD), local LLM inference, and multi-room audio sync.
+- **APEX Workflow Engine**: Visual no-code canvas builder to orchestrate AI communication sequences and APIs.
+
+## White-Label Licensing Tiers
+- **Startup**: GBP 100,000 (For companies under 50 staff)
+- **Mid-Market**: GBP 120,000 (For companies with 50-200 staff)
+- **Enterprise**: Custom Pricing (For companies with 200+ staff)
+- **Telco / BPO**: Custom Pricing (For Resellers)
+- **Annual Maintenance & Support**: GBP 20,000 / year (Mandatory; covers bug fixes, uptime monitoring, priority incident response, and updates)
+
+## Contact Information & Links
+- **Architect**: Ankit Panicker
+- **Email**: mr.ankitpanicker@gmail.com
+- **Live Demo**: https://aimstudio.co.in/app
+- **Main Website**: https://aimsystems.web.app
