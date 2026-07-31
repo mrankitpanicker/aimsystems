@@ -92,8 +92,12 @@
     ],
     "rewrites": [
       {
+        "source": "/jobs",
+        "destination": "/jobs.html"
+      },
+      {
         "source": "/apply",
-        "destination": "/apply.html"
+        "destination": "/jobs.html"
       }
     ]
   },
