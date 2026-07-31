@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://aimsystems.web.app/sitemap.xml
+Sitemap: https://aimsystem.in/sitemap.xml
