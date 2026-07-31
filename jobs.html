@@ -61,6 +61,10 @@
     border-radius:50%;
     filter:blur(60px);
     opacity:.35;
+    /* Decoration only. Without this these absolutely-positioned circles paint
+       above .hero-inner and swallow taps: on a phone the "Visit the Platform"
+       button lands inside the bottom-left one and stops responding entirely. */
+    pointer-events:none;
   }
   .hero::before{
     width:280px;height:280px;
@@ -82,7 +86,7 @@
     color:var(--slate-dark);
     margin-bottom:22px;
   }
-  .brandmark img{width:22px;height:22px;display:block;object-fit:contain;}
+  .brandmark img{width:44px;height:44px;display:block;object-fit:contain;}
 
   h1{
     font-weight:600;font-size:clamp(28px,5.5vw,38px);
@@ -380,7 +384,7 @@
 
 <div class="hero">
   <div class="hero-inner">
-    <span class="brandmark"><img src="/favicon.png" alt="" width="22" height="22" decoding="async">AIM — AI Infrastructure &amp; Machines · APEX Platform Team</span>
+    <span class="brandmark"><img src="/favicon.png" alt="" width="44" height="44" decoding="async">AIM — AI Infrastructure &amp; Machines · APEX Platform Team</span>
     <h1>This is what you'll be working on.</h1>
     <p class="lede">Before you apply, take a few minutes to explore our live platform. We want to know what you think — where it's strong, where it could be better, and how you'd contribute if you joined.</p>
 
