@@ -17,6 +17,8 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://aimsystem.in/" />
   <meta property="og:site_name" content="AIM — AI Infrastructure &amp; Machines" />
+    <meta property="og:image" content="https://aimsystem.in/favicon.png" />
+    <meta name="twitter:image" content="https://aimsystem.in/favicon.png" />
   <meta property="og:locale" content="en_GB" />
 
   <!-- Twitter Card -->
@@ -207,10 +209,10 @@
   ]
 }
     </script>
-  <link rel="icon" type="image/jpeg" href="/favicon.jpeg" />
-    <link rel="shortcut icon" type="image/jpeg" href="/favicon.jpeg" />
-    <link rel="apple-touch-icon" href="/favicon.jpeg" />
-    <meta name="msapplication-TileImage" content="/favicon.jpeg" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="shortcut icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+    <meta name="msapplication-TileImage" content="/favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -322,10 +324,13 @@
       font-size: 14px
     }
 
-    .topbar .mark svg {
-      width: 24px;
-      height: 24px;
-      display: block
+    .topbar .mark img {
+      width: 28px;
+      height: 28px;
+      display: block;
+      /* The mark is a hexagon on transparent background, so it needs no frame
+         of its own and sits on either theme unchanged. */
+      object-fit: contain
     }
 
     .topbar .mark .s {
@@ -2734,14 +2739,7 @@
 
   <nav class="topbar" id="topbar" role="navigation" aria-label="Primary">
     <a class="mark" href="#top">
-      <svg viewBox="0 0 32 32" aria-hidden="true">
-        <rect width="32" height="32" rx="7" fill="#16222e" stroke="#26384a" />
-        <path d="M16 6 L25 25 L20.5 25 L16 15 L11.5 25 L7 25 Z" fill="none" stroke="#BFDDF6" stroke-width="1.6"
-          stroke-linejoin="round" />
-        <circle cx="16" cy="6.5" r="1.8" fill="#8FD0FF" />
-        <circle cx="24.5" cy="24.5" r="1.8" fill="#8FD0FF" />
-        <circle cx="7.5" cy="24.5" r="1.8" fill="#8FD0FF" />
-      </svg>
+      <img src="/favicon.png" alt="" width="28" height="28" decoding="async" />
       AiM<span class="s"> Systems</span>
     </a>
     <div class="status">
