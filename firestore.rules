@@ -1,0 +1,39 @@
+rules_version = '2';
+
+// Applications are submitted by anonymous visitors, so the collection has to
+// accept unauthenticated writes. It must therefore be write-only: a candidate
+// can add their own application and nothing else. Reading is done from the
+// Firebase console or the Admin SDK, both of which bypass these rules.
+//
+// Nothing else in this project is reachable from a browser.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /applications/{applicationId} {
+      allow create: if isWellFormedApplication(request.resource.data);
+      // No listing, no reading back, no editing, no deleting — a submitted
+      // application is not something the sender (or anyone else) can retrieve.
+      allow read, update, delete: if false;
+    }
+
+    // Deny everything else by default.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+
+  function isWellFormedApplication(d) {
+    return d.keys().hasAll(['fullName', 'email', 'role', 'submittedAt'])
+      && d.fullName is string && d.fullName.size() >= 2 && d.fullName.size() <= 120
+      && d.email is string && d.email.matches('.+@.+[.].+') && d.email.size() <= 200
+      && d.role is string && d.role.size() <= 60
+      // Free-text answers are capped so a single submission cannot be used to
+      // push arbitrary volumes of data into the project.
+      && (!('q1' in d) || (d.q1 is string && d.q1.size() <= 5000))
+      && (!('q2' in d) || (d.q2 is string && d.q2.size() <= 5000))
+      && (!('q3' in d) || (d.q3 is string && d.q3.size() <= 5000))
+      && (!('q4' in d) || (d.q4 is string && d.q4.size() <= 5000))
+      && (!('q5' in d) || (d.q5 is string && d.q5.size() <= 5000))
+      && d.size() <= 30;
+  }
+}

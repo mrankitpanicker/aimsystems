@@ -1,0 +1,21 @@
+rules_version = '2';
+
+// Resumes are uploaded by anonymous applicants, so this bucket path is
+// write-only for the same reason the applications collection is: a candidate
+// may add their own CV and can never read anyone's — including their own.
+// A readable path here would expose every applicant's personal data to anyone
+// who could guess a filename.
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    match /resumes/{fileName} {
+      allow create: if request.resource.size <= 10 * 1024 * 1024
+                    && request.resource.contentType == 'application/pdf';
+      allow read, update, delete: if false;
+    }
+
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

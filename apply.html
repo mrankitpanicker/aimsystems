@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apply — AIM (AI Infrastructure &amp; Machines)</title>
+<meta name="description" content="Apply to the APEX platform team at AIM — AI Infrastructure &amp; Machines. Explore the live platform first, then tell us what you think.">
+<meta name="robots" content="noindex, follow">
+<link rel="icon" type="image/jpeg" href="/favicon.jpeg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+<style>
+  :root{
+    --frost-white:#F7FBFF;
+    --ice-blue:#DCEFFD;
+    --mist-blue:#BFDDF6;
+    --slate:#2E5B88;
+    --slate-dark:#234866;
+    --slate-light:#5484B0;
+    --navy:#1E2B38;
+
+    --err:#C4433D;
+    --err-tint:#FBEAEA;
+
+    --radius:16px;
+    --radius-sm:10px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse 900px 500px at 50% -8%, rgba(191,221,246,.45), transparent 60%),
+      var(--frost-white);
+    color:var(--navy);
+    font-family:'Inter',system-ui,-apple-system,sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .wrap{max-width:680px;margin:0 auto;padding:0 20px 90px;}
+
+  h1,h2,h3{font-family:'Space Grotesk',sans-serif;}
+
+  .hero{
+    position:relative;
+    overflow:hidden;
+    margin:0 0 28px;
+    padding:52px 24px 40px;
+    background:linear-gradient(135deg, var(--frost-white) 0%, var(--ice-blue) 48%, var(--mist-blue) 100%);
+    border-bottom:1px solid rgba(191,221,246,.7);
+  }
+  .hero::before, .hero::after{
+    content:'';
+    position:absolute;
+    border-radius:50%;
+    filter:blur(60px);
+    opacity:.35;
+  }
+  .hero::before{
+    width:280px;height:280px;
+    background:var(--slate-light);
+    top:-120px;right:-60px;
+  }
+  .hero::after{
+    width:220px;height:220px;
+    background:var(--mist-blue);
+    bottom:-100px;left:-40px;
+    opacity:.5;
+  }
+  .hero-inner{max-width:680px;margin:0 auto;position:relative;}
+
+  .brandmark{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:600;font-size:14px;letter-spacing:.02em;
+    color:var(--slate-dark);
+    margin-bottom:22px;
+  }
+  .brandmark .dot{width:8px;height:8px;border-radius:50%;background:var(--slate);}
+
+  h1{
+    font-weight:600;font-size:clamp(28px,5.5vw,38px);
+    line-height:1.14;letter-spacing:-0.01em;color:var(--navy);
+    margin:0 0 14px;
+  }
+  .lede{color:#3d5266;font-size:15.5px;max-width:54ch;margin:0 0 28px;}
+
+  .btn-chrome{
+    appearance:none;border:none;
+    display:inline-flex;align-items:center;gap:9px;
+    font-family:'Inter',sans-serif;font-weight:600;font-size:15px;
+    color:#fff;text-decoration:none;
+    padding:13px 22px;border-radius:var(--radius-sm);
+    background:linear-gradient(180deg, var(--slate-light) 0%, var(--slate) 55%, var(--slate-dark) 100%);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.45), 0 6px 18px rgba(46,91,136,.32);
+    cursor:pointer;
+    position:relative;overflow:hidden;
+    transition:box-shadow .18s ease, transform .1s ease;
+  }
+  .btn-chrome::after{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(255,255,255,.35), rgba(255,255,255,0) 55%);
+    pointer-events:none;
+  }
+  .btn-chrome:hover{box-shadow:inset 0 1px 0 rgba(255,255,255,.55), 0 8px 22px rgba(46,91,136,.42);}
+  .btn-chrome:active{transform:scale(.99);}
+  .btn-chrome:disabled{
+    background:linear-gradient(180deg,#9fb3c4,#7d92a5);
+    box-shadow:none;cursor:not-allowed;opacity:.65;
+  }
+  .btn-chrome .arrow{transition:transform .15s ease;}
+  .btn-chrome:hover .arrow{transform:translateX(3px);}
+  .btn-chrome.full{width:100%;justify-content:center;}
+
+  .visit-confirm{
+    display:none;align-items:center;gap:10px;
+    background:rgba(255,255,255,.6);
+    border:1px solid rgba(46,91,136,.25);
+    border-radius:var(--radius-sm);
+    padding:12px 16px;font-size:14px;color:var(--slate-dark);font-weight:500;
+    margin-top:16px;
+    backdrop-filter:blur(8px);
+  }
+  .visit-confirm.show{display:flex;}
+  .visit-confirm svg{flex-shrink:0;}
+
+  .visit-again{display:none;margin-top:12px;font-size:13px;color:#5c7086;}
+  .visit-again.show{display:block;}
+  .visit-again a{color:var(--slate);}
+
+  .progress{display:flex;gap:8px;margin:0 0 28px;}
+  .progress-step{flex:1;height:3px;border-radius:2px;background:var(--mist-blue);overflow:hidden;}
+  .progress-step .fill{height:100%;width:0%;background:var(--slate);transition:width .3s ease;}
+  .progress-step.done .fill{width:100%;}
+  .progress-step.active .fill{width:50%;}
+
+  .lock-banner{
+    display:flex;align-items:center;gap:10px;
+    background:rgba(255,255,255,.5);
+    border:1px solid rgba(191,221,246,.7);
+    border-radius:var(--radius-sm);
+    padding:13px 18px;font-size:13.5px;color:#5c7086;
+    margin-bottom:20px;
+  }
+  .lock-banner svg{flex-shrink:0;}
+  .locked-fields{
+    opacity:.4;filter:grayscale(.35);pointer-events:none;user-select:none;
+    transition:opacity .2s ease, filter .2s ease;
+  }
+  #appForm.unlocked .locked-fields{opacity:1;filter:none;pointer-events:auto;user-select:auto;}
+  #appForm.unlocked .lock-banner{display:none;}
+
+  .glass-card{
+    background:rgba(255,255,255,.55);
+    backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+    border:1px solid rgba(191,221,246,.65);
+    box-shadow:0 8px 30px rgba(30,43,56,.08);
+    border-radius:var(--radius);
+    padding:26px 26px 22px;
+    margin-bottom:16px;
+  }
+
+  .group-label{
+    font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.07em;
+    text-transform:uppercase;color:#6d8199;margin:0 0 6px;
+  }
+  .group-title{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:0 0 20px;color:var(--navy);}
+
+  .field{margin-bottom:20px;}
+  .field:last-child{margin-bottom:0;}
+  .field-row{display:flex;gap:16px;}
+  .field-row .field{flex:1;min-width:0;}
+
+  label{display:block;font-size:13.5px;font-weight:600;margin-bottom:6px;color:var(--navy);}
+  label .opt{font-weight:400;color:#8299ac;font-size:12.5px;}
+
+  input[type="text"],input[type="email"],input[type="tel"],input[type="url"],
+  select,textarea{
+    width:100%;font-family:'Inter',sans-serif;font-size:15px;color:var(--navy);
+    background:rgba(255,255,255,.7);
+    border:1.5px solid var(--mist-blue);border-radius:var(--radius-sm);
+    padding:11px 13px;
+    transition:border-color .15s ease, background .15s ease;
+  }
+  input::placeholder,textarea::placeholder{color:#9fb1c2;}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--slate);background:#fff;}
+
+  select{
+    appearance:none;-webkit-appearance:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%232E5B88' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;cursor:pointer;
+  }
+
+  textarea{resize:vertical;min-height:100px;font-family:'Inter',sans-serif;}
+
+  .field.invalid input,.field.invalid select,.field.invalid textarea{
+    border-color:var(--err);background:var(--err-tint);
+  }
+  .error-msg{display:none;font-size:12.5px;color:var(--err);margin-top:6px;}
+  .field.invalid .error-msg{display:block;}
+
+  .q-head{display:flex;align-items:center;gap:9px;margin-bottom:6px;}
+  .q-badge{
+    width:24px;height:24px;border-radius:50%;flex-shrink:0;
+    background:var(--ice-blue);color:var(--slate-dark);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;
+  }
+
+  .q-meta{display:flex;justify-content:space-between;align-items:center;margin-top:6px;
+    font-family:'JetBrains Mono',monospace;font-size:12px;}
+  .q-count{color:#8299ac;}
+  .q-count.ok{color:var(--slate);font-weight:600;}
+  .q-bar-track{height:4px;border-radius:3px;background:var(--ice-blue);margin-top:8px;overflow:hidden;}
+  .q-bar-fill{height:100%;width:0%;border-radius:3px;background:var(--slate);transition:width .18s ease;}
+
+  .file-drop{
+    border:1.5px dashed var(--mist-blue);border-radius:var(--radius-sm);background:rgba(255,255,255,.5);
+    padding:18px;text-align:center;cursor:pointer;transition:border-color .15s ease, background .15s ease;
+  }
+  .file-drop:hover{border-color:var(--slate);}
+  .file-drop.has-file{border-style:solid;border-color:var(--slate);background:rgba(220,239,253,.6);}
+  .file-drop input{display:none;}
+  .file-drop-text{font-size:13.5px;color:#5c7086;}
+  .file-drop-text strong{color:var(--navy);}
+  .file-name{font-size:13px;color:var(--slate-dark);font-weight:600;margin-top:4px;font-family:'JetBrains Mono',monospace;}
+
+  .role-wrap{position:relative;}
+  .role-dot{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:8px;height:8px;border-radius:50%;background:#b8c6d4;pointer-events:none;}
+  .role-wrap select{padding-left:32px;}
+
+  .form-error-banner{
+    display:none;background:var(--err-tint);color:var(--err);border:1px solid #f0c3c0;
+    border-radius:var(--radius-sm);padding:11px 14px;font-size:13px;margin-bottom:16px;
+  }
+  .form-error-banner.show{display:block;}
+  .form-error-banner a{color:var(--err);font-weight:600;}
+
+  /* Consent + privacy */
+  .consent{
+    display:flex;gap:11px;align-items:flex-start;
+    background:rgba(255,255,255,.5);
+    border:1px solid rgba(191,221,246,.7);
+    border-radius:var(--radius-sm);
+    padding:14px 16px;
+  }
+  .consent input[type="checkbox"]{
+    width:17px;height:17px;margin:2px 0 0;flex-shrink:0;accent-color:var(--slate);cursor:pointer;
+  }
+  .consent label{font-weight:400;font-size:13px;color:#3d5266;margin:0;line-height:1.5;}
+  .consent a{color:var(--slate);}
+  .field.invalid .consent{border-color:var(--err);background:var(--err-tint);}
+
+  .privacy-note{font-size:12.5px;color:#6d8199;margin:14px 0 0;line-height:1.55;}
+
+  /* Honeypot: never shown to a person, only ever filled by a bot. */
+  .hp-field{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}
+
+  .deep-horizon{
+    background:linear-gradient(160deg, var(--navy) 0%, var(--slate-dark) 70%, var(--slate) 100%);
+    border-radius:var(--radius);
+    padding:28px 26px 26px;
+    position:relative;overflow:hidden;
+    color:#fff;
+  }
+  .deep-horizon::before{
+    content:'';position:absolute;top:0;left:0;right:0;height:1px;
+    background:linear-gradient(90deg, transparent, rgba(191,221,246,.7), transparent);
+  }
+  .deep-horizon p.submit-note{font-size:13px;color:#c3d6e6;margin:0 0 18px;line-height:1.55;}
+  .deep-horizon .btn-chrome{
+    background:linear-gradient(180deg,#eaf3fb 0%, #d3e6f5 55%, #bcd6ea 100%);
+    color:var(--navy);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.7), 0 6px 18px rgba(0,0,0,.25);
+  }
+  .deep-horizon .btn-chrome:disabled{
+    background:linear-gradient(180deg,#5b6b7a,#42505d);color:#c3d0da;box-shadow:none;
+  }
+
+  .modal-backdrop{
+    display:none;
+    position:fixed;inset:0;z-index:50;
+    align-items:center;justify-content:center;
+    padding:20px;
+    background:linear-gradient(180deg, rgba(247,251,255,.82), rgba(191,221,246,.88));
+    backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  }
+  .modal-backdrop.show{display:flex;}
+
+  .confirm-modal{
+    width:100%;max-width:460px;
+    text-align:left;
+    padding:36px 30px;
+    max-height:90vh;overflow-y:auto;
+    animation:modalIn .25s ease;
+  }
+  @keyframes modalIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+
+  .confirm-check{
+    width:44px;height:44px;border-radius:50%;background:var(--ice-blue);
+    display:flex;align-items:center;justify-content:center;margin-bottom:18px;
+  }
+  .confirm-modal h2{font-weight:600;font-size:23px;margin:0 0 12px;color:var(--navy);}
+  .confirm-modal p{color:#3d5266;font-size:14.5px;margin:0 0 18px;}
+  .confirm-steps{
+    background:rgba(255,255,255,.6);border:1px solid rgba(191,221,246,.7);
+    border-radius:var(--radius-sm);padding:16px 18px;margin-bottom:18px;
+  }
+  .confirm-steps p{margin:0 0 10px;font-size:12.5px;font-weight:600;color:var(--navy);}
+  .confirm-steps ol{margin:0;padding-left:18px;}
+  .confirm-steps li{font-size:13.5px;color:#3d5266;margin-bottom:8px;}
+  .confirm-steps li:last-child{margin-bottom:0;}
+
+  .cert-box{
+    display:flex;align-items:center;gap:12px;
+    background:rgba(255,255,255,.7);
+    border:1px solid rgba(46,91,136,.25);
+    border-radius:var(--radius-sm);
+    padding:14px 16px;margin-bottom:8px;
+  }
+  .cert-box svg{flex-shrink:0;}
+  .cert-box-text{flex:1;font-size:13px;}
+  .cert-box-text strong{display:block;font-size:13.5px;color:var(--navy);margin-bottom:2px;}
+  .cert-box-text span{color:#6d8199;font-family:'JetBrains Mono',monospace;font-size:11.5px;}
+  .cert-download{
+    font-family:'Inter',sans-serif;font-weight:600;font-size:13px;
+    color:#fff;background:var(--slate);border:none;border-radius:8px;
+    padding:9px 14px;cursor:pointer;white-space:nowrap;
+    transition:background .15s ease;
+  }
+  .cert-download:hover{background:var(--slate-dark);}
+  .cert-download:disabled{background:#9fb3c4;cursor:not-allowed;}
+
+  .confirm-ref{font-family:'JetBrains Mono',monospace;font-size:11px;color:#8299ac;margin-top:6px;}
+
+  footer.page-footer{text-align:center;font-size:12px;color:#8299ac;margin-top:24px;}
+  footer.page-footer a{color:#6d8199;}
+
+  @media (max-width:480px){
+    .hero{padding:40px 18px 32px;}
+    .glass-card{padding:20px 18px 16px;}
+    .deep-horizon{padding:22px 18px 20px;}
+    .field-row{flex-direction:column;gap:0;}
+    .confirm-modal{padding:26px 20px;}
+  }
+  @media (prefers-reduced-motion: reduce){*{transition:none !important;animation:none !important;}}
+
+  a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,
+  textarea:focus-visible,.file-drop:focus-visible{outline:2px solid var(--slate);outline-offset:2px;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <span class="brandmark"><span class="dot"></span>AIM — AI Infrastructure &amp; Machines · APEX Platform Team</span>
+    <h1>This is what you'll be working on.</h1>
+    <p class="lede">Before you apply, take a few minutes to explore our live platform. We want to know what you think — where it's strong, where it could be better, and how you'd contribute if you joined.</p>
+
+    <a href="https://app.aimstudio.co.in" target="_blank" rel="noopener" class="btn-chrome" id="visitBtn">
+      Visit the Platform <span class="arrow">→</span>
+    </a>
+
+    <div class="visit-confirm" id="visitConfirm">
+      <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5L8 14.5L16 6" stroke="#2E5B88" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>Got it — take your time, come back here when you're ready.</span>
+    </div>
+    <p class="visit-again" id="visitAgain">Want another look before answering? <a href="https://app.aimstudio.co.in" target="_blank" rel="noopener">Reopen the platform →</a></p>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="progress">
+    <div class="progress-step active" id="prog1"><div class="fill"></div></div>
+    <div class="progress-step" id="prog2"><div class="fill"></div></div>
+    <div class="progress-step" id="prog3"><div class="fill"></div></div>
+  </div>
+
+  <form id="appForm" novalidate>
+
+    <div class="lock-banner" id="lockBanner">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2" stroke="#6d8199" stroke-width="1.6"/><path d="M8 11V8a4 4 0 0 1 8 0v3" stroke="#6d8199" stroke-width="1.6"/></svg>
+      <span>Locked until you visit the platform above.</span>
+    </div>
+
+    <div class="form-error-banner" id="formBanner" role="alert"></div>
+
+    <div class="locked-fields" id="lockedFields">
+
+      <div class="glass-card">
+        <p class="group-label">Step 2</p>
+        <p class="group-title">About what you saw</p>
+
+        <div class="field" data-field="q1">
+          <div class="q-head"><span class="q-badge">Q1</span></div>
+          <label for="q1">What's one thing about the platform that impressed you, and why?</label>
+          <textarea id="q1" name="q1" required></textarea>
+          <div class="q-bar-track"><div class="q-bar-fill" id="bar-q1"></div></div>
+          <div class="q-meta"><span class="q-count" id="count-q1"></span></div>
+          <p class="error-msg" id="err-q1"></p>
+        </div>
+
+        <div class="field" data-field="q2">
+          <div class="q-head"><span class="q-badge">Q2</span></div>
+          <label for="q2">What's one thing you'd improve or do differently — be specific?</label>
+          <textarea id="q2" name="q2" required></textarea>
+          <div class="q-bar-track"><div class="q-bar-fill" id="bar-q2"></div></div>
+          <div class="q-meta"><span class="q-count" id="count-q2"></span></div>
+          <p class="error-msg" id="err-q2"></p>
+        </div>
+
+        <div class="field" data-field="q3">
+          <div class="q-head"><span class="q-badge">Q3</span></div>
+          <label for="q3">If you joined this team, what's the first thing you'd focus on fixing or building?</label>
+          <textarea id="q3" name="q3" required></textarea>
+          <div class="q-bar-track"><div class="q-bar-fill" id="bar-q3"></div></div>
+          <div class="q-meta"><span class="q-count" id="count-q3"></span></div>
+          <p class="error-msg" id="err-q3"></p>
+        </div>
+
+        <div class="field" data-field="q4">
+          <div class="q-head"><span class="q-badge">Q4</span></div>
+          <label for="q4">What questions do you have about the platform, the product, or how it's built?</label>
+          <textarea id="q4" name="q4" required placeholder="Genuine curiosity — this tells us how you think."></textarea>
+          <div class="q-bar-track"><div class="q-bar-fill" id="bar-q4"></div></div>
+          <div class="q-meta"><span class="q-count" id="count-q4"></span></div>
+          <p class="error-msg" id="err-q4"></p>
+        </div>
+
+        <div class="field" data-field="q5">
+          <div class="q-head"><span class="q-badge">Q5</span></div>
+          <label for="q5">In a sentence or two: why is this the right project for you to work on right now?</label>
+          <textarea id="q5" name="q5" required style="min-height:74px"></textarea>
+          <div class="q-bar-track"><div class="q-bar-fill" id="bar-q5"></div></div>
+          <div class="q-meta"><span class="q-count" id="count-q5"></span></div>
+          <p class="error-msg" id="err-q5"></p>
+        </div>
+      </div>
+
+      <div class="glass-card">
+        <p class="group-label">Step 3</p>
+        <p class="group-title">About you</p>
+
+        <div class="field" data-field="fullName">
+          <label for="fullName">Full name</label>
+          <input type="text" id="fullName" name="fullName" autocomplete="name" required>
+          <p class="error-msg">Enter your full name.</p>
+        </div>
+
+        <div class="field-row">
+          <div class="field" data-field="email">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" autocomplete="email" required>
+            <p class="error-msg">Enter a valid email address.</p>
+          </div>
+          <div class="field" data-field="phone">
+            <label for="phone">Phone <span class="opt">(optional)</span></label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel">
+          </div>
+        </div>
+
+        <div class="field" data-field="linkedin">
+          <label for="linkedin">LinkedIn profile URL</label>
+          <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/yourname" required>
+          <p class="error-msg">Enter your full LinkedIn profile URL, e.g. https://linkedin.com/in/yourname</p>
+        </div>
+
+        <div class="field" data-field="role">
+          <label for="role">Role applying for</label>
+          <div class="role-wrap">
+            <span class="role-dot" id="roleDot"></span>
+            <select id="role" name="role" required>
+              <option value="" disabled selected hidden>Select a role</option>
+              <option value="ai-systems-engineer">AI Systems Engineer</option>
+              <option value="platform-engineer">Platform Engineer</option>
+              <option value="product-designer">Product Designer</option>
+              <option value="growth-marketer">Growth Marketer</option>
+              <option value="ops-lead">Ops Lead</option>
+              <option value="other">Other / not listed</option>
+            </select>
+          </div>
+          <p class="error-msg">Select the role you're applying for.</p>
+        </div>
+
+        <div class="field-row">
+          <div class="field" data-field="experience">
+            <label for="experience">Years of relevant experience</label>
+            <select id="experience" name="experience" required>
+              <option value="" disabled selected hidden>Select a range</option>
+              <option value="0-1">Under 1 year</option>
+              <option value="1-2">1–2 years</option>
+              <option value="3-5">3–5 years</option>
+              <option value="6-8">6–8 years</option>
+              <option value="9+">9+ years</option>
+            </select>
+            <p class="error-msg">Select your experience range.</p>
+          </div>
+        </div>
+
+        <div class="field" data-field="resume">
+          <label for="resume">Resume / CV <span class="opt">(PDF, max 10MB)</span></label>
+          <label class="file-drop" id="fileDrop" for="resume">
+            <input type="file" id="resume" name="resume" accept=".pdf,application/pdf" required>
+            <div class="file-drop-text"><strong>Click to upload</strong> your resume — PDF only</div>
+            <div class="file-name" id="fileName"></div>
+          </label>
+          <p class="error-msg">Upload your resume as a PDF (10MB max).</p>
+        </div>
+
+        <div class="field" data-field="portfolio">
+          <label for="portfolio">Portfolio / GitHub <span class="opt">(optional)</span></label>
+          <input type="url" id="portfolio" name="portfolio" placeholder="https://github.com/yourname">
+        </div>
+
+        <!-- Bots fill hidden inputs; people never see this one. -->
+        <div class="hp-field" aria-hidden="true">
+          <label for="company_website">Company website</label>
+          <input type="text" id="company_website" name="company_website" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="field" data-field="consent">
+          <div class="consent">
+            <input type="checkbox" id="consent" name="consent" required>
+            <label for="consent">
+              I agree that AIM (AI Infrastructure &amp; Machines) may store the information and CV I've
+              submitted here in order to assess my application, and may contact me about it.
+              See the <a href="https://aimstudio.co.in/privacy-policy" target="_blank" rel="noopener">privacy policy</a>.
+            </label>
+          </div>
+          <p class="error-msg">Please confirm this before submitting.</p>
+        </div>
+
+        <p class="privacy-note">
+          What we keep: your name, email, phone if you give one, LinkedIn, portfolio link, the five
+          answers above and your CV. It's used only to assess this application, is not sold or shared
+          with third parties, and is deleted within 12 months of a decision. To have it removed sooner,
+          email <a href="mailto:ankit@aimsystem.in">ankit@aimsystem.in</a>.
+        </p>
+      </div>
+
+      <div class="deep-horizon">
+        <p class="submit-note">We read every submission personally, including all five answers above — this isn't a formality before the resume. You'll also get specific feedback on your answers either way.</p>
+        <button type="submit" class="btn-chrome full" id="submitBtn" disabled>Submit application</button>
+      </div>
+
+    </div><!-- /.locked-fields -->
+
+  </form>
+
+  <footer class="page-footer">
+    AIM — AI Infrastructure &amp; Machines · Applications reviewed by humans, not filters.<br>
+    <a href="https://aimstudio.co.in/privacy-policy" target="_blank" rel="noopener">Privacy policy</a>
+  </footer>
+
+</div>
+
+<div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-labelledby="confirmHeading">
+  <div class="glass-card confirm-modal">
+    <div class="confirm-check">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5L8 14.5L16 6" stroke="#2E5B88" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <h2 id="confirmHeading">Got it — thank you.</h2>
+    <p id="confirmSub">We received your application, along with what you told us about the platform.</p>
+
+    <div class="confirm-steps">
+      <p>What happens next</p>
+      <ol>
+        <li>A member of the team reads all five answers in full, not just the resume attached to them.</li>
+        <li>If there's a fit, you'll hear from us within <strong>5 business days</strong> to set up a first conversation.</li>
+        <li>Either way, we'll follow up with specific feedback on your answers.</li>
+      </ol>
+    </div>
+
+    <div class="cert-box">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2" stroke="#2E5B88" stroke-width="1.6"/><path d="M7 9h10M7 13h6" stroke="#2E5B88" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <div class="cert-box-text">
+        <strong>Certificate of Participation</strong>
+        <span id="certIdText">—</span>
+      </div>
+      <button type="button" class="cert-download" id="certDownloadBtn">Download PDF</button>
+    </div>
+    <p class="confirm-ref" id="confirmRef"></p>
+  </div>
+</div>
+
+<script type="module">
+  import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
+  import { getFirestore, collection, addDoc, serverTimestamp }
+    from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
+  import { getStorage, ref, uploadBytes, getDownloadURL }
+    from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js';
+
+  // Public web config. Firebase web API keys are identifiers, not secrets —
+  // access is governed by firestore.rules and storage.rules, which make both
+  // the applications collection and the resumes path write-only.
+  //
+  // This is the `aimsystems` project, deliberately NOT the production project
+  // that holds call records and tenant data.
+  const firebaseConfig = {
+    apiKey: 'AIzaSyAYGe4IJeePmt6Pk3gVVcmgnruEh19XX90',
+    authDomain: 'aimsystems.firebaseapp.com',
+    projectId: 'aimsystems',
+    storageBucket: 'aimsystems.firebasestorage.app',
+    messagingSenderId: '28239931852',
+    appId: '1:28239931852:web:3ead3733ac7f44d574d569'
+  };
+
+  const fbApp = initializeApp(firebaseConfig);
+  const db = getFirestore(fbApp);
+  const storage = getStorage(fbApp);
+
+  window.__aimSubmit = async function(payload, resumeFile){
+    // Upload the CV first: if this fails there is no half-written application
+    // record pointing at a file that does not exist.
+    const safeName = resumeFile.name.replace(/[^\w.\-]+/g, '_').slice(-80);
+    const path = `resumes/${payload.submissionId}_${safeName}`;
+    const fileRef = ref(storage, path);
+    await uploadBytes(fileRef, resumeFile, { contentType: 'application/pdf' });
+    const resumeUrl = await getDownloadURL(fileRef);
+
+    await addDoc(collection(db, 'applications'), {
+      ...payload,
+      resumePath: path,
+      resumeUrl,
+      receivedAt: serverTimestamp()
+    });
+  };
+  window.__aimSubmitReady = true;
+</script>
+
+<script>
+(function(){
+  "use strict";
+
+  var STORAGE_KEY = 'aimApplyVisitedPlatform';
+  var CONTACT_EMAIL = 'ankit@aimsystem.in';
+  var params = new URLSearchParams(window.location.search);
+  var roleParam = params.get('role');
+
+  var visitBtn = document.getElementById('visitBtn');
+  var visitConfirm = document.getElementById('visitConfirm');
+  var visitAgain = document.getElementById('visitAgain');
+  var lockedFields = document.getElementById('lockedFields');
+  var prog1 = document.getElementById('prog1');
+  var prog2 = document.getElementById('prog2');
+  var prog3 = document.getElementById('prog3');
+
+  var form = document.getElementById('appForm');
+  var submitBtn = document.getElementById('submitBtn');
+  var banner = document.getElementById('formBanner');
+
+  var lockableFields = Array.prototype.slice.call(
+    lockedFields.querySelectorAll('input, select, textarea')
+  );
+
+  // ---------- Visit gate ----------
+  // Deliberately soft: this records that the platform link was opened. It is a
+  // prompt to actually look, not proof that anyone did, and nothing downstream
+  // should be scored on it.
+  function getVisitState(){
+    try{
+      var raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return null;
+      var parsed = JSON.parse(raw);
+      return (parsed && parsed.visited) ? parsed : null;
+    } catch(e){ return null; }
+  }
+  function setFieldsDisabled(disabled){
+    lockableFields.forEach(function(el){ el.disabled = disabled; });
+  }
+  function unlockForm(){
+    visitConfirm.classList.add('show');
+    visitAgain.classList.add('show');
+    form.classList.add('unlocked');
+    setFieldsDisabled(false);
+    prog1.classList.remove('active'); prog1.classList.add('done');
+    prog2.classList.add('active');
+  }
+  function lockForm(){
+    form.classList.remove('unlocked');
+    setFieldsDisabled(true);
+  }
+  function registerVisit(){
+    var state = { visited:true, ts:new Date().toISOString() };
+    try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch(e){}
+    unlockForm();
+    return state;
+  }
+
+  lockForm();
+  if (getVisitState()){ unlockForm(); }
+  visitBtn.addEventListener('click', function(){ registerVisit(); });
+
+  // ---------- Role ----------
+  var roleSelect = document.getElementById('role');
+  var roleDot = document.getElementById('roleDot');
+  if (roleParam){
+    var match = Array.prototype.find.call(roleSelect.options, function(o){ return o.value === roleParam; });
+    if (match) roleSelect.value = roleParam;
+  }
+  function updateRoleDot(){
+    roleDot.style.background = roleSelect.value ? 'var(--slate)' : '#b8c6d4';
+  }
+  updateRoleDot();
+  roleSelect.addEventListener('change', updateRoleDot);
+
+  // ---------- Question counters ----------
+  // Q5 asks for a sentence or two, so holding it to the same 150-character
+  // floor as the long answers would reject most correct responses.
+  var Q_MIN = { q1:150, q2:150, q3:150, q4:150, q5:60 };
+
+  Object.keys(Q_MIN).forEach(function(id){
+    var ta = document.getElementById(id);
+    var countEl = document.getElementById('count-'+id);
+    var barEl = document.getElementById('bar-'+id);
+    var errEl = document.getElementById('err-'+id);
+    var min = Q_MIN[id];
+    errEl.textContent = 'This needs at least ' + min + ' characters.';
+    ta.setAttribute('minlength', String(min));
+    function update(){
+      var len = ta.value.trim().length;
+      barEl.style.width = Math.min(100, (len / min) * 100) + '%';
+      if (len >= min){
+        countEl.textContent = len + ' characters — looks good';
+        countEl.classList.add('ok');
+      } else {
+        countEl.textContent = len + ' / ' + min + ' characters minimum';
+        countEl.classList.remove('ok');
+      }
+      refreshSubmitState();
+    }
+    ta.addEventListener('input', update);
+    update();
+  });
+
+  // ---------- Validation ----------
+  function longEnough(id){
+    return function(v){ return v.trim().length >= Q_MIN[id]; };
+  }
+  var validators = {
+    q1: longEnough('q1'), q2: longEnough('q2'), q3: longEnough('q3'),
+    q4: longEnough('q4'), q5: longEnough('q5'),
+    fullName: function(v){ return v.trim().length >= 2; },
+    email: function(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()); },
+    // Require a real profile URL, not merely a string containing "linkedin.com".
+    // The old check passed things like "notlinkedin.com/x".
+    linkedin: function(v){
+      var s = v.trim();
+      if (!s) return false;
+      try{
+        var u = new URL(s);
+        return /^https?:$/.test(u.protocol)
+          && /(^|\.)linkedin\.com$/i.test(u.hostname)
+          && u.pathname.replace(/\/+$/,'').length > 1;
+      } catch(e){ return false; }
+    },
+    role: function(v){ return v !== ''; },
+    experience: function(v){ return v !== ''; },
+    resume: function(){
+      var f = document.getElementById('resume').files[0];
+      if (!f) return false;
+      var isPdf = f.type === 'application/pdf' || /\.pdf$/i.test(f.name);
+      return isPdf && f.size <= 10 * 1024 * 1024;
+    },
+    consent: function(){ return document.getElementById('consent').checked; }
+  };
+
+  function fieldEl(name){ return form.querySelector('[data-field="'+name+'"]'); }
+  function validateField(name, showError){
+    var input = document.getElementById(name);
+    var valid = validators[name](input.value);
+    var wrap = fieldEl(name);
+    if (wrap){
+      if (!valid && showError) wrap.classList.add('invalid');
+      else if (valid) wrap.classList.remove('invalid');
+    }
+    return valid;
+  }
+  function allValid(){
+    return Object.keys(validators).every(function(name){
+      return validators[name](document.getElementById(name).value);
+    });
+  }
+  function refreshSubmitState(){
+    var ok = allValid();
+    submitBtn.disabled = !ok;
+    if (ok){ prog2.classList.remove('active'); prog2.classList.add('done'); prog3.classList.add('active'); }
+    else { prog3.classList.remove('active'); prog2.classList.remove('done'); prog2.classList.add('active'); }
+  }
+
+  var touched = {};
+  Object.keys(validators).forEach(function(name){
+    var input = document.getElementById(name);
+    input.addEventListener('blur', function(){ touched[name] = true; validateField(name, true); });
+    input.addEventListener('input', function(){ if (touched[name]) validateField(name, true); refreshSubmitState(); });
+    input.addEventListener('change', function(){ touched[name] = true; validateField(name, true); refreshSubmitState(); });
+  });
+
+  // ---------- File upload UI ----------
+  var fileDrop = document.getElementById('fileDrop');
+  var fileInput = document.getElementById('resume');
+  var fileNameEl = document.getElementById('fileName');
+  fileInput.addEventListener('change', function(){
+    var f = fileInput.files[0];
+    if (f){
+      fileNameEl.textContent = f.name + '  (' + (f.size/1024/1024).toFixed(1) + ' MB)';
+      fileDrop.classList.add('has-file');
+    } else {
+      fileNameEl.textContent = '';
+      fileDrop.classList.remove('has-file');
+    }
+  });
+
+  // ---------- Certificate ----------
+  function makeSubmissionId(){
+    return 'AIM-' + Date.now().toString(36).toUpperCase() + '-' +
+      Math.random().toString(36).slice(2, 6).toUpperCase();
+  }
+  function hexPoints(cx, cy, r){
+    var pts = [];
+    for (var i = 0; i < 6; i++){
+      var a = Math.PI / 180 * (60 * i - 90);
+      pts.push([cx + r * Math.cos(a), cy + r * Math.sin(a)]);
+    }
+    return pts;
+  }
+  function drawPolygon(doc, pts, style){
+    var deltas = [];
+    for (var i = 1; i < pts.length; i++){
+      deltas.push([pts[i][0] - pts[i-1][0], pts[i][1] - pts[i-1][1]]);
+    }
+    doc.lines(deltas, pts[0][0], pts[0][1], [1, 1], style, true);
+  }
+  function pillBadge(doc, x, y, w, h, label, filled){
+    doc.setLineWidth(1);
+    if (filled){
+      doc.setFillColor(30, 43, 56);
+      doc.roundedRect(x, y, w, h, h/2, h/2, 'F');
+      doc.setTextColor(255, 255, 255);
+    } else {
+      doc.setDrawColor(30, 43, 56);
+      doc.roundedRect(x, y, w, h, h/2, h/2, 'S');
+      doc.setTextColor(30, 43, 56);
+    }
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(7.5);
+    doc.text(label, x + w/2, y + h/2 + 2.5, { align:'center' });
+  }
+
+  function generateCertificate(name, roleLabel, submissionId){
+    var jsPDFCtor = window.jspdf && window.jspdf.jsPDF;
+    if (!jsPDFCtor) return null;
+
+    var doc = new jsPDFCtor({ orientation:'landscape', unit:'pt', format:'a4' });
+    var W = doc.internal.pageSize.getWidth();
+    var H = doc.internal.pageSize.getHeight();
+    var NAVY = [30, 43, 56], SLATE = [46, 91, 136], SLATE_L = [84, 132, 176],
+        MIST = [191, 221, 246], ICE = [220, 239, 253], FROST = [247, 251, 255],
+        MUTE = [109, 129, 153];
+
+    doc.setFillColor.apply(doc, FROST);
+    doc.rect(0, 0, W, H, 'F');
+
+    doc.setFillColor.apply(doc, ICE);
+    drawPolygon(doc, [[0,H],[0,H*0.55],[W*0.30,H*0.72],[W*0.14,H],[0,H]], 'F');
+    doc.setFillColor.apply(doc, MIST);
+    drawPolygon(doc, [[0,H],[0,H*0.68],[W*0.20,H*0.80],[W*0.09,H],[0,H]], 'F');
+    doc.setFillColor.apply(doc, NAVY);
+    drawPolygon(doc, [[0,H],[0,H*0.86],[W*0.10,H*0.90],[0,H]], 'F');
+
+    doc.setDrawColor.apply(doc, MIST);
+    doc.setLineWidth(1);
+    doc.line(W*0.55, 46, W*0.68, 46);
+    doc.line(W*0.68, 46, W*0.74, 60);
+    doc.line(W*0.74, 60, W*0.86, 60);
+    doc.setFillColor.apply(doc, SLATE_L);
+    doc.circle(W*0.68, 46, 2, 'F');
+    doc.circle(W*0.74, 60, 2, 'F');
+
+    doc.setDrawColor.apply(doc, SLATE);
+    doc.setLineWidth(1.4);
+    doc.rect(26, 26, W - 52, H - 52);
+    doc.setDrawColor.apply(doc, MIST);
+    doc.setLineWidth(0.7);
+    doc.rect(33, 33, W - 66, H - 66);
+
+    var hx = 74, hy = 78;
+    doc.setFillColor.apply(doc, ICE);
+    drawPolygon(doc, hexPoints(hx, hy, 26), 'F');
+    doc.setFillColor.apply(doc, NAVY);
+    drawPolygon(doc, hexPoints(hx, hy, 19), 'F');
+    doc.setFillColor(255, 255, 255);
+    doc.triangle(hx, hy-10, hx-8, hy+9, hx+8, hy+9, 'F');
+    doc.setFillColor.apply(doc, NAVY);
+    doc.triangle(hx, hy-2, hx-4.5, hy+9, hx+4.5, hy+9, 'F');
+
+    doc.setTextColor.apply(doc, NAVY);
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(20);
+    doc.text('AIM', hx + 40, hy - 4);
+    pillBadge(doc, hx + 40, hy + 4, 46, 14, 'SYSTEMS', true);
+    pillBadge(doc, hx + 90, hy + 4, 38, 14, 'STUDIO', false);
+    doc.setTextColor.apply(doc, MUTE);
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(7.5);
+    doc.text('AI INFRASTRUCTURE & MACHINES', hx + 40, hy + 28);
+
+    doc.setTextColor.apply(doc, SLATE);
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(9);
+    doc.text('DESIGN.\nAUTOMATE.\nELEVATE.', W - 68, 62, { align:'center', lineHeightFactor:1.5 });
+
+    doc.setTextColor.apply(doc, NAVY);
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(34);
+    doc.text('CERTIFICATE', W / 2, 168, { align:'center' });
+
+    doc.setDrawColor.apply(doc, SLATE);
+    doc.setLineWidth(1);
+    doc.line(W/2 - 130, 190, W/2 - 18, 190);
+    doc.line(W/2 + 18, 190, W/2 + 130, 190);
+    doc.setFillColor.apply(doc, SLATE);
+    doc.triangle(W/2, 185, W/2-5, 190, W/2, 195, 'F');
+    doc.triangle(W/2, 185, W/2+5, 190, W/2, 195, 'F');
+    doc.setTextColor.apply(doc, SLATE);
+    doc.setFontSize(13);
+    doc.setFont('helvetica', 'bold');
+    doc.text('OF PARTICIPATION', W / 2, 194, { align:'center' });
+
+    doc.setTextColor.apply(doc, MUTE);
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(9.5);
+    doc.text('THIS CERTIFICATE IS PROUDLY PRESENTED TO', W / 2, 220, { align:'center' });
+
+    doc.setTextColor.apply(doc, SLATE);
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(25);
+    doc.text(name, W / 2, 254, { align:'center' });
+    doc.setDrawColor.apply(doc, MIST);
+    doc.setLineWidth(1);
+    doc.line(W/2 - 150, 264, W/2 + 150, 264);
+
+    var dateStr = new Date().toLocaleDateString('en-GB', { year:'numeric', month:'long', day:'numeric' });
+    doc.setTextColor(61, 82, 102);
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(11);
+    doc.text('in recognition of your valuable participation and thoughtful engagement in', W/2, 286, { align:'center' });
+    doc.setFont('helvetica', 'bold');
+    doc.text('the technical assessment for the ' + roleLabel + ' position at', W/2, 302, { align:'center' });
+    doc.text('AIM — AI Infrastructure & Machines.', W/2, 318, { align:'center' });
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor.apply(doc, SLATE);
+    doc.text('We wish you continued success in all your future endeavours.', W/2, 338, { align:'center' });
+
+    var icons = ['AI-DRIVEN\nSOLUTIONS','SMART\nAUTOMATION','CREATIVE\nDESIGN','DATA\nINSIGHTS'];
+    var iconX = W/2 - 165, iconGap = 110;
+    icons.forEach(function(label, i){
+      var cx = iconX + i * iconGap, cy = 372;
+      doc.setDrawColor.apply(doc, SLATE);
+      doc.setLineWidth(1);
+      doc.circle(cx, cy, 15, 'S');
+      doc.setFillColor.apply(doc, SLATE);
+      doc.circle(cx, cy, 2, 'F');
+      doc.setDrawColor.apply(doc, MIST);
+      doc.circle(cx, cy, 9, 'S');
+      doc.setTextColor.apply(doc, MUTE);
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(6.5);
+      doc.text(label, cx, cy + 26, { align:'center', lineHeightFactor:1.3 });
+    });
+
+    var sigX = W - 190, sigY = 420;
+    doc.setDrawColor.apply(doc, NAVY);
+    doc.setLineWidth(1);
+    doc.line(sigX - 30, sigY + 8, sigX - 22, sigY - 6);
+    doc.line(sigX - 22, sigY - 6, sigX - 10, sigY + 4);
+    doc.line(sigX - 10, sigY + 4, sigX + 4, sigY - 10);
+    doc.line(sigX + 4, sigY - 10, sigX + 20, sigY + 2);
+    doc.setLineWidth(0.7);
+    doc.line(sigX - 40, sigY + 16, sigX + 40, sigY + 16);
+    doc.setTextColor.apply(doc, NAVY);
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(10.5);
+    doc.text('Ankit Panicker', sigX, sigY + 30, { align:'center' });
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(8.5);
+    doc.setTextColor.apply(doc, MUTE);
+    doc.text('Chief Technology Officer, AIM — AI Infrastructure & Machines', sigX, sigY + 42, { align:'center' });
+
+    doc.setLineWidth(0.7);
+    doc.setDrawColor.apply(doc, MIST);
+    doc.line(sigX + 110, sigY + 16, sigX + 190, sigY + 16);
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(8.5);
+    doc.setTextColor.apply(doc, MUTE);
+    doc.text(dateStr, sigX + 150, sigY + 30, { align:'center' });
+    doc.setFontSize(7.5);
+    doc.text('DATE', sigX + 150, sigY + 42, { align:'center' });
+
+    var rx = 96, ry = H - 118;
+    doc.setFillColor.apply(doc, NAVY);
+    doc.triangle(rx - 16, ry + 14, rx - 4, ry + 60, rx - 26, ry + 56, 'F');
+    doc.triangle(rx + 16, ry + 14, rx + 4, ry + 60, rx + 26, ry + 56, 'F');
+    for (var i = 0; i < 16; i++){
+      var a = (Math.PI * 2 / 16) * i;
+      doc.setFillColor.apply(doc, SLATE_L);
+      doc.circle(rx + 30*Math.cos(a), ry + 30*Math.sin(a), 3.2, 'F');
+    }
+    doc.setFillColor.apply(doc, NAVY);
+    doc.circle(rx, ry, 25, 'F');
+    doc.setFillColor.apply(doc, ICE);
+    drawPolygon(doc, hexPoints(rx, ry, 13), 'F');
+    doc.setFillColor.apply(doc, NAVY);
+    doc.triangle(rx, ry-6, rx-5, ry+5, rx+5, ry+5, 'F');
+    doc.setTextColor.apply(doc, MUTE);
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(6);
+    doc.text('SMARTER · FASTER · FUTURE-READY', rx, ry + 46, { align:'center' });
+
+    doc.setTextColor.apply(doc, MUTE);
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(7.5);
+    doc.text('This certificate acknowledges participation in the AIM application process. It is not an accredited credential or a guarantee of employment.', W/2, H - 46, { align:'center' });
+    doc.setFont('courier', 'normal');
+    doc.setFontSize(7.5);
+    doc.text('ID: ' + submissionId, W - 40, H - 34, { align:'right' });
+
+    return doc;
+  }
+
+  // ---------- Submission ----------
+  // There is no stub here on purpose. Either the application reaches Firestore
+  // and Storage, or the applicant is told it failed and given a way to reach a
+  // human. A form that reports success while discarding the submission is worse
+  // than one that is honestly unavailable.
+  function submitApplication(payload, resumeFile){
+    if (typeof window.__aimSubmit !== 'function'){
+      return Promise.reject(new Error('backend-unavailable'));
+    }
+    return window.__aimSubmit(payload, resumeFile);
+  }
+
+  var modalBackdrop = document.getElementById('modalBackdrop');
+  var certDoc = null;
+
+  document.getElementById('certDownloadBtn').addEventListener('click', function(){
+    if (!certDoc) return;
+    certDoc.save('AIM-Certificate-of-Participation.pdf');
+  });
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+
+    // Silently accept and drop bot submissions rather than explaining the trap.
+    if (document.getElementById('company_website').value.trim() !== ''){
+      modalBackdrop.classList.add('show');
+      return;
+    }
+
+    Object.keys(validators).forEach(function(name){ touched[name] = true; validateField(name, true); });
+
+    if (!allValid()){
+      banner.textContent = 'A few fields need attention before this can be submitted — check the highlighted fields above.';
+      banner.classList.add('show');
+      var firstInvalid = form.querySelector('.field.invalid');
+      if (firstInvalid) firstInvalid.scrollIntoView({behavior:'smooth', block:'center'});
+      return;
+    }
+    banner.classList.remove('show');
+
+    var visitState = getVisitState() || { visited:false, ts:null };
+    var resumeFile = document.getElementById('resume').files[0];
+    var roleLabel = roleSelect.options[roleSelect.selectedIndex].text;
+    var fullName = document.getElementById('fullName').value.trim();
+    var submissionId = makeSubmissionId();
+
+    var payload = {
+      fullName: fullName,
+      email: document.getElementById('email').value.trim(),
+      phone: document.getElementById('phone').value.trim(),
+      linkedin: document.getElementById('linkedin').value.trim(),
+      role: roleSelect.value,
+      roleLabel: roleLabel,
+      experience: document.getElementById('experience').value,
+      portfolio: document.getElementById('portfolio').value.trim(),
+      q1: document.getElementById('q1').value.trim(),
+      q2: document.getElementById('q2').value.trim(),
+      q3: document.getElementById('q3').value.trim(),
+      q4: document.getElementById('q4').value.trim(),
+      q5: document.getElementById('q5').value.trim(),
+      sourceRoleParam: roleParam || null,
+      visitedPlatform: visitState.visited,
+      visitedPlatformAt: visitState.ts,
+      consentGiven: true,
+      consentText: 'Stored to assess this application; may be contacted about it.',
+      submissionId: submissionId,
+      submittedAt: new Date().toISOString()
+    };
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting…';
+
+    submitApplication(payload, resumeFile)
+      .then(function(){
+        certDoc = generateCertificate(fullName, roleLabel, submissionId);
+
+        document.getElementById('confirmSub').textContent =
+          'We received your application for ' + roleLabel + ', along with what you told us about the platform.';
+        document.getElementById('certIdText').textContent = submissionId;
+        document.getElementById('confirmRef').textContent =
+          'Submitted ' + new Date().toLocaleString() + (roleParam ? '  ·  ref: ' + roleParam : '');
+
+        if (!certDoc){
+          document.getElementById('certIdText').textContent = submissionId + ' — download unavailable, PDF library failed to load';
+          document.getElementById('certDownloadBtn').disabled = true;
+        }
+
+        prog3.classList.remove('active');
+        prog3.classList.add('done');
+        modalBackdrop.classList.add('show');
+      })
+      .catch(function(err){
+        console.error('Application submission failed:', err);
+        banner.innerHTML =
+          'We could not submit your application just now, and nothing was saved. ' +
+          'Please try again in a moment — or email it directly to ' +
+          '<a href="mailto:' + CONTACT_EMAIL + '?subject=Application%20%E2%80%94%20' +
+          encodeURIComponent(roleLabel) + '">' + CONTACT_EMAIL + '</a> ' +
+          'and we will pick it up from there.';
+        banner.classList.add('show');
+        banner.scrollIntoView({behavior:'smooth', block:'center'});
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Submit application';
+      });
+  });
+
+})();
+</script>
+
+</body>
+</html>
