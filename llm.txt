@@ -42,6 +42,6 @@ UK and EU clients remotely from India (IST, UTC+5:30) with full UK/EU morning ov
 
 ## Contact Information & Links
 - **Architect**: Ankit Panicker
-- **Email**: mr.ankitpanicker@gmail.com
+- **Email**: ankit@aimsystem.in
 - **Live Demo**: https://aimstudio.co.in/app
 - **Main Website**: https://aimsystem.in
