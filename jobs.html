@@ -738,31 +738,11 @@
   // floor as the long answers would reject most correct responses.
   var Q_MIN = { q1:150, q2:150, q3:150, q4:150, q5:60 };
 
-  Object.keys(Q_MIN).forEach(function(id){
-    var ta = document.getElementById(id);
-    var countEl = document.getElementById('count-'+id);
-    var barEl = document.getElementById('bar-'+id);
-    var errEl = document.getElementById('err-'+id);
-    var min = Q_MIN[id];
-    errEl.textContent = 'This needs at least ' + min + ' characters.';
-    ta.setAttribute('minlength', String(min));
-    function update(){
-      var len = ta.value.trim().length;
-      barEl.style.width = Math.min(100, (len / min) * 100) + '%';
-      if (len >= min){
-        countEl.textContent = len + ' characters — looks good';
-        countEl.classList.add('ok');
-      } else {
-        countEl.textContent = len + ' / ' + min + ' characters minimum';
-        countEl.classList.remove('ok');
-      }
-      refreshSubmitState();
-    }
-    ta.addEventListener('input', update);
-    update();
-  });
-
   // ---------- Validation ----------
+  // Defined before the counter setup below, which calls refreshSubmitState() on
+  // init. `var validators` hoists as undefined, so running that first threw
+  // "Cannot convert undefined or null to object" out of the IIFE and every
+  // listener after it — file upload and submit included — was never attached.
   function longEnough(id){
     return function(v){ return v.trim().length >= Q_MIN[id]; };
   }
@@ -816,6 +796,31 @@
     if (ok){ prog2.classList.remove('active'); prog2.classList.add('done'); prog3.classList.add('active'); }
     else { prog3.classList.remove('active'); prog2.classList.remove('done'); prog2.classList.add('active'); }
   }
+
+  // ---------- Question counters ----------
+  Object.keys(Q_MIN).forEach(function(id){
+    var ta = document.getElementById(id);
+    var countEl = document.getElementById('count-'+id);
+    var barEl = document.getElementById('bar-'+id);
+    var errEl = document.getElementById('err-'+id);
+    var min = Q_MIN[id];
+    errEl.textContent = 'This needs at least ' + min + ' characters.';
+    ta.setAttribute('minlength', String(min));
+    function update(){
+      var len = ta.value.trim().length;
+      barEl.style.width = Math.min(100, (len / min) * 100) + '%';
+      if (len >= min){
+        countEl.textContent = len + ' characters — looks good';
+        countEl.classList.add('ok');
+      } else {
+        countEl.textContent = len + ' / ' + min + ' characters minimum';
+        countEl.classList.remove('ok');
+      }
+      refreshSubmitState();
+    }
+    ta.addEventListener('input', update);
+    update();
+  });
 
   var touched = {};
   Object.keys(validators).forEach(function(name){
