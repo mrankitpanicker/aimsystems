@@ -255,7 +255,28 @@
   .consent a{color:var(--slate);}
   .field.invalid .consent{border-color:var(--err);background:var(--err-tint);}
 
-  .privacy-note{font-size:12.5px;color:#6d8199;margin:14px 0 0;line-height:1.55;}
+  /* Collapsed by default so the consent line stays short, but the detail is one
+     click away rather than only living in a separate policy page. <details> is
+     used instead of a scripted toggle so it works without JS and is keyboard
+     and screen-reader accessible for free. */
+  .privacy-more{margin:10px 0 0;}
+  .privacy-more summary{
+    display:inline-flex;align-items:center;gap:6px;
+    font-size:12.5px;color:var(--slate);cursor:pointer;
+    list-style:none;width:fit-content;
+  }
+  .privacy-more summary::-webkit-details-marker{display:none;}
+  .privacy-more summary::after{
+    content:'';width:6px;height:6px;
+    border-right:1.5px solid var(--slate);border-bottom:1.5px solid var(--slate);
+    transform:rotate(45deg);margin-top:-3px;transition:transform .15s ease;
+  }
+  .privacy-more[open] summary::after{transform:rotate(-135deg);margin-top:2px;}
+  .privacy-more summary:hover{color:var(--slate-dark);}
+  .privacy-note{
+    font-size:12.5px;color:#6d8199;margin:10px 0 0;line-height:1.55;
+    padding-left:12px;border-left:2px solid var(--mist-blue);
+  }
 
   /* Honeypot: never shown to a person, only ever filled by a bot. */
   .hp-field{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}
@@ -533,14 +554,17 @@
             </label>
           </div>
           <p class="error-msg">Please confirm this before submitting.</p>
-        </div>
 
-        <p class="privacy-note">
-          What we keep: your name, email, phone if you give one, LinkedIn, portfolio link, the five
-          answers above and your CV. It's used only to assess this application, is not sold or shared
-          with third parties, and is deleted within 12 months of a decision. To have it removed sooner,
-          email <a href="mailto:ankit@aimsystem.in">ankit@aimsystem.in</a>.
-        </p>
+          <details class="privacy-more">
+            <summary>What we keep — read more</summary>
+            <p class="privacy-note">
+              Your name, email, phone if you give one, LinkedIn, portfolio link, the five answers
+              above and your CV. It's used only to assess this application, is not sold or shared
+              with third parties, and is deleted within 12 months of a decision. To have it removed
+              sooner, email <a href="mailto:ankit@aimsystem.in">ankit@aimsystem.in</a>.
+            </p>
+          </details>
+        </div>
       </div>
 
       <div class="deep-horizon">
