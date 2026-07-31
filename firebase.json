@@ -11,12 +11,7 @@
       "tmp_zip/**",
       "**/node_modules/**"
     ],
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
-    ],
+    "cleanUrls": true,
     "headers": [
       {
         "source": "/favicon.jpeg",
