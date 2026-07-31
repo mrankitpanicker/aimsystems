@@ -538,10 +538,15 @@
           <input type="url" id="portfolio" name="portfolio" placeholder="https://github.com/yourname">
         </div>
 
-        <!-- Bots fill hidden inputs; people never see this one. -->
+        <!-- Honeypot. The name is deliberately meaningless: an earlier version
+             called this "company_website", which browser autofill and password
+             managers happily fill in, so a real applicant could trip it without
+             ever seeing the field. Tripping it now only tags the submission
+             (see suspectedAutomation) — it never discards one. -->
         <div class="hp-field" aria-hidden="true">
-          <label for="company_website">Company website</label>
-          <input type="text" id="company_website" name="company_website" tabindex="-1" autocomplete="off">
+          <label for="hp_ref_x7">Leave this field empty</label>
+          <input type="text" id="hp_ref_x7" name="hp_ref_x7" tabindex="-1"
+                 autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
         </div>
 
         <div class="field" data-field="consent">
@@ -1077,19 +1082,30 @@
   var modalBackdrop = document.getElementById('modalBackdrop');
   var certDoc = null;
 
-  document.getElementById('certDownloadBtn').addEventListener('click', function(){
-    if (!certDoc) return;
+  var certDownloadBtn = document.getElementById('certDownloadBtn');
+  certDownloadBtn.disabled = true; // nothing to download until one is generated
+  certDownloadBtn.addEventListener('click', function(){
+    // Last-resort regeneration: if the button is somehow live without a
+    // document, rebuild it rather than doing nothing when clicked.
+    if (!certDoc && window.__aimCertArgs){
+      certDoc = generateCertificate.apply(null, window.__aimCertArgs);
+    }
+    if (!certDoc){
+      certDownloadBtn.disabled = true;
+      certDownloadBtn.textContent = 'Unavailable';
+      return;
+    }
     certDoc.save('AIM-Certificate-of-Participation.pdf');
   });
 
   form.addEventListener('submit', function(e){
     e.preventDefault();
 
-    // Silently accept and drop bot submissions rather than explaining the trap.
-    if (document.getElementById('company_website').value.trim() !== ''){
-      modalBackdrop.classList.add('show');
-      return;
-    }
+    // A tripped honeypot tags the submission instead of dropping it. Autofill
+    // can populate a hidden field without the applicant ever seeing it, and
+    // discarding a real application to avoid one spam row is the wrong trade —
+    // especially silently, behind a success screen.
+    var suspectedAutomation = document.getElementById('hp_ref_x7').value.trim() !== '';
 
     Object.keys(validators).forEach(function(name){ touched[name] = true; validateField(name, true); });
 
@@ -1127,6 +1143,7 @@
       visitedPlatformAt: visitState.ts,
       consentGiven: true,
       consentText: 'Stored to assess this application; may be contacted about it.',
+      suspectedAutomation: suspectedAutomation,
       submissionId: submissionId,
       submittedAt: new Date().toISOString()
     };
@@ -1136,7 +1153,9 @@
 
     submitApplication(payload, resumeFile)
       .then(function(){
+        window.__aimCertArgs = [fullName, roleLabel, submissionId];
         certDoc = generateCertificate(fullName, roleLabel, submissionId);
+        certDownloadBtn.disabled = !certDoc;
 
         document.getElementById('confirmSub').textContent =
           'We received your application for ' + roleLabel + ', along with what you told us about the platform.';
