@@ -1,0 +1,28 @@
+name = "aim-cv-upload"
+main = "src/index.js"
+compatibility_date = "2026-01-15"
+
+# Bound to the same domain the form is served from, so the upload is a
+# same-origin request and no CORS preflight is involved at all. That preflight
+# is exactly what failed against Firebase Storage.
+#
+# Requires the aimsystem.in DNS record to be PROXIED in Cloudflare (orange
+# cloud). It is currently DNS-only, pointing straight at Firebase Hosting.
+# aimstudio.co.in already runs proxied in front of Firebase, so the arrangement
+# is proven here; set SSL/TLS mode to Full (strict) — Firebase serves a valid
+# certificate, so strict verification passes.
+#
+# Only this one path goes to the Worker. Everything else on the domain
+# continues to be served by Firebase Hosting untouched.
+routes = [
+  { pattern = "aimsystem.in/api/cv", zone_name = "aimsystem.in" }
+]
+
+# CVs. Never publicly readable — retrieval is through the R2 dashboard or an
+# authenticated tool, matching the write-only posture of the Firestore rules.
+[[r2_buckets]]
+binding = "CVS"
+bucket_name = "aim-cvs"
+
+[observability]
+enabled = true

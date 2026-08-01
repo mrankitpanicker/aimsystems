@@ -11,7 +11,8 @@
       "tmp_zip/**",
       "**/node_modules/**",
       "firestore.rules",
-      "storage.rules"
+      "storage.rules",
+      "worker/**"
     ],
     "cleanUrls": true,
     "headers": [

@@ -627,8 +627,6 @@
   import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
   import { getFirestore, collection, addDoc, serverTimestamp }
     from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
-  import { getStorage, ref, uploadBytes, getDownloadURL }
-    from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js';
 
   // Public web config. Firebase web API keys are identifiers, not secrets —
   // access is governed by firestore.rules and storage.rules, which make both
@@ -647,7 +645,6 @@
 
   const fbApp = initializeApp(firebaseConfig);
   const db = getFirestore(fbApp);
-  const storage = getStorage(fbApp);
 
   // The CV upload is best-effort and hard-capped in time; the application
   // record is what must not be lost. Firebase Storage retries a missing or
@@ -660,19 +657,32 @@
     new Promise((_, reject) => setTimeout(() => reject(new Error(label)), ms))
   ]);
 
+  // Same-origin endpoint backed by a Cloudflare Worker writing to R2. The page
+  // holds no storage credential: the Worker owns the bucket binding and
+  // re-validates size and PDF magic bytes, because the checks in this form are
+  // advisory — anyone can POST to the endpoint directly.
+  const CV_ENDPOINT = '/api/cv';
+
   window.__aimSubmit = async function(payload, resumeFile){
     let resumeStatus = 'not-uploaded';
     let resumePath = null;
     let resumeUrl = null;
 
     try {
-      const safeName = resumeFile.name.replace(/[^\w.\-]+/g, '_').slice(-80);
-      resumePath = `resumes/${payload.submissionId}_${safeName}`;
-      const fileRef = ref(storage, resumePath);
-      await withTimeout(
-        uploadBytes(fileRef, resumeFile, { contentType: 'application/pdf' }),
-        15000, 'upload-timeout');
-      resumeUrl = await withTimeout(getDownloadURL(fileRef), 10000, 'url-timeout');
+      const res = await withTimeout(fetch(CV_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/pdf',
+          'X-Submission-Id': payload.submissionId,
+          'X-File-Name': resumeFile.name
+        },
+        body: resumeFile
+      }), 30000, 'upload-timeout');
+
+      if (!res.ok) throw new Error('upload-http-' + res.status);
+      const out = await res.json();
+      if (!out.ok) throw new Error(out.error || 'upload-rejected');
+      resumePath = out.key;
       resumeStatus = 'stored';
     } catch (err) {
       console.warn('CV upload unavailable, continuing without it:', err && err.message);
