@@ -649,21 +649,50 @@
   const db = getFirestore(fbApp);
   const storage = getStorage(fbApp);
 
-  window.__aimSubmit = async function(payload, resumeFile){
-    // Upload the CV first: if this fails there is no half-written application
-    // record pointing at a file that does not exist.
-    const safeName = resumeFile.name.replace(/[^\w.\-]+/g, '_').slice(-80);
-    const path = `resumes/${payload.submissionId}_${safeName}`;
-    const fileRef = ref(storage, path);
-    await uploadBytes(fileRef, resumeFile, { contentType: 'application/pdf' });
-    const resumeUrl = await getDownloadURL(fileRef);
+  // The CV upload is best-effort and hard-capped in time; the application
+  // record is what must not be lost. Firebase Storage retries a missing or
+  // unreachable bucket indefinitely with backoff — awaiting it directly left
+  // the submit button reading "Submitting…" forever with no error and no
+  // application saved. Storage also needs a paid plan, while Firestore does
+  // not, so the two have to be able to fail independently.
+  const withTimeout = (promise, ms, label) => Promise.race([
+    promise,
+    new Promise((_, reject) => setTimeout(() => reject(new Error(label)), ms))
+  ]);
 
-    await addDoc(collection(db, 'applications'), {
+  window.__aimSubmit = async function(payload, resumeFile){
+    let resumeStatus = 'not-uploaded';
+    let resumePath = null;
+    let resumeUrl = null;
+
+    try {
+      const safeName = resumeFile.name.replace(/[^\w.\-]+/g, '_').slice(-80);
+      resumePath = `resumes/${payload.submissionId}_${safeName}`;
+      const fileRef = ref(storage, resumePath);
+      await withTimeout(
+        uploadBytes(fileRef, resumeFile, { contentType: 'application/pdf' }),
+        15000, 'upload-timeout');
+      resumeUrl = await withTimeout(getDownloadURL(fileRef), 10000, 'url-timeout');
+      resumeStatus = 'stored';
+    } catch (err) {
+      console.warn('CV upload unavailable, continuing without it:', err && err.message);
+      resumeStatus = 'unavailable';
+      resumePath = null;
+    }
+
+    // Written once, after the upload resolves either way, so the record always
+    // reflects what actually happened to the file.
+    await withTimeout(addDoc(collection(db, 'applications'), {
       ...payload,
-      resumePath: path,
+      resumeStatus,
+      resumeName: resumeFile ? resumeFile.name : null,
+      resumeSize: resumeFile ? resumeFile.size : null,
+      resumePath,
       resumeUrl,
       receivedAt: serverTimestamp()
-    });
+    }), 20000, 'firestore-timeout');
+
+    return { resumeStored: resumeStatus === 'stored' };
   };
   window.__aimSubmitReady = true;
 </script>
@@ -1091,7 +1120,19 @@
     submitBtn.textContent = 'Submitting…';
 
     submitApplication(payload, resumeFile)
-      .then(function(){
+      .then(function(result){
+        // The application is saved either way; if the CV did not attach, say so
+        // here rather than letting the candidate assume it arrived.
+        if (result && result.resumeStored === false){
+          var note = document.createElement('p');
+          note.style.cssText = 'font-size:13px;color:#8a5a00;background:#fff6e5;border:1px solid #ffd98a;border-radius:10px;padding:11px 14px;margin:0 0 18px;';
+          note.innerHTML = 'Your answers reached us, but the CV upload did not go through. ' +
+            'Please email it to <a href="mailto:' + CONTACT_EMAIL + '?subject=CV%20—%20' +
+            encodeURIComponent(submissionId) + '" style="color:#8a5a00;font-weight:600;">' + CONTACT_EMAIL +
+            '</a> quoting <strong>' + submissionId + '</strong>.';
+          var sub = document.getElementById('confirmSub');
+          sub.parentNode.insertBefore(note, sub.nextSibling);
+        }
         window.__aimCertArgs = [fullName, roleLabel, submissionId];
         certName = 'AIM-Certificate-' + submissionId + '.pdf';
 
