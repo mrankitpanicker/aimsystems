@@ -10,7 +10,7 @@ Showcases fixed-price, end-to-end AI platform delivery, production architecture 
 
 ## Deployments
 - **GitHub**: [mrankitpanicker/aimsystems](https://github.com/mrankitpanicker/aimsystems)
-- **Live Demo**: [aimsystems.web.app](https://aimsystems.web.app)
+- **Live Demo**: [aimsystems.web.app](https://hms.aimsystem.in)
 - **Live App**: [aimstudio.co.in/app](https://aimstudio.co.in/app)
 
 ## Features
