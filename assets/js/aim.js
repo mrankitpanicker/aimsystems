@@ -147,6 +147,14 @@
     });
   });
 
+  /* ---------- Pressed-in cards: tap to pop on touch screens ---------- */
+  $$('.card-sunk').forEach(card => card.addEventListener('click', e => {
+    if (e.target.closest('a, button')) return;
+    const was = card.classList.contains('is-popped');
+    $$('.card-sunk.is-popped').forEach(c => c.classList.remove('is-popped'));
+    if (!was) card.classList.add('is-popped');
+  }));
+
   /* ---------- Accordion ---------- */
   $$('.accordion-card').forEach(card => {
     card.setAttribute('tabindex', '0');

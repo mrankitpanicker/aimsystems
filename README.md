@@ -34,8 +34,7 @@ classes the pages use into `assets/css/tw.css`, and `icons.js` writes the Lucide
 - `assets/css/aim.css` holds the tactile neumorphic design system (light "Lilac Ice" and dark "Midnight Cobalt") verbatim, with site additions at the end.
 - `assets/js/aim.js` holds all interactions: sliding nav pill, theme toggle (remembered per browser), monolith press with water ripple, folder tabs, accordions, rotary dial, rocker switch, laser-etched trace, speaker grille, Web Audio keypad, trench slider, fluid tank, circuit-breaker lab, pipeline runner and counters.
 - `assets/img/` holds transparent art cut from three sheets in `_src/`: `cto-*` (the CTO character; blazer poses are used only where the CTO is the subject), `ill-*` (illustrations) and `ico-*` (3D icons). Re-cut with `python3 _src/cut_sheets.py` (needs Pillow, numpy, scipy).
-- Cards use two surfaces: the lilac-ice tactile card and `.tactile-navy`, the navy gradient from the buttons. Anything inside a navy card picks up navy tokens automatically.
-- `assets/video/` holds the scene reel (WebM + MP4).
+- Cards follow three tones: raised (`.tactile-raised`), pressed-in (`.card-sunk`, rests sunk and lifts out on hover or tap) and the navy accent (`.tactile-navy`, the button gradient) for one featured block per section. Anything inside a navy card picks up navy tokens automatically; `.price-strip` is the light inverse used inside navy.
 
 ## Deploy
 Firebase Hosting (`firebase deploy --only hosting`). `cleanUrls` serves `/products` from `products.html`; `_src/`, `worker/` and `tmp_zip/` are not deployed.

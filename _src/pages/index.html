@@ -78,21 +78,21 @@
     <!-- PROOF STRIP -->
     <section id="proof" class="reveal-on-scroll">
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <div class="tactile-raised rounded-3xl p-5 flex items-center gap-4">
+        <div class="card-sunk rounded-3xl p-5 flex items-center gap-4" tabindex="0">
           <span class="ico-well w-12 h-12 hidden sm:inline-flex"><img src="/assets/img/ico-phone.webp" alt=""></span>
           <div><div class="text-2xl sm:text-3xl font-black font-mono text-[#163387] dark:text-[#6380CE]"><span data-count="15000" data-suffix="+">0</span></div><div class="text-[10px] font-mono uppercase tracking-wider text-[var(--text-muted)]">Calls dialled</div></div>
         </div>
-        <div class="tactile-raised rounded-3xl p-5 flex items-center gap-4">
+        <div class="card-sunk rounded-3xl p-5 flex items-center gap-4" tabindex="0">
           <span class="ico-well w-12 h-12 hidden sm:inline-flex"><img src="/assets/img/ico-ok.webp" alt=""></span>
-          <div><div class="text-2xl sm:text-3xl font-black font-mono"><span data-count="6800" data-suffix="+">0</span></div><div class="text-[10px] font-mono uppercase tracking-wider text-[var(--text-muted)]">Calls answered</div></div>
+          <div><div class="text-2xl sm:text-3xl font-black font-mono text-[#7952EC] dark:text-[#A78BFA]"><span data-count="6800" data-suffix="+">0</span></div><div class="text-[10px] font-mono uppercase tracking-wider text-[var(--text-muted)]">Calls answered</div></div>
         </div>
-        <div class="tactile-raised rounded-3xl p-5 flex items-center gap-4">
+        <div class="card-sunk rounded-3xl p-5 flex items-center gap-4" tabindex="0">
           <span class="ico-well w-12 h-12 hidden sm:inline-flex"><img src="/assets/img/ico-trend.webp" alt=""></span>
           <div><div class="text-2xl sm:text-3xl font-black font-mono text-[#163387] dark:text-[#6380CE]">~<span data-count="45" data-suffix="%">0</span></div><div class="text-[10px] font-mono uppercase tracking-wider text-[var(--text-muted)]">Answer rate</div></div>
         </div>
-        <div class="tactile-raised rounded-3xl p-5 flex items-center gap-4">
+        <div class="card-sunk rounded-3xl p-5 flex items-center gap-4" tabindex="0">
           <span class="ico-well w-12 h-12 hidden sm:inline-flex"><img src="/assets/img/ico-rocket.webp" alt=""></span>
-          <div><div class="text-2xl sm:text-3xl font-black font-mono"><span data-count="3">0</span></div><div class="text-[10px] font-mono uppercase tracking-wider text-[var(--text-muted)]">Live deployments</div></div>
+          <div><div class="text-2xl sm:text-3xl font-black font-mono text-[#F97316]"><span data-count="3">0</span></div><div class="text-[10px] font-mono uppercase tracking-wider text-[var(--text-muted)]">Live deployments</div></div>
         </div>
       </div>
       <p class="text-center text-[11px] font-mono text-[var(--text-muted)] mt-4">Real numbers from a live healthcare deployment of APEX Connect, not a synthetic benchmark.</p>
@@ -104,18 +104,27 @@
         <div>
           <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7952EC] dark:text-[#A78BFA]">What we run</span>
           <h2 class="text-2xl sm:text-3xl font-black font-display">One platform, many moving parts.</h2>
-          <p class="text-xs sm:text-sm text-[var(--text-muted)] font-medium mt-1 max-w-2xl">Voice agents, cloud infrastructure, automation and analytics all running together, and all of it watched.</p>
+          <p class="text-xs sm:text-sm text-[var(--text-muted)] font-medium mt-1 max-w-2xl">Voice agents, workers, messaging and monitoring run as one system, and all of it is watched.</p>
         </div>
         <span class="text-xs font-mono font-bold px-3 py-1 rounded-full tactile-inset-sm text-[#7952EC] dark:text-[#A78BFA]">Live · production</span>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
         <div class="lg:col-span-7">
-          <div class="art-frame aspect-[16/10]">
-            <video autoplay muted loop playsinline preload="metadata" poster="/assets/video/aim-reel-poster.webp" aria-label="AIM illustrations: voice robot, cloud and databases, automation flow, analytics dashboard">
-              <source src="/assets/video/aim-reel.webm" type="video/webm">
-              <source src="/assets/video/aim-reel.mp4" type="video/mp4">
-            </video>
+          <div class="tactile-navy rounded-[2rem] p-6 sm:p-8 grid grid-cols-1 sm:grid-cols-12 gap-6 items-center">
+            <div class="sm:col-span-5"><div class="aspect-square max-w-[240px] mx-auto"><img class="ill" src="/assets/img/ill-analytics.webp" alt="Analytics dashboard illustration"></div></div>
+            <div class="sm:col-span-7 space-y-4">
+              <div>
+                <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#B9C8FF]">The production stack</span>
+                <h3 class="text-xl font-black font-display mt-1">Four layers behind every call</h3>
+              </div>
+              <ul class="space-y-2.5 text-xs">
+                <li class="tactile-inset-sm rounded-2xl p-2.5 flex items-center gap-3"><span class="ico-well w-10 h-10 rounded-xl"><img src="/assets/img/ico-headphones.webp" alt=""></span><span><b class="block">Voice pipeline</b><span class="text-[var(--text-muted)] font-mono">STT → LLM → TTS, streamed</span></span></li>
+                <li class="tactile-inset-sm rounded-2xl p-2.5 flex items-center gap-3"><span class="ico-well w-10 h-10 rounded-xl"><img src="/assets/img/ico-rack.webp" alt=""></span><span><b class="block">Campaign workers</b><span class="text-[var(--text-muted)] font-mono">Redis queues · retries · DLQ</span></span></li>
+                <li class="tactile-inset-sm rounded-2xl p-2.5 flex items-center gap-3"><span class="ico-well w-10 h-10 rounded-xl"><img src="/assets/img/ico-chats.webp" alt=""></span><span><b class="block">Messaging</b><span class="text-[var(--text-muted)] font-mono">WhatsApp · durable outbox</span></span></li>
+                <li class="tactile-inset-sm rounded-2xl p-2.5 flex items-center gap-3"><span class="ico-well w-10 h-10 rounded-xl"><img src="/assets/img/ico-trend.webp" alt=""></span><span><b class="block">Observability</b><span class="text-[var(--text-muted)] font-mono">Prometheus · Grafana · traces</span></span></li>
+              </ul>
+            </div>
           </div>
         </div>
 
@@ -194,8 +203,8 @@
         <a href="/products" class="tactile-convex-pill px-5 py-2.5 text-xs inline-flex items-center gap-2">All products <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
       </div>
 
-      <div data-tabs class="tactile-raised rounded-3xl p-5 sm:p-6 space-y-5">
-        <div role="tablist" class="flex flex-wrap items-center gap-2.5 border-b border-black/5 dark:border-white/5 pb-4 select-none">
+      <div data-tabs class="tactile-navy rounded-[2rem] p-5 sm:p-7 space-y-5">
+        <div role="tablist" class="flex flex-wrap items-center gap-2.5 border-b border-white/10 pb-4 select-none">
           <button type="button" role="tab" data-tab="connect" aria-selected="true" class="tactile-convex-pill px-5 py-2.5 text-xs inline-flex items-center gap-2"><i data-lucide="phone-call" class="w-4 h-4"></i>APEX Connect</button>
           <button type="button" role="tab" data-tab="remote" class="tactile-convex-pill px-5 py-2.5 text-xs inline-flex items-center gap-2"><i data-lucide="monitor-smartphone" class="w-4 h-4"></i>AIM · Remote AI</button>
           <button type="button" role="tab" data-tab="hms" class="tactile-convex-pill px-5 py-2.5 text-xs inline-flex items-center gap-2"><i data-lucide="activity" class="w-4 h-4"></i>APEX HMS</button>
@@ -208,7 +217,7 @@
           <div class="md:col-span-8 space-y-4">
             <h3 class="text-xl font-black font-display">APEX Connect: AI voice agents &amp; WhatsApp automation</h3>
             <p class="text-sm text-[var(--text-muted)] leading-relaxed">A multi-tenant SaaS for inbound and outbound AI calls, an AI receptionist, appointment booking and WhatsApp Business API, in Hindi and English. Connect Twilio, Telnyx, Vapi or an Indian SIP trunk.</p>
-            <div class="tactile-navy rounded-2xl p-4 font-mono text-xs grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
+            <div class="price-strip rounded-2xl p-4 font-mono text-xs grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
               <div><div class="font-black text-base">₹4,999</div><div class="opacity-70 text-[10px]">own SIP</div></div>
               <div><div class="font-black text-base">₹14,999</div><div class="opacity-70 text-[10px]">Starter · 2,000 calls</div></div>
               <div><div class="font-black text-base">₹29,999</div><div class="opacity-70 text-[10px]">Growth · 4,500 calls</div></div>
@@ -270,22 +279,22 @@
         <div class="lg:col-span-4 hidden lg:block"><img src="/assets/img/cto-signpost.webp" alt="Signpost reading idea, build, deploy, scale" class="h-40 mx-auto object-contain drop-shadow-xl"></div>
       </div>
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-        <div class="tactile-raised rounded-3xl p-4 sm:p-5 space-y-3">
+        <div class="card-sunk rounded-3xl p-4 sm:p-5 space-y-3" tabindex="0">
           <span class="block aspect-[4/3]"><img class="ill" src="/assets/img/ill-idea-to-app.webp" alt="" loading="lazy"></span>
           <div class="text-[10px] font-mono font-bold text-[#7952EC] dark:text-[#A78BFA]">01 · UNDERSTAND</div>
           <p class="text-xs text-[var(--text-muted)] leading-relaxed">What should exist, what can fail and what we should deliberately not build.</p>
         </div>
-        <div class="tactile-raised rounded-3xl p-4 sm:p-5 space-y-3">
+        <div class="card-sunk rounded-3xl p-4 sm:p-5 space-y-3" tabindex="0">
           <span class="block aspect-[4/3]"><img class="ill" src="/assets/img/ill-flowchart.webp" alt="" loading="lazy"></span>
           <div class="text-[10px] font-mono font-bold text-[#38BDF8]">02 · DESIGN</div>
           <p class="text-xs text-[var(--text-muted)] leading-relaxed">The architecture, data model, failure modes and threat boundaries, signed off before production code.</p>
         </div>
-        <div class="tactile-raised rounded-3xl p-4 sm:p-5 space-y-3">
+        <div class="card-sunk rounded-3xl p-4 sm:p-5 space-y-3" tabindex="0">
           <span class="block aspect-[4/3]"><img class="ill" src="/assets/img/ill-cicd.webp" alt="" loading="lazy"></span>
           <div class="text-[10px] font-mono font-bold text-[#F97316]">03 · BUILD</div>
           <p class="text-xs text-[var(--text-muted)] leading-relaxed">Backend, frontend, workers, queues and AI pipelines, tested against the failure path as well as the happy path.</p>
         </div>
-        <div class="tactile-raised rounded-3xl p-4 sm:p-5 space-y-3">
+        <div class="card-sunk rounded-3xl p-4 sm:p-5 space-y-3" tabindex="0">
           <span class="block aspect-[4/3]"><img class="ill" src="/assets/img/ill-rocket.webp" alt="" loading="lazy"></span>
           <div class="text-[10px] font-mono font-bold text-[#EC4899]">04 · DEPLOY &amp; SCALE</div>
           <p class="text-xs text-[var(--text-muted)] leading-relaxed">CI/CD, observability, runbooks and handover, so the system can be operated, recovered and extended.</p>
