@@ -152,17 +152,22 @@
   $$('[data-brand-toggle]').forEach(sw => {
     const knob = $('.bt-knob', sw), opts = $$('.bt-opt', sw);
     let on = opts.findIndex(o => o.classList.contains('is-on'));
-    const place = () => {
-      const o = opts[on];
-      knob.style.transform = `translateX(${o.offsetLeft}px)`;
-      knob.style.width = `${o.offsetWidth}px`;
+    const set = (x, w) => { knob.style.transform = `translateX(${x}px)`; knob.style.width = `${w}px`; };
+    const place = () => { const o = opts[on]; set(o.offsetLeft, o.offsetWidth); opts.forEach((x, i) => x.classList.toggle('is-on', i === on)); };
+    // liquid move: the knob first stretches to cover both words, then draws in around the new one
+    const flow = from => {
+      const a = opts[from], o = opts[on];
+      const l = Math.min(a.offsetLeft, o.offsetLeft), r = Math.max(a.offsetLeft + a.offsetWidth, o.offsetLeft + o.offsetWidth);
+      sw.classList.add('is-flowing');
+      set(l, r - l);
       opts.forEach((x, i) => x.classList.toggle('is-on', i === on));
+      setTimeout(() => { sw.classList.remove('is-flowing'); set(o.offsetLeft, o.offsetWidth); }, 520);
     };
     place();
     window.addEventListener('resize', place);
     if (document.fonts) document.fonts.ready.then(place);
     if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    setInterval(() => { if (!document.hidden) { on = (on + 1) % opts.length; place(); } }, 2600);
+    setInterval(() => { if (!document.hidden) { const from = on; on = (on + 1) % opts.length; flow(from); } }, 4200);
   });
 
   /* ---------- Settings menu: theme and sound ---------- */

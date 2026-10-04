@@ -74,9 +74,9 @@ HEADER = """
           <span class="brand-toggle tactile-inset-sm rounded-full" data-brand-toggle>
             <span class="bt-knob" aria-hidden="true"></span>
             <span class="bt-opt text-[15px] sm:text-[19px] font-black font-display tracking-tight">AIM</span>
-            <span class="bt-opt is-on text-[15px] sm:text-[19px] font-black font-display tracking-tight uppercase">Systems</span>
+            <span class="bt-opt is-on text-[15px] sm:text-[19px] font-black font-display tracking-tight uppercase">System</span>
           </span>
-          <span class="brand-groove block tactile-inset-sm rounded-full px-2 sm:px-2.5 py-0.5 text-[8.5px] sm:text-[10px] text-[var(--text-muted)] font-semibold whitespace-nowrap truncate max-w-full">AI Infrastructure &amp; Machines</span>
+          <span class="block px-1.5 text-[9px] sm:text-[10.5px] text-[var(--text-muted)] font-semibold tracking-[0.01em] whitespace-nowrap truncate max-w-full">AI Infrastructure &amp; Machines</span>
         </span>
       </a>
 
