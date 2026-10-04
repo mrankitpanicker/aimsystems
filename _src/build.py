@@ -358,6 +358,55 @@ def optimise_images(body):
     tail = re.sub(r'<img [^>]*>', lambda m: tag(m.group(0), True), tail)
     return head + tail
 
+_vers = {}
+
+
+def _version(src):
+    if src not in _vers:
+        import hashlib
+        _vers[src] = hashlib.md5(open(os.path.join(ROOT, src.lstrip('/')), 'rb').read()).hexdigest()[:8]
+    return _vers[src]
+
+
+def optimize(page):
+    """Loading performance, applied to the assembled page (npm run build runs build.py again last,
+    so the hashes match the freshly compiled tw.css and icons.js):
+    - the first content image (the hero) loads eagerly at high priority and is preloaded
+    - CSS/JS URLs carry a content hash, so they can be cached for a year and still update on deploy
+    """
+    first = [True]
+
+    def img(m):
+        tag = m.group(0)
+        src = re.search(r'src="(/assets/img/[^"]+)"', tag)
+        if not src:
+            return tag
+        src = src.group(1)
+        if first[0] and not re.search(r'/(ico-|aim-logo)', src):
+            first[0] = False
+            tag = tag.replace(' loading="lazy"', '')
+            if 'fetchpriority=' not in tag:
+                tag = tag.replace('<img ', '<img fetchpriority="high" ', 1)
+            img.hero = src
+        return tag
+
+    img.hero = None
+    page = re.sub(r'<img [^>]*>', img, page)
+    if img.hero:
+        page = page.replace('</title>', f'</title>\n  <link rel="preload" as="image" href="{img.hero}" fetchpriority="high">', 1)
+    def asset(m):
+        src = m.group(2)
+        mini = re.sub(r'\.(css|js)$', r'.min.\1', src)
+        full, small = os.path.join(ROOT, src.lstrip('/')), os.path.join(ROOT, mini.lstrip('/'))
+        # aim.min.* come from `npm run minify`; aim.css / aim.js stay the editable sources.
+        # A minified copy older than its source is stale, so the source is served instead.
+        if not src.endswith(('.min.css', '.min.js')) and os.path.exists(small) and os.path.getmtime(small) >= os.path.getmtime(full):
+            src = mini
+        return f'{m.group(1)}="{src}?v={_version(src)}"'
+
+    return re.sub(r'(href|src)="(/assets/(?:css|js)/[^"?]+)"', asset, page)
+
+
 def build():
     built = []
     for fn in sorted(os.listdir(PAGES)):
@@ -380,7 +429,7 @@ def build():
             + body.rstrip() + '\n'
             + FOOTER.format(extra_foot=meta.get('foot', ''))
         )
-        open(os.path.join(ROOT, fn), 'w', encoding='utf-8').write(page)
+        open(os.path.join(ROOT, fn), 'w', encoding='utf-8').write(optimize(page))
         built.append(path)
     print('built:', ', '.join(built))
 

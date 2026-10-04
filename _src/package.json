@@ -3,10 +3,12 @@
   "private": true,
   "description": "Build tooling for the AIM static site. Output is committed; this is only needed to rebuild.",
   "scripts": {
-    "build": "python3 build.py && tailwindcss -c tailwind.config.js -i tailwind.css -o ../assets/css/tw.css --minify && node icons.js"
+    "build": "npm run minify && python3 build.py && tailwindcss -c tailwind.config.js -i tailwind.css -o ../assets/css/tw.css --minify && node icons.js && python3 build.py",
+    "minify": "esbuild ../assets/css/aim.css --minify --outfile=../assets/css/aim.min.css --log-level=warning && esbuild ../assets/js/aim.js --minify --outfile=../assets/js/aim.min.js --log-level=warning"
   },
   "devDependencies": {
     "lucide": "^0.469.0",
-    "tailwindcss": "^3.4.17"
+    "tailwindcss": "^3.4.17",
+    "esbuild": "^0.25.0"
   }
 }
