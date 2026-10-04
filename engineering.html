@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Engineering — Reliability, Architecture &amp; Stack · AIM</title>
+  <meta name="description" content="How AIM builds systems: design for the failure path first. Idempotency, backpressure, circuit breakers, WAL and replay, Redis as a systems primitive, observability, and an interactive lab to try them.">
+  <link rel="canonical" href="https://aimsystem.in/engineering">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="AIM — AI Infrastructure &amp; Machines">
+  <meta property="og:title" content="Engineering — Reliability, Architecture &amp; Stack · AIM">
+  <meta property="og:description" content="How AIM builds systems: design for the failure path first. Idempotency, backpressure, circuit breakers, WAL and replay, Redis as a systems primitive, observability, and an interactive lab to try them.">
+  <meta property="og:url" content="https://aimsystem.in/engineering">
+  <meta property="og:image" content="https://aimsystem.in/assets/img/scene-dashboard.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#E6EEF8">
+  <link rel="icon" href="/assets/img/aim-logo.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="/favicon.png">
+
+  <script>
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('aim-theme'); } catch (e) {}
+      if (t === 'dark' || (!t && window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800;900&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/aim.css">
+  <link rel="stylesheet" href="/assets/css/tw.css">
+</head>
+<body class="min-h-screen py-6 sm:py-8 px-4 sm:px-6 lg:px-12 flex flex-col items-center">
+  <a href="#main" class="skip-link btn-deploy-edge px-4 py-2 text-xs">Skip to content</a>
+
+  <header class="tactile-raised rounded-3xl p-3.5 sm:p-4 w-full max-w-6xl sticky top-3 z-50 backdrop-blur-md">
+    <div class="flex items-center justify-between gap-3">
+      <a href="/" class="flex items-center gap-3 min-w-0" aria-label="AIM home">
+        <span class="w-11 h-11 rounded-2xl tactile-clay flex items-center justify-center shrink-0">
+          <img src="/assets/img/aim-logo.svg" alt="" class="w-7 h-7">
+        </span>
+        <span class="min-w-0">
+          <span class="flex items-center gap-2">
+            <span class="text-base font-black font-display tracking-tight">AIM</span>
+            <span class="hidden sm:inline px-2 py-0.5 rounded-full text-[9px] font-mono font-bold uppercase bg-[#7952EC]/10 text-[#7952EC] dark:text-[#A78BFA]">Systems</span>
+          </span>
+          <span class="block text-[11px] text-[var(--text-muted)] font-medium truncate">AI Infrastructure &amp; Machines</span>
+        </span>
+      </a>
+
+      <nav id="navbarTrack" aria-label="Main" class="relative hidden xl:flex items-center p-1.5 rounded-full tactile-inset-sm text-xs font-bold text-[var(--text-muted)]">
+        <div id="navIndicatorPill"></div>
+        <a href="/" class="nav-link relative z-10 px-3.5 py-2 rounded-full transition-colors">Home</a>
+        <a href="/products" class="nav-link relative z-10 px-3.5 py-2 rounded-full transition-colors">Products</a>
+        <a href="/engineering" aria-current="page" class="nav-link relative z-10 px-3.5 py-2 rounded-full transition-colors">Engineering</a>
+        <a href="/work" class="nav-link relative z-10 px-3.5 py-2 rounded-full transition-colors">Work</a>
+        <a href="/about" class="nav-link relative z-10 px-3.5 py-2 rounded-full transition-colors">CTO</a>
+        <a href="/engage" class="nav-link relative z-10 px-3.5 py-2 rounded-full transition-colors">Engage</a>
+        <a href="/contact" class="nav-link relative z-10 px-3.5 py-2 rounded-full transition-colors">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-2.5">
+        <button type="button" data-theme-toggle class="tactile-convex-pill px-3.5 py-2 text-xs flex items-center gap-2 text-[var(--text-muted)] hover:text-[var(--text-main)]" aria-label="Toggle dark mode">
+          <i data-theme-icon data-lucide="moon" class="w-4 h-4 text-[#7952EC] dark:text-[#A78BFA]"></i>
+          <span data-theme-label class="hidden md:inline">Midnight Cobalt</span>
+        </button>
+        <a href="/contact" class="btn-deploy-edge px-4 sm:px-5 py-2.5 text-xs tracking-wide hidden sm:inline-flex">
+          <i data-lucide="zap" class="w-3.5 h-3.5 opacity-90"></i>
+          <span>Start a project</span>
+        </a>
+        <button type="button" id="menuToggle" class="xl:hidden tactile-convex-pill w-10 h-10 flex items-center justify-center" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
+          <i data-lucide="menu" class="w-4 h-4"></i>
+        </button>
+      </div>
+    </div>
+
+    <nav id="mobileMenu" aria-label="Mobile" class="xl:hidden grid-cols-2 sm:grid-cols-4 gap-2.5 pt-4">
+      <a href="/" class="tactile-convex-pill px-4 py-2.5 text-xs text-center">Home</a>
+      <a href="/products" class="tactile-convex-pill px-4 py-2.5 text-xs text-center">Products</a>
+      <a href="/engineering" aria-current="page" class="btn-deploy-edge px-4 py-2.5 text-xs text-center">Engineering</a>
+      <a href="/work" class="tactile-convex-pill px-4 py-2.5 text-xs text-center">Work</a>
+      <a href="/about" class="tactile-convex-pill px-4 py-2.5 text-xs text-center">CTO</a>
+      <a href="/engage" class="tactile-convex-pill px-4 py-2.5 text-xs text-center">Engage</a>
+      <a href="/contact" class="tactile-convex-pill px-4 py-2.5 text-xs text-center">Contact</a>
+      <a href="/jobs" class="tactile-convex-pill px-4 py-2.5 text-xs text-center">Careers</a>
+    </nav>
+  </header>
+
+  <main id="main" class="w-full max-w-6xl space-y-16 sm:space-y-24 pt-10 sm:pt-14">
+    <!-- INTRO -->
+    <section class="reveal-on-scroll">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        <div class="lg:col-span-7 space-y-5 text-center lg:text-left">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full tactile-inset-sm text-xs font-bold text-[#7952EC] dark:text-[#A78BFA]">
+            <span class="w-2 h-2 rounded-full bg-[#7952EC] animate-pulse"></span><span>Engineering</span>
+          </div>
+          <h1 class="text-4xl sm:text-5xl font-black font-display tracking-tight leading-[1.1]">Design for the failure path first, the happy path second.</h1>
+          <p class="text-sm sm:text-base text-[var(--text-muted)] leading-relaxed max-w-2xl mx-auto lg:mx-0">This approach comes from systems where failure has real consequences: live voice calls that can't drop mid-conversation, healthcare workflows that have to keep working through network problems, and media pipelines where one failed stage shouldn't spoil the whole job.</p>
+          <div class="flex flex-wrap gap-3 justify-center lg:justify-start">
+            <a href="#lab" class="btn-deploy-edge px-6 py-3 text-xs"><i data-lucide="flask-conical" class="w-4 h-4"></i>Try the reliability lab</a>
+            <a href="#stack" class="tactile-convex-pill px-6 py-3 text-xs inline-flex items-center gap-2">See the stack</a>
+          </div>
+        </div>
+        <div class="lg:col-span-5">
+          <div class="art-frame aspect-[465/612] max-w-[320px] mx-auto"><img src="/assets/img/char-teaching.webp" width="465" height="612" alt="Guide character explaining with a tablet"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRINCIPLES -->
+    <section id="principles" class="space-y-6 reveal-on-scroll">
+      <div>
+        <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7952EC] dark:text-[#A78BFA]">01 · Principles</span>
+        <h2 class="text-2xl sm:text-3xl font-black font-display">Architecture principles</h2>
+        <p class="text-xs sm:text-sm text-[var(--text-muted)] mt-1">The same patterns show up in every project we build.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4" data-accordion>
+        <div class="accordion-card tactile-raised rounded-2xl p-4 open">
+          <div class="flex items-center justify-between gap-3"><div class="flex items-center gap-3"><span class="w-7 h-7 rounded-lg tactile-inset-sm flex items-center justify-center font-mono font-bold text-[11px] text-[#7952EC] dark:text-[#A78BFA]">01</span><h3 class="text-sm font-extrabold font-display">Local-first where it makes sense</h3></div><i data-lucide="chevron-down" class="accordion-chevron w-4 h-4 text-[var(--text-muted)] transition-transform"></i></div>
+          <div class="accordion-body text-xs text-[var(--text-muted)] leading-relaxed pt-3">Keep critical workflows close to where they run when that improves latency, privacy, resilience or cost. Use the cloud where it adds leverage, and keep control locally where it adds resilience.</div>
+        </div>
+        <div class="accordion-card tactile-raised rounded-2xl p-4">
+          <div class="flex items-center justify-between gap-3"><div class="flex items-center gap-3"><span class="w-7 h-7 rounded-lg tactile-inset-sm flex items-center justify-center font-mono font-bold text-[11px] text-[#38BDF8]">02</span><h3 class="text-sm font-extrabold font-display">Zero-trust boundaries</h3></div><i data-lucide="chevron-down" class="accordion-chevron w-4 h-4 text-[var(--text-muted)] transition-transform"></i></div>
+          <div class="accordion-body text-xs text-[var(--text-muted)] leading-relaxed pt-3">Components shouldn't trust each other just because they share an application or a network. Tenant scope is part of every key, query and cache entry.</div>
+        </div>
+        <div class="accordion-card tactile-raised rounded-2xl p-4">
+          <div class="flex items-center justify-between gap-3"><div class="flex items-center gap-3"><span class="w-7 h-7 rounded-lg tactile-inset-sm flex items-center justify-center font-mono font-bold text-[11px] text-[#2DD4BF]">03</span><h3 class="text-sm font-extrabold font-display">Asynchronous execution</h3></div><i data-lucide="chevron-down" class="accordion-chevron w-4 h-4 text-[var(--text-muted)] transition-transform"></i></div>
+          <div class="accordion-body text-xs text-[var(--text-muted)] leading-relaxed pt-3">Long-running and failure-prone work moves into controlled worker pipelines instead of blocking the request path.</div>
+        </div>
+        <div class="accordion-card tactile-raised rounded-2xl p-4">
+          <div class="flex items-center justify-between gap-3"><div class="flex items-center gap-3"><span class="w-7 h-7 rounded-lg tactile-inset-sm flex items-center justify-center font-mono font-bold text-[11px] text-[#FB7185]">04</span><h3 class="text-sm font-extrabold font-display">Redis as a systems primitive</h3></div><i data-lucide="chevron-down" class="accordion-chevron w-4 h-4 text-[var(--text-muted)] transition-transform"></i></div>
+          <div class="accordion-body text-xs text-[var(--text-muted)] leading-relaxed pt-3">Redis does much more than caching: queues, pub/sub, rate limiting, distributed coordination, circuit-breaker synchronisation, state, and memory/vector infrastructure.</div>
+        </div>
+        <div class="accordion-card tactile-raised rounded-2xl p-4">
+          <div class="flex items-center justify-between gap-3"><div class="flex items-center gap-3"><span class="w-7 h-7 rounded-lg tactile-inset-sm flex items-center justify-center font-mono font-bold text-[11px] text-[#FBBF24]">05</span><h3 class="text-sm font-extrabold font-display">Idempotency</h3></div><i data-lucide="chevron-down" class="accordion-chevron w-4 h-4 text-[var(--text-muted)] transition-transform"></i></div>
+          <div class="accordion-body text-xs text-[var(--text-muted)] leading-relaxed pt-3">At-least-once delivery is the realistic guarantee, so running the same job twice has to be safe. A retried webhook rehydrates the existing session, and re-uploading a call list never double-dials.</div>
+        </div>
+        <div class="accordion-card tactile-raised rounded-2xl p-4">
+          <div class="flex items-center justify-between gap-3"><div class="flex items-center gap-3"><span class="w-7 h-7 rounded-lg tactile-inset-sm flex items-center justify-center font-mono font-bold text-[11px] text-[#F97316]">06</span><h3 class="text-sm font-extrabold font-display">Backpressure</h3></div><i data-lucide="chevron-down" class="accordion-chevron w-4 h-4 text-[var(--text-muted)] transition-transform"></i></div>
+          <div class="accordion-body text-xs text-[var(--text-muted)] leading-relaxed pt-3">A system should know when it's overloaded. A reliable system doesn't accept unlimited work until it collapses; it queues within limits and then refuses work cleanly.</div>
+        </div>
+        <div class="accordion-card tactile-raised rounded-2xl p-4">
+          <div class="flex items-center justify-between gap-3"><div class="flex items-center gap-3"><span class="w-7 h-7 rounded-lg tactile-inset-sm flex items-center justify-center font-mono font-bold text-[11px] text-[#EC4899]">07</span><h3 class="text-sm font-extrabold font-display">Graceful degradation</h3></div><i data-lucide="chevron-down" class="accordion-chevron w-4 h-4 text-[var(--text-muted)] transition-transform"></i></div>
+          <div class="accordion-body text-xs text-[var(--text-muted)] leading-relaxed pt-3">When a dependency fails, the whole system shouldn't fail with it. We rely on fallbacks, retries, bounded concurrency and controlled degradation.</div>
+        </div>
+        <div class="accordion-card tactile-raised rounded-2xl p-4">
+          <div class="flex items-center justify-between gap-3"><div class="flex items-center gap-3"><span class="w-7 h-7 rounded-lg tactile-inset-sm flex items-center justify-center font-mono font-bold text-[11px] text-[#445EAA] dark:text-[#6380CE]">08</span><h3 class="text-sm font-extrabold font-display">Observability</h3></div><i data-lucide="chevron-down" class="accordion-chevron w-4 h-4 text-[var(--text-muted)] transition-transform"></i></div>
+          <div class="accordion-body text-xs text-[var(--text-muted)] leading-relaxed pt-3">Logs alone aren't enough. We combine metrics, structured logs, traces and operational state, because debugging a distributed system means reconstructing what actually happened.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LAB -->
+    <section id="lab" class="space-y-6 reveal-on-scroll scroll-mt-28">
+      <div class="flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7952EC] dark:text-[#A78BFA]">02 · Reliability lab</span>
+          <h2 class="text-2xl sm:text-3xl font-black font-display">Try the failure handling yourself</h2>
+          <p class="text-xs sm:text-sm text-[var(--text-muted)] mt-1 max-w-2xl">These are small simulations of mechanisms that run in production. Turn the dial, drag the slider and inject failures.</p>
+        </div>
+        <span class="text-xs font-mono font-bold px-3 py-1 rounded-full tactile-inset-sm text-[#7952EC] dark:text-[#A78BFA]">Interactive</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Circuit breaker -->
+        <div id="breakerLab" class="tactile-raised rounded-3xl p-6 sm:p-8 space-y-5">
+          <div class="space-y-1">
+            <h3 class="text-base font-black font-display">Distributed circuit breaker</h3>
+            <p class="text-xs text-[var(--text-muted)]">In APEX Connect the breaker state is shared across processes through Redis, so instances don't each make their own decision. After three failures it opens and fails fast. After a cool-down, one trial request decides whether it closes again.</p>
+          </div>
+          <div class="tactile-inset rounded-3xl p-5 space-y-4">
+            <div class="grid grid-cols-3 gap-2.5 font-mono text-[11px] font-bold text-center">
+              <div data-state="CLOSED" class="breaker-state tactile-raised-sm rounded-xl py-3 text-[var(--text-muted)]"><span class="status-dot bg-emerald-500 mr-1"></span>CLOSED</div>
+              <div data-state="OPEN" class="breaker-state tactile-raised-sm rounded-xl py-3 text-[var(--text-muted)]"><span class="status-dot bg-rose-500 mr-1"></span>OPEN</div>
+              <div data-state="HALF_OPEN" class="breaker-state tactile-raised-sm rounded-xl py-3 text-[var(--text-muted)]"><span class="status-dot bg-amber-400 mr-1"></span>HALF-OPEN</div>
+            </div>
+            <div class="flex items-center justify-between text-xs font-mono"><span class="opacity-60">Consecutive failures</span><span id="breakerFails" class="font-black text-[#163387] dark:text-[#6380CE]">0 / 3</span></div>
+            <div class="grid grid-cols-3 gap-2">
+              <button type="button" id="breakerOk" class="tactile-convex-pill py-2.5 text-xs">Call ✓</button>
+              <button type="button" id="breakerFail" class="btn-deploy-edge py-2.5 text-xs">Fail ✕</button>
+              <button type="button" id="breakerReset" class="tactile-convex-pill py-2.5 text-xs">Reset</button>
+            </div>
+            <ol id="breakerLog" class="tactile-raised-sm rounded-xl p-3 font-mono text-[10.5px] space-y-1 min-h-[120px] text-[var(--text-muted)]" aria-live="polite"></ol>
+          </div>
+        </div>
+
+        <!-- Rotary dial -->
+        <div class="tactile-raised rounded-3xl p-6 sm:p-8 space-y-5">
+          <div class="space-y-1">
+            <h3 class="text-base font-black font-display">Per-tenant call capacity</h3>
+            <p class="text-xs text-[var(--text-muted)]">Each tenant gets its own concurrency budget, so one busy campaign can't starve another tenant. Turn the dial to raise demand (drag, scroll or use the arrow keys).</p>
+          </div>
+          <div class="tactile-inset rounded-3xl p-6 flex flex-col items-center gap-5">
+            <div id="rotaryContainer" role="slider" tabindex="0" aria-label="Concurrent calls requested" aria-valuemin="0" aria-valuemax="40" data-min="0" data-max="40" data-capacity="25" data-start="120" class="w-44 h-44 rounded-full tactile-inset flex items-center justify-center p-3 relative cursor-grab active:cursor-grabbing select-none touch-none">
+              <div id="rotaryKnob" class="dial-rotor w-32 h-32 rounded-full tactile-clay flex items-center justify-center relative shadow-lg">
+                <div class="absolute top-3 w-3 h-3 rounded-full tactile-inset-sm flex items-center justify-center"><div class="w-1.5 h-1.5 rounded-full bg-[#7952EC] animate-pulse"></div></div>
+                <div class="w-12 h-12 rounded-full tactile-inset flex items-center justify-center"><i data-lucide="phone" class="w-4 h-4 text-[#7952EC] dark:text-[#A78BFA]"></i></div>
+              </div>
+            </div>
+            <div class="w-full grid grid-cols-2 gap-3 font-mono text-center">
+              <div class="tactile-raised p-3 rounded-xl"><span class="text-[9px] uppercase tracking-wider text-[var(--text-muted)] block">Calls requested</span><span id="dialValue" class="text-xl font-black text-[#163387] dark:text-[#6380CE]">0</span></div>
+              <div class="tactile-raised p-3 rounded-xl"><span class="text-[9px] uppercase tracking-wider text-[var(--text-muted)] block">Waiting (cap 25)</span><span id="dialAngle" class="text-xl font-black">0</span></div>
+            </div>
+            <div id="dialState" class="text-sm font-black text-center" aria-live="polite"></div>
+          </div>
+        </div>
+
+        <!-- Backpressure slider -->
+        <div class="tactile-raised rounded-3xl p-6 sm:p-8 space-y-5">
+          <div class="space-y-1">
+            <h3 class="text-base font-black font-display">Backpressure</h3>
+            <p class="text-xs text-[var(--text-muted)]">Workers handle 60 jobs a second and the queue holds 40. Drag the thumb along the track to increase the load.</p>
+          </div>
+          <div class="tactile-inset rounded-2xl p-4 space-y-4 select-none">
+            <div class="flex justify-between text-xs font-mono"><span class="opacity-60">Offered load</span><span id="sliderValueLabel" class="font-bold text-[#163387] dark:text-[#6380CE]">—</span></div>
+            <div id="sliderTrack" role="slider" tabindex="0" aria-label="Offered load" aria-valuemin="0" aria-valuemax="150" data-capacity="60" data-queue="40" data-max="150" class="trench-track h-6 rounded-full relative flex items-center px-1 cursor-pointer touch-none">
+              <div id="sliderThumb" class="trench-thumb w-8 h-8 rounded-full absolute flex items-center justify-center"><i data-lucide="chevrons-left-right" class="w-3.5 h-3.5 text-white"></i></div>
+            </div>
+            <div class="grid grid-cols-3 gap-2 text-center font-mono">
+              <div class="tactile-raised-sm rounded-xl p-2"><div id="bpAccepted" class="text-lg font-black text-emerald-600 dark:text-emerald-400">0</div><div class="text-[9px] opacity-60">processing</div></div>
+              <div class="tactile-raised-sm rounded-xl p-2"><div id="bpQueued" class="text-lg font-black text-amber-500">0</div><div class="text-[9px] opacity-60">queued</div></div>
+              <div class="tactile-raised-sm rounded-xl p-2"><div id="bpShed" class="text-lg font-black text-rose-500">0</div><div class="text-[9px] opacity-60">rejected (429)</div></div>
+            </div>
+            <p id="bpNote" class="text-[11px] text-[var(--text-muted)]" aria-live="polite"></p>
+          </div>
+        </div>
+
+        <!-- Rocker -->
+        <div class="tactile-raised rounded-3xl p-6 sm:p-8 space-y-5">
+          <div class="space-y-1">
+            <h3 class="text-base font-black font-display">Local-first or cloud</h3>
+            <p class="text-xs text-[var(--text-muted)]">This isn't a dogma, it's a trade-off we make per system. Flip the switch to compare.</p>
+          </div>
+          <div class="tactile-inset rounded-3xl p-6 flex flex-col items-center gap-5">
+            <div data-rocker data-status="#rockerStatus" data-desc="#rockerDesc" class="rocker-pill p-2 rounded-2xl flex items-center gap-2 w-full max-w-sm select-none">
+              <button type="button" data-side="local" data-title="Local-first" data-color="#059669" data-text="Whisper, LLaMA via llama.cpp and Kokoro on a local GPU. No data leaves the machine, it keeps working with no internet, and there's no per-call API cost. Best where privacy and connectivity are the constraint." class="flex-1 py-4 px-4 rounded-xl font-bold text-xs flex flex-col items-center gap-2 transition-all">
+                <i data-lucide="hard-drive" class="w-5 h-5 text-emerald-600 dark:text-emerald-400"></i><span>Local-first</span><span data-dot class="w-2 h-2 rounded-full bg-emerald-500"></span>
+              </button>
+              <button type="button" data-side="cloud" data-title="Cloud" data-color="#445EAA" data-text="Managed STT/TTS and hosted LLMs on Kubernetes with autoscaling and rolling deploys. Best for elastic call volume and multi-tenant SaaS, with fallbacks to another provider when one fails." class="flex-1 py-4 px-4 rounded-xl font-bold text-xs flex flex-col items-center gap-2 transition-all">
+                <i data-lucide="cloud" class="w-5 h-5 text-[#445EAA] dark:text-[#6380CE]"></i><span>Cloud</span><span data-dot class="w-2 h-2 rounded-full bg-[#38BDF8]"></span>
+              </button>
+            </div>
+            <div class="w-full tactile-raised p-4 rounded-2xl space-y-1 font-mono">
+              <span class="text-[10px] uppercase tracking-wider text-[var(--text-muted)]">Chosen path</span>
+              <div id="rockerStatus" class="text-base font-black">Local-first</div>
+              <p id="rockerDesc" class="text-[11px] opacity-80 leading-relaxed"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Request path trace -->
+      <div class="tactile-raised rounded-3xl p-6 sm:p-8 space-y-5" data-circuit>
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <h3 class="text-base font-black font-display">The path a voice turn takes</h3>
+            <p class="text-xs text-[var(--text-muted)]">Hover over or tap a stage.</p>
+          </div>
+          <span data-circuit-label class="text-xs font-mono font-bold text-[#163387] dark:text-[#6380CE]">Select a stage</span>
+        </div>
+        <div class="tactile-inset rounded-3xl p-5 relative">
+          <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 1000 100" preserveAspectRatio="none" fill="none" aria-hidden="true">
+            <path class="laser-trace" d="M 40 50 L 960 50" stroke-width="3" vector-effect="non-scaling-stroke"/>
+          </svg>
+          <div class="relative grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+            <button type="button" data-pin="Telephony WebSocket media stream in (Twilio / Telnyx / SIP)" class="tactile-convex-pill px-3 py-2.5 text-[11px] font-mono font-bold">01 INGRESS</button>
+            <button type="button" data-pin="Tenant resolved · per-tenant semaphore acquired · idempotency key set" class="tactile-convex-pill px-3 py-2.5 text-[11px] font-mono font-bold">02 TENANT</button>
+            <button type="button" data-pin="Streaming speech-to-text (Whisper / Deepgram), breaker-guarded" class="tactile-convex-pill px-3 py-2.5 text-[11px] font-mono font-bold">03 STT</button>
+            <button type="button" data-pin="Streaming LLM · AIMD throttle on 429 · fallback provider" class="tactile-convex-pill px-3 py-2.5 text-[11px] font-mono font-bold">04 LLM</button>
+            <button type="button" data-pin="Sentence-boundary TTS dispatch · cached audio · barge-in" class="tactile-convex-pill px-3 py-2.5 text-[11px] font-mono font-bold">05 TTS</button>
+            <button type="button" data-pin="State to Redis/PostgreSQL · WhatsApp + webhooks via queue" class="tactile-convex-pill px-3 py-2.5 text-[11px] font-mono font-bold">06 EFFECTS</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SIGNATURE -->
+    <section id="signature" class="reveal-on-scroll">
+      <div class="tactile-clay rounded-[2rem] p-6 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-7 space-y-4">
+          <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7952EC] dark:text-[#A78BFA]">03 · Signature</span>
+          <h2 class="text-2xl sm:text-3xl font-black font-display">Reliability engineering is the strongest technical signature</h2>
+          <p class="text-sm text-[var(--text-muted)] leading-relaxed">The portfolio audit names reliability engineering as the most defensible skill because the evidence for it is spread across several independent repositories, not one showcase project.</p>
+          <div class="flex flex-wrap gap-2 text-[11px] font-mono font-bold">
+            <span class="tactile-inset-sm rounded-full px-3 py-1.5">Queue + worker architectures</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">Redis as a distributed primitive</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">Fallback paths</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">WAL + replay</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">Idempotency</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">Staged processing</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">Per-stage telemetry</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">Multi-tenancy</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">Failure-mode testing</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">GPU lifecycle management</span>
+          </div>
+        </div>
+        <div class="lg:col-span-5">
+          <div class="art-frame aspect-[465/588] max-w-[280px] mx-auto"><img src="/assets/img/team-strategist.webp" alt="Strategist character thinking through a problem" loading="lazy"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STACK -->
+    <section id="stack" class="space-y-6 reveal-on-scroll scroll-mt-28">
+      <div>
+        <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7952EC] dark:text-[#A78BFA]">04 · Stack</span>
+        <h2 class="text-2xl sm:text-3xl font-black font-display">Core technical stack</h2>
+        <p class="text-xs sm:text-sm text-[var(--text-muted)] mt-1 max-w-2xl">Press a key to see where each area is used, and how deep the experience goes.</p>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div class="lg:col-span-5 tactile-raised rounded-3xl p-6 space-y-5">
+          <div class="tactile-inset rounded-3xl p-5 flex flex-col items-center gap-4">
+            <div class="tactile-raised rounded-2xl p-3 grid grid-cols-3 gap-2.5 w-full max-w-[18rem] aspect-square select-none">
+              <button type="button" data-pad="Backend · deepest" data-detail="Python · FastAPI · asyncio · Pydantic · SQLAlchemy" class="tactile-clay interactive-press rounded-xl flex flex-col items-center justify-center gap-1 text-[10px] font-mono font-bold"><i data-lucide="zap" class="w-4 h-4 text-[#F97316]"></i>Backend</button>
+              <button type="button" data-pad="Distributed systems · deepest" data-detail="Redis · queues · workers · idempotency · retries · DLQs · circuit breakers · WAL" class="tactile-clay interactive-press rounded-xl flex flex-col items-center justify-center gap-1 text-[10px] font-mono font-bold"><i data-lucide="layers" class="w-4 h-4 text-[#FB7185]"></i>Queues</button>
+              <button type="button" data-pad="Frontend" data-detail="TypeScript · React · Next.js · Vite · Zustand · Tailwind" class="tactile-clay interactive-press rounded-xl flex flex-col items-center justify-center gap-1 text-[10px] font-mono font-bold"><i data-lucide="layout" class="w-4 h-4 text-[#38BDF8]"></i>Frontend</button>
+              <button type="button" data-pad="Data" data-detail="PostgreSQL · Firestore · Redis" class="tactile-clay interactive-press rounded-xl flex flex-col items-center justify-center gap-1 text-[10px] font-mono font-bold"><i data-lucide="database" class="w-4 h-4 text-[#445EAA]"></i>Data</button>
+              <button type="button" data-pad="Infrastructure · effective, not claimed as deepest" data-detail="Docker · Kubernetes/AKS · Terraform · Nginx · Cloudflare" class="tactile-clay interactive-press rounded-xl flex flex-col items-center justify-center gap-1 text-[10px] font-mono font-bold"><i data-lucide="server" class="w-4 h-4 text-[#4F46E5]"></i>Infra</button>
+              <button type="button" data-pad="Observability" data-detail="Prometheus · Grafana · Loki · OpenTelemetry" class="tactile-clay interactive-press rounded-xl flex flex-col items-center justify-center gap-1 text-[10px] font-mono font-bold"><i data-lucide="activity" class="w-4 h-4 text-[#2DD4BF]"></i>Observe</button>
+              <button type="button" data-pad="AI" data-detail="LLMs · STT · TTS · RAG · local inference · AI orchestration" class="tactile-clay interactive-press rounded-xl flex flex-col items-center justify-center gap-1 text-[10px] font-mono font-bold"><i data-lucide="brain" class="w-4 h-4 text-[#7952EC]"></i>AI</button>
+              <button type="button" data-pad="Media" data-detail="Whisper · XTTS · Kokoro · FFmpeg · GPU processing" class="tactile-clay interactive-press rounded-xl flex flex-col items-center justify-center gap-1 text-[10px] font-mono font-bold"><i data-lucide="audio-lines" class="w-4 h-4 text-[#EC4899]"></i>Media</button>
+              <button type="button" data-pad="Security" data-detail="Tenant isolation · RBAC · zero-trust boundaries · audit chains" class="tactile-clay interactive-press rounded-xl flex flex-col items-center justify-center gap-1 text-[10px] font-mono font-bold"><i data-lucide="shield" class="w-4 h-4 text-[#6380CE]"></i>Security</button>
+            </div>
+            <div class="w-full tactile-raised p-3 rounded-xl font-mono text-center space-y-1" aria-live="polite">
+              <span id="padLog" class="block text-xs font-black text-[#163387] dark:text-[#6380CE]">Press a key</span>
+              <span id="padDetail" class="block text-[11px] text-[var(--text-muted)]">Nine areas, one owner</span>
+            </div>
+          </div>
+        </div>
+        <div class="lg:col-span-7 space-y-5">
+          <div class="tactile-raised rounded-3xl p-6 space-y-3">
+            <h3 class="font-black font-display">How deep the experience goes</h3>
+            <p class="text-xs text-[var(--text-muted)] leading-relaxed">The deepest areas are Python/FastAPI, Redis primitives, queues and workers, and reliability engineering. Kubernetes, Terraform and model internals are areas where the work is effective, without claiming more depth than that.</p>
+            <div class="space-y-2.5 font-mono text-[11px]">
+              <div><div class="flex justify-between"><span>Python · FastAPI · asyncio</span><span class="opacity-60">deepest</span></div><div class="h-2.5 rounded-full tactile-inset-sm mt-1"><div class="h-full rounded-full bar-relax" style="width:95%"></div></div></div>
+              <div><div class="flex justify-between"><span>Redis · queues · workers</span><span class="opacity-60">deepest</span></div><div class="h-2.5 rounded-full tactile-inset-sm mt-1"><div class="h-full rounded-full bar-relax" style="width:93%"></div></div></div>
+              <div><div class="flex justify-between"><span>Reliability engineering</span><span class="opacity-60">deepest</span></div><div class="h-2.5 rounded-full tactile-inset-sm mt-1"><div class="h-full rounded-full bar-relax" style="width:95%"></div></div></div>
+              <div><div class="flex justify-between"><span>TypeScript · React</span><span class="opacity-60">strong</span></div><div class="h-2.5 rounded-full tactile-inset-sm mt-1"><div class="h-full rounded-full bar-strength" style="width:78%"></div></div></div>
+              <div><div class="flex justify-between"><span>Kubernetes · Terraform</span><span class="opacity-60">effective</span></div><div class="h-2.5 rounded-full tactile-inset-sm mt-1"><div class="h-full rounded-full bar-stretch" style="width:62%"></div></div></div>
+              <div><div class="flex justify-between"><span>Model internals / training</span><span class="opacity-60">integrator, not trainer</span></div><div class="h-2.5 rounded-full tactile-inset-sm mt-1"><div class="h-full rounded-full bar-stretch" style="width:40%"></div></div></div>
+            </div>
+          </div>
+          <div class="tactile-raised rounded-3xl p-6 space-y-3">
+            <h3 class="font-black font-display">AI &amp; machine learning: integration, not training</h3>
+            <div class="flex flex-wrap gap-2 text-[11px] font-mono font-bold">
+              <span class="tactile-inset-sm rounded-full px-3 py-1.5">PyTorch</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">Hugging Face</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">Whisper</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">Faster-Whisper</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">Deepgram</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">Kokoro</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">Coqui XTTS v2</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">Fish Audio</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">Qwen</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">LLaMA</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">llama.cpp</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">Stable Diffusion</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">FFmpeg</span>
+            </div>
+            <p class="text-xs text-[var(--text-muted)] leading-relaxed">The questions we answer are about systems: where the model fits, how to control latency, what happens when it fails, whether computation can be cached or reused, when to load a model, how to manage GPU memory, when to fall back to another provider, and how to observe the whole pipeline.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="w-full max-w-6xl mt-20 sm:mt-28">
+    <div class="tactile-raised rounded-3xl p-6 sm:p-8 grid grid-cols-2 md:grid-cols-12 gap-8">
+      <div class="col-span-2 md:col-span-4 space-y-4">
+        <div class="flex items-center gap-3">
+          <span class="w-11 h-11 rounded-2xl tactile-clay flex items-center justify-center"><img src="/assets/img/aim-logo.svg" alt="" class="w-7 h-7"></span>
+          <div>
+            <div class="text-base font-black font-display">AIM</div>
+            <div class="text-[11px] text-[var(--text-muted)]">AI Infrastructure &amp; Machines</div>
+          </div>
+        </div>
+        <p class="text-xs text-[var(--text-muted)] leading-relaxed">Infrastructure behind real-world software: voice AI, automation, queues, workers, offline-first systems and the failure paths in between. Built in Burhanpur, Madhya Pradesh.</p>
+        <p class="text-xs font-mono font-bold text-[#163387] dark:text-[#A78BFA]">Build for the failure path first.</p>
+      </div>
+      <div class="md:col-span-2 space-y-2.5 text-xs">
+        <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--text-muted)]">Company</div>
+        <a class="block hover:text-[#7952EC]" href="/about">About the CTO</a>
+        <a class="block hover:text-[#7952EC]" href="/work">Production work</a>
+        <a class="block hover:text-[#7952EC]" href="/engage">Engagements</a>
+        <a class="block hover:text-[#7952EC]" href="/jobs">Careers</a>
+        <a class="block hover:text-[#7952EC]" href="/contact">Contact</a>
+      </div>
+      <div class="md:col-span-3 space-y-2.5 text-xs">
+        <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--text-muted)]">Products</div>
+        <a class="block hover:text-[#7952EC]" href="/products#apex-connect">APEX Connect</a>
+        <a class="block hover:text-[#7952EC]" href="/products#aim-remote">AIM · Remote AI (free)</a>
+        <a class="block hover:text-[#7952EC]" href="/products#apex-hms">APEX HMS</a>
+        <a class="block hover:text-[#7952EC]" href="/products#shortz">Shortz AI Pipeline</a>
+        <a class="block hover:text-[#7952EC]" href="/products#apex-core">Apex Core</a>
+        <a class="block hover:text-[#7952EC]" href="https://aimstudio.co.in/freetools/" target="_blank" rel="noopener">Free Tools ↗</a>
+      </div>
+      <div class="col-span-2 md:col-span-3 space-y-2.5 text-xs">
+        <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--text-muted)]">Reach us</div>
+        <a class="block font-bold hover:text-[#7952EC]" href="mailto:ankit@aimsystem.in">ankit@aimsystem.in</a>
+        <a class="block hover:text-[#7952EC]" href="https://aimstudio.co.in/" target="_blank" rel="noopener">aimstudio.co.in ↗</a>
+        <a class="block hover:text-[#7952EC]" href="https://aimstudio.co.in/developer-docs" target="_blank" rel="noopener">Developer docs ↗</a>
+        <p class="text-[var(--text-muted)]">Burhanpur, MP, India · IST (UTC+5:30)<br>UK/EU morning overlap</p>
+      </div>
+    </div>
+    <div class="text-center text-[11px] font-mono text-[var(--text-muted)] py-6 space-y-1">
+      <div>© <span data-year>2026</span> AIM — AI Infrastructure &amp; Machines · Ankit Panicker, CTO</div>
+      <div class="opacity-70">aimsystem.in · aimstudio.co.in · aimmarketing.in</div>
+    </div>
+  </footer>
+
+  <div id="toast" role="status" aria-live="polite" class="fixed bottom-6 right-6 left-6 sm:left-auto transform translate-y-28 opacity-0 pointer-events-none z-50 px-5 py-3 rounded-full text-xs font-bold flex items-center gap-2.5 transition-all duration-300 text-white shadow-lg" style="background: var(--deploy-gradient); box-shadow: 0 8px 20px rgba(11, 28, 77, 0.35);">
+    <div class="w-2.5 h-2.5 rounded-full bg-blue-300 animate-ping"></div>
+    <span id="toastText">Ready</span>
+  </div>
+
+  <script src="/assets/js/icons.js"></script>
+  <script src="/assets/js/aim.js"></script>
+</body>
+</html>

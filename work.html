@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Production Work — Apple Hospital, BIMTS College, Café Ciel London · AIM</title>
+  <meta name="description" content="Production deployments by AIM: live AI voice outreach for Apple Hospital (15,000+ calls dialled, 6,800+ answered), a multi-tenant platform for BIMTS College, and a hospitality platform for Café Ciel, London.">
+  <link rel="canonical" href="https://aimsystem.in/work">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="AIM — AI Infrastructure &amp; Machines">
+  <meta property="og:title" content="Production Work — Apple Hospital, BIMTS College, Café Ciel London · AIM">
+  <meta property="og:description" content="Production deployments by AIM: live AI voice outreach for Apple Hospital (15,000+ calls dialled, 6,800+ answered), a multi-tenant platform for BIMTS College, and a hospitality platform for Café Ciel, London.">
+  <meta property="og:url" content="https://aimsystem.in/work">
+  <meta property="og:image" content="https://aimsystem.in/assets/img/scene-dashboard.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#E6EEF8">
+  <link rel="icon" href="/assets/img/aim-logo.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="/favicon.png">
+
+  <script>
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('aim-theme'); } catch (e) {}
+      if (t === 'dark' || (!t && window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800;900&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/aim.css">
+  <link rel="stylesheet" href="/assets/css/tw.css">
+</head>
+<body class="min-h-screen py-6 sm:py-8 px-4 sm:px-6 lg:px-12 flex flex-col items-center">
+  <a href="#main" class="skip-link btn-deploy-edge px-4 py-2 text-xs">Skip to content</a>
+
+  <header class="tactile-raised rounded-3xl p-3.5 sm:p-4 w-full max-w-6xl sticky top-3 z-50 backdrop-blur-md">
+    <div class="flex items-center justify-between gap-3">
+      <a href="/" class="flex items-center gap-3 min-w-0" aria-label="AIM home">
+        <span class="w-11 h-11 rounded-2xl tactile-clay flex items-center justify-center shrink-0">
+          <img src="/assets/img/aim-logo.svg" alt="" class="w-7 h-7">
+        </span>
+        <span class="min-w-0">
+          <span class="flex items-center gap-2">
+            <span class="text-base font-black font-display tracking-tight">AIM</span>
+            <span class="hidden sm:inline px-2 py-0.5 rounded-full text-[9px] font-mono font-bold uppercase bg-[#7952EC]/10 text-[#7952EC] dark:text-[#A78BFA]">Systems</span>
+          </span>
+          <span class="block text-[11px] text-[var(--text-muted)] font-medium truncate">AI Infrastructure &amp; Machines</span>
+        </span>
+      </a>
+
+      <nav id="navbarTrack" aria-label="Main" class="relative hidden xl:flex items-center p-1.5 rounded-full tactile-inset-sm text-xs font-bold text-[var(--text-muted)]">
+        <div id="navIndicatorPill"></div>
+        <a href="/" class="nav-link relative z-10 px-3.5 py-2 rounded-full transition-colors">Home</a>
+        <a href="/products" class="nav-link relative z-10 px-3.5 py-2 rounded-full transition-colors">Products</a>
+        <a href="/engineering" class="nav-link relative z-10 px-3.5 py-2 rounded-full transition-colors">Engineering</a>
+        <a href="/work" aria-current="page" class="nav-link relative z-10 px-3.5 py-2 rounded-full transition-colors">Work</a>
+        <a href="/about" class="nav-link relative z-10 px-3.5 py-2 rounded-full transition-colors">CTO</a>
+        <a href="/engage" class="nav-link relative z-10 px-3.5 py-2 rounded-full transition-colors">Engage</a>
+        <a href="/contact" class="nav-link relative z-10 px-3.5 py-2 rounded-full transition-colors">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-2.5">
+        <button type="button" data-theme-toggle class="tactile-convex-pill px-3.5 py-2 text-xs flex items-center gap-2 text-[var(--text-muted)] hover:text-[var(--text-main)]" aria-label="Toggle dark mode">
+          <i data-theme-icon data-lucide="moon" class="w-4 h-4 text-[#7952EC] dark:text-[#A78BFA]"></i>
+          <span data-theme-label class="hidden md:inline">Midnight Cobalt</span>
+        </button>
+        <a href="/contact" class="btn-deploy-edge px-4 sm:px-5 py-2.5 text-xs tracking-wide hidden sm:inline-flex">
+          <i data-lucide="zap" class="w-3.5 h-3.5 opacity-90"></i>
+          <span>Start a project</span>
+        </a>
+        <button type="button" id="menuToggle" class="xl:hidden tactile-convex-pill w-10 h-10 flex items-center justify-center" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
+          <i data-lucide="menu" class="w-4 h-4"></i>
+        </button>
+      </div>
+    </div>
+
+    <nav id="mobileMenu" aria-label="Mobile" class="xl:hidden grid-cols-2 sm:grid-cols-4 gap-2.5 pt-4">
+      <a href="/" class="tactile-convex-pill px-4 py-2.5 text-xs text-center">Home</a>
+      <a href="/products" class="tactile-convex-pill px-4 py-2.5 text-xs text-center">Products</a>
+      <a href="/engineering" class="tactile-convex-pill px-4 py-2.5 text-xs text-center">Engineering</a>
+      <a href="/work" aria-current="page" class="btn-deploy-edge px-4 py-2.5 text-xs text-center">Work</a>
+      <a href="/about" class="tactile-convex-pill px-4 py-2.5 text-xs text-center">CTO</a>
+      <a href="/engage" class="tactile-convex-pill px-4 py-2.5 text-xs text-center">Engage</a>
+      <a href="/contact" class="tactile-convex-pill px-4 py-2.5 text-xs text-center">Contact</a>
+      <a href="/jobs" class="tactile-convex-pill px-4 py-2.5 text-xs text-center">Careers</a>
+    </nav>
+  </header>
+
+  <main id="main" class="w-full max-w-6xl space-y-16 sm:space-y-24 pt-10 sm:pt-14">
+    <!-- INTRO -->
+    <section class="reveal-on-scroll">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        <div class="lg:col-span-7 space-y-5 text-center lg:text-left">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full tactile-inset-sm text-xs font-bold text-[#7952EC] dark:text-[#A78BFA]">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span><span>Production work</span>
+          </div>
+          <h1 class="text-4xl sm:text-5xl font-black font-display tracking-tight leading-[1.1]">Software that has to keep working for someone else</h1>
+          <p class="text-sm sm:text-base text-[var(--text-muted)] leading-relaxed max-w-2xl mx-auto lg:mx-0">These deployments matter because they're where software stops being something that works and becomes something that has to keep working for other people.</p>
+        </div>
+        <div class="lg:col-span-5">
+          <div class="art-frame aspect-[486/414] max-w-[400px] mx-auto"><img src="/assets/img/scene-dashboard.webp" width="486" height="414" alt="Character at a laptop next to a robot and live dashboards"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- APPLE HOSPITAL -->
+    <section id="apple-hospital" class="reveal-on-scroll scroll-mt-28">
+      <div class="tactile-raised rounded-[2rem] p-6 sm:p-8 space-y-6">
+        <div class="flex flex-wrap items-start justify-between gap-4">
+          <div>
+            <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#FB7185]">01 · Healthcare · live production tenant</span>
+            <h2 class="text-2xl sm:text-3xl font-black font-display">Apple Hospital</h2>
+            <p class="text-xs text-[var(--text-muted)] font-mono">Burhanpur, Madhya Pradesh · APEX Connect</p>
+          </div>
+          <span class="flex items-center gap-2 tactile-inset-sm rounded-full px-3 py-1.5 text-[11px] font-mono font-bold text-emerald-600 dark:text-emerald-400"><span class="status-dot live bg-emerald-500"></span>LIVE</span>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+          <div class="lg:col-span-7 space-y-4">
+            <p class="text-sm text-[var(--text-muted)] leading-relaxed">AI voice infrastructure for live outbound patient calling. Staff upload a contact list, and the platform dials, retries failed numbers, sends WhatsApp follow-ups in parallel and reports the outcome for every number.</p>
+            <div class="grid grid-cols-3 gap-3 font-mono text-center">
+              <div class="tactile-inset rounded-2xl p-4"><div class="text-2xl font-black text-[#163387] dark:text-[#6380CE]"><span data-count="15000" data-suffix="+">0</span></div><div class="text-[9px] uppercase tracking-wider opacity-60 mt-1">Dialled</div></div>
+              <div class="tactile-inset rounded-2xl p-4"><div class="text-2xl font-black text-[#7952EC] dark:text-[#A78BFA]"><span data-count="6800" data-suffix="+">0</span></div><div class="text-[9px] uppercase tracking-wider opacity-60 mt-1">Answered</div></div>
+              <div class="tactile-inset rounded-2xl p-4"><div class="text-2xl font-black text-[#0EA5A4]">~<span data-count="45" data-suffix="%">0</span></div><div class="text-[9px] uppercase tracking-wider opacity-60 mt-1">Answer rate</div></div>
+            </div>
+            <p class="text-[11px] text-[var(--text-muted)]">These come from production, not a synthetic benchmark. A signed reference letter on hospital letterhead is available on request.</p>
+          </div>
+          <div class="lg:col-span-5 grid grid-cols-2 gap-4">
+            <span class="art-icon aspect-square"><img src="/assets/img/u-phone.webp" alt="" loading="lazy"></span>
+            <span class="art-icon aspect-square"><img src="/assets/img/u-msg.webp" alt="" loading="lazy"></span>
+            <span class="art-icon aspect-square"><img src="/assets/img/u-cal.webp" alt="" loading="lazy"></span>
+            <span class="art-icon aspect-square"><img src="/assets/img/u-check.webp" alt="" loading="lazy"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BIMTS + CAFE -->
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-8 reveal-on-scroll">
+      <div id="bimts" class="tactile-raised rounded-[2rem] p-6 sm:p-8 space-y-4 scroll-mt-28">
+        <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#38BDF8]">02 · Education · production tenant</span>
+        <h2 class="text-2xl font-black font-display">BIMTS College</h2>
+        <p class="text-xs text-[var(--text-muted)] font-mono">Burhanpur, Madhya Pradesh</p>
+        <p class="text-sm text-[var(--text-muted)] leading-relaxed">A multi-tenant platform deployed for an institutional customer: student communication, admissions outreach and WhatsApp automation. It's a second vertical on the same platform, with its own isolated data and separate billing.</p>
+        <div class="flex gap-3 pt-1"><span class="art-icon w-14 h-14"><img src="/assets/img/u-users.webp" alt="" loading="lazy"></span><span class="art-icon w-14 h-14"><img src="/assets/img/f-chat.webp" alt="" loading="lazy"></span><span class="art-icon w-14 h-14"><img src="/assets/img/f-shield.webp" alt="" loading="lazy"></span></div>
+      </div>
+      <div id="cafe-ciel" class="tactile-raised rounded-[2rem] p-6 sm:p-8 space-y-4 scroll-mt-28">
+        <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#F97316]">03 · Hospitality · UK client</span>
+        <h2 class="text-2xl font-black font-display">Café Ciel — London</h2>
+        <p class="text-xs text-[var(--text-muted)] font-mono">The OWO (Raffles), London · cafeciel.co.uk</p>
+        <p class="text-sm text-[var(--text-muted)] leading-relaxed">A hospitality platform delivered for a UK client on a compressed timeline, covering implementation, revisions, deployment and technical execution.</p>
+        <blockquote class="tactile-inset rounded-2xl p-4 text-xs leading-relaxed">
+          “Ankit independently delivered a production digital experience for Café Ciel at The OWO, London, within a highly compressed timeline. He handled implementation, revisions, deployment, and technical execution with strong ownership and responsiveness throughout. We would confidently recommend him for future technical engagements.”
+          <footer class="mt-2 font-mono font-bold text-[#163387] dark:text-[#A78BFA]">— Vedika, Founder, Café Ciel</footer>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- HONESTY -->
+    <section class="space-y-6 reveal-on-scroll">
+      <div>
+        <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7952EC] dark:text-[#A78BFA]">Audit</span>
+        <h2 class="text-2xl sm:text-3xl font-black font-display">We document the limitations too</h2>
+        <p class="text-xs sm:text-sm text-[var(--text-muted)] mt-1 max-w-2xl">None of these systems is perfect. We'd rather write the limitations down than present an artificially polished picture.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6" data-accordion>
+        <div class="accordion-card tactile-raised rounded-2xl p-5 open">
+          <div class="flex items-center justify-between gap-3"><h3 class="text-sm font-extrabold font-display">APEX Connect</h3><i data-lucide="chevron-down" class="accordion-chevron w-4 h-4 text-[var(--text-muted)] transition-transform"></i></div>
+          <div class="accordion-body text-xs text-[var(--text-muted)] leading-relaxed pt-3 space-y-2">
+            <p><b class="text-[var(--text-main)]">Strengths:</b> at-least-once delivery, idempotency guards, Redis-synced circuit breaking, per-tenant capacity control, persistent queue/WAL state, plus chaos, stress and end-to-end tests.</p>
+            <p><b class="text-[var(--text-main)]">Audit findings:</b> persistence is complex, some behaviour fails open, the surface area is large, and files that look like credentials raise due-diligence concerns.</p>
+          </div>
+        </div>
+        <div class="accordion-card tactile-raised rounded-2xl p-5">
+          <div class="flex items-center justify-between gap-3"><h3 class="text-sm font-extrabold font-display">APEX HMS</h3><i data-lucide="chevron-down" class="accordion-chevron w-4 h-4 text-[var(--text-muted)] transition-transform"></i></div>
+          <div class="accordion-body text-xs text-[var(--text-muted)] leading-relaxed pt-3 space-y-2">
+            <p><b class="text-[var(--text-main)]">Strengths:</b> WAL and replay recovery, single-authority supervision, tamper-evident audit chains, durable outboxes.</p>
+            <p><b class="text-[var(--text-main)]">Audit findings:</b> still under active construction. 30 test suites: 28 passing, 2 failing, and 94 tests pending or skipped.</p>
+          </div>
+        </div>
+        <div class="accordion-card tactile-raised rounded-2xl p-5">
+          <div class="flex items-center justify-between gap-3"><h3 class="text-sm font-extrabold font-display">Shortz</h3><i data-lucide="chevron-down" class="accordion-chevron w-4 h-4 text-[var(--text-muted)] transition-transform"></i></div>
+          <div class="accordion-body text-xs text-[var(--text-muted)] leading-relaxed pt-3 space-y-2">
+            <p><b class="text-[var(--text-main)]">Strengths:</b> per-stage telemetry, failure classification, soak testing and failure-injection infrastructure.</p>
+            <p><b class="text-[var(--text-main)]">Audit findings:</b> best described as systems-oriented application engineering rather than a mature production service. Test coverage is uneven.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="reveal-on-scroll">
+      <div class="tactile-clay rounded-[2rem] p-6 sm:p-10 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+        <div class="md:col-span-8 space-y-4 text-center md:text-left">
+          <h2 class="text-2xl sm:text-3xl font-black font-display">Want to see the platform running?</h2>
+          <p class="text-sm text-[var(--text-muted)]">Open the live APEX Connect platform, or ask for a walkthrough and a reference.</p>
+          <div class="flex flex-wrap gap-3 justify-center md:justify-start">
+            <a href="https://aimstudio.co.in/app" target="_blank" rel="noopener" class="btn-deploy-edge px-6 py-3 text-xs">Open live platform <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
+            <a href="/contact" class="tactile-convex-pill px-6 py-3 text-xs inline-flex items-center gap-2">Request a reference</a>
+          </div>
+        </div>
+        <div class="md:col-span-4"><div class="art-frame aspect-[486/612] max-w-[200px] mx-auto"><img src="/assets/img/char-thumbsup.webp" alt="Character giving a thumbs up" loading="lazy"></div></div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="w-full max-w-6xl mt-20 sm:mt-28">
+    <div class="tactile-raised rounded-3xl p-6 sm:p-8 grid grid-cols-2 md:grid-cols-12 gap-8">
+      <div class="col-span-2 md:col-span-4 space-y-4">
+        <div class="flex items-center gap-3">
+          <span class="w-11 h-11 rounded-2xl tactile-clay flex items-center justify-center"><img src="/assets/img/aim-logo.svg" alt="" class="w-7 h-7"></span>
+          <div>
+            <div class="text-base font-black font-display">AIM</div>
+            <div class="text-[11px] text-[var(--text-muted)]">AI Infrastructure &amp; Machines</div>
+          </div>
+        </div>
+        <p class="text-xs text-[var(--text-muted)] leading-relaxed">Infrastructure behind real-world software: voice AI, automation, queues, workers, offline-first systems and the failure paths in between. Built in Burhanpur, Madhya Pradesh.</p>
+        <p class="text-xs font-mono font-bold text-[#163387] dark:text-[#A78BFA]">Build for the failure path first.</p>
+      </div>
+      <div class="md:col-span-2 space-y-2.5 text-xs">
+        <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--text-muted)]">Company</div>
+        <a class="block hover:text-[#7952EC]" href="/about">About the CTO</a>
+        <a class="block hover:text-[#7952EC]" href="/work">Production work</a>
+        <a class="block hover:text-[#7952EC]" href="/engage">Engagements</a>
+        <a class="block hover:text-[#7952EC]" href="/jobs">Careers</a>
+        <a class="block hover:text-[#7952EC]" href="/contact">Contact</a>
+      </div>
+      <div class="md:col-span-3 space-y-2.5 text-xs">
+        <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--text-muted)]">Products</div>
+        <a class="block hover:text-[#7952EC]" href="/products#apex-connect">APEX Connect</a>
+        <a class="block hover:text-[#7952EC]" href="/products#aim-remote">AIM · Remote AI (free)</a>
+        <a class="block hover:text-[#7952EC]" href="/products#apex-hms">APEX HMS</a>
+        <a class="block hover:text-[#7952EC]" href="/products#shortz">Shortz AI Pipeline</a>
+        <a class="block hover:text-[#7952EC]" href="/products#apex-core">Apex Core</a>
+        <a class="block hover:text-[#7952EC]" href="https://aimstudio.co.in/freetools/" target="_blank" rel="noopener">Free Tools ↗</a>
+      </div>
+      <div class="col-span-2 md:col-span-3 space-y-2.5 text-xs">
+        <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--text-muted)]">Reach us</div>
+        <a class="block font-bold hover:text-[#7952EC]" href="mailto:ankit@aimsystem.in">ankit@aimsystem.in</a>
+        <a class="block hover:text-[#7952EC]" href="https://aimstudio.co.in/" target="_blank" rel="noopener">aimstudio.co.in ↗</a>
+        <a class="block hover:text-[#7952EC]" href="https://aimstudio.co.in/developer-docs" target="_blank" rel="noopener">Developer docs ↗</a>
+        <p class="text-[var(--text-muted)]">Burhanpur, MP, India · IST (UTC+5:30)<br>UK/EU morning overlap</p>
+      </div>
+    </div>
+    <div class="text-center text-[11px] font-mono text-[var(--text-muted)] py-6 space-y-1">
+      <div>© <span data-year>2026</span> AIM — AI Infrastructure &amp; Machines · Ankit Panicker, CTO</div>
+      <div class="opacity-70">aimsystem.in · aimstudio.co.in · aimmarketing.in</div>
+    </div>
+  </footer>
+
+  <div id="toast" role="status" aria-live="polite" class="fixed bottom-6 right-6 left-6 sm:left-auto transform translate-y-28 opacity-0 pointer-events-none z-50 px-5 py-3 rounded-full text-xs font-bold flex items-center gap-2.5 transition-all duration-300 text-white shadow-lg" style="background: var(--deploy-gradient); box-shadow: 0 8px 20px rgba(11, 28, 77, 0.35);">
+    <div class="w-2.5 h-2.5 rounded-full bg-blue-300 animate-ping"></div>
+    <span id="toastText">Ready</span>
+  </div>
+
+  <script src="/assets/js/icons.js"></script>
+  <script src="/assets/js/aim.js"></script>
+</body>
+</html>

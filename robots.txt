@@ -45,6 +45,7 @@ Allow: /
 
 # Machine-readable profiles
 Allow: /llms.txt
+Allow: /llms-full.txt
 Allow: /.well-known/llms.txt
 
 Sitemap: https://aimsystem.in/sitemap.xml

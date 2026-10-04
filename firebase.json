@@ -12,7 +12,8 @@
       "**/node_modules/**",
       "firestore.rules",
       "storage.rules",
-      "worker/**"
+      "worker/**",
+      "_src/**"
     ],
     "cleanUrls": true,
     "headers": [
@@ -65,6 +66,23 @@
         ]
       },
       {
+        "source": "/llms-full.txt",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "text/plain; charset=utf-8"
+          },
+          {
+            "key": "Access-Control-Allow-Origin",
+            "value": "*"
+          },
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=86400"
+          }
+        ]
+      },
+      {
         "source": "/.well-known/**",
         "headers": [
           {
@@ -87,6 +105,15 @@
           {
             "key": "Cache-Control",
             "value": "no-cache, no-store, must-revalidate"
+          }
+        ]
+      },
+      {
+        "source": "/assets/**",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=86400"
           }
         ]
       }

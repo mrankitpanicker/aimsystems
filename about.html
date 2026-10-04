@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ankit Panicker — CTO, AI Systems Engineer &amp; Software Architect · AIM</title>
+  <meta name="description" content="Ankit Panicker is CTO of AIM (AI Infrastructure &amp; Machines): an AI systems engineer and software architect in Burhanpur, India, who builds the infrastructure behind real-world software, from architecture to operations.">
+  <link rel="canonical" href="https://aimsystem.in/about">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="AIM — AI Infrastructure &amp; Machines">
+  <meta property="og:title" content="Ankit Panicker — CTO, AI Systems Engineer &amp; Software Architect · AIM">
+  <meta property="og:description" content="Ankit Panicker is CTO of AIM (AI Infrastructure &amp; Machines): an AI systems engineer and software architect in Burhanpur, India, who builds the infrastructure behind real-world software, from architecture to operations.">
+  <meta property="og:url" content="https://aimsystem.in/about">
+  <meta property="og:image" content="https://aimsystem.in/assets/img/scene-dashboard.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#E6EEF8">
+  <link rel="icon" href="/assets/img/aim-logo.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="/favicon.png">
+
+  <script>
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('aim-theme'); } catch (e) {}
+      if (t === 'dark' || (!t && window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800;900&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/aim.css">
+  <link rel="stylesheet" href="/assets/css/tw.css">
+</head>
+<body class="min-h-screen py-6 sm:py-8 px-4 sm:px-6 lg:px-12 flex flex-col items-center">
+  <a href="#main" class="skip-link btn-deploy-edge px-4 py-2 text-xs">Skip to content</a>
+
+  <header class="tactile-raised rounded-3xl p-3.5 sm:p-4 w-full max-w-6xl sticky top-3 z-50 backdrop-blur-md">
+    <div class="flex items-center justify-between gap-3">
+      <a href="/" class="flex items-center gap-3 min-w-0" aria-label="AIM home">
+        <span class="w-11 h-11 rounded-2xl tactile-clay flex items-center justify-center shrink-0">
+          <img src="/assets/img/aim-logo.svg" alt="" class="w-7 h-7">
+        </span>
+        <span class="min-w-0">
+          <span class="flex items-center gap-2">
+            <span class="text-base font-black font-display tracking-tight">AIM</span>
+            <span class="hidden sm:inline px-2 py-0.5 rounded-full text-[9px] font-mono font-bold uppercase bg-[#7952EC]/10 text-[#7952EC] dark:text-[#A78BFA]">Systems</span>
+          </span>
+          <span class="block text-[11px] text-[var(--text-muted)] font-medium truncate">AI Infrastructure &amp; Machines</span>
+        </span>
+      </a>
+
+      <nav id="navbarTrack" aria-label="Main" class="relative hidden xl:flex items-center p-1.5 rounded-full tactile-inset-sm text-xs font-bold text-[var(--text-muted)]">
+        <div id="navIndicatorPill"></div>
+        <a href="/" class="nav-link relative z-10 px-3.5 py-2 rounded-full transition-colors">Home</a>
+        <a href="/products" class="nav-link relative z-10 px-3.5 py-2 rounded-full transition-colors">Products</a>
+        <a href="/engineering" class="nav-link relative z-10 px-3.5 py-2 rounded-full transition-colors">Engineering</a>
+        <a href="/work" class="nav-link relative z-10 px-3.5 py-2 rounded-full transition-colors">Work</a>
+        <a href="/about" aria-current="page" class="nav-link relative z-10 px-3.5 py-2 rounded-full transition-colors">CTO</a>
+        <a href="/engage" class="nav-link relative z-10 px-3.5 py-2 rounded-full transition-colors">Engage</a>
+        <a href="/contact" class="nav-link relative z-10 px-3.5 py-2 rounded-full transition-colors">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-2.5">
+        <button type="button" data-theme-toggle class="tactile-convex-pill px-3.5 py-2 text-xs flex items-center gap-2 text-[var(--text-muted)] hover:text-[var(--text-main)]" aria-label="Toggle dark mode">
+          <i data-theme-icon data-lucide="moon" class="w-4 h-4 text-[#7952EC] dark:text-[#A78BFA]"></i>
+          <span data-theme-label class="hidden md:inline">Midnight Cobalt</span>
+        </button>
+        <a href="/contact" class="btn-deploy-edge px-4 sm:px-5 py-2.5 text-xs tracking-wide hidden sm:inline-flex">
+          <i data-lucide="zap" class="w-3.5 h-3.5 opacity-90"></i>
+          <span>Start a project</span>
+        </a>
+        <button type="button" id="menuToggle" class="xl:hidden tactile-convex-pill w-10 h-10 flex items-center justify-center" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
+          <i data-lucide="menu" class="w-4 h-4"></i>
+        </button>
+      </div>
+    </div>
+
+    <nav id="mobileMenu" aria-label="Mobile" class="xl:hidden grid-cols-2 sm:grid-cols-4 gap-2.5 pt-4">
+      <a href="/" class="tactile-convex-pill px-4 py-2.5 text-xs text-center">Home</a>
+      <a href="/products" class="tactile-convex-pill px-4 py-2.5 text-xs text-center">Products</a>
+      <a href="/engineering" class="tactile-convex-pill px-4 py-2.5 text-xs text-center">Engineering</a>
+      <a href="/work" class="tactile-convex-pill px-4 py-2.5 text-xs text-center">Work</a>
+      <a href="/about" aria-current="page" class="btn-deploy-edge px-4 py-2.5 text-xs text-center">CTO</a>
+      <a href="/engage" class="tactile-convex-pill px-4 py-2.5 text-xs text-center">Engage</a>
+      <a href="/contact" class="tactile-convex-pill px-4 py-2.5 text-xs text-center">Contact</a>
+      <a href="/jobs" class="tactile-convex-pill px-4 py-2.5 text-xs text-center">Careers</a>
+    </nav>
+  </header>
+
+  <main id="main" class="w-full max-w-6xl space-y-16 sm:space-y-24 pt-10 sm:pt-14">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "@id": "https://aimsystem.in/#ankit-panicker",
+      "name": "Ankit Panicker",
+      "jobTitle": "CTO & AI Systems Engineer",
+      "worksFor": { "@type": "Organization", "name": "AIM — AI Infrastructure & Machines", "url": "https://aimsystem.in/" },
+      "address": { "@type": "PostalAddress", "addressLocality": "Burhanpur", "addressRegion": "Madhya Pradesh", "addressCountry": "IN" },
+      "alumniOf": [{ "@type": "CollegeOrUniversity", "name": "Sinhgad Business School" }, { "@type": "CollegeOrUniversity", "name": "Seva Sadan Mahavidyalaya" }],
+      "knowsAbout": ["Software Architecture", "AI Systems", "Automation", "Distributed Systems", "Cloud Infrastructure", "Reliability Engineering"],
+      "email": "ankit@aimsystem.in",
+      "url": "https://aimsystem.in/about"
+    }
+    </script>
+
+    <!-- HERO -->
+    <section class="reveal-on-scroll">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        <div class="lg:col-span-7 space-y-5 text-center lg:text-left">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full tactile-inset-sm text-xs font-bold text-[#7952EC] dark:text-[#A78BFA]">
+            <span class="w-2 h-2 rounded-full bg-[#7952EC] animate-pulse"></span><span>Chief Technology Officer</span>
+          </div>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black font-display tracking-tight leading-[1.05]">Ankit Panicker</h1>
+          <p class="text-base sm:text-lg font-bold text-[#163387] dark:text-[#A78BFA]">AI Systems Engineer · Software Architect · CTO</p>
+          <p class="text-sm sm:text-base text-[var(--text-muted)] leading-relaxed max-w-2xl mx-auto lg:mx-0">I design and build reliable software platforms, AI infrastructure, automation systems and cloud-native products. I'm based in Burhanpur, Madhya Pradesh, and I work with startups, businesses and organisations that need to get from an idea or an operational problem to a working platform that's ready for production.</p>
+          <div class="flex flex-wrap gap-2 justify-center lg:justify-start text-[11px] font-mono font-bold">
+            <span class="tactile-inset-sm rounded-full px-3 py-1.5">Software Architecture</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">AI Systems</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">Automation</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">Distributed Systems</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">Cloud Infrastructure</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">Reliability Engineering</span>
+          </div>
+          <div class="flex flex-wrap gap-3 justify-center lg:justify-start pt-1">
+            <a href="mailto:ankit@aimsystem.in" class="btn-deploy-edge px-6 py-3 text-xs"><i data-lucide="mail" class="w-4 h-4"></i>ankit@aimsystem.in</a>
+            <button type="button" data-copy="ankit@aimsystem.in" class="tactile-convex-pill px-5 py-3 text-xs inline-flex items-center gap-2"><i data-lucide="copy" class="w-4 h-4"></i>Copy email</button>
+          </div>
+        </div>
+        <div class="lg:col-span-5">
+          <div class="art-frame aspect-[489/612] max-w-[340px] mx-auto"><img src="/assets/img/char-laptop.webp" width="489" height="612" alt="Guide character working on an AIM laptop"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUOTE -->
+    <section class="reveal-on-scroll">
+      <div class="monolith-outer-fillet select-none" tabindex="0" role="button" aria-label="Guiding principle card">
+        <div class="monolith-inner-core text-center space-y-3 py-10">
+          <canvas class="ripple-canvas"></canvas>
+          <div class="relative z-10 pointer-events-none text-[10px] font-mono font-bold uppercase tracking-widest text-[#7952EC] dark:text-[#A78BFA]">Guiding principle</div>
+          <p class="relative z-10 pointer-events-none text-2xl sm:text-4xl font-black font-display leading-tight max-w-3xl mx-auto">Design for the failure path first and the happy path second.</p>
+          <p class="relative z-10 pointer-events-none text-xs text-[var(--text-muted)] max-w-2xl mx-auto">The layer underneath a product is the hard part: orchestration, queues, workers, APIs, integrations, state, failure handling, observability, infrastructure and automation. That's what keeps a system reliable once it leaves the happy path.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT I DO -->
+    <section class="space-y-6 reveal-on-scroll">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div class="lg:col-span-5 space-y-4">
+          <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7952EC] dark:text-[#A78BFA]">What I do</span>
+          <h2 class="text-2xl sm:text-3xl font-black font-display">I work across the full software lifecycle</h2>
+          <p class="text-sm text-[var(--text-muted)] leading-relaxed">I move from a product requirement to an architecture, then to implementation, infrastructure and operational debugging. The goal isn't just to produce code. It's a system that can be operated, observed, recovered and extended.</p>
+          <div class="tactile-inset rounded-2xl p-4 font-mono text-[11px] flex flex-wrap items-center gap-1.5">
+            <span class="tactile-raised-sm rounded-full px-2.5 py-1">idea</span>→<span class="tactile-raised-sm rounded-full px-2.5 py-1">architecture</span>→<span class="tactile-raised-sm rounded-full px-2.5 py-1">implementation</span>→<span class="tactile-raised-sm rounded-full px-2.5 py-1">infrastructure</span>→<span class="tactile-raised-sm rounded-full px-2.5 py-1">production</span>→<span class="tactile-raised-sm rounded-full px-2.5 py-1 text-[#7952EC] dark:text-[#A78BFA]">operations</span>
+          </div>
+        </div>
+        <div class="lg:col-span-7 tactile-raised rounded-3xl p-6">
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 text-xs font-bold">
+            <span class="tactile-raised-sm rounded-xl px-3 py-2.5 flex items-center gap-2"><i data-lucide="network" class="w-3.5 h-3.5 text-[#7952EC]"></i>System architecture</span>
+            <span class="tactile-raised-sm rounded-xl px-3 py-2.5 flex items-center gap-2"><i data-lucide="server" class="w-3.5 h-3.5 text-[#7952EC]"></i>Backend</span>
+            <span class="tactile-raised-sm rounded-xl px-3 py-2.5 flex items-center gap-2"><i data-lucide="layout" class="w-3.5 h-3.5 text-[#7952EC]"></i>Frontend</span>
+            <span class="tactile-raised-sm rounded-xl px-3 py-2.5 flex items-center gap-2"><i data-lucide="plug" class="w-3.5 h-3.5 text-[#7952EC]"></i>API design</span>
+            <span class="tactile-raised-sm rounded-xl px-3 py-2.5 flex items-center gap-2"><i data-lucide="brain" class="w-3.5 h-3.5 text-[#7952EC]"></i>AI orchestration</span>
+            <span class="tactile-raised-sm rounded-xl px-3 py-2.5 flex items-center gap-2"><i data-lucide="mic" class="w-3.5 h-3.5 text-[#7952EC]"></i>Voice AI</span>
+            <span class="tactile-raised-sm rounded-xl px-3 py-2.5 flex items-center gap-2"><i data-lucide="workflow" class="w-3.5 h-3.5 text-[#7952EC]"></i>Automation</span>
+            <span class="tactile-raised-sm rounded-xl px-3 py-2.5 flex items-center gap-2"><i data-lucide="cpu" class="w-3.5 h-3.5 text-[#7952EC]"></i>Distributed workers</span>
+            <span class="tactile-raised-sm rounded-xl px-3 py-2.5 flex items-center gap-2"><i data-lucide="layers" class="w-3.5 h-3.5 text-[#7952EC]"></i>Queue architectures</span>
+            <span class="tactile-raised-sm rounded-xl px-3 py-2.5 flex items-center gap-2"><i data-lucide="database" class="w-3.5 h-3.5 text-[#7952EC]"></i>Databases</span>
+            <span class="tactile-raised-sm rounded-xl px-3 py-2.5 flex items-center gap-2"><i data-lucide="cloud" class="w-3.5 h-3.5 text-[#7952EC]"></i>Cloud infrastructure</span>
+            <span class="tactile-raised-sm rounded-xl px-3 py-2.5 flex items-center gap-2"><i data-lucide="box" class="w-3.5 h-3.5 text-[#7952EC]"></i>Containers</span>
+            <span class="tactile-raised-sm rounded-xl px-3 py-2.5 flex items-center gap-2"><i data-lucide="git-branch" class="w-3.5 h-3.5 text-[#7952EC]"></i>CI/CD</span>
+            <span class="tactile-raised-sm rounded-xl px-3 py-2.5 flex items-center gap-2"><i data-lucide="activity" class="w-3.5 h-3.5 text-[#7952EC]"></i>Observability</span>
+            <span class="tactile-raised-sm rounded-xl px-3 py-2.5 flex items-center gap-2"><i data-lucide="life-buoy" class="w-3.5 h-3.5 text-[#7952EC]"></i>Reliability</span>
+            <span class="tactile-raised-sm rounded-xl px-3 py-2.5 flex items-center gap-2"><i data-lucide="shield" class="w-3.5 h-3.5 text-[#7952EC]"></i>Security boundaries</span>
+            <span class="tactile-raised-sm rounded-xl px-3 py-2.5 flex items-center gap-2"><i data-lucide="rocket" class="w-3.5 h-3.5 text-[#7952EC]"></i>Deployment</span>
+            <span class="tactile-raised-sm rounded-xl px-3 py-2.5 flex items-center gap-2"><i data-lucide="settings" class="w-3.5 h-3.5 text-[#7952EC]"></i>Operations</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BACKGROUND -->
+    <section class="space-y-6 reveal-on-scroll">
+      <div>
+        <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7952EC] dark:text-[#A78BFA]">Background</span>
+        <h2 class="text-2xl sm:text-3xl font-black font-display">An unconventional path into engineering</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="tactile-raised rounded-3xl p-6 space-y-3">
+          <span class="art-icon block w-14 h-14"><img src="/assets/img/u-chart.webp" alt="" loading="lazy"></span>
+          <h3 class="font-black font-display">Commerce &amp; finance</h3>
+          <p class="text-xs text-[var(--text-muted)] leading-relaxed">MBA in Finance from Sinhgad Business School and a B.Com from Seva Sadan Mahavidyalaya.</p>
+        </div>
+        <div class="tactile-raised rounded-3xl p-6 space-y-3">
+          <span class="art-icon block w-14 h-14"><img src="/assets/img/t-auto.webp" alt="" loading="lazy"></span>
+          <h3 class="font-black font-display">Automation &amp; process engineering</h3>
+          <p class="text-xs text-[var(--text-muted)] leading-relaxed">Earlier work in automation and process engineering, including work associated with Navalsingh Sahakari Shakkar Karkhana Maryadit.</p>
+        </div>
+        <div class="tactile-raised rounded-3xl p-6 space-y-3">
+          <span class="art-icon block w-14 h-14"><img src="/assets/img/step-code.webp" alt="" loading="lazy"></span>
+          <h3 class="font-black font-display">Self-directed systems work</h3>
+          <p class="text-xs text-[var(--text-muted)] leading-relaxed">I learned by building, breaking, debugging, measuring and rebuilding, rather than through a traditional computer-science degree.</p>
+        </div>
+      </div>
+      <div class="tactile-inset rounded-3xl p-5 sm:p-6 space-y-3">
+        <p class="text-sm text-[var(--text-muted)]">So I don't separate engineering from operations or from the business. I think about a system in these terms all at once:</p>
+        <div class="flex flex-wrap items-center gap-2 font-mono text-xs font-bold">
+          <span class="tactile-raised-sm rounded-full px-3 py-1.5">architecture</span><i data-lucide="arrow-right" class="w-3.5 h-3.5 opacity-50"></i><span class="tactile-raised-sm rounded-full px-3 py-1.5">execution</span><i data-lucide="arrow-right" class="w-3.5 h-3.5 opacity-50"></i><span class="tactile-raised-sm rounded-full px-3 py-1.5">reliability</span><i data-lucide="arrow-right" class="w-3.5 h-3.5 opacity-50"></i><span class="tactile-raised-sm rounded-full px-3 py-1.5">cost</span><i data-lucide="arrow-right" class="w-3.5 h-3.5 opacity-50"></i><span class="tactile-raised-sm rounded-full px-3 py-1.5">operations</span><i data-lucide="arrow-right" class="w-3.5 h-3.5 opacity-50"></i><span class="btn-deploy-edge px-3 py-1.5">business impact</span>
+        </div>
+        <p class="text-sm text-[var(--text-muted)]">A technically sophisticated system that can't be run economically isn't a successful system.</p>
+      </div>
+    </section>
+
+    <!-- VENTURES -->
+    <section class="space-y-6 reveal-on-scroll">
+      <div>
+        <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7952EC] dark:text-[#A78BFA]">Ventures</span>
+        <h2 class="text-2xl sm:text-3xl font-black font-display">Independent engineering &amp; ventures</h2>
+        <p class="text-xs sm:text-sm text-[var(--text-muted)] mt-1 max-w-2xl">The work is about engineering whole systems, not just building individual applications.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="tactile-clay rounded-3xl p-6 space-y-3">
+          <img src="/assets/img/aim-logo.svg" alt="" class="w-10 h-10">
+          <h3 class="font-black font-display">AIM — AI Infrastructure &amp; Machines</h3>
+          <p class="text-xs text-[var(--text-muted)] leading-relaxed">Also known as AIM Studio. Makers of APEX Connect and the free AIM operating layer. I'm the founder and CTO.</p>
+        </div>
+        <div class="tactile-raised rounded-3xl p-6 space-y-3">
+          <span class="w-10 h-10 rounded-xl tactile-inset-sm flex items-center justify-center"><i data-lucide="building-2" class="w-5 h-5 text-[#445EAA]"></i></span>
+          <h3 class="font-black font-display">Individuate System Solutions</h3>
+          <p class="text-xs text-[var(--text-muted)] leading-relaxed">Robust enterprise systems, software platforms, automation and technology solutions.</p>
+        </div>
+        <div class="tactile-raised rounded-3xl p-6 space-y-3">
+          <span class="w-10 h-10 rounded-xl tactile-inset-sm flex items-center justify-center"><i data-lucide="network" class="w-5 h-5 text-[#7952EC]"></i></span>
+          <h3 class="font-black font-display">Individuate Systems Architecture</h3>
+          <p class="text-xs text-[var(--text-muted)] leading-relaxed">The architecture side: designing reliable systems, infrastructure, integrations and foundations that scale.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- KIND OF ENGINEER -->
+    <section class="reveal-on-scroll">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-5">
+          <div class="art-frame aspect-[516/588] max-w-[320px] mx-auto"><img src="/assets/img/team-developer.webp" alt="Developer character at a laptop" loading="lazy"></div>
+        </div>
+        <div class="lg:col-span-7 space-y-5">
+          <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7952EC] dark:text-[#A78BFA]">How I work</span>
+          <h2 class="text-2xl sm:text-3xl font-black font-display">I do my best work when I own the problem end to end</h2>
+          <p class="text-sm text-[var(--text-muted)] leading-relaxed">I like environments without a perfectly defined spec, where someone has to work out:</p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs font-bold">
+            <span class="tactile-raised-sm rounded-xl px-3 py-2.5">What should exist?</span><span class="tactile-raised-sm rounded-xl px-3 py-2.5">How should it work?</span>
+            <span class="tactile-raised-sm rounded-xl px-3 py-2.5">What can fail?</span><span class="tactile-raised-sm rounded-xl px-3 py-2.5">How should it scale?</span>
+            <span class="tactile-raised-sm rounded-xl px-3 py-2.5">How do we deploy it?</span><span class="tactile-raised-sm rounded-xl px-3 py-2.5">How do we know when it breaks?</span>
+            <span class="tactile-raised-sm rounded-xl px-3 py-2.5">How do we recover?</span><span class="tactile-raised-sm rounded-xl px-3 py-2.5 text-[#7952EC] dark:text-[#A78BFA]">What should we deliberately not build?</span>
+          </div>
+          <p class="text-sm text-[var(--text-muted)] leading-relaxed">That's why a one-person engineering model suits me. I prefer early-stage environments, where deep ownership and fast execution matter more than process.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION + HARDWARE -->
+    <section class="space-y-6 reveal-on-scroll">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div class="lg:col-span-5 space-y-6">
+          <div class="tactile-raised rounded-3xl p-6 space-y-4">
+            <h2 class="text-xl font-black font-display">Education &amp; certifications</h2>
+            <div class="space-y-2.5 text-xs">
+              <div class="tactile-inset-sm rounded-xl p-3"><b class="block text-sm">MBA — Finance</b><span class="text-[var(--text-muted)]">Sinhgad Business School</span></div>
+              <div class="tactile-inset-sm rounded-xl p-3"><b class="block text-sm">B.Com</b><span class="text-[var(--text-muted)]">Seva Sadan Mahavidyalaya</span></div>
+            </div>
+            <div class="flex flex-wrap gap-2 text-[11px] font-bold">
+              <span class="tactile-raised-sm rounded-full px-3 py-1.5 flex items-center gap-1.5"><i data-lucide="award" class="w-3.5 h-3.5 text-[#7952EC]"></i>IBM Cloud Essentials</span>
+              <span class="tactile-raised-sm rounded-full px-3 py-1.5 flex items-center gap-1.5"><i data-lucide="award" class="w-3.5 h-3.5 text-[#7952EC]"></i>Google Cloud Digital Leader</span>
+              <span class="tactile-raised-sm rounded-full px-3 py-1.5 flex items-center gap-1.5"><i data-lucide="award" class="w-3.5 h-3.5 text-[#7952EC]"></i>Cisco Networking Academy</span>
+            </div>
+          </div>
+          <div class="tactile-raised rounded-3xl p-6 space-y-3">
+            <h2 class="text-xl font-black font-display">Outside of software</h2>
+            <p class="text-xs text-[var(--text-muted)] leading-relaxed">I keep a consistent gym routine, and I have a pet cat at home. Both come down to something I value in engineering too: consistency. Complex systems rarely come from one heroic burst of work. You keep showing up, find the next constraint, fix it, test it and move on.</p>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 tactile-raised rounded-3xl p-6 sm:p-8 space-y-5">
+          <div class="space-y-1">
+            <h2 class="text-xl font-black font-display">Local AI infrastructure</h2>
+            <p class="text-xs text-[var(--text-muted)]">My own hardware for model experiments, GPU pipelines, TTS, media generation and local inference, so not every experiment depends on a cloud API. Pick a workload to see how much of the 12 GB card it uses.</p>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+            <div class="tactile-inset-sm rounded-2xl p-4"><b class="block text-sm">Dedicated workstation</b><span class="text-[var(--text-muted)]">AMD Ryzen 7 5700X · NVIDIA RTX 3060 12 GB · 32 GB RAM</span></div>
+            <div class="tactile-inset-sm rounded-2xl p-4"><b class="block text-sm">ASUS TUF A17</b><span class="text-[var(--text-muted)]">AMD Ryzen 7 · NVIDIA RTX 3050 · 16 GB RAM</span></div>
+          </div>
+          <div class="tactile-inset rounded-2xl p-4 flex items-center justify-between gap-6 select-none">
+            <div class="w-16 h-40 rounded-full tactile-inset p-1.5 flex flex-col justify-end overflow-hidden relative shrink-0">
+              <div id="fluidTankBar" class="fluid-level-bar w-full rounded-b-full bg-gradient-to-t from-[#0B1C4D] via-[#7952EC] to-[#38BDF8] shadow-md flex items-center justify-center" style="height: 35%;">
+                <span id="fluidPercentLabel" class="text-[10px] font-mono font-black text-white">35%</span>
+              </div>
+            </div>
+            <div class="flex-1 space-y-3 font-mono">
+              <div>
+                <span class="text-[10px] uppercase tracking-wider text-[var(--text-muted)] block">RTX 3060 VRAM</span>
+                <span id="fluidValue" class="text-base font-black text-[#163387] dark:text-[#6380CE]">4.2 GB / 12 GB</span>
+                <span id="fluidNote" class="block text-[11px] text-[var(--text-muted)] mt-1">Whisper + Kokoro resident for a voice loop</span>
+              </div>
+              <div class="grid grid-cols-2 gap-2">
+                <button type="button" data-fill="35" data-gb="4.2 GB / 12 GB" data-note="Whisper + Kokoro resident for a voice loop" class="tactile-convex-pill py-2 text-[11px]">Voice loop</button>
+                <button type="button" data-fill="58" data-gb="7.0 GB / 12 GB" data-note="XTTS v2 + Whisper alignment for Shortz" class="tactile-convex-pill py-2 text-[11px]">Media</button>
+                <button type="button" data-fill="72" data-gb="8.6 GB / 12 GB" data-note="Quantised LLaMA/Qwen via llama.cpp" class="tactile-convex-pill py-2 text-[11px]">Local LLM</button>
+                <button type="button" data-fill="92" data-gb="11.0 GB / 12 GB" data-note="Near the ceiling: admission control holds new jobs back" class="btn-deploy-edge py-2 text-[11px]">Peak</button>
+              </div>
+            </div>
+          </div>
+          <p class="text-[11px] text-[var(--text-muted)]">Workload figures are illustrative. What's real is the rule behind them: use the cloud where it adds leverage, and keep control locally where it adds resilience, privacy, speed or cost savings.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIRECTION -->
+    <section class="reveal-on-scroll">
+      <div class="tactile-clay rounded-[2rem] p-6 sm:p-10 space-y-6">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-8 space-y-4">
+            <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7952EC] dark:text-[#A78BFA]">Where this is going</span>
+            <h2 class="text-2xl sm:text-3xl font-black font-display">AI-native infrastructure, not apps with an AI button</h2>
+            <p class="text-sm text-[var(--text-muted)] leading-relaxed">I want to build systems where AI is part of the operating architecture and runs inside infrastructure that is controlled, observable and reliable. That means combining the flexibility of AI with the discipline of traditional systems engineering. Making a model respond is the easy part. The interesting challenge is making an AI-powered system:</p>
+            <div class="flex flex-wrap gap-2 text-xs font-bold">
+              <span class="tactile-raised-sm rounded-full px-3 py-1.5">reliable</span><span class="tactile-raised-sm rounded-full px-3 py-1.5">observable</span><span class="tactile-raised-sm rounded-full px-3 py-1.5">secure</span><span class="tactile-raised-sm rounded-full px-3 py-1.5">economical</span><span class="tactile-raised-sm rounded-full px-3 py-1.5">recoverable</span><span class="tactile-raised-sm rounded-full px-3 py-1.5">scalable</span>
+            </div>
+          </div>
+          <div class="lg:col-span-4">
+            <div class="art-frame aspect-[460/560] max-w-[220px] mx-auto"><img src="/assets/img/d-robot.webp" alt="" loading="lazy"></div>
+          </div>
+        </div>
+        <div class="tactile-inset rounded-3xl p-5 sm:p-6 space-y-2">
+          <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--text-muted)]">The short version</div>
+          <p class="text-sm sm:text-base leading-relaxed">I'm an AI systems engineer and software architect who builds the infrastructure behind real-world software products, from the architecture down to the operational details: APIs, workers, queues, AI pipelines, databases, infrastructure, observability, deployment and failure handling.</p>
+          <p class="text-sm font-black font-mono text-[#163387] dark:text-[#A78BFA]">Build for the failure path first.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="w-full max-w-6xl mt-20 sm:mt-28">
+    <div class="tactile-raised rounded-3xl p-6 sm:p-8 grid grid-cols-2 md:grid-cols-12 gap-8">
+      <div class="col-span-2 md:col-span-4 space-y-4">
+        <div class="flex items-center gap-3">
+          <span class="w-11 h-11 rounded-2xl tactile-clay flex items-center justify-center"><img src="/assets/img/aim-logo.svg" alt="" class="w-7 h-7"></span>
+          <div>
+            <div class="text-base font-black font-display">AIM</div>
+            <div class="text-[11px] text-[var(--text-muted)]">AI Infrastructure &amp; Machines</div>
+          </div>
+        </div>
+        <p class="text-xs text-[var(--text-muted)] leading-relaxed">Infrastructure behind real-world software: voice AI, automation, queues, workers, offline-first systems and the failure paths in between. Built in Burhanpur, Madhya Pradesh.</p>
+        <p class="text-xs font-mono font-bold text-[#163387] dark:text-[#A78BFA]">Build for the failure path first.</p>
+      </div>
+      <div class="md:col-span-2 space-y-2.5 text-xs">
+        <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--text-muted)]">Company</div>
+        <a class="block hover:text-[#7952EC]" href="/about">About the CTO</a>
+        <a class="block hover:text-[#7952EC]" href="/work">Production work</a>
+        <a class="block hover:text-[#7952EC]" href="/engage">Engagements</a>
+        <a class="block hover:text-[#7952EC]" href="/jobs">Careers</a>
+        <a class="block hover:text-[#7952EC]" href="/contact">Contact</a>
+      </div>
+      <div class="md:col-span-3 space-y-2.5 text-xs">
+        <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--text-muted)]">Products</div>
+        <a class="block hover:text-[#7952EC]" href="/products#apex-connect">APEX Connect</a>
+        <a class="block hover:text-[#7952EC]" href="/products#aim-remote">AIM · Remote AI (free)</a>
+        <a class="block hover:text-[#7952EC]" href="/products#apex-hms">APEX HMS</a>
+        <a class="block hover:text-[#7952EC]" href="/products#shortz">Shortz AI Pipeline</a>
+        <a class="block hover:text-[#7952EC]" href="/products#apex-core">Apex Core</a>
+        <a class="block hover:text-[#7952EC]" href="https://aimstudio.co.in/freetools/" target="_blank" rel="noopener">Free Tools ↗</a>
+      </div>
+      <div class="col-span-2 md:col-span-3 space-y-2.5 text-xs">
+        <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--text-muted)]">Reach us</div>
+        <a class="block font-bold hover:text-[#7952EC]" href="mailto:ankit@aimsystem.in">ankit@aimsystem.in</a>
+        <a class="block hover:text-[#7952EC]" href="https://aimstudio.co.in/" target="_blank" rel="noopener">aimstudio.co.in ↗</a>
+        <a class="block hover:text-[#7952EC]" href="https://aimstudio.co.in/developer-docs" target="_blank" rel="noopener">Developer docs ↗</a>
+        <p class="text-[var(--text-muted)]">Burhanpur, MP, India · IST (UTC+5:30)<br>UK/EU morning overlap</p>
+      </div>
+    </div>
+    <div class="text-center text-[11px] font-mono text-[var(--text-muted)] py-6 space-y-1">
+      <div>© <span data-year>2026</span> AIM — AI Infrastructure &amp; Machines · Ankit Panicker, CTO</div>
+      <div class="opacity-70">aimsystem.in · aimstudio.co.in · aimmarketing.in</div>
+    </div>
+  </footer>
+
+  <div id="toast" role="status" aria-live="polite" class="fixed bottom-6 right-6 left-6 sm:left-auto transform translate-y-28 opacity-0 pointer-events-none z-50 px-5 py-3 rounded-full text-xs font-bold flex items-center gap-2.5 transition-all duration-300 text-white shadow-lg" style="background: var(--deploy-gradient); box-shadow: 0 8px 20px rgba(11, 28, 77, 0.35);">
+    <div class="w-2.5 h-2.5 rounded-full bg-blue-300 animate-ping"></div>
+    <span id="toastText">Ready</span>
+  </div>
+
+  <script src="/assets/js/icons.js"></script>
+  <script src="/assets/js/aim.js"></script>
+</body>
+</html>
