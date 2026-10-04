@@ -1,5 +1,5 @@
 # AIM — AI Infrastructure & Machines
-> AIM (also AIM Studio) builds the infrastructure behind real-world software: APEX Connect, a multi-tenant AI voice agent and WhatsApp automation SaaS; AIM, a free AI operating layer that gives your AI a machine; and offline-first, reliability-focused systems. Udyam registered (MSME, Government of India), based in Madhya Pradesh, India. CTO & AI Systems Engineer: Ankit Panicker.
+> AIM (also AIM Studio) builds the infrastructure behind real-world software: APEX Connect, a multi-tenant AI voice agent and WhatsApp automation SaaS; AIM, a free AI operating layer that gives your AI a machine; and offline-first, reliability-focused systems. Registered by the Government of India (Udyam MSME), based in Madhya Pradesh, India. CTO & AI Systems Engineer: Ankit Panicker.
 
 ## Pages on aimsystem.in
 - [Home](https://aimsystem.in/): What AIM builds, products, process and production proof.
@@ -28,9 +28,9 @@
 - Café Ciel, London: hospitality platform delivered for a UK client.
 
 ## Engagements
-Remote B2B contracting directly with AIM (Udyam registered, India), outside IR35: AI Platform Build (4–12 weeks), Architecture Review & Rescue (1–2 weeks), Production Incident Response (days to 2 weeks), Fractional Platform Engineering (3–6 month retainer). Hire one dedicated engineer or a team sized to the scope. Fixed scope, milestone payments, weekly written reports.
+Remote B2B contracting directly with AIM (registered by the Government of India, Udyam MSME), outside IR35: AI Platform Build (4–12 weeks), Architecture Review & Rescue (1–2 weeks), Production Incident Response (days to 2 weeks), Fractional Platform Engineering (3–6 month retainer). Hire one dedicated engineer or a team sized to the scope. Fixed scope, milestone payments, weekly written reports.
 
 ## Contact
 - CTO: Ankit Panicker — ankit@aimsystem.in
 - Location: Madhya Pradesh, India · IST (UTC+5:30) · UK/EU morning overlap
-- Registration: Udyam registered (MSME, Government of India)
+- Registration: Registered by the Government of India (Udyam MSME)

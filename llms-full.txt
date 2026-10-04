@@ -9,7 +9,7 @@ Primary site: https://aimstudio.co.in/
 Alternate site: https://aimmarketing.in/
 Products: APEX CONNECT — multi-tenant AI voice and WhatsApp SaaS; AIM — free AI operating layer for your machines (https://aimstudio.co.in/remoteai)
 Chief Technology Officer & AI Systems Engineer: Ankit Panicker
-Registration: Udyam registered (MSME, Government of India)
+Registration: Registered by the Government of India (Udyam MSME)
 Location: Madhya Pradesh, India
 Free tools: https://aimstudio.co.in/freetools/ — browser-based PDF, image, audio and video utilities; files are processed locally and never uploaded.
 
@@ -52,7 +52,7 @@ AIM gives your AI a machine — and gives you the controls. It runs on your Wind
 * **CI/CD**: Automated build, test and rolling deploy on every release.
 
 ## B2B Engagement Scope
-Remote B2B contracting directly with AIM (Udyam registered, India), outside IR35. Hire one dedicated engineer or a team sized to the scope.
+Remote B2B contracting directly with AIM (registered by the Government of India, Udyam MSME), outside IR35. Hire one dedicated engineer or a team sized to the scope.
 * **AI Platform Build**: 4–12 weeks.
 * **Architecture Review & Rescue**: 1–2 weeks.
 * **Production Incident Response**: Days to 2 weeks.

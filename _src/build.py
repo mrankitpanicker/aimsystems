@@ -84,6 +84,9 @@ HEADER = """
       </nav>
 
       <div class="flex items-center gap-2.5">
+        <button type="button" data-sound-toggle class="tactile-convex-pill w-10 h-10 flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--text-main)]" aria-label="Mute sound effects">
+          <i data-sound-icon data-lucide="volume-2" class="w-4 h-4 text-[#7952EC] dark:text-[#A78BFA]"></i>
+        </button>
         <button type="button" data-theme-toggle class="tactile-convex-pill px-3.5 py-2 text-xs flex items-center gap-2 text-[var(--text-muted)] hover:text-[var(--text-main)]" aria-label="Toggle dark mode">
           <i data-theme-icon data-lucide="moon" class="w-4 h-4 text-[#7952EC] dark:text-[#A78BFA]"></i>
           <span data-theme-label class="hidden md:inline">Midnight Cobalt</span>
@@ -120,7 +123,7 @@ FOOTER = """
           </div>
         </div>
         <p class="text-xs text-[var(--text-muted)] leading-relaxed">Infrastructure behind real-world software: voice AI, automation, queues, workers, offline-first systems and the failure paths in between. Built in Madhya Pradesh, India.</p>
-        <p class="inline-flex items-center gap-2 tactile-inset-sm rounded-full px-3 py-1.5 text-[10px] font-mono font-bold"><span class="status-dot bg-emerald-500"></span>Udyam registered (MSME, Govt. of India)</p>
+        <p class="inline-flex items-center gap-2 tactile-inset-sm rounded-full px-3 py-1.5 text-[10px] font-mono font-bold"><img src="/assets/img/ico-bank.webp" alt="" class="w-4 h-4 object-contain">Registered by Govt. of India · Udyam MSME</p>
         <p class="text-xs font-mono font-bold text-[#163387] dark:text-[#A78BFA]">Build for the failure path first.</p>
       </div>
       <div class="md:col-span-2 space-y-2.5 text-xs">
@@ -142,14 +145,15 @@ FOOTER = """
       </div>
       <div class="col-span-2 md:col-span-3 space-y-2.5 text-xs">
         <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--text-muted)]">Reach us</div>
-        <a class="block font-bold hover:text-[#7952EC]" href="mailto:ankit@aimsystem.in">ankit@aimsystem.in</a>
+        <button type="button" data-contact="email" class="tactile-convex-pill px-3.5 py-1.5 text-[11px] inline-flex items-center gap-1.5"><i data-lucide="mail" class="w-3.5 h-3.5"></i>Copy email</button>
+        <button type="button" data-contact="phone" hidden class="tactile-convex-pill px-3.5 py-1.5 text-[11px] inline-flex items-center gap-1.5"><i data-lucide="phone" class="w-3.5 h-3.5"></i>Copy phone</button>
         <a class="block hover:text-[#7952EC]" href="https://aimstudio.co.in/" target="_blank" rel="noopener">aimstudio.co.in ↗</a>
         <a class="block hover:text-[#7952EC]" href="https://aimstudio.co.in/developer-docs" target="_blank" rel="noopener">Developer docs ↗</a>
-        <p class="text-[var(--text-muted)]">Madhya Pradesh, India · IST (UTC+5:30)<br>UK/EU morning overlap · Udyam registered</p>
+        <p class="text-[var(--text-muted)]">Madhya Pradesh, India · IST (UTC+5:30)<br>UK/EU morning overlap · Registered by Govt. of India</p>
       </div>
     </div>
     <div class="text-center text-[11px] font-mono text-[var(--text-muted)] py-6 space-y-1">
-      <div>© <span data-year>2026</span> AIM — AI Infrastructure &amp; Machines · Udyam registered · Ankit Panicker, CTO</div>
+      <div>© <span data-year>2026</span> AIM — AI Infrastructure &amp; Machines · Registered by Govt. of India · Ankit Panicker, CTO</div>
       <div class="opacity-70">aimsystem.in · aimstudio.co.in · aimmarketing.in</div>
     </div>
   </footer>

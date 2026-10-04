@@ -24,6 +24,70 @@
   }
   window.aimToast = toast;
 
+  /* ---------- Sound ----------
+     Small synthesised UI sounds (no files). The browser only allows audio
+     after the visitor interacts, so the context starts on the first tap.
+     A header button mutes them; the choice is remembered per browser. */
+  let actx = null, lastTick = 0;
+  let soundOn = true;
+  try { soundOn = localStorage.getItem('aim-sound') !== 'off'; } catch (e) {}
+  function tone(freq, to, dur, gain, type, delay) {
+    const t = actx.currentTime + (delay || 0);
+    const o = actx.createOscillator(), g = actx.createGain();
+    o.type = type || 'sine';
+    o.frequency.setValueAtTime(freq, t);
+    if (to) o.frequency.exponentialRampToValueAtTime(to, t + dur);
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.exponentialRampToValueAtTime(gain, t + 0.006);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+    o.connect(g); g.connect(actx.destination); o.start(t); o.stop(t + dur + 0.02);
+  }
+  const SOUNDS = {
+    tap: () => tone(520, 260, 0.045, 0.05, 'sine'),
+    press: () => { tone(320, 140, 0.08, 0.08, 'triangle'); tone(1800, 900, 0.02, 0.015, 'sine'); },
+    key: () => tone(440, 120, 0.035, 0.12, 'triangle'),
+    pop: () => tone(300, 720, 0.07, 0.05, 'sine'),
+    toggleOn: () => { tone(660, 0, 0.05, 0.05, 'sine'); tone(990, 0, 0.06, 0.05, 'sine', 0.055); },
+    toggleOff: () => { tone(990, 0, 0.05, 0.05, 'sine'); tone(660, 0, 0.06, 0.05, 'sine', 0.055); },
+    success: () => { tone(660, 0, 0.07, 0.045, 'sine'); tone(880, 0, 0.07, 0.045, 'sine', 0.07); tone(1320, 0, 0.12, 0.04, 'sine', 0.14); },
+    error: () => { tone(200, 120, 0.14, 0.035, 'square'); tone(160, 110, 0.14, 0.03, 'square', 0.12); },
+    tick: () => tone(1500, 0, 0.012, 0.018, 'square'),
+  };
+  function sound(name) {
+    if (!soundOn || document.hidden || !SOUNDS[name]) return;
+    try {
+      actx = actx || new (window.AudioContext || window.webkitAudioContext)();
+      if (actx.state === 'suspended') actx.resume();
+      if (name === 'tick') { const n = performance.now(); if (n - lastTick < 45) return; lastTick = n; }
+      SOUNDS[name]();
+    } catch (e) {}
+  }
+  window.aimSound = sound;
+  function paintSoundButtons() {
+    $$('[data-sound-toggle]').forEach(b => {
+      const i = b.querySelector('[data-sound-icon]');
+      if (i) i.setAttribute('data-lucide', soundOn ? 'volume-2' : 'volume-x');
+      b.setAttribute('aria-pressed', String(soundOn));
+      b.setAttribute('aria-label', soundOn ? 'Mute sound effects' : 'Turn on sound effects');
+    });
+    icons();
+  }
+  $$('[data-sound-toggle]').forEach(b => b.addEventListener('click', () => {
+    soundOn = !soundOn;
+    try { localStorage.setItem('aim-sound', soundOn ? 'on' : 'off'); } catch (e) {}
+    paintSoundButtons();
+    if (soundOn) sound('toggleOn');
+    toast(soundOn ? 'Sound on' : 'Sound off');
+  }));
+  // one delegated listener gives every control a sound that matches its weight
+  document.addEventListener('pointerdown', e => {
+    const t = e.target.closest('button, a, [role="button"], [role="tab"], .card-sunk, .monolith-outer-fillet, [data-pin]');
+    if (!t || t.matches('[data-sound-toggle], [data-pad], [data-theme-toggle], [data-tab], [data-side], [data-contact], #breakerOk, #breakerFail, [data-run], [data-run-fail]')) return;
+    if (t.matches('.btn-deploy-edge, .monolith-outer-fillet')) sound('press');
+    else if (t.matches('.card-sunk')) sound('pop');
+    else sound('tap');
+  }, { passive: true });
+
   /* ---------- Theme ---------- */
   function paintThemeButtons() {
     $$('[data-theme-toggle]').forEach(btn => {
@@ -41,6 +105,7 @@
     try { localStorage.setItem('aim-theme', dark ? 'dark' : 'light'); } catch (e) {}
     paintThemeButtons();
     placePill(activeLink());
+    sound(dark ? 'toggleOn' : 'toggleOff');
     toast(dark ? 'Midnight Cobalt' : 'Lilac Ice');
   }
 
@@ -203,7 +268,7 @@
       panels.forEach(p => { p.hidden = p.dataset.panel !== tab.dataset.tab; });
       if (!quiet && group.dataset.tabsToast !== undefined) toast(tab.textContent.trim());
     };
-    tabs.forEach(t => t.addEventListener('click', () => select(t)));
+    tabs.forEach(t => t.addEventListener('click', () => { sound('toggleOn'); select(t); }));
     const first = tabs.find(t => t.getAttribute('aria-selected') === 'true') || tabs[0];
     if (first) select(first, true);
   });
@@ -213,7 +278,7 @@
   if (dialBox && knob) {
     const min = +dialBox.dataset.min || 0, max = +dialBox.dataset.max || 100;
     const cap = +dialBox.dataset.capacity || max;
-    let angle = +dialBox.dataset.start || 120, dragging = false;
+    let angle = +dialBox.dataset.start || 120, dragging = false, dialReady = false;
     const valueEl = $('#dialValue'), angleEl = $('#dialAngle'), stateEl = $('#dialState');
     function render(a) {
       angle = Math.max(0, Math.min(270, a));
@@ -227,6 +292,7 @@
         stateEl.className = 'text-sm font-black ' + (over ? 'text-amber-600 dark:text-amber-400' : 'text-emerald-600 dark:text-emerald-400');
       }
       dialBox.setAttribute('aria-valuenow', String(v));
+      if (dialBox.dataset.last !== String(v)) { dialBox.dataset.last = String(v); if (dialReady) sound('tick'); }
     }
     function fromPointer(e) {
       const r = dialBox.getBoundingClientRect();
@@ -245,7 +311,7 @@
       if (e.key === 'ArrowRight' || e.key === 'ArrowUp') { e.preventDefault(); render(angle + 9); }
       if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') { e.preventDefault(); render(angle - 9); }
     });
-    render(angle);
+    render(angle); dialReady = true;
   }
 
   /* ---------- Rocker switch ---------- */
@@ -265,7 +331,7 @@
       if (desc) desc.textContent = btn.dataset.text;
       if (!quiet) toast(btn.dataset.title);
     };
-    sides.forEach(s => s.addEventListener('click', () => set(s)));
+    sides.forEach(s => s.addEventListener('click', () => { sound(s === sides[0] ? 'toggleOff' : 'toggleOn'); set(s); }));
     if (sides[0]) set(sides[0], true);
   });
 
@@ -299,10 +365,10 @@
       if (timer) {
         clearInterval(timer); timer = null;
         dots.forEach(d => d.classList.remove('dot-active'));
-        txt.textContent = btn.dataset.idle; st.textContent = 'Line idle · waiting for a call';
+        txt.textContent = btn.dataset.idle; st.textContent = 'Line idle · waiting for a call'; sound('toggleOff');
         return;
       }
-      txt.textContent = 'Hang up';
+      txt.textContent = 'Hang up'; sound('toggleOn');
       timer = setInterval(() => {
         tick++;
         // a travelling wave reads more like speech than pure noise
@@ -316,19 +382,8 @@
   }
 
   /* ---------- Web Audio keypad ---------- */
-  let audioCtx = null;
-  function click() {
-    try {
-      audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
-      const o = audioCtx.createOscillator(), g = audioCtx.createGain(), t = audioCtx.currentTime;
-      o.type = 'triangle';
-      o.frequency.setValueAtTime(440, t); o.frequency.exponentialRampToValueAtTime(120, t + 0.035);
-      g.gain.setValueAtTime(0.12, t); g.gain.exponentialRampToValueAtTime(0.01, t + 0.035);
-      o.connect(g); g.connect(audioCtx.destination); o.start(); o.stop(t + 0.035);
-    } catch (e) {}
-  }
   $$('[data-pad]').forEach(b => b.addEventListener('click', () => {
-    click();
+    sound('key');
     const log = $('#padLog'), detail = $('#padDetail');
     if (log) log.textContent = b.dataset.pad;
     if (detail) detail.textContent = b.dataset.detail || '';
@@ -341,7 +396,7 @@
     const cap = +sTrack.dataset.capacity || 60, max = +sTrack.dataset.max || 150;
     const label = $('#sliderValueLabel'), acc = $('#bpAccepted'), q = $('#bpQueued'), shed = $('#bpShed'), note = $('#bpNote');
     const qmax = +sTrack.dataset.queue || 40;
-    let dragging = false, pct = 0.35;
+    let dragging = false, pct = 0.35, sliderReady = false;
     function render() {
       thumb.style.left = `calc(${pct * 100}% - 16px)`;
       const load = Math.round(pct * max);
@@ -351,6 +406,7 @@
       if (note) note.textContent = sh ? 'Over capacity and queue full: new work is rejected with a retry hint, so the workers keep running.' :
         qq ? 'Above worker capacity: the extra work waits in the bounded queue.' : 'Within capacity: every job is admitted straight away.';
       sTrack.setAttribute('aria-valuenow', String(load));
+      if (sliderReady) sound('tick');
     }
     const move = x => { const r = sTrack.getBoundingClientRect(); pct = Math.max(0, Math.min(1, (x - r.left) / r.width)); render(); };
     sTrack.addEventListener('pointerdown', e => { dragging = true; sTrack.setPointerCapture(e.pointerId); move(e.clientX); });
@@ -360,7 +416,7 @@
       if (e.key === 'ArrowRight') { pct = Math.min(1, pct + 0.04); render(); }
       if (e.key === 'ArrowLeft') { pct = Math.max(0, pct - 0.04); render(); }
     });
-    render();
+    render(); sliderReady = true;
   }
 
   /* ---------- Fluid reservoir (VRAM) ---------- */
@@ -407,8 +463,8 @@
       }
       paint();
     }
-    $('#breakerOk').addEventListener('click', () => call(true));
-    $('#breakerFail').addEventListener('click', () => call(false));
+    $('#breakerOk').addEventListener('click', () => { const was = state; call(true); sound(state === 'OPEN' ? 'error' : was === 'HALF_OPEN' ? 'success' : 'tap'); });
+    $('#breakerFail').addEventListener('click', () => { call(false); sound(state === 'OPEN' ? 'error' : 'press'); });
     $('#breakerReset').addEventListener('click', () => { clearTimeout(timer); state = 'CLOSED'; fails = 0; if (log) log.innerHTML = ''; write('reset'); paint(); });
     paint();
   }
@@ -420,27 +476,45 @@
       chips.forEach(c => c.classList.remove('is-done', 'is-fail'));
       let i = 0;
       const next = () => {
-        if (i >= chips.length) { if (out) out.textContent = 'Rendered. Timing recorded for every stage.'; return; }
+        if (i >= chips.length) { if (out) out.textContent = 'Rendered. Timing recorded for every stage.'; sound('success'); return; }
         const c = chips[i];
         if (i === failAt) {
-          c.classList.add('is-fail');
+          c.classList.add('is-fail'); sound('error');
           if (out) out.textContent = `${c.dataset.stage} failed — classified, retried on its own; earlier stages are kept, not redone.`;
           return;
         }
-        c.classList.add('is-done');
+        c.classList.add('is-done'); sound('tick');
         if (out) out.textContent = `${c.dataset.stage} · ${c.dataset.ms} ms`;
         i++; setTimeout(next, 520);
       };
       next();
     };
     const go = $('[data-run]', box), bad = $('[data-run-fail]', box);
-    go && go.addEventListener('click', () => run(-1));
-    bad && bad.addEventListener('click', () => run(1 + Math.floor(Math.random() * (chips.length - 1))));
+    go && go.addEventListener('click', () => { sound('press'); run(-1); });
+    bad && bad.addEventListener('click', () => { sound('press'); run(1 + Math.floor(Math.random() * (chips.length - 1))); });
+  });
+
+  /* ---------- Contact details: copied on click, never printed in the page ----------
+     Stored encoded so the address isn't sitting in the HTML for scrapers.
+     To show the phone buttons, set phone to the base64 of the number. */
+  const CONTACT = { email: 'YW5raXRAYWltc3lzdGVtLmlu', phone: '' };
+  const contactValue = k => { try { return CONTACT[k] ? atob(CONTACT[k]) : ''; } catch (e) { return ''; } };
+  $$('[data-contact]').forEach(btn => {
+    const kind = btn.dataset.contact, value = contactValue(kind);
+    if (!value) { btn.hidden = true; return; }
+    btn.hidden = false;
+    btn.addEventListener('click', () => {
+      const label = kind === 'phone' ? 'Phone number' : 'Email address';
+      const ok = () => { sound('success'); toast(label + ' copied'); };
+      // the clipboard can be refused in some embedded views; then show it once
+      const fail = () => toast(label + ': ' + value);
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(value).then(ok, fail); else fail();
+    });
   });
 
   /* ---------- Copy buttons ---------- */
   $$('[data-copy]').forEach(b => b.addEventListener('click', () => {
-    const done = () => toast('Copied: ' + b.dataset.copy);
+    const done = () => { sound('success'); toast('Copied'); };
     if (navigator.clipboard) navigator.clipboard.writeText(b.dataset.copy).then(done, done); else done();
   }));
 
@@ -451,7 +525,8 @@
     const f = new FormData(form);
     const subject = `[AIM] ${f.get('scope')} — ${f.get('org')}`;
     const body = [`Name: ${f.get('name')}`, `Organisation: ${f.get('org')}`, `Email: ${f.get('email')}`, `Scope: ${f.get('scope')}`, `Timeline: ${f.get('timeline')}`, '', f.get('message')].join('\n');
-    window.location.href = `mailto:ankit@aimsystem.in?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = `mailto:${contactValue('email')}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    sound('success');
     toast('Opening your email app with the brief filled in');
   });
 
@@ -459,6 +534,7 @@
   $$('[data-theme-toggle]').forEach(b => b.addEventListener('click', toggleTheme));
   $$('[data-year]').forEach(el => { el.textContent = new Date().getFullYear(); });
   paintThemeButtons();
+  paintSoundButtons();
   const settle = () => placePill(activeLink());
   window.addEventListener('resize', settle);
   window.addEventListener('load', settle);

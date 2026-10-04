@@ -9,7 +9,7 @@ const sources = [
   path.join(__dirname, 'build.py'),
   path.join(__dirname, '..', 'assets', 'js', 'aim.js'),
 ];
-const names = new Set(['sun', 'moon', 'menu', 'x']); // toggled at runtime
+const names = new Set(['sun', 'moon', 'menu', 'x', 'volume-2', 'volume-x']); // toggled at runtime
 for (const f of sources) {
   for (const m of fs.readFileSync(f, 'utf8').matchAll(/data-lucide="([a-z0-9-]+)"/g)) names.add(m[1]);
 }
