@@ -1025,3 +1025,17 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 /* performance: release compositor layers once revealed; the character glow stays still */
 .reveal-on-scroll.revealed { will-change: auto; }
 .char-stage::before { animation: none !important; }
+
+/* Expanded FAQ card turns navy, matching .tactile-navy */
+.accordion-card.open {
+  --text-main: #FFFFFF;
+  --text-muted: rgba(214, 224, 255, 0.82);
+  background: var(--deploy-gradient);
+  color: var(--text-main);
+  box-shadow: 10px 12px 26px rgba(11, 28, 77, 0.28), -8px -8px 20px var(--shadow-light-canvas, rgba(255, 255, 255, 0.85)), inset 0 1px 1.5px rgba(255, 255, 255, 0.22);
+}
+.dark .accordion-card.open {
+  background: linear-gradient(145deg, #1E3C96 0%, #152D78 55%, #0E2160 100%);
+  box-shadow: 10px 12px 26px rgba(0, 0, 0, 0.8), -6px -6px 18px rgba(45, 60, 110, 0.25), inset 0 1px 1.5px rgba(196, 210, 255, 0.25);
+}
+.accordion-card.open a { color: #FFFFFF; }
