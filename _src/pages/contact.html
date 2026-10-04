@@ -14,9 +14,10 @@
             <div>
               <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7952EC] dark:text-[#A78BFA]">Project brief</span>
               <h2 class="text-xl font-black font-display">Tell us about the work</h2>
-              <p class="text-xs text-[var(--text-muted)] mt-1">Submitting opens your email app with the brief filled in. Nothing is stored on this site.</p>
+              <p class="text-xs text-[var(--text-muted)] mt-1">Sends the brief to us on WhatsApp or by email, with the page and service you came from. Nothing is stored on this site.</p>
             </div>
             <form id="contactForm" class="space-y-4">
+              <p data-lead-context hidden class="tactile-inset-sm rounded-full px-3 py-1.5 text-[11px] font-bold inline-flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[#7952EC]"></span><span data-lead-context-text></span></p>
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <label class="space-y-1 block">
                   <span class="text-[10px] font-mono font-bold uppercase text-[var(--text-muted)]">Your name</span>
@@ -40,6 +41,10 @@
                       <option class="bg-[var(--canvas-bg)]">Hire a specialist</option>
                       <option class="bg-[var(--canvas-bg)]">Hire an engineering pod</option>
                       <option class="bg-[var(--canvas-bg)]">Complete product team</option>
+                      <option class="bg-[var(--canvas-bg)]">Product Engineering</option>
+                      <option class="bg-[var(--canvas-bg)]">AI Engineering</option>
+                      <option class="bg-[var(--canvas-bg)]">Platform Engineering</option>
+                      <option class="bg-[var(--canvas-bg)]">Automation &amp; Integrations</option>
                       <option class="bg-[var(--canvas-bg)]">APEX Connect platform</option>
                       <option class="bg-[var(--canvas-bg)]">Something else</option>
                     </select>
@@ -61,7 +66,10 @@
                 <span class="text-[10px] font-mono font-bold uppercase text-[var(--text-muted)]">Project details</span>
                 <span class="tactile-inset rounded-2xl p-3 flex"><textarea name="message" rows="5" required placeholder="What are you building, where are you today and what does success look like?" class="bg-transparent text-sm w-full focus:outline-none resize-y"></textarea></span>
               </label>
-              <button type="submit" class="btn-deploy-edge w-full py-3.5 text-xs"><i data-lucide="send" class="w-4 h-4 opacity-90"></i><span>Send the brief</span></button>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <button type="submit" name="via" value="whatsapp" class="btn-deploy-edge w-full py-3.5 text-xs"><i data-lucide="message-circle" class="w-4 h-4 opacity-90"></i><span>Send on WhatsApp</span></button>
+                <button type="submit" name="via" value="email" class="tactile-convex-pill w-full py-3.5 text-xs inline-flex items-center justify-center gap-2"><i data-lucide="send" class="w-4 h-4"></i><span>Send by email</span></button>
+              </div>
             </form>
           </div>
         </div>
@@ -77,6 +85,11 @@
               <span class="flex-1"><b class="block text-sm">Business email</b><span class="text-[11px] text-[var(--text-muted)]">Click to copy</span></span>
               <i data-lucide="copy" class="w-4 h-4 opacity-70"></i>
             </button>
+            <a data-wa hidden target="_blank" rel="noopener" class="w-full text-left tactile-raised-sm interactive-press rounded-2xl p-3 flex items-center gap-3">
+              <span class="ico-well w-11 h-11 rounded-xl"><img src="/assets/img/ico-chats.webp" alt=""></span>
+              <span class="flex-1"><b class="block text-sm">WhatsApp</b><span class="text-[11px] text-[var(--text-muted)]">Opens a chat with your enquiry filled in</span></span>
+              <i data-lucide="arrow-up-right" class="w-4 h-4 opacity-70"></i>
+            </a>
             <button type="button" data-contact="phone" hidden class="w-full text-left tactile-raised-sm interactive-press rounded-2xl p-3 flex items-center gap-3">
               <span class="ico-well w-11 h-11 rounded-xl"><img src="/assets/img/ico-phone.webp" alt=""></span>
               <span class="flex-1"><b class="block text-sm">Phone</b><span class="text-[11px] text-[var(--text-muted)]">Calls and WhatsApp · click to copy</span></span>

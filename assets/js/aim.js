@@ -601,7 +601,7 @@
   /* ---------- Contact details: copied on click, never printed in the page ----------
      Stored encoded so the address isn't sitting in the HTML for scrapers.
      To show the phone buttons, set phone to the base64 of the number. */
-  const CONTACT = { email: 'YW5raXRAYWltc3lzdGVtLmlu', phone: '' };
+  const CONTACT = { email: 'YW5raXRAYWltc3lzdGVtLmlu', phone: 'KzkxIDcyNDcyIDQwODg4', wa: 'OTE3MjQ3MjQwODg4' };
   // social profile links; a link stays hidden until its URL is set here
   const SOCIAL = { linkedin: '' };
   $$('[data-social]').forEach(a => { const u = SOCIAL[a.dataset.social]; if (u) { a.href = u; a.hidden = false; } });
@@ -888,17 +888,98 @@
     if (navigator.clipboard) navigator.clipboard.writeText(b.dataset.copy).then(done, done); else done();
   }));
 
-  /* ---------- Contact form → prefilled email ---------- */
-  const form = $('#contactForm');
-  if (form) form.addEventListener('submit', e => {
-    e.preventDefault();
-    const f = new FormData(form);
-    const subject = `[AIM] ${f.get('scope')} — ${f.get('org')}`;
-    const body = [`Name: ${f.get('name')}`, `Organisation: ${f.get('org')}`, `Email: ${f.get('email')}`, `Scope: ${f.get('scope')}`, `Timeline: ${f.get('timeline')}`, '', f.get('message')].join('\n');
-    window.location.href = `mailto:${contactValue('email')}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    sound('success');
-    toast('Opening your email app with the brief filled in');
+  /* ---------- Lead context: which page and service a visitor came from ----------
+     Any click on a link to /contact records the page, the service (the nearest
+     card or section heading, or data-service) and the region on /international.
+     The contact form and WhatsApp button add it to the message, tagged [AIM System]. */
+  const LEAD_KEY = 'aim-lead';
+  const clean = t => (t || '').replace(/\s+/g, ' ').trim();
+  const pageName = () => clean(document.title.split(/[·—|]/)[0]) || location.pathname;
+  function serviceFor(el) {
+    const tagged = el.closest('[data-service]');
+    if (tagged) return tagged.dataset.service;
+    const card = el.closest('article, figure, [class*="rounded-3xl"], [class*="rounded-[2rem]"]');
+    const h = card && card.querySelector('h3, h2');
+    if (h) return clean(h.textContent);
+    const section = el.closest('section');
+    const sh = section && section.querySelector('h1, h2');
+    return sh ? clean(sh.textContent) : '';
+  }
+  const region = () => { const r = (location.hash || '').slice(1); return ['uk', 'us', 'eu'].includes(r) ? r.toUpperCase() : ''; };
+  function saveLead(el) {
+    if (location.pathname.replace(/\.html$/, '') === '/contact') return;
+    const lead = { page: pageName(), path: location.pathname, service: el ? serviceFor(el) : '', region: region() };
+    try { sessionStorage.setItem(LEAD_KEY, JSON.stringify(lead)); } catch (e) {}
+  }
+  const readLead = () => { try { return JSON.parse(sessionStorage.getItem(LEAD_KEY) || 'null'); } catch (e) { return null; } };
+  document.addEventListener('click', e => {
+    const a = e.target.closest && e.target.closest('a[href^="/contact"]');
+    if (a) saveLead(a);
+  }, true);
+  // Arriving on any page directly still counts as context if the visitor then opens Contact from the nav.
+  if (!/\/contact(\.html)?$/.test(location.pathname)) saveLead(null);
+
+  const leadLines = lead => !lead ? [] : [
+    `Page: ${lead.page} (aimsystem.in${lead.path})`,
+    lead.service && `Service: ${lead.service}`,
+    lead.region && `Region: ${lead.region}`,
+  ].filter(Boolean);
+
+  // Contact card: WhatsApp link with the context filled in
+  $$('[data-wa]').forEach(a => {
+    const n = contactValue('wa'); if (!n) return;
+    const lead = readLead();
+    a.href = `https://wa.me/${n}?text=${encodeURIComponent(['[AIM System] Hello, I would like to discuss a project.', ...leadLines(lead)].join('\n'))}`;
+    a.hidden = false;
   });
+
+  /* ---------- Contact form → WhatsApp or email, tagged [AIM System] ---------- */
+  const form = $('#contactForm');
+  if (form) {
+    const lead = readLead();
+    const chip = $('[data-lead-context]', form);
+    if (lead && chip) {
+      $('[data-lead-context-text]', chip).textContent = 'Enquiry from: ' + [lead.page, lead.service, lead.region].filter(Boolean).join(' → ');
+      chip.hidden = false;
+    }
+    // Pre-select "What do you need?" when the service names one of the options
+    const scope = form.elements.scope;
+    if (lead && lead.service && scope) {
+      const want = lead.service.toLowerCase();
+      const opt = Array.from(scope.options).find(o => {
+        const t = o.textContent.toLowerCase().replace('&amp;', '&');
+        return want.includes(t) || t.includes(want) || (want.includes('pod') && t.includes('pod')) || (want.includes('specialist') && t.includes('specialist'))
+          || (want.includes('complete') && t.includes('complete')) || (want.includes('one engineer') && t.includes('an engineer'));
+      });
+      if (opt) scope.value = opt.value;
+    }
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const f = new FormData(form);
+      const via = (e.submitter && e.submitter.value) || 'email';
+      const need = f.get('scope');
+      const body = [
+        '[AIM System] New project enquiry',
+        ...leadLines(lead),
+        `Need: ${need}`,
+        `Timeline: ${f.get('timeline')}`,
+        `Name: ${f.get('name')}`,
+        `Company: ${f.get('org')}`,
+        `Email: ${f.get('email')}`,
+        '',
+        f.get('message'),
+      ].join('\n');
+      if (via === 'whatsapp' && contactValue('wa')) {
+        window.open(`https://wa.me/${contactValue('wa')}?text=${encodeURIComponent(body)}`, '_blank', 'noopener');
+        toast('Opening WhatsApp with your brief filled in');
+      } else {
+        const subject = `[AIM System] ${(lead && lead.service) || need} — ${f.get('org')}${lead ? ` (from ${lead.page})` : ''}`;
+        window.location.href = `mailto:${contactValue('email')}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        toast('Opening your email app with the brief filled in');
+      }
+      sound('success');
+    });
+  }
 
   /* ---------- Boot ---------- */
   $$('[data-theme-toggle]').forEach(b => b.addEventListener('click', toggleTheme));
