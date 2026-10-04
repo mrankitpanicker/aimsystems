@@ -71,9 +71,10 @@ HEADER = """
           <img src="/assets/img/aim-logo.webp" alt="" class="w-8 h-8 sm:w-9 sm:h-9">
         </span>
         <span class="min-w-0 inline-grid gap-1">
-          <span class="flex items-center justify-between gap-2 px-0.5">
-            <span class="text-lg sm:text-[22px] font-black font-display tracking-tight leading-none">AIM</span>
-            <span class="brand-pill hidden sm:inline-flex items-center px-2.5 py-[4px] rounded-full text-[10.5px] font-black font-display tracking-[0.2em] uppercase text-white leading-none">Systems</span>
+          <span class="brand-toggle tactile-inset-sm rounded-full" data-brand-toggle>
+            <span class="bt-knob" aria-hidden="true"></span>
+            <span class="bt-opt text-base sm:text-[20px] font-black font-display tracking-tight">AIM</span>
+            <span class="bt-opt is-on text-[9px] sm:text-[10.5px] font-black font-display tracking-[0.2em] uppercase">Systems</span>
           </span>
           <span class="brand-groove block tactile-inset-sm rounded-full px-2 sm:px-2.5 py-0.5 text-[8.5px] sm:text-[10px] text-[var(--text-muted)] font-semibold whitespace-nowrap truncate max-w-full">AI Infrastructure &amp; Machines</span>
         </span>

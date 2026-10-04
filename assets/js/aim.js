@@ -134,6 +134,26 @@
     track.addEventListener('mouseleave', () => placePill(activeLink()));
   }
 
+  /* ---------- Brand switch: AIM | SYSTEMS flips itself ---------- */
+  $$('[data-brand-toggle]').forEach(sw => {
+    const knob = $('.bt-knob', sw), opts = $$('.bt-opt', sw);
+    let on = opts.findIndex(o => o.classList.contains('is-on'));
+    const place = () => {
+      const o = opts[on];
+      knob.style.transform = `translateX(${o.offsetLeft}px)`;
+      knob.style.width = `${o.offsetWidth}px`;
+      opts.forEach((x, i) => x.classList.toggle('is-on', i === on));
+    };
+    place();
+    window.addEventListener('resize', place);
+    if (document.fonts) document.fonts.ready.then(place);
+    if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    let hover = false;
+    sw.addEventListener('mouseenter', () => { hover = true; });
+    sw.addEventListener('mouseleave', () => { hover = false; });
+    setInterval(() => { if (!hover && !document.hidden) { on = (on + 1) % opts.length; place(); } }, 2600);
+  });
+
   /* ---------- Mobile menu ---------- */
   const menuBtn = $('#menuToggle'), menu = $('#mobileMenu');
   if (menuBtn && menu) {
