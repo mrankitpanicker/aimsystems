@@ -86,7 +86,7 @@
         <div id="breakerLab" class="tactile-raised rounded-3xl p-6 sm:p-8 space-y-5">
           <div class="space-y-1">
             <h3 class="text-base font-black font-display">Distributed circuit breaker</h3>
-            <p class="text-xs text-[var(--text-muted)]">In APEX Connect the breaker state is shared across processes through Redis, so instances don't each make their own decision. After three failures it opens and fails fast. After a cool-down, one trial request decides whether it closes again.</p>
+            <p class="text-xs text-[var(--text-muted)]">In APEX Connect the breaker state is shared across processes through Redis, so instances don't each make their own decision. After three failures it opens and fails fast. After a cool-down, one trial request decides whether it closes again. Press Run an outage once to watch the whole sequence, or step through it by hand.</p>
           </div>
           <div class="tactile-inset rounded-3xl p-5 space-y-4">
             <div class="grid grid-cols-3 gap-2.5 font-mono text-[11px] font-bold text-center">
@@ -95,10 +95,11 @@
               <div data-state="HALF_OPEN" class="breaker-state tactile-raised-sm rounded-xl py-3 text-[var(--text-muted)]"><span class="status-dot bg-amber-400 mr-1"></span>HALF-OPEN</div>
             </div>
             <div class="flex items-center justify-between text-xs font-mono"><span class="opacity-60">Consecutive failures</span><span id="breakerFails" class="font-black text-[#163387] dark:text-[#6380CE]">0 / 3</span></div>
+            <button type="button" id="breakerRun" class="btn-deploy-edge w-full py-3 text-xs"><i data-lucide="play" class="w-4 h-4"></i><span>Run an outage</span></button>
             <div class="grid grid-cols-3 gap-2">
-              <button type="button" id="breakerOk" class="tactile-convex-pill py-2.5 text-xs">Call ✓</button>
-              <button type="button" id="breakerFail" class="btn-deploy-edge py-2.5 text-xs">Fail ✕</button>
-              <button type="button" id="breakerReset" class="tactile-convex-pill py-2.5 text-xs">Reset</button>
+              <button type="button" id="breakerOk" class="tactile-convex-pill py-2 text-[11px]">Call ✓</button>
+              <button type="button" id="breakerFail" class="tactile-convex-pill py-2 text-[11px]">Fail ✕</button>
+              <button type="button" id="breakerReset" class="tactile-convex-pill py-2 text-[11px]">Reset</button>
             </div>
             <ol id="breakerLog" class="tactile-raised-sm rounded-xl p-3 font-mono text-[10.5px] space-y-1 min-h-[120px] text-[var(--text-muted)]" aria-live="polite"></ol>
           </div>

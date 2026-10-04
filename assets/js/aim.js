@@ -503,6 +503,24 @@
     $('#breakerOk').addEventListener('click', () => { const was = state; call(true); sound(state === 'OPEN' ? 'error' : was === 'HALF_OPEN' ? 'success' : 'tap'); });
     $('#breakerFail').addEventListener('click', () => { call(false); sound(state === 'OPEN' ? 'error' : 'press'); });
     $('#breakerReset').addEventListener('click', () => { clearTimeout(timer); state = 'CLOSED'; fails = 0; if (log) log.innerHTML = ''; write('reset'); paint(); });
+    // one click plays the full story: three failures, breaker opens, a call
+    // fails fast, cool-down, half-open trial, recovered
+    const runBtn = $('#breakerRun');
+    let scenario = [];
+    runBtn && runBtn.addEventListener('click', () => {
+      scenario.forEach(clearTimeout); scenario = [];
+      clearTimeout(timer); state = 'CLOSED'; fails = 0; if (log) log.innerHTML = ''; paint();
+      sound('press');
+      runBtn.disabled = true; runBtn.style.opacity = '.7';
+      const at = (ms, fn) => scenario.push(setTimeout(fn, ms));
+      at(300, () => { write('provider slows down: requests start failing'); });
+      at(900, () => { call(false); sound('tick'); });
+      at(1500, () => { call(false); sound('tick'); });
+      at(2100, () => { call(false); sound('error'); });
+      at(2900, () => { call(true); });
+      at(2100 + COOL + 300, () => { call(true); sound('success'); });
+      at(2100 + COOL + 900, () => { runBtn.disabled = false; runBtn.style.opacity = ''; });
+    });
     paint();
   }
 
