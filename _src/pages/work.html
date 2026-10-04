@@ -35,6 +35,43 @@
               <div class="tactile-inset rounded-2xl p-4"><div class="text-2xl font-black text-[#0EA5A4]">~<span data-count="45" data-suffix="%">0</span></div><div class="text-[9px] uppercase tracking-wider opacity-60 mt-1">Answer rate</div></div>
             </div>
             <p class="text-[11px] text-[var(--text-muted)]">These come from production, not a synthetic benchmark. A signed reference letter on hospital letterhead is available on request.</p>
+            <div class="tactile-inset rounded-2xl p-3 space-y-3" data-packet data-pk-hover data-every="6500" data-step="600" data-done="Campaign row complete · next number in the queue" data-idle="Campaign running · hover to replay">
+              <div class="pk-row grid grid-cols-5 gap-2">
+                <div class="pk-track hidden sm:block"><div class="pk-fill"></div></div>
+                <span class="pk-dot hidden sm:block"></span>
+                <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="Contact list uploaded · numbers validated and de-duplicated">
+                  <span class="ico-well w-8 h-8 rounded-lg"><img src="/assets/img/ico-doc.webp" alt=""></span>
+                  <span class="text-[10px] font-black leading-tight">Contact list</span>
+                  <span class="text-[8.5px] font-mono text-[var(--text-muted)] leading-tight">CSV upload</span>
+                  <span class="pk-led"></span>
+                </div>
+                <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="Dialling · AI agent speaking with the patient">
+                  <span class="ico-well w-8 h-8 rounded-lg"><img src="/assets/img/ico-phone.webp" alt=""></span>
+                  <span class="text-[10px] font-black leading-tight">AI call</span>
+                  <span class="text-[8.5px] font-mono text-[var(--text-muted)] leading-tight">Hindi · English</span>
+                  <span class="pk-led"></span>
+                </div>
+                <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="No answer · re-queued with exponential backoff">
+                  <span class="ico-well w-8 h-8 rounded-lg"><img src="/assets/img/ico-refresh.webp" alt=""></span>
+                  <span class="text-[10px] font-black leading-tight">Retry</span>
+                  <span class="text-[8.5px] font-mono text-[var(--text-muted)] leading-tight">backoff · DLQ</span>
+                  <span class="pk-led"></span>
+                </div>
+                <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="WhatsApp follow-up sent in parallel with the call">
+                  <span class="ico-well w-8 h-8 rounded-lg"><img src="/assets/img/ico-chats.webp" alt=""></span>
+                  <span class="text-[10px] font-black leading-tight">WhatsApp</span>
+                  <span class="text-[8.5px] font-mono text-[var(--text-muted)] leading-tight">in parallel</span>
+                  <span class="pk-led"></span>
+                </div>
+                <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="Outcome recorded · report updated for staff">
+                  <span class="ico-well w-8 h-8 rounded-lg"><img src="/assets/img/ico-pie.webp" alt=""></span>
+                  <span class="text-[10px] font-black leading-tight">Outcome report</span>
+                  <span class="text-[8.5px] font-mono text-[var(--text-muted)] leading-tight">per number</span>
+                  <span class="pk-led"></span>
+                </div>
+              </div>
+              <div class="tactile-raised-sm rounded-xl px-3 py-2 font-mono text-[10.5px]"><span data-pk-status>Campaign running · hover to replay</span></div>
+            </div>
           </div>
           <div class="lg:col-span-5 grid grid-cols-2 gap-4">
             <span class="ico-well aspect-square w-full"><img src="/assets/img/ico-phone.webp" alt="" loading="lazy"></span>

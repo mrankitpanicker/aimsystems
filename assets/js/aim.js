@@ -549,6 +549,127 @@
     });
   });
 
+  /* =================== Live automation ===================
+     Each widget runs itself on a timer, only while it is on screen and the
+     tab is visible, never for reduced-motion users, and pauses on hover.
+     Automatic runs are silent; a visitor's own click gets a sound. */
+  const stillMotion = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function autoplay(el, ms, fn, opts) {
+    let visible = false, hovering = false;
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(es => es.forEach(en => {
+        const was = visible; visible = en.isIntersecting;
+        if (visible && !was && opts && opts.onEnter) opts.onEnter();
+      }), { threshold: 0.35 }).observe(el);
+    } else visible = true;
+    el.addEventListener('mouseenter', () => { hovering = true; });
+    el.addEventListener('mouseleave', () => { hovering = false; });
+    if (stillMotion) return;
+    setInterval(() => { if (visible && !hovering && !document.hidden) fn(); }, ms);
+  }
+  const clock = () => new Date().toLocaleTimeString([], { hour12: false });
+
+  /* Packet pipeline */
+  $$('[data-packet]').forEach(box => {
+    const nodes = $$('.pk-node', box), dot = $('.pk-dot', box), fill = $('.pk-fill', box), row = $('.pk-row', box);
+    const status = $('[data-pk-status]', box), log = $('[data-pk-log]', box);
+    const step = +box.dataset.step || 520;
+    let running = false;
+    const centre = n => n.offsetLeft + n.offsetWidth / 2;
+    function write(msg) {
+      if (status) status.textContent = msg;
+      if (!log) return;
+      const d = document.createElement('div');
+      d.textContent = `${clock()}  ${msg}`;
+      log.appendChild(d);
+      while (log.children.length > 5) log.firstChild.remove();
+    }
+    function reset() {
+      nodes.forEach(n => n.classList.remove('is-hit', 'is-done'));
+      if (fill) fill.style.width = '0';
+      if (dot) dot.classList.remove('on', 'ok');
+    }
+    function run(manual) {
+      if (running) return;
+      running = true; reset();
+      if (manual) sound('press');
+      if (dot && nodes[0]) { dot.style.transition = 'none'; dot.style.left = centre(nodes[0]) + 'px'; dot.offsetWidth; dot.style.transition = ''; dot.classList.add('on'); }
+      nodes.forEach((n, i) => setTimeout(() => {
+        if (i) { nodes[i - 1].classList.remove('is-hit'); nodes[i - 1].classList.add('is-done'); }
+        n.classList.add('is-hit');
+        if (dot) dot.style.left = centre(n) + 'px';
+        if (fill && row) {
+          const first = centre(nodes[0]), last = centre(nodes[nodes.length - 1]);
+          fill.style.width = (((centre(n) - first) / (last - first)) * 100) + '%';
+        }
+        write(n.dataset.msg || n.textContent.trim());
+        if (manual) sound('tick');
+      }, i * step));
+      setTimeout(() => {
+        const lastN = nodes[nodes.length - 1];
+        lastN.classList.remove('is-hit'); lastN.classList.add('is-done');
+        if (dot) dot.classList.add('ok');
+        write(box.dataset.done || 'Done');
+        if (manual) sound('success');
+        setTimeout(() => { running = false; reset(); if (status && box.dataset.idle) status.textContent = box.dataset.idle; }, 1800);
+      }, nodes.length * step + 200);
+    }
+    const btn = $('[data-pk-run]', box);
+    btn && btn.addEventListener('click', () => run(true));
+    if (box.hasAttribute('data-pk-hover')) box.addEventListener('mouseenter', () => run(false));
+    autoplay(box, +box.dataset.every || 6000, () => run(false), { onEnter: () => setTimeout(() => run(false), 400) });
+  });
+
+  /* Intent router */
+  $$('[data-router]').forEach(box => {
+    const dests = $$('.rt-dest', box), lines = $$('.rt-line', box);
+    const utter = $('.rt-utter', box), status = $('[data-rt-status]', box);
+    let k = -1;
+    function go(n, manual) {
+      k = n;
+      dests.forEach((d, i) => d.classList.toggle('on', i === k));
+      lines.forEach((l, i) => l.classList.toggle('on', i === k));
+      const d = dests[k];
+      if (utter) { utter.style.opacity = '0'; setTimeout(() => { utter.textContent = d.dataset.utter; utter.style.opacity = '1'; }, 200); }
+      if (status) status.textContent = d.dataset.why;
+      if (manual) sound('toggleOn');
+    }
+    dests.forEach((d, i) => d.addEventListener('click', () => go(i, true)));
+    const btn = $('[data-rt-next]', box);
+    btn && btn.addEventListener('click', () => go((k + 1) % dests.length, true));
+    go(0);
+    autoplay(box, +box.dataset.every || 3400, () => go((k + 1) % dests.length));
+  });
+
+  /* Scaling tiers */
+  $$('[data-scale]').forEach(box => {
+    const tiers = $$('[data-tier]', box), pills = $$('.sc-pill', box), badge = $('[data-sc-badge]', box);
+    let k = 0;
+    function go(n, manual) {
+      k = n;
+      tiers.forEach((t, i) => { t.hidden = i !== k; });
+      pills.forEach((p, i) => p.classList.toggle('on', i === k));
+      if (badge) badge.textContent = tiers[k].dataset.tier;
+      if (manual) sound('toggleOn');
+    }
+    pills.forEach((p, i) => p.addEventListener('click', () => go(i, true)));
+    go(0);
+    autoplay(box, +box.dataset.every || 3800, () => go((k + 1) % tiers.length));
+  });
+
+  /* Laser circuit: steps through its pins on its own */
+  $$('[data-circuit][data-auto]').forEach(box => {
+    const pins = $$('[data-pin]', box), label = $('[data-circuit-label]', box), traces = $$('.laser-trace', box);
+    let k = -1;
+    autoplay(box, +box.dataset.auto || 1500, () => {
+      pins.forEach(p => p.classList.remove('btn-pressed-in'));
+      k = (k + 1) % pins.length;
+      pins[k].classList.add('btn-pressed-in');
+      if (label) label.textContent = pins[k].dataset.pin;
+      traces.forEach(t => t.classList.add('laser-trace-active'));
+    });
+  });
+
   /* ---------- Copy buttons ---------- */
   $$('[data-copy]').forEach(b => b.addEventListener('click', () => {
     const done = () => { sound('success'); toast('Copied'); };

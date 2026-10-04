@@ -98,6 +98,69 @@
       <p class="text-center text-[11px] font-mono text-[var(--text-muted)] mt-4">Real numbers from a live healthcare deployment of APEX Connect, not a synthetic benchmark.</p>
     </section>
 
+    <!-- LIVE PIPELINE -->
+    <section id="pipeline" class="space-y-6 reveal-on-scroll">
+      <div class="flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7952EC] dark:text-[#A78BFA]">Live pipeline</span>
+          <h2 class="text-2xl sm:text-3xl font-black font-display">Watch one call move through the system.</h2>
+          <p class="text-xs sm:text-sm text-[var(--text-muted)] font-medium mt-1 max-w-2xl">Every APEX Connect voice turn takes this path. The packet runs on its own; press the button to send another.</p>
+        </div>
+        <span class="text-xs font-mono font-bold px-3 py-1 rounded-full tactile-inset-sm text-[#7952EC] dark:text-[#A78BFA]">~0.6–1.5s per turn</span>
+      </div>
+      <div class="tactile-raised rounded-3xl p-5 sm:p-7 space-y-5" data-packet data-every="7000" data-step="560" data-done="Turn complete · the caller hears a reply in about a second" data-idle="Waiting for the next caller">
+        <div class="tactile-inset rounded-2xl p-4 sm:p-5">
+          <div class="pk-row grid grid-cols-3 lg:grid-cols-6 gap-3">
+            <div class="pk-track hidden lg:block"><div class="pk-fill"></div></div>
+            <span class="pk-dot hidden lg:block"></span>
+            <div class="pk-node tactile-raised rounded-2xl p-3 flex flex-col items-center gap-1.5 text-center" data-msg="Call connected · media stream opened">
+              <span class="ico-well w-10 h-10 rounded-xl"><img src="/assets/img/ico-phone.webp" alt=""></span>
+              <span class="text-[11px] font-black">Caller</span>
+              <span class="text-[9.5px] font-mono text-[var(--text-muted)] leading-tight">SIP · WebSocket</span>
+              <span class="pk-led mt-0.5"></span>
+            </div>
+            <div class="pk-node tactile-raised rounded-2xl p-3 flex flex-col items-center gap-1.5 text-center" data-msg="Tenant resolved · capacity slot taken · idempotency key set">
+              <span class="ico-well w-10 h-10 rounded-xl"><img src="/assets/img/ico-hierarchy.webp" alt=""></span>
+              <span class="text-[11px] font-black">Tenant</span>
+              <span class="text-[9.5px] font-mono text-[var(--text-muted)] leading-tight">limits · idempotency</span>
+              <span class="pk-led mt-0.5"></span>
+            </div>
+            <div class="pk-node tactile-raised rounded-2xl p-3 flex flex-col items-center gap-1.5 text-center" data-msg="STT streaming · partial transcript ready">
+              <span class="ico-well w-10 h-10 rounded-xl"><img src="/assets/img/ico-mic.webp" alt=""></span>
+              <span class="text-[11px] font-black">Speech-to-text</span>
+              <span class="text-[9.5px] font-mono text-[var(--text-muted)] leading-tight">streaming · Hindi/English</span>
+              <span class="pk-led mt-0.5"></span>
+            </div>
+            <div class="pk-node tactile-raised rounded-2xl p-3 flex flex-col items-center gap-1.5 text-center" data-msg="LLM streaming · first sentence ready">
+              <span class="ico-well w-10 h-10 rounded-xl"><img src="/assets/img/ico-chip.webp" alt=""></span>
+              <span class="text-[11px] font-black">LLM</span>
+              <span class="text-[9.5px] font-mono text-[var(--text-muted)] leading-tight">streaming reply</span>
+              <span class="pk-led mt-0.5"></span>
+            </div>
+            <div class="pk-node tactile-raised rounded-2xl p-3 flex flex-col items-center gap-1.5 text-center" data-msg="TTS dispatched sentence by sentence · caller hears audio">
+              <span class="ico-well w-10 h-10 rounded-xl"><img src="/assets/img/ico-headphones.webp" alt=""></span>
+              <span class="text-[11px] font-black">Text-to-speech</span>
+              <span class="text-[9.5px] font-mono text-[var(--text-muted)] leading-tight">sentence-level</span>
+              <span class="pk-led mt-0.5"></span>
+            </div>
+            <div class="pk-node tactile-raised rounded-2xl p-3 flex flex-col items-center gap-1.5 text-center" data-msg="State saved · WhatsApp confirmation queued">
+              <span class="ico-well w-10 h-10 rounded-xl"><img src="/assets/img/ico-database.webp" alt=""></span>
+              <span class="text-[11px] font-black">Effects</span>
+              <span class="text-[9.5px] font-mono text-[var(--text-muted)] leading-tight">Redis · Postgres · WhatsApp</span>
+              <span class="pk-led mt-0.5"></span>
+            </div>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-stretch">
+          <div class="md:col-span-8 tactile-inset-sm rounded-2xl p-3.5 font-mono text-[11px] text-[#163387] dark:text-[#6380CE] pk-log space-y-1" data-pk-log aria-live="polite"></div>
+          <div class="md:col-span-4 flex flex-col gap-3">
+            <div class="tactile-raised-sm rounded-2xl p-3 font-mono text-[11px]"><span class="text-[var(--text-muted)] block text-[9px] uppercase tracking-wider">Status</span><span data-pk-status>Waiting for the next caller</span></div>
+            <button type="button" data-pk-run class="btn-deploy-edge w-full py-3 text-xs"><i data-lucide="phone-call" class="w-4 h-4"></i>Send a call through</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- REEL + MONOLITH -->
     <section id="live" class="space-y-6 reveal-on-scroll">
       <div class="flex flex-wrap items-end justify-between gap-4">
