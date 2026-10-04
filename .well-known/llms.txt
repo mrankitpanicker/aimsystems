@@ -1,10 +1,11 @@
 # AIM — AI Infrastructure & Machines
-> AIM is a technology engineering agency: "Your Engineering Team, On Demand." From one senior engineer to a complete product team, AIM designs, builds, deploys and operates production-grade software, AI systems, automation and cloud infrastructure. Udyam-registered MSME based in Madhya Pradesh, India. Client Partner & Technical Lead: Ankit Panicker.
+> AIM is a technology engineering agency: "Your Engineering Team, On Demand." From one senior engineer to a complete product team, AIM designs, builds, deploys and operates production-grade software, AI systems, automation and cloud infrastructure. One team owns it, architecture to on-call: no handoffs between vendors, no orphaned code, and every build ships with monitoring, CI/CD and a runbook. AIM runs its own production platform (APEX Connect). Udyam-registered MSME based in Madhya Pradesh, India; contracts with UK and EU companies. Client Partner & Technical Lead: Ankit Panicker.
 
 ## Pages on aimsystem.in
 - [Home](https://aimsystem.in/): Positioning, services, engineering capacity, production experience, how we work.
 - [Services](https://aimsystem.in/services): Product Engineering, AI Engineering, Platform Engineering, Automation & Integrations.
 - [Hire](https://aimsystem.in/hire): One engineer, a specialist, an engineering pod or a complete product team; engagement pricing; client ownership; FAQ.
+- [UK & EU contractors](https://aimsystem.in/uk-eu): Engineers and teams for UK/European companies — overlapping hours, one B2B contract, client cloud and region, client-owned code; FAQ.
 - [Platforms](https://aimsystem.in/products): APEX Connect, AIM Remote AI, Healthcare Operations Platform (in development), outreach campaigns, R&D.
 - [Work](https://aimsystem.in/work): Selected engineering work — AI-powered patient communication (healthcare), multi-tenant institutional communication (education), digital experience engineering (hospitality, London); workloads and delivery process.
 - [Engineering](https://aimsystem.in/engineering): Engineering principles, interactive lab, security & reliability, technology.

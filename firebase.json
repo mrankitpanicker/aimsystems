@@ -158,7 +158,7 @@
         ]
       },
       {
-        "source": "/@(services|hire|products|work|engineering|about|contact|privacy)",
+        "source": "/@(services|hire|uk-eu|products|work|engineering|about|contact|privacy)",
         "headers": [
           {
             "key": "Link",

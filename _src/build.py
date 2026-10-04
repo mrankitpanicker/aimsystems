@@ -164,6 +164,7 @@ FOOTER = """
         <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--text-muted)]">Agency</div>
         <a class="block hover:text-[#7952EC]" href="/services">Services</a>
         <a class="block hover:text-[#7952EC]" href="/hire">Hire</a>
+        <a class="block hover:text-[#7952EC]" href="/uk-eu">UK &amp; EU contractors</a>
         <a class="block hover:text-[#7952EC]" href="/work">Work</a>
         <a class="block hover:text-[#7952EC]" href="/engineering">Engineering</a>
         <a class="block hover:text-[#7952EC]" href="/about">About</a>
@@ -245,7 +246,8 @@ SERVICES = [
 # Page type and breadcrumb label per page; anything else is a plain WebPage.
 PAGE_TYPES = {'about': 'AboutPage', 'contact': 'ContactPage', 'work': 'CollectionPage', 'privacy': 'WebPage'}
 CRUMBS = {'services': 'Services', 'hire': 'Hire', 'products': 'Platforms', 'work': 'Work',
-          'engineering': 'Engineering', 'about': 'About', 'contact': 'Contact', 'privacy': 'Privacy & Compliance'}
+          'engineering': 'Engineering', 'about': 'About', 'contact': 'Contact', 'privacy': 'Privacy & Compliance',
+          'uk-eu': 'UK & EU'}
 
 ORG = {
     '@type': ['Organization', 'ProfessionalService'],

@@ -73,8 +73,17 @@
                     "pricing": {
                       "type": "string"
                     },
+                    "positioning": {
+                      "type": "string"
+                    },
+                    "differentiators": {
+                      "type": "array"
+                    },
                     "process": {
                       "type": "array"
+                    },
+                    "ukEu": {
+                      "type": "object"
                     },
                     "clientOwnership": {
                       "type": "string"

@@ -35,7 +35,26 @@ const profile = {
     { name: 'Complete Product Team', detail: 'Product strategy, UX/UI, architecture, frontend, backend, AI, infrastructure, DevOps, QA, deployment, operations.' },
   ],
   pricing: 'Dedicated engineers and pods are custom engagements; product development is a scoped proposal; AI and infrastructure work is priced from the architecture.',
-  process: ['Understand', 'Architect', 'Build', 'Integrate', 'Deploy', 'Operate'],
+  positioning: 'One team owns it, architecture to on-call: architecture, backend, frontend, AI, cloud, CI/CD and monitoring, with no handoffs between vendors and no orphaned code. AIM runs production platforms itself.',
+  differentiators: [
+    'Single point of ownership: one team covers architecture, build, deploy and operate.',
+    'Runs what it builds: APEX Connect, a multi-tenant voice and WhatsApp platform, is in production for hospitals and colleges.',
+    'Every build ships with monitoring, CI/CD and a runbook; observability and documentation are never an upsell.',
+    'Named stack: Python/FastAPI, Node/TypeScript, React/Next.js, PostgreSQL, Redis, Docker, Kubernetes, Terraform on AWS, Azure or GCP.',
+    'No account managers: clients talk directly to the engineers writing the code.',
+  ],
+  process: [
+    { step: 'Discover', deliverable: 'Scope brief: goals, users, constraints and success measures.' },
+    { step: 'Architect', deliverable: 'Architecture document and infrastructure plan.' },
+    { step: 'Assemble', deliverable: 'Named team, roles and a delivery plan.' },
+    { step: 'Build', deliverable: 'Working increments in the client repository, with tests and CI.' },
+    { step: 'Deploy', deliverable: 'Production release, monitoring dashboards and a runbook.' },
+    { step: 'Operate', deliverable: 'On-call cover, regular reports and a prioritised improvement backlog.' },
+  ],
+  ukEu: {
+    page: S + '/uk-eu',
+    summary: 'Engineering contractors for UK and European companies: one B2B contract with AIM, working hours overlapping UK/CET business hours (IST is 4.5–5.5 hours ahead of the UK), work in the client cloud and chosen UK or EU region under the client data-processing terms, client owns all code.',
+  },
   clientOwnership: 'Client cloud, client API accounts, client-controlled credentials, documented deployment, source ownership, transferable infrastructure.',
   platforms: [
     { name: 'APEX Connect', url: 'https://aimstudio.co.in/app', summary: 'AI-powered customer engagement infrastructure: multi-tenant voice, messaging and AI workflows. Usage-based pricing.' },
@@ -47,7 +66,7 @@ const profile = {
     { title: 'Multi-Tenant Institutional Communication', industry: 'Education', client: 'BIMTS College', status: 'production', outcome: 'Dedicated tenant for voice outreach and WhatsApp automation.' },
     { title: 'Digital Experience Engineering', industry: 'Hospitality', client: 'Café Ciel at The OWO, London', status: 'delivered', outcome: 'Delivered on schedule on a compressed timeline.' },
   ],
-  pages: Object.fromEntries(['services', 'hire', 'products', 'work', 'engineering', 'about', 'contact', 'privacy'].map(p => [p, `${S}/${p}`])),
+  pages: Object.fromEntries(['services', 'hire', 'uk-eu', 'products', 'work', 'engineering', 'about', 'contact', 'privacy'].map(p => [p, `${S}/${p}`])),
 };
 out('data/profile.json', profile);
 

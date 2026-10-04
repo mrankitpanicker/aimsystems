@@ -11,7 +11,17 @@ Websites: https://aimsystem.in/ · https://aimstudio.co.in/
 Client Partner & Technical Lead: Ankit Panicker — works with clients to understand requirements, shape technical direction and coordinate engineering delivery.
 
 ## Positioning
-From one senior engineer to a complete product team, AIM designs, builds, deploys and operates production-grade software, AI systems, automation and cloud infrastructure.
+One team owns it, architecture to on-call. Architecture, backend, frontend, AI, cloud, CI/CD, monitoring: no handoffs between vendors, no orphaned code. AIM runs production platforms itself, so what it builds is built to stay up. From one senior engineer to a complete product team.
+
+## Why clients work with AIM
+- Architecture to on-call, one owner: one team covers architecture, build, deploy and operate, instead of three or four vendors.
+- Runs what it builds: APEX Connect, a multi-tenant voice and WhatsApp platform, is in production for hospitals and colleges.
+- Every build ships with monitoring, CI/CD and a runbook; observability and documentation are never an upsell.
+- Named stack: Python/FastAPI, Node/TypeScript, React/Next.js, PostgreSQL, Redis, Docker, Kubernetes, Terraform on AWS, Azure or GCP.
+- No account managers: clients talk directly to the engineers writing the code.
+
+## UK & EU contractors (https://aimsystem.in/uk-eu)
+Engineers, specialists, pods or complete teams for UK and European companies. One business-to-business contract with AIM. Working hours overlap UK/CET business hours (IST is 4.5 hours ahead of the UK in summer, 5.5 in winter). Work happens in the client's cloud accounts and chosen UK or EU region, under the client's security policies and data-processing terms. Client owns all code from the first commit. Delivered in London: Café Ciel at The OWO.
 
 ## Services
 - Product Engineering: SaaS, web applications, APIs, backend systems, internal platforms, enterprise applications, product modernization.
@@ -21,7 +31,7 @@ From one senior engineer to a complete product team, AIM designs, builds, deploy
 
 ## Engagement models
 One Engineer · Specialist · Engineering Pod · Complete Product Team. Start with the capacity you need and expand as the project grows.
-How we work: Discover → Architect → Assemble → Build → Deploy → Operate.
+How we work, with the deliverable of each step: Discover (scope brief) → Architect (architecture document and infrastructure plan) → Assemble (named team, roles, delivery plan) → Build (working increments in the client repository, with tests and CI) → Deploy (production release, monitoring dashboards, runbook) → Operate (on-call cover, regular reports, improvement backlog).
 Client ownership: client cloud, client API accounts, client-controlled credentials, documented deployment, source ownership, transferable infrastructure.
 
 ## Engineering principles
