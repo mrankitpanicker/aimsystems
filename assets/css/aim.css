@@ -992,3 +992,27 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .pk-node::before, .rt-dest::before { transition: opacity 1.6s var(--ease-calm) !important; }
 .pk-node > *, .rt-dest > * { transition: color 1.6s ease !important; }
 .pk-log div { animation-duration: 1s; }
+
+/* ---- Muted accents: no bright blues or neon glows in animated tiles ---- */
+.tactile-navy .pk-node::before, .tactile-navy .rt-dest::before, .tactile-navy .stk-layer::before {
+  background: linear-gradient(145deg, #2A4590 0%, #223B7E 100%) !important; }
+.tactile-navy .pk-node.is-hit, .tactile-navy .rt-dest.on, .tactile-navy .stk-layer.on {
+  box-shadow: 0 4px 12px rgba(3, 8, 30, 0.35), inset 0 0 0 1px rgba(185, 200, 255, 0.18) !important; }
+.pk-node.is-hit, .rt-dest.on, .stk-layer.on { box-shadow: 0 4px 12px rgba(11, 28, 77, 0.22) !important; }
+.pk-dot { background: #9DB0E0 !important; box-shadow: 0 0 0 3px rgba(157, 176, 224, 0.18), 0 0 6px rgba(157, 176, 224, 0.35) !important; width: 10px; height: 10px; margin: -5px 0 0 -5px; }
+.pk-dot.ok { background: #7FC4A6 !important; box-shadow: 0 0 0 3px rgba(127, 196, 166, 0.18), 0 0 6px rgba(127, 196, 166, 0.35) !important; }
+.pk-fill { background: linear-gradient(90deg, #8FA3D6, #7F92C8 60%, #7FC4A6) !important; opacity: 0.75; }
+.pk-node.is-done .pk-led { background: #7FC4A6 !important; box-shadow: none !important; }
+.pk-node.is-hit .pk-led { background: #C9D4F2 !important; box-shadow: none !important; opacity: 1; }
+.rt-line.on { stroke: #8FA3D6 !important; filter: none !important; }
+.tactile-navy .lq-lens { background: linear-gradient(145deg, #2A4590 0%, #223B7E 100%) !important; box-shadow: 0 4px 12px rgba(3, 8, 30, 0.35) !important; }
+.tactile-navy .lq-lens.lq-pill { background: #E8EEF8 !important; box-shadow: 0 3px 10px rgba(3, 8, 30, 0.3) !important; }
+/* light tiles: the active step presses softly into the surface with a faint tint; text never changes colour */
+.pk-node::before, .rt-dest::before, .stk-layer::before { background: rgba(22, 51, 135, 0.07) !important; }
+.pk-node.is-hit, .rt-dest.on, .stk-layer.on { color: inherit !important; box-shadow: var(--neu-pressed-sm) !important; border-color: rgba(22, 51, 135, 0.12) !important; }
+.pk-node.is-hit > *, .rt-dest.on > *, .stk-layer.on > * { color: inherit !important; }
+.pk-node.is-hit .pk-led { background: #8FA3D6 !important; }
+/* navy tiles keep the muted lighter-navy step */
+.tactile-navy .pk-node::before, .tactile-navy .rt-dest::before, .tactile-navy .stk-layer::before { background: linear-gradient(145deg, #2A4590 0%, #223B7E 100%) !important; }
+.tactile-navy .pk-node.is-hit, .tactile-navy .rt-dest.on, .tactile-navy .stk-layer.on { box-shadow: 0 4px 12px rgba(3, 8, 30, 0.35), inset 0 0 0 1px rgba(185, 200, 255, 0.18) !important; border-color: transparent !important; }
+.rt-dest.on [class*="text-muted"], .pk-node.is-hit [class*="text-muted"], .stk-layer.on [class*="text-muted"] { color: var(--text-muted) !important; }
