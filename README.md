@@ -1,19 +1,21 @@
 # AIM — AI Infrastructure & Machines
 
-Multi-page website for **AIM (AI Infrastructure & Machines)** at [aimsystem.in](https://aimsystem.in), with Ankit Panicker as CTO.
-Covers the products (APEX Connect, AIM / Remote AI, APEX HMS, Shortz, Apex Core, Free Tools), engineering approach,
-production work, engagement models and contact.
+Multi-page website for **AIM (AI Infrastructure & Machines)**, a technology engineering agency, at [aimsystem.in](https://aimsystem.in).
+Covers services, hiring models (an engineer, a specialist, a pod or a complete product team), platforms (APEX Connect,
+AIM / Remote AI, healthcare operations, R&D), engineering practice, case studies, the agency and contact.
 
 ## Pages
 | Path | File |
 |---|---|
 | `/` | `index.html` |
-| `/products` | `products.html` |
-| `/engineering` | `engineering.html` (interactive reliability lab) |
-| `/work` | `work.html` |
-| `/about` | `about.html` (CTO) |
-| `/engage` | `engage.html` |
+| `/services` | `services.html` |
+| `/hire` | `hire.html` (models, pricing, FAQ; `/engage` redirects here) |
+| `/products` | `products.html` (Platforms) |
+| `/work` | `work.html` (case studies) |
+| `/engineering` | `engineering.html` (principles, interactive lab, security, stack) |
+| `/about` | `about.html` (the agency, team, company details) |
 | `/contact` | `contact.html` |
+| `/privacy` | `privacy.html` (Privacy & Compliance) |
 | `/jobs` | `jobs.html` (careers, unchanged) |
 
 ## Editing
@@ -33,7 +35,7 @@ classes the pages use into `assets/css/tw.css`, and `icons.js` writes the Lucide
 ## Design & assets
 - `assets/css/aim.css` holds the tactile neumorphic design system (light "Lilac Ice" and dark "Midnight Cobalt") verbatim, with site additions at the end.
 - `assets/js/aim.js` holds all interactions: sliding nav pill, theme toggle (remembered per browser), monolith press with water ripple, folder tabs, accordions, rotary dial, rocker switch, laser-etched trace, speaker grille, Web Audio keypad, trench slider, fluid tank, circuit-breaker lab, pipeline runner and counters.
-- `assets/img/` holds transparent art cut from three sheets in `_src/`: `cto-*` (the CTO character; blazer poses are used only where the CTO is the subject), `ill-*` (illustrations) and `ico-*` (3D icons). Re-cut with `python3 _src/cut_sheets.py` (needs Pillow, numpy, scipy).
+- `assets/img/` holds transparent art cut from three sheets in `_src/`: `cto-*` (the character; blazer poses are used only where Ankit is the subject), `ill-*` (illustrations) and `ico-*` (3D icons). Re-cut with `python3 _src/cut_sheets.py` (needs Pillow, numpy, scipy).
 - After cutting, the art is AI-upscaled 2x with Real-ESRGAN by `_src/upscale.py` (instructions in the file); run it once per fresh cut.
 - The logo (`assets/img/aim-logo.webp`, favicons, share image) is cut from `_src/logo-source.webp` by `python3 _src/cut_logo.py`; the inner hexagon is transparent so it sits on the navy tile.
 - Contact details are never printed in the pages. Buttons marked `data-contact="email"` / `"phone"` copy them to the clipboard; the values live base64-encoded in `CONTACT` at the top of the contact section in `assets/js/aim.js`. Phone buttons stay hidden until `phone` is filled in.

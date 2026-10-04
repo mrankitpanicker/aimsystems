@@ -14,11 +14,12 @@ SITE = 'https://aimsystem.in'
 
 NAV = [
     ('home', '/', 'Home'),
-    ('products', '/products', 'Products'),
-    ('engineering', '/engineering', 'Engineering'),
+    ('services', '/services', 'Services'),
+    ('hire', '/hire', 'Hire'),
+    ('platforms', '/products', 'Platforms'),
     ('work', '/work', 'Work'),
-    ('about', '/about', 'CTO'),
-    ('engage', '/engage', 'Engage'),
+    ('engineering', '/engineering', 'Engineering'),
+    ('about', '/about', 'About'),
     ('contact', '/contact', 'Contact'),
 ]
 
@@ -65,16 +66,16 @@ HEAD = """<!DOCTYPE html>
 HEADER = """
   <header class="tactile-raised rounded-3xl p-3.5 sm:p-4 w-full max-w-6xl sticky top-3 z-50 backdrop-blur-md">
     <div class="flex items-center justify-between gap-3">
-      <a href="/" class="flex items-center gap-3 min-w-0" aria-label="AIM home">
-        <span class="logo-tile w-11 h-11 rounded-2xl flex items-center justify-center shrink-0">
-          <img src="/assets/img/aim-logo.webp" alt="" class="w-9 h-9">
+      <a href="/" class="flex items-center gap-2.5 sm:gap-3 min-w-0 flex-1 xl:flex-none overflow-hidden" aria-label="AIM home">
+        <span class="logo-tile w-10 h-10 sm:w-11 sm:h-11 rounded-2xl flex items-center justify-center shrink-0">
+          <img src="/assets/img/aim-logo.webp" alt="" class="w-8 h-8 sm:w-9 sm:h-9">
         </span>
         <span class="min-w-0 inline-grid gap-1">
           <span class="flex items-center justify-between gap-2 px-0.5">
-            <span class="text-[22px] font-black font-display tracking-tight leading-none">AIM</span>
+            <span class="text-lg sm:text-[22px] font-black font-display tracking-tight leading-none">AIM</span>
             <span class="brand-pill hidden sm:inline-flex items-center px-2.5 py-[4px] rounded-full text-[10.5px] font-black font-display tracking-[0.2em] uppercase text-white leading-none">Systems</span>
           </span>
-          <span class="brand-groove block tactile-inset-sm rounded-full px-2 sm:px-2.5 py-0.5 text-[8.5px] sm:text-[10px] text-[var(--text-muted)] font-semibold whitespace-nowrap">AI Infrastructure &amp; Machines</span>
+          <span class="brand-groove block tactile-inset-sm rounded-full px-2 sm:px-2.5 py-0.5 text-[8.5px] sm:text-[10px] text-[var(--text-muted)] font-semibold whitespace-nowrap truncate max-w-full">AI Infrastructure &amp; Machines</span>
         </span>
       </a>
 
@@ -83,17 +84,17 @@ HEADER = """
 {nav_links}
       </nav>
 
-      <div class="flex items-center gap-2.5">
-        <button type="button" data-sound-toggle class="tactile-convex-pill w-10 h-10 flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--text-main)]" aria-label="Mute sound effects">
+      <div class="flex items-center gap-2 sm:gap-2.5 shrink-0">
+        <button type="button" data-sound-toggle class="hidden sm:flex tactile-convex-pill w-10 h-10 items-center justify-center text-[var(--text-muted)] hover:text-[var(--text-main)]" aria-label="Mute sound effects">
           <i data-sound-icon data-lucide="volume-2" class="w-4 h-4 text-[#7952EC] dark:text-[#A78BFA]"></i>
         </button>
-        <button type="button" data-theme-toggle class="tactile-convex-pill px-3.5 py-2 text-xs flex items-center gap-2 text-[var(--text-muted)] hover:text-[var(--text-main)]" aria-label="Toggle dark mode">
+        <button type="button" data-theme-toggle class="tactile-convex-pill w-10 h-10 md:w-auto md:h-auto md:px-3.5 md:py-2 text-xs flex justify-center items-center gap-2 text-[var(--text-muted)] hover:text-[var(--text-main)]" aria-label="Toggle dark mode">
           <i data-theme-icon data-lucide="moon" class="w-4 h-4 text-[#7952EC] dark:text-[#A78BFA]"></i>
           <span data-theme-label class="hidden md:inline">Midnight Cobalt</span>
         </button>
         <a href="/contact" class="btn-deploy-edge px-4 sm:px-5 py-2.5 text-xs tracking-wide hidden sm:inline-flex">
-          <i data-lucide="zap" class="w-3.5 h-3.5 opacity-90"></i>
-          <span>Start a project</span>
+          <i data-lucide="send" class="w-3.5 h-3.5 opacity-90"></i>
+          <span>Discuss Your Project</span>
         </a>
         <button type="button" id="menuToggle" class="xl:hidden tactile-convex-pill w-10 h-10 flex items-center justify-center" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
           <i data-lucide="menu" class="w-4 h-4"></i>
@@ -103,6 +104,7 @@ HEADER = """
 
     <nav id="mobileMenu" aria-label="Mobile" class="xl:hidden grid-cols-2 sm:grid-cols-4 gap-2.5 pt-4">
 {mobile_links}
+      <button type="button" data-sound-toggle class="sm:hidden tactile-convex-pill px-4 py-2.5 text-xs inline-flex items-center justify-center gap-2"><i data-sound-icon data-lucide="volume-2" class="w-4 h-4 text-[#7952EC]"></i>Sound</button>
     </nav>
   </header>
 
@@ -122,39 +124,45 @@ FOOTER = """
             <div class="text-[11px] text-[var(--text-muted)]">AI Infrastructure &amp; Machines</div>
           </div>
         </div>
-        <p class="text-xs text-[var(--text-muted)] leading-relaxed">Infrastructure behind real-world software: voice AI, automation, queues, workers, offline-first systems and the failure paths in between. Built in Madhya Pradesh, India.</p>
-        <p class="inline-flex items-center gap-2 tactile-inset-sm rounded-full px-3 py-1.5 text-[10px] font-mono font-bold"><img src="/assets/img/ico-bank.webp" alt="" class="w-4 h-4 object-contain">Registered by Govt. of India · Udyam MSME</p>
-        <p class="text-xs font-mono font-bold text-[#163387] dark:text-[#A78BFA]">Build for the failure path first.</p>
+        <p class="text-xs text-[var(--text-muted)] leading-relaxed">A technology engineering agency. We design, build, deploy and operate software, AI systems, automation and cloud infrastructure.</p>
+        <div class="flex flex-wrap gap-2">
+          <a href="/contact" class="btn-deploy-edge px-4 py-2 text-[11px]">Discuss Your Project</a>
+          <a href="/hire" class="tactile-convex-pill px-4 py-2 text-[11px] inline-flex items-center">Hire Engineering Capacity</a>
+        </div>
       </div>
       <div class="md:col-span-2 space-y-2.5 text-xs">
-        <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--text-muted)]">Company</div>
-        <a class="block hover:text-[#7952EC]" href="/about">About the CTO</a>
-        <a class="block hover:text-[#7952EC]" href="/work">Production work</a>
-        <a class="block hover:text-[#7952EC]" href="/engage">Engagements</a>
+        <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--text-muted)]">Agency</div>
+        <a class="block hover:text-[#7952EC]" href="/services">Services</a>
+        <a class="block hover:text-[#7952EC]" href="/hire">Hire</a>
+        <a class="block hover:text-[#7952EC]" href="/work">Work</a>
+        <a class="block hover:text-[#7952EC]" href="/engineering">Engineering</a>
+        <a class="block hover:text-[#7952EC]" href="/about">About</a>
         <a class="block hover:text-[#7952EC]" href="/jobs">Careers</a>
-        <a class="block hover:text-[#7952EC]" href="/contact">Contact</a>
       </div>
       <div class="md:col-span-3 space-y-2.5 text-xs">
-        <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--text-muted)]">Products</div>
+        <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--text-muted)]">Platforms</div>
         <a class="block hover:text-[#7952EC]" href="/products#apex-connect">APEX Connect</a>
-        <a class="block hover:text-[#7952EC]" href="/products#aim-remote">AIM · Remote AI (free)</a>
-        <a class="block hover:text-[#7952EC]" href="/products#apex-hms">APEX HMS</a>
-        <a class="block hover:text-[#7952EC]" href="/products#shortz">Shortz AI Pipeline</a>
-        <a class="block hover:text-[#7952EC]" href="/products#apex-core">Apex Core</a>
-        <a class="block hover:text-[#7952EC]" href="https://aimstudio.co.in/freetools/" target="_blank" rel="noopener">Free Tools ↗</a>
+        <a class="block hover:text-[#7952EC]" href="/products#aim-remote">AIM Remote AI</a>
+        <a class="block hover:text-[#7952EC]" href="/products#healthcare">Healthcare Operations Platform</a>
+        <a class="block hover:text-[#7952EC]" href="/products#rnd">Research &amp; Development</a>
+        <a class="block hover:text-[#7952EC]" href="/privacy">Privacy &amp; Compliance</a>
       </div>
       <div class="col-span-2 md:col-span-3 space-y-2.5 text-xs">
-        <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--text-muted)]">Reach us</div>
-        <button type="button" data-contact="email" class="tactile-convex-pill px-3.5 py-1.5 text-[11px] inline-flex items-center gap-1.5"><i data-lucide="mail" class="w-3.5 h-3.5"></i>Copy email</button>
-        <button type="button" data-contact="phone" hidden class="tactile-convex-pill px-3.5 py-1.5 text-[11px] inline-flex items-center gap-1.5"><i data-lucide="phone" class="w-3.5 h-3.5"></i>Copy phone</button>
-        <a class="block hover:text-[#7952EC]" href="https://aimstudio.co.in/" target="_blank" rel="noopener">aimstudio.co.in ↗</a>
-        <a class="block hover:text-[#7952EC]" href="https://aimstudio.co.in/developer-docs" target="_blank" rel="noopener">Developer docs ↗</a>
-        <p class="text-[var(--text-muted)]">Madhya Pradesh, India · IST (UTC+5:30)<br>UK/EU morning overlap · Registered by Govt. of India</p>
+        <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--text-muted)]">Contact</div>
+        <div class="flex flex-wrap gap-2">
+          <button type="button" data-contact="email" class="tactile-convex-pill px-3.5 py-1.5 text-[11px] inline-flex items-center gap-1.5"><i data-lucide="mail" class="w-3.5 h-3.5"></i>Business email</button>
+          <button type="button" data-contact="phone" hidden class="tactile-convex-pill px-3.5 py-1.5 text-[11px] inline-flex items-center gap-1.5"><i data-lucide="phone" class="w-3.5 h-3.5"></i>Phone</button>
+        </div>
+        <p class="text-[var(--text-muted)]">Madhya Pradesh, India<br>Working with clients in India, the UK and Europe</p>
+        <div class="flex gap-3">
+          <a class="hover:text-[#7952EC] inline-flex items-center gap-1.5" href="https://github.com/mrankitpanicker" target="_blank" rel="noopener"><i data-lucide="github" class="w-4 h-4"></i>GitHub</a>
+          <a data-social="linkedin" hidden class="hover:text-[#7952EC] inline-flex items-center gap-1.5" href="#" target="_blank" rel="noopener"><i data-lucide="linkedin" class="w-4 h-4"></i>LinkedIn</a>
+        </div>
       </div>
     </div>
     <div class="text-center text-[11px] font-mono text-[var(--text-muted)] py-6 space-y-1">
-      <div>© <span data-year>2026</span> AIM — AI Infrastructure &amp; Machines · Registered by Govt. of India · Ankit Panicker, CTO</div>
-      <div class="opacity-70">aimsystem.in · aimstudio.co.in · aimmarketing.in</div>
+      <div>© <span data-year>2026</span> AI Infrastructure &amp; Machines (AIM) · Udyam-registered MSME · <a class="underline underline-offset-2" href="/privacy">Privacy &amp; Compliance</a></div>
+      <div class="opacity-70">aimsystem.in · aimstudio.co.in</div>
     </div>
   </footer>
 
@@ -173,7 +181,7 @@ FOOTER = """
       <div id="aimBotChips" class="aimbot-chips"></div>
       <form id="aimBotForm" class="aimbot-form">
         <label for="aimBotInput" class="sr-only">Your question</label>
-        <input id="aimBotInput" type="text" autocomplete="off" placeholder="Ask about pricing, products, hiring…" class="aimbot-input">
+        <input id="aimBotInput" type="text" autocomplete="off" placeholder="Ask about services, hiring, pricing…" class="aimbot-input">
         <button type="submit" class="btn-deploy-edge w-10 h-10 shrink-0" aria-label="Send"><i data-lucide="send" class="w-4 h-4"></i></button>
       </form>
     </section>
@@ -203,7 +211,7 @@ def nav_html(active):
         links.append(f'        <a href="{href}"{cur} class="nav-link relative z-10 px-3.5 py-2 rounded-full transition-colors">{label}</a>')
         cls = 'btn-deploy-edge' if key == active else 'tactile-convex-pill'
         mobile.append(f'      <a href="{href}"{cur} class="{cls} px-4 py-2.5 text-xs text-center">{label}</a>')
-    mobile.append('      <a href="/jobs" class="tactile-convex-pill px-4 py-2.5 text-xs text-center">Careers</a>')
+    mobile.append('      <a href="/contact" class="btn-deploy-edge col-span-2 sm:col-span-1 px-4 py-2.5 text-xs text-center">Discuss Your Project</a>')
     return '\n'.join(links), '\n'.join(mobile)
 
 

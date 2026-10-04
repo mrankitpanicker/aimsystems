@@ -4,8 +4,9 @@ import os, re
 from bs4 import BeautifulSoup, NavigableString, Comment
 
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
-PAGES = [('Home', '/', 'index.html'), ('Products', '/products', 'products.html'), ('Engineering', '/engineering', 'engineering.html'),
-         ('Work', '/work', 'work.html'), ('CTO', '/about', 'about.html'), ('Engage', '/engage', 'engage.html'), ('Contact', '/contact', 'contact.html')]
+PAGES = [('Home', '/', 'index.html'), ('Services', '/services', 'services.html'), ('Hire', '/hire', 'hire.html'),
+         ('Platforms', '/products', 'products.html'), ('Work', '/work', 'work.html'), ('Engineering', '/engineering', 'engineering.html'),
+         ('About', '/about', 'about.html'), ('Contact', '/contact', 'contact.html'), ('Privacy & Compliance', '/privacy', 'privacy.html')]
 BLOCK = {'h1', 'h2', 'h3', 'h4', 'p', 'li', 'blockquote', 'figcaption', 'button', 'a', 'label', 'option', 'span', 'b', 'div'}
 
 

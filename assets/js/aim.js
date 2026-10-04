@@ -553,6 +553,9 @@
      Stored encoded so the address isn't sitting in the HTML for scrapers.
      To show the phone buttons, set phone to the base64 of the number. */
   const CONTACT = { email: 'YW5raXRAYWltc3lzdGVtLmlu', phone: '' };
+  // social profile links; a link stays hidden until its URL is set here
+  const SOCIAL = { linkedin: '' };
+  $$('[data-social]').forEach(a => { const u = SOCIAL[a.dataset.social]; if (u) { a.href = u; a.hidden = false; } });
   const contactValue = k => { try { return CONTACT[k] ? atob(CONTACT[k]) : ''; } catch (e) { return ''; } };
   $$('[data-contact]').forEach(btn => {
     const kind = btn.dataset.contact, value = contactValue(kind);
@@ -702,44 +705,48 @@
     };
     const L = (slug, text, hash) => `<a href="${href(slug)}${hash ? '#' + hash : ''}">${text}</a>`;
     const KB = [
-      { k: ['price', 'pricing', 'cost', 'plan', 'plans', '₹', 'rupee', 'subscription', 'how much', 'charges', 'fee'],
-        a: () => `APEX Connect is priced per tenant a month: <b>₹4,999</b> with your own SIP carrier, or all-inclusive plans: <b>Starter ₹14,999</b> (2,000 AI calls), <b>Growth ₹29,999</b> (4,500) and <b>Scale ₹49,999</b> (10,000). Business, Enterprise and White-label are custom. ${L('products', 'See all plans', 'apex-connect')}.` },
-      { k: ['apex connect', 'voice agent', 'voice ai', 'receptionist', 'appointment', 'calls', 'calling', 'campaign', 'whatsapp'],
-        a: () => `APEX Connect is our multi-tenant SaaS for AI voice agents, an AI receptionist, appointment booking and WhatsApp automation, in Hindi and English. ${L('products', 'Read more', 'apex-connect')}, or try the <a href="https://aimstudio.co.in/app" target="_blank" rel="noopener">live platform ↗</a>.` },
-      { k: ['carrier', 'sip', 'twilio', 'telnyx', 'vapi', 'language', 'hindi', 'english'],
-        a: () => `It works with Twilio, Telnyx, Vapi and Indian SIP trunk providers, plus the WhatsApp Business API. Calls run in Hindi and English.` },
-      { k: ['remote ai', 'aim app', 'free', 'download', 'windows', 'android', 'chrome', 'operating layer'],
-        a: () => `AIM is our free AI operating layer: it runs on your Windows PC and lets your phone, desktop and voice see, control and hand work to that machine. Local models or OpenAI, Gemini, Claude, OpenRouter, Groq. ${L('products', 'Get it free', 'aim-remote')}.` },
-      { k: ['hms', 'hospital management', 'offline', 'clinic software'],
-        a: () => `APEX HMS is an offline-first hospital platform (OPD/IPD, beds, pharmacy, lab, billing) built on a write-ahead log, replay and tamper-evident audit chains. It is still under active construction. ${L('products', 'Details', 'apex-hms')}.` },
-      { k: ['shortz', 'video', 'media'],
-        a: () => `Shortz is a local AI video pipeline: script → TTS → voice alignment → subtitles → FFmpeg render, with timing and failure classification for every stage. ${L('products', 'Run the demo', 'shortz')}.` },
-      { k: ['tool', 'pdf', 'image', 'converter'],
-        a: () => `Our Free Tools are browser-based PDF, image, audio and video utilities. Files are processed on your device and never uploaded. <a href="https://aimstudio.co.in/freetools/" target="_blank" rel="noopener">Open Free Tools ↗</a>` },
-      { k: ['hire', 'team', 'engineer', 'developer', 'build', 'project', 'engage', 'engagement', 'retainer', 'rescue', 'review', 'incident'],
-        a: () => `You can hire one dedicated engineer or a team sized to the scope. Engagements: AI platform build (4–12 weeks), architecture review & rescue (1–2 weeks), incident response, and fractional platform engineering (3–6 months). ${L('engage', 'See how it works')}.` },
-      { k: ['result', 'client', 'case', 'apple hospital', 'bimts', 'cafe', 'proof', 'production'],
-        a: () => `At Apple Hospital, APEX Connect dialled <b>15,000+</b> calls with <b>6,800+</b> answered (about 45%). We also run a platform for BIMTS College and delivered Café Ciel in London. ${L('work', 'See the work')}.` },
-      { k: ['cto', 'ankit', 'founder', 'who', 'about', 'leader'],
-        a: () => `Ankit Panicker is the CTO: an AI systems engineer and software architect focused on reliability. His principle: design for the failure path first. ${L('about', 'Meet the CTO')}.` },
-      { k: ['stack', 'technology', 'tech', 'python', 'fastapi', 'redis', 'kubernetes', 'reliab', 'circuit', 'architecture'],
-        a: () => `Core stack: Python/FastAPI, Redis queues and workers, PostgreSQL, TypeScript/React, Docker, Kubernetes, Terraform and Prometheus/Grafana, with circuit breakers, idempotency and backpressure throughout. ${L('engineering', 'Try the reliability lab')}.` },
-      { k: ['where', 'location', 'based', 'india', 'timezone', 'uk', 'eu', 'register', 'udyam', 'msme', 'ir35'],
-        a: () => `AIM is based in Madhya Pradesh, India, and registered by the Government of India (Udyam MSME). We work with India, UK and EU clients, with full UK/EU morning overlap, on B2B contracts outside IR35.` },
-      { k: ['contact', 'email', 'mail', 'reach', 'talk', 'call you', 'phone', 'number', 'quote', 'demo', 'meeting'],
-        a: () => `The quickest route is the ${L('contact', 'project brief')}: the CTO reads every one. You can also <button type="button" class="aimbot-link" data-bot-copy="email">copy our email address</button>.` },
+      { k: ['hire', 'engineer', 'developer', 'capacity', 'staff', 'team', 'pod', 'specialist', 'resource'],
+        a: () => `You can hire <b>one engineer</b>, a <b>specialist</b>, an <b>engineering pod</b> or a <b>complete product team</b>. Start with the capacity you need and expand as the project grows. ${L('hire', 'Compare the options')}.` },
+      { k: ['service', 'build', 'what do you do', 'offer', 'saas', 'web app', 'api', 'product engineering'],
+        a: () => `We work across four areas: Product Engineering, AI Engineering, Platform Engineering, and Automation & Integrations. ${L('services', 'See our services')}.` },
+      { k: ['ai', 'llm', 'agent', 'rag', 'voice ai', 'stt', 'tts', 'chatbot'],
+        a: () => `Our AI engineering covers LLM applications, AI agents, RAG, voice AI (speech-to-text and text-to-speech) and AI orchestration inside real products. ${L('services', 'AI Engineering', 'ai')}.` },
+      { k: ['cloud', 'kubernetes', 'devops', 'infrastructure', 'ci/cd', 'terraform', 'observability', 'platform engineering'],
+        a: () => `Platform Engineering covers cloud, Kubernetes, infrastructure-as-code, CI/CD, observability and reliability engineering. ${L('services', 'Read more', 'platform')}.` },
+      { k: ['automation', 'integration', 'crm', 'whatsapp', 'telephony', 'workflow'],
+        a: () => `We connect systems and automate workflows: API and CRM integrations, WhatsApp, telephony, business process automation and data pipelines. ${L('services', 'Read more', 'automation')}.` },
+      { k: ['price', 'pricing', 'cost', 'quote', 'proposal', 'rate', 'budget', 'how much'],
+        a: () => `Dedicated engineers and pods are custom engagements, product development is a scoped proposal, and AI or infrastructure work is priced from the architecture. ${L('hire', 'Engagement pricing', 'pricing')}, or ${L('contact', 'request a proposal')}.` },
+      { k: ['apex', 'connect', 'platform', 'voice agent', 'calling', 'campaign'],
+        a: () => `APEX Connect is our AI-powered customer engagement infrastructure: a multi-tenant platform for voice, messaging and AI workflows. Pricing is usage-based. ${L('products', 'See the platform', 'apex-connect')}.` },
+      { k: ['hospital', 'healthcare', 'hms', 'clinic'],
+        a: () => `Our Healthcare Operations Platform (in development) manages hospital workflows, patient operations and clinical administration. We also run automated patient outreach in production. ${L('products', 'Learn more', 'healthcare')}.` },
+      { k: ['case', 'client', 'result', 'work', 'portfolio', 'experience', 'proof'],
+        a: () => `Highlights: 15K+ production calls processed and 6.8K+ answered for Apple Hospital, a multi-tenant platform for BIMTS College, and a digital experience for Café Ciel in London. ${L('work', 'See case studies')}.` },
+      { k: ['security', 'privacy', 'gdpr', 'data', 'compliance', 'secure'],
+        a: () => `We build in authentication, authorization, tenant isolation, encryption, audit logging, monitoring and recovery. ${L('privacy', 'Privacy & Compliance')} explains how data is handled.` },
+      { k: ['own', 'ownership', 'source code', 'our cloud', 'credentials'],
+        a: () => `You keep ownership: we deploy into your cloud with your accounts and credentials, document the deployment and hand over the source.` },
+      { k: ['ankit', 'contact person', 'who', 'lead', 'talk'],
+        a: () => `Ankit Panicker is our Client Partner & Technical Lead. He works with clients on requirements, technical direction and delivery. ${L('contact', 'Talk to Ankit')}.` },
+      { k: ['where', 'location', 'based', 'india', 'timezone', 'uk', 'europe', 'msme', 'udyam', 'company'],
+        a: () => `AIM is a Udyam-registered MSME based in Madhya Pradesh, India, working with clients in India, the UK and Europe. ${L('about', 'About the agency', 'company')}.` },
+      { k: ['contact', 'email', 'mail', 'reach', 'phone', 'number', 'meeting', 'call you', 'start'],
+        a: () => `The quickest route is to ${L('contact', 'send a project brief')}. You can also <button type="button" class="aimbot-link" data-bot-copy="email">copy our business email</button>.` },
+      { k: ['job', 'career', 'join', 'vacancy', 'opening'],
+        a: () => `We're always interested in strong engineers. ${L('jobs', 'See open positions')}.` },
       { k: ['hi', 'hello', 'hey', 'namaste', 'hii'],
-        a: () => `Hello! I can tell you about pricing, our products, hiring a team, results or how to reach us.` },
+        a: () => `Hello! I can help with our services, hiring engineers or a team, pricing, platforms and case studies.` },
       { k: ['thank', 'thanks', 'great', 'ok', 'cool'],
         a: () => `Happy to help. Anything else?` },
     ];
-    const CHIPS = ['Pricing', 'APEX Connect', 'Hire a team', 'Results', 'Contact'];
+    const CHIPS = ['Hire engineers', 'Services', 'Pricing', 'Case studies', 'Contact'];
     const score = (q, e) => e.k.reduce((n, w) => n + (q.includes(w) ? w.length : 0), 0);
     function answer(text) {
       const q = ' ' + text.toLowerCase() + ' ';
       let best = null, top = 0;
       KB.forEach(e => { const sc = score(q, e); if (sc > top) { top = sc; best = e; } });
-      return best ? best.a() : `I'm not sure about that one. Send it in a ${L('contact', 'project brief')} and the CTO will reply, or ask me about pricing, products, hiring or results.`;
+      return best ? best.a() : `I don't have an answer for that here. Send it in a ${L('contact', 'project brief')} and our team will reply, or ask me about services, hiring, pricing or our work.`;
     }
     function add(html, who) {
       const d = document.createElement('div');
@@ -767,7 +774,7 @@
       toggle.setAttribute('aria-expanded', String(open));
       if (open) {
         sound('pop');
-        if (!greeted) { greeted = true; add(`Hi, I'm the AIM assistant. Ask me about pricing, APEX Connect, hiring one engineer or a full team, or how to reach the CTO.`, 'bot'); }
+        if (!greeted) { greeted = true; add(`Hi, I'm the AIM assistant. Ask me about our services, hiring an engineer or a full team, pricing or our work.`, 'bot'); }
         setTimeout(() => input.focus(), 250);
       }
     }

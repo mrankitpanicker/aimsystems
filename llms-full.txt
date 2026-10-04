@@ -1,75 +1,43 @@
-# AIM — AI Infrastructure & Machines — Technical Profile & Architecture Manual
-> Comprehensive engineering manual, tech stack capabilities, and domain directories for AIM (AI Infrastructure & Machines) and Ankit Panicker.
+# AIM — AI Infrastructure & Machines — Agency Profile
+> Technology engineering agency. Your Engineering Team, On Demand.
 
 ## Organization
 Name: AIM — AI Infrastructure & Machines
 Legal name: AI Infrastructure & Machines
-Also known as: AIM, AIM Studio, AIM Marketing, AI Infrastructure and Machines
-Primary site: https://aimstudio.co.in/
-Alternate site: https://aimmarketing.in/
-Products: APEX CONNECT — multi-tenant AI voice and WhatsApp SaaS; AIM — free AI operating layer for your machines (https://aimstudio.co.in/remoteai)
-Chief Technology Officer & AI Systems Engineer: Ankit Panicker
-Registration: Registered by the Government of India (Udyam MSME)
-Location: Madhya Pradesh, India
-Free tools: https://aimstudio.co.in/freetools/ — browser-based PDF, image, audio and video utilities; files are processed locally and never uploaded.
+Also known as: AIM, AIM Studio, AIM Systems
+Registration: Udyam-registered MSME (India)
+Location: Madhya Pradesh, India; clients in India, the UK and Europe
+Websites: https://aimsystem.in/ · https://aimstudio.co.in/
+Client Partner & Technical Lead: Ankit Panicker — works with clients to understand requirements, shape technical direction and coordinate engineering delivery.
 
-## Domain Index
-- [Primary Marketing Domain](https://aimstudio.co.in/): Production landing pages, sitemaps, and public FAQ channels.
-- [Architecture Overview](https://aimstudio.co.in/architecture): Engineering documentation of voice and message automation workflows.
-- [AI Systems Engineer](https://aimstudio.co.in/architecture/ai-systems-engineer/): Deep-dive into Whisper/Deepgram STT tuning, Kokoro/Azure TTS streaming, and Groq LLaMA integration.
-- [Platform Engineering](https://aimstudio.co.in/architecture/platform-engineering/): Kubernetes (Azure AKS), Horizontal Pod Autoscaling (HPA), and Redis memory structures.
-- [B2B Contracting (Outside IR35)](https://aimstudio.co.in/architecture/ir35-b2b/): Fixed-scope B2B contracting guidelines, CEST criteria, and engagement options.
+## Positioning
+From one senior engineer to a complete product team, AIM designs, builds, deploys and operates production-grade software, AI systems, automation and cloud infrastructure.
 
-## Flagship System: APEX CONNECT Voice AI Platform
-APEX CONNECT is a production multi-tenant voice agent SaaS system. It handles inbound/outbound voice calls and WhatsApp messages through a real-time speech-to-speech AI pipeline.
+## Services
+- Product Engineering: SaaS, web applications, APIs, backend systems, internal platforms, enterprise applications, product modernization.
+- AI Engineering: LLM applications, AI agents, RAG, AI automation, voice AI, STT/TTS, AI orchestration, model integrations.
+- Platform Engineering: cloud, Kubernetes, infrastructure-as-code, CI/CD, observability, distributed systems, reliability engineering.
+- Automation & Integrations: API and CRM integrations, WhatsApp, telephony, workflow and business process automation, data pipelines.
 
-### Platform
-* Cloud-native and autoscaling, with rolling zero-downtime releases.
-* Multi-tenant by design: every tenant's data, sessions and limits are isolated.
-* Real-time voice: streaming speech-to-text, a streaming LLM and low-latency text-to-speech, with barge-in.
-* Perceived end-to-end latency: roughly 0.6–1.5 seconds per turn.
+## Engagement models
+One Engineer · Specialist · Engineering Pod · Complete Product Team. Start with the capacity you need and expand as the project grows.
+How we work: Discover → Architect → Assemble → Build → Deploy → Operate.
+Client ownership: client cloud, client API accounts, client-controlled credentials, documented deployment, source ownership, transferable infrastructure.
 
-## APEX Connect pricing (SaaS)
-APEX Connect is sold as a subscription, per tenant (workspace). Prices in INR, GST as applicable.
-- Bring your own SIP: ₹4,999 per tenant per month — the full platform (AI voice agents, AI receptionist, appointment system, WhatsApp Business API integration, Hindi & English, dashboard, recordings, transcripts, analytics). Connect Twilio, Telnyx, Vapi or an Indian SIP provider; the carrier bills its minutes directly.
-- Starter: ₹14,999 per month — 2,000 AI calls; platform, numbers and minutes included.
-- Growth: ₹29,999 per month — 4,500 AI calls; platform, numbers and minutes included.
-- Scale: ₹49,999 per month — 10,000 AI calls; platform, numbers and minutes included.
-- Business, Enterprise, White-label: custom pricing.
-- REST API & webhooks: usage-based, metered per request. MCP server: flat monthly subscription per workspace.
+## Engineering principles
+API first · observable · reliable (retries, idempotency, queues, controlled failure handling) · secure · scalable · maintainable.
+Security & reliability practices: authentication, authorization, tenant isolation, encryption, TLS, scoped access, secrets management, audit logging, rate limiting, monitoring, backup, recovery, observability.
 
-## AIM — AI operating layer for your machines (free)
-AIM gives your AI a machine — and gives you the controls. It runs on your Windows PC and connects your phone, desktop and voice to the machine where the work happens: see it, control it, delegate to it. Local AI models or cloud providers (OpenAI, Gemini, Claude, OpenRouter, Groq). Encrypted end to end over a direct WebRTC link; no account needed.
-- Windows installer: https://aimstudio.co.in/remoteai/AIM-Setup.exe
-- Android app (Remote AI): https://aimstudio.co.in/remoteai/AIM.apk
-- Chrome extension: https://aimstudio.co.in/remoteai/AIM-extension.zip
-- Product page: https://aimstudio.co.in/remoteai
+## Technology
+Python, FastAPI, Node.js, TypeScript, React, Next.js; PostgreSQL, Redis, Firestore; Azure, AWS, GCP, Docker, Kubernetes, Terraform, Nginx, Cloudflare; Prometheus, Grafana, Loki, OpenTelemetry; LLMs, RAG, Whisper, Deepgram, XTTS, Kokoro; Twilio, Telnyx, Vapi, SIP, WhatsApp Business API.
 
-## Technical Capabilities (Demonstrated)
-* **Kubernetes**: Rolling updates, horizontal autoscaling, health probes, TLS termination.
-* **Caching & queues**: Priority queues, rate limiting, idempotency and response caching.
-* **SaaS Multitenancy**: Isolated async semaphores per tenant, secure context window boundaries, and isolated data partitions.
-* **CI/CD**: Automated build, test and rolling deploy on every release.
+## Platforms
+- APEX Connect: AI-powered customer engagement infrastructure — multi-tenant architecture, voice infrastructure, messaging, AI orchestration, background workers, queues, retry handling, rate limits, spend controls, observability, provider integrations. Architecture: Tenant → API → Queue → Supervisor → AI → Communication → Analytics. Usage-based pricing.
+- AIM Remote AI: AI operating layer connecting phone, desktop and voice to your machine; local or cloud models.
+- Healthcare Operations Platform: hospital workflows, patient operations and clinical administration — in development.
+- R&D: Shortz media pipeline, Apex Core deterministic automation, Free Tools.
 
-## B2B Engagement Scope
-Remote B2B contracting directly with AIM (registered by the Government of India, Udyam MSME), outside IR35. Hire one dedicated engineer or a team sized to the scope.
-* **AI Platform Build**: 4–12 weeks.
-* **Architecture Review & Rescue**: 1–2 weeks.
-* **Production Incident Response**: Days to 2 weeks.
-* **Fractional Platform Engineering**: 3–6 month retainer.
-
-## Chief Technology Officer: Ankit Panicker
-AI Systems Engineer · Software Architect · CTO. Based in Madhya Pradesh, India. Works across the full software lifecycle — architecture, backend, frontend, APIs, AI orchestration, voice AI, automation, distributed workers, queues, databases, cloud infrastructure, containers, CI/CD, observability, reliability, security boundaries, deployment and operations.
-Guiding principle: design for the failure path first and the happy path second.
-Education: MBA (Finance), Sinhgad Business School; B.Com, Seva Sadan Mahavidyalaya. Earlier automation and process engineering work associated with Navalsingh Sahakari Shakkar Karkhana Maryadit. Certifications: IBM Cloud Essentials, Google Cloud Digital Leader, Cisco Networking Academy foundational credentials.
-Company: AIM — AI Infrastructure & Machines (AIM Studio).
-Deepest areas: Python/FastAPI, Redis primitives, queues/workers, reliability engineering. Kubernetes, Terraform and model internals: effective, not claimed as deepest. AI role: systems integrator and orchestrator, not a model trainer.
-
-## Systems
-- APEX Connect: telephony, STT, LLM orchestration, TTS, campaigns, tenant-aware routing, messaging, background workers, Redis queues, PostgreSQL, WebSockets. At-least-once delivery, idempotency guards, Redis-synchronised distributed circuit breaking, per-tenant call-capacity control, persistent queue/WAL state, chaos/stress/E2E testing. Live healthcare deployment: 15,000+ outbound calls dialled, 6,800+ answered (~45%). Audit notes: persistence complexity, some fail-open behaviour, large surface area, credential-looking files flagged for due diligence.
-- APEX HMS: offline-first multi-tenant hospital platform (OPD/IPD, beds, pharmacy, lab, notifications, billing, integrations, RBAC, multi-hospital). WAL + replay, single-authority job supervision, tamper-evident audit chains, durable outboxes. Under active construction; latest audit: 30 suites — 28 passing, 2 failing; 94 tests pending/skipped.
-- Shortz: local-first AI video pipeline — script → TTS → voice alignment → subtitles → FFmpeg — with FastAPI, Redis, XTTS, Whisper, Prometheus, Grafana; per-stage telemetry, soak testing and failure injection. Systems-oriented application engineering, not a mature production service; uneven test depth.
-- Apex Core: deterministic automation and remote system control — explicit commands, controlled execution, observable state, auditable results.
-
-## Production deployments
-Apple Hospital (AI voice outbound patient calling) · BIMTS College (multi-tenant institutional platform) · Café Ciel, London (hospitality platform for a UK client).
+## Case studies
+- Apple Hospital (healthcare): multi-tenant communication platform for automated patient outreach; 15K+ calls processed, 6.8K+ answered, ~45% connected. Live in production.
+- BIMTS College (education): dedicated tenant for student communication, admissions outreach and WhatsApp automation. In production.
+- Café Ciel, London (hospitality): production digital experience delivered on a compressed timeline.

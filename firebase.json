@@ -127,6 +127,13 @@
         "source": "/apply",
         "destination": "/jobs.html"
       }
+    ],
+    "redirects": [
+      {
+        "source": "/engage",
+        "destination": "/hire",
+        "type": 301
+      }
     ]
   },
   "firestore": {

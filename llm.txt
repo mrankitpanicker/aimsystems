@@ -1,36 +1,34 @@
 # AIM — AI Infrastructure & Machines
-> AIM (also AIM Studio) builds the infrastructure behind real-world software: APEX Connect, a multi-tenant AI voice agent and WhatsApp automation SaaS; AIM, a free AI operating layer that gives your AI a machine; and offline-first, reliability-focused systems. Registered by the Government of India (Udyam MSME), based in Madhya Pradesh, India. CTO & AI Systems Engineer: Ankit Panicker.
+> AIM is a technology engineering agency: "Your Engineering Team, On Demand." From one senior engineer to a complete product team, AIM designs, builds, deploys and operates production-grade software, AI systems, automation and cloud infrastructure. Udyam-registered MSME based in Madhya Pradesh, India. Client Partner & Technical Lead: Ankit Panicker.
 
 ## Pages on aimsystem.in
-- [Home](https://aimsystem.in/): What AIM builds, products, process and production proof.
-- [Products](https://aimsystem.in/products): APEX Connect (with pricing), AIM / Remote AI, APEX HMS, Shortz AI Pipeline, Apex Core, Free Tools.
-- [Engineering](https://aimsystem.in/engineering): Architecture principles, reliability lab, core stack and AI/ML approach.
-- [Work](https://aimsystem.in/work): Production deployments — Apple Hospital, BIMTS College, Café Ciel (London) — and documented limitations.
-- [CTO](https://aimsystem.in/about): Ankit Panicker — background, ventures, education, philosophy.
-- [Engage](https://aimsystem.in/engage): Engagement models, terms and FAQ.
-- [Contact](https://aimsystem.in/contact): Project brief and direct contact.
-- [Careers](https://aimsystem.in/jobs): Open positions.
-- [Full profile](https://aimsystem.in/llms-full.txt): Technical profile and architecture manual.
+- [Home](https://aimsystem.in/): Positioning, services, engineering capacity, production experience, how we work.
+- [Services](https://aimsystem.in/services): Product Engineering, AI Engineering, Platform Engineering, Automation & Integrations.
+- [Hire](https://aimsystem.in/hire): One engineer, a specialist, an engineering pod or a complete product team; engagement pricing; client ownership; FAQ.
+- [Platforms](https://aimsystem.in/products): APEX Connect, AIM Remote AI, Healthcare Operations Platform (in development), outreach campaigns, R&D.
+- [Work](https://aimsystem.in/work): Case studies — Apple Hospital, BIMTS College, Café Ciel (London).
+- [Engineering](https://aimsystem.in/engineering): Engineering principles, interactive lab, security & reliability, technology.
+- [About](https://aimsystem.in/about): The agency, the engineering team, client contact, company information.
+- [Contact](https://aimsystem.in/contact): Discuss a project or hire engineering capacity.
+- [Privacy & Compliance](https://aimsystem.in/privacy): Privacy policy, data processing, retention, subprocessors, AI transparency, security, terms.
+- [Careers](https://aimsystem.in/jobs)
+- [Full profile](https://aimsystem.in/llms-full.txt)
 
-## Product site (aimstudio.co.in)
-- [AIM Studio](https://aimstudio.co.in/) · [APEX Connect](https://aimstudio.co.in/apexconnect) · [Pricing](https://aimstudio.co.in/pricing) · [AIM / Remote AI](https://aimstudio.co.in/remoteai) · [Developer Docs](https://aimstudio.co.in/developer-docs) · [Free Tools](https://aimstudio.co.in/freetools/) · [Live platform](https://aimstudio.co.in/app) · [Contact](https://aimstudio.co.in/contact)
+## Ways to work with AIM
+1. Hire an Engineer — backend, frontend, full-stack, AI, cloud, DevOps, platform.
+2. Hire a Specialist — AI architecture, voice AI, cloud infrastructure, distributed systems, API architecture, automation, DevOps, system modernization, technical architecture.
+3. Hire an Engineering Pod — flexible cross-functional team, e.g. technical lead, backend, frontend, AI/platform engineer, QA.
+4. Hire a Complete Product Team — product strategy, UX/UI, architecture, frontend, backend, AI, infrastructure, DevOps, QA, deployment, operations.
+Pricing: dedicated engineer and pods are custom engagements; product development is a scoped proposal; AI/infrastructure work is architecture-based.
 
-## APEX Connect pricing (SaaS, per tenant per month, INR, GST as applicable)
-- Bring your own SIP: ₹4,999 — full platform; carrier (Twilio, Telnyx, Vapi or Indian SIP) bills minutes directly.
-- Starter: ₹14,999 — 2,000 AI calls, platform, numbers and minutes included.
-- Growth: ₹29,999 — 4,500 AI calls.
-- Scale: ₹49,999 — 10,000 AI calls.
-- Business, Enterprise, White-label: custom. REST API & webhooks: metered per request. MCP server: flat monthly per workspace.
+## Production experience
+15K+ production calls processed, 6.8K+ answered (~45% answered/connected) on APEX Connect for Apple Hospital; multi-tenant deployment for BIMTS College; digital experience for Café Ciel, London.
 
-## Production evidence
-- Apple Hospital (Madhya Pradesh): live outbound patient calling on APEX Connect — 15,000+ outbound calls dialled, 6,800+ answered (~45% answer rate). Production evidence, not a synthetic benchmark.
-- BIMTS College: multi-tenant platform deployment for an institutional customer.
-- Café Ciel, London: hospitality platform delivered for a UK client.
-
-## Engagements
-Remote B2B contracting directly with AIM (registered by the Government of India, Udyam MSME), outside IR35: AI Platform Build (4–12 weeks), Architecture Review & Rescue (1–2 weeks), Production Incident Response (days to 2 weeks), Fractional Platform Engineering (3–6 month retainer). Hire one dedicated engineer or a team sized to the scope. Fixed scope, milestone payments, weekly written reports.
+## Platforms
+- APEX Connect — AI-powered customer engagement infrastructure: multi-tenant platform for voice, messaging and AI workflows. Usage-based pricing varies by call duration, communication provider and AI processing requirements. https://aimstudio.co.in/app
+- AIM Remote AI — AI operating layer for your machines (Windows, Android, Chrome). https://aimstudio.co.in/remoteai
+- Healthcare Operations Platform — in development.
 
 ## Contact
-- CTO: Ankit Panicker — ankit@aimsystem.in
-- Location: Madhya Pradesh, India · IST (UTC+5:30) · UK/EU morning overlap
-- Registration: Registered by the Government of India (Udyam MSME)
+- Ankit Panicker, Client Partner & Technical Lead — ankit@aimsystem.in
+- Madhya Pradesh, India · clients in India, the UK and Europe

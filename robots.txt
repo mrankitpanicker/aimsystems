@@ -1,6 +1,6 @@
 # AIM — AI Infrastructure & Machines
-# https://aimsystem.in · Registered by the Government of India (Udyam MSME) · Madhya Pradesh, India
-# CTO & AI Systems Engineer: Ankit Panicker. Machine-readable profiles are listed below.
+# https://aimsystem.in · Technology engineering agency · Udyam-registered MSME · Madhya Pradesh, India
+# Machine-readable profiles are listed below.
 
 User-agent: *
 Allow: /

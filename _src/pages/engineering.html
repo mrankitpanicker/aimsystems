@@ -1,20 +1,18 @@
-<!--meta {"title": "Engineering — Reliability, Architecture & Stack · AIM", "description": "How AIM builds systems: design for the failure path first. Idempotency, backpressure, circuit breakers, WAL and replay, Redis as a systems primitive, observability, and an interactive lab to try them.", "nav": "engineering"} -->
+<!--meta {"title": "Engineering — Principles, Security & Reliability · AIM", "description": "How AIM engineers production systems: API-first, observable, reliable, secure, scalable and maintainable, with an interactive lab and our security and reliability practices.", "nav": "engineering"} -->
     <!-- INTRO -->
     <section class="reveal-on-scroll">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
         <div class="lg:col-span-7 space-y-5 text-center lg:text-left">
-          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full tactile-inset-sm text-xs font-bold text-[#7952EC] dark:text-[#A78BFA]">
-            <span class="w-2 h-2 rounded-full bg-[#7952EC] animate-pulse"></span><span>Engineering</span>
-          </div>
-          <h1 class="text-4xl sm:text-5xl font-black font-display tracking-tight leading-[1.1]">Design for the failure path first, the happy path second.</h1>
-          <p class="text-sm sm:text-base text-[var(--text-muted)] leading-relaxed max-w-2xl mx-auto lg:mx-0">This approach comes from systems where failure has real consequences: live voice calls that can't drop mid-conversation, healthcare workflows that have to keep working through network problems, and media pipelines where one failed stage shouldn't spoil the whole job.</p>
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full tactile-inset-sm text-xs font-bold text-[#7952EC] dark:text-[#A78BFA]"><span class="w-2 h-2 rounded-full bg-[#7952EC] animate-pulse"></span><span>Engineering</span></div>
+          <h1 class="text-4xl sm:text-5xl font-black font-display tracking-tight leading-[1.08]">Engineering by Design.</h1>
+          <p class="text-sm sm:text-base text-[var(--text-muted)] leading-relaxed max-w-2xl mx-auto lg:mx-0">The same principles shape every system we deliver, from a single API to a multi-tenant platform: clear interfaces, built-in observability and controlled handling of failure.</p>
           <div class="flex flex-wrap gap-3 justify-center lg:justify-start">
-            <a href="#lab" class="btn-deploy-edge px-6 py-3 text-xs"><i data-lucide="flask-conical" class="w-4 h-4"></i>Try the reliability lab</a>
-            <a href="#stack" class="tactile-convex-pill px-6 py-3 text-xs inline-flex items-center gap-2">See the stack</a>
+            <a href="#lab" class="btn-deploy-edge px-6 py-3 text-xs"><i data-lucide="flask-conical" class="w-4 h-4"></i>Open the engineering lab</a>
+            <a href="#security" class="tactile-convex-pill px-6 py-3 text-xs inline-flex items-center gap-2">Security &amp; Reliability</a>
           </div>
         </div>
         <div class="lg:col-span-5">
-          <div class="char-stage aspect-square max-w-[400px] mx-auto"><img src="/assets/img/cto-whiteboard.webp" alt="Character mapping a system flow on a whiteboard"></div>
+          <div class="char-stage aspect-square max-w-[400px] mx-auto"><img src="/assets/img/cto-whiteboard.webp" alt="Engineer mapping a system on a whiteboard"></div>
         </div>
       </div>
     </section>
@@ -23,49 +21,38 @@
     <section id="principles" class="space-y-6 reveal-on-scroll">
       <div>
         <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7952EC] dark:text-[#A78BFA]">Principles</span>
-        <h2 class="text-2xl sm:text-3xl font-black font-display">Architecture principles</h2>
-        <p class="text-xs sm:text-sm text-[var(--text-muted)] mt-1">The same patterns show up in every project we build.</p>
+        <h2 class="text-2xl sm:text-3xl font-black font-display">How we build</h2>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         <article class="card-sunk rounded-3xl p-5 space-y-3" tabindex="0">
-          <span class="ico-well w-12 h-12"><img src="/assets/img/ico-db-cloud.webp" alt=""></span>
-          <h3 class="text-sm font-extrabold font-display">Local-first where it makes sense</h3>
-          <p class="text-xs text-[var(--text-muted)] leading-relaxed">Keep critical workflows close to where they run when that improves latency, privacy, resilience or cost. Use the cloud where it adds leverage, and keep control locally where it adds resilience.</p>
+          <span class="ico-well w-12 h-12"><img src="/assets/img/ico-link.webp" alt=""></span>
+          <h3 class="font-black font-display">API First</h3>
+          <p class="text-xs text-[var(--text-muted)] leading-relaxed">Clear interfaces and modular systems.</p>
         </article>
         <article class="tactile-navy rounded-3xl p-5 space-y-3">
-          <span class="ico-well w-12 h-12"><img src="/assets/img/ico-shield.webp" alt=""></span>
-          <h3 class="text-sm font-extrabold font-display">Zero-trust boundaries</h3>
-          <p class="text-xs text-[var(--text-muted)] leading-relaxed">Components shouldn't trust each other just because they share an application or a network. Tenant scope is part of every key, query and cache entry.</p>
+          <span class="ico-well w-12 h-12"><img src="/assets/img/ico-search.webp" alt=""></span>
+          <h3 class="font-black font-display">Observable</h3>
+          <p class="text-xs text-[var(--text-muted)] leading-relaxed">Metrics, logs and traces built into production systems.</p>
         </article>
         <article class="card-sunk rounded-3xl p-5 space-y-3" tabindex="0">
           <span class="ico-well w-12 h-12"><img src="/assets/img/ico-refresh.webp" alt=""></span>
-          <h3 class="text-sm font-extrabold font-display">Asynchronous execution</h3>
-          <p class="text-xs text-[var(--text-muted)] leading-relaxed">Long-running and failure-prone work moves into controlled worker pipelines instead of blocking the request path.</p>
+          <h3 class="font-black font-display">Reliable</h3>
+          <p class="text-xs text-[var(--text-muted)] leading-relaxed">Retries, idempotency, queues and controlled failure handling.</p>
         </article>
         <article class="card-sunk rounded-3xl p-5 space-y-3" tabindex="0">
-          <span class="ico-well w-12 h-12"><img src="/assets/img/ico-server.webp" alt=""></span>
-          <h3 class="text-sm font-extrabold font-display">Redis as a systems primitive</h3>
-          <p class="text-xs text-[var(--text-muted)] leading-relaxed">Redis does much more than caching: queues, pub/sub, rate limiting, distributed coordination, circuit-breaker synchronisation, state, and memory/vector infrastructure.</p>
+          <span class="ico-well w-12 h-12"><img src="/assets/img/ico-shield.webp" alt=""></span>
+          <h3 class="font-black font-display">Secure</h3>
+          <p class="text-xs text-[var(--text-muted)] leading-relaxed">Authentication, authorization and controlled access.</p>
         </article>
         <article class="card-sunk rounded-3xl p-5 space-y-3" tabindex="0">
-          <span class="ico-well w-12 h-12"><img src="/assets/img/ico-checklist.webp" alt=""></span>
-          <h3 class="text-sm font-extrabold font-display">Idempotency</h3>
-          <p class="text-xs text-[var(--text-muted)] leading-relaxed">At-least-once delivery is the realistic guarantee, so running the same job twice has to be safe. A retried webhook rehydrates the existing session, and re-uploading a call list never double-dials.</p>
-        </article>
-        <article class="card-sunk rounded-3xl p-5 space-y-3" tabindex="0">
-          <span class="ico-well w-12 h-12"><img src="/assets/img/ico-filter.webp" alt=""></span>
-          <h3 class="text-sm font-extrabold font-display">Backpressure</h3>
-          <p class="text-xs text-[var(--text-muted)] leading-relaxed">A system should know when it's overloaded. A reliable system doesn't accept unlimited work until it collapses; it queues within limits and then refuses work cleanly.</p>
+          <span class="ico-well w-12 h-12"><img src="/assets/img/ico-trend.webp" alt=""></span>
+          <h3 class="font-black font-display">Scalable</h3>
+          <p class="text-xs text-[var(--text-muted)] leading-relaxed">Architectures designed to scale with workload requirements.</p>
         </article>
         <article class="tactile-navy rounded-3xl p-5 space-y-3">
-          <span class="ico-well w-12 h-12"><img src="/assets/img/ico-sliders.webp" alt=""></span>
-          <h3 class="text-sm font-extrabold font-display">Graceful degradation</h3>
-          <p class="text-xs text-[var(--text-muted)] leading-relaxed">When a dependency fails, the whole system shouldn't fail with it. We rely on fallbacks, retries, bounded concurrency and controlled degradation.</p>
-        </article>
-        <article class="card-sunk rounded-3xl p-5 space-y-3" tabindex="0">
-          <span class="ico-well w-12 h-12"><img src="/assets/img/ico-search.webp" alt=""></span>
-          <h3 class="text-sm font-extrabold font-display">Observability</h3>
-          <p class="text-xs text-[var(--text-muted)] leading-relaxed">Logs alone aren't enough. We combine metrics, structured logs, traces and operational state, because debugging a distributed system means reconstructing what actually happened.</p>
+          <span class="ico-well w-12 h-12"><img src="/assets/img/ico-doc.webp" alt=""></span>
+          <h3 class="font-black font-display">Maintainable</h3>
+          <p class="text-xs text-[var(--text-muted)] leading-relaxed">Clean boundaries, documentation and reproducible infrastructure.</p>
         </article>
       </div>
     </section>
@@ -74,9 +61,9 @@
     <section id="lab" class="space-y-6 reveal-on-scroll scroll-mt-28">
       <div class="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7952EC] dark:text-[#A78BFA]">Reliability lab</span>
-          <h2 class="text-2xl sm:text-3xl font-black font-display">Try the failure handling yourself</h2>
-          <p class="text-xs sm:text-sm text-[var(--text-muted)] mt-1 max-w-2xl">These are small simulations of mechanisms that run in production. Turn the dial, drag the slider and inject failures.</p>
+          <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7952EC] dark:text-[#A78BFA]">Engineering lab</span>
+          <h2 class="text-2xl sm:text-3xl font-black font-display">See the patterns at work.</h2>
+          <p class="text-xs sm:text-sm text-[var(--text-muted)] mt-1 max-w-2xl">Interactive simulations of mechanisms we build into production systems.</p>
         </div>
         <span class="text-xs font-mono font-bold px-3 py-1 rounded-full tactile-inset-sm text-[#7952EC] dark:text-[#A78BFA]">Interactive</span>
       </div>
@@ -150,7 +137,7 @@
         <div class="tactile-raised rounded-3xl p-6 sm:p-8 space-y-5">
           <div class="space-y-1">
             <h3 class="text-base font-black font-display">Local-first or cloud</h3>
-            <p class="text-xs text-[var(--text-muted)]">This isn't a dogma, it's a trade-off we make per system. The switch flips on its own; tap a side to hold it.</p>
+            <p class="text-xs text-[var(--text-muted)]">We choose per system, based on latency, privacy, resilience and cost. The switch flips on its own; tap a side to hold it.</p>
           </div>
           <div class="tactile-inset rounded-3xl p-6 flex flex-col items-center gap-5">
             <div data-rocker data-rocker-auto="3500" data-status="#rockerStatus" data-desc="#rockerDesc" class="rocker-pill p-2 rounded-2xl flex items-center gap-2 w-full max-w-sm select-none">
@@ -273,70 +260,60 @@
       </div>
     </section>
 
-    <!-- SIGNATURE -->
-    <section id="signature" class="reveal-on-scroll">
-      <div class="tactile-navy rounded-[2rem] p-6 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-        <div class="lg:col-span-7 space-y-4">
-          <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#B9C8FF]">Signature</span>
-          <h2 class="text-2xl sm:text-3xl font-black font-display">Reliability engineering is the strongest technical signature</h2>
-          <p class="text-sm text-[var(--text-muted)] leading-relaxed">The portfolio audit names reliability engineering as the most defensible skill because the evidence for it is spread across several independent repositories, not one showcase project.</p>
-          <div class="flex flex-wrap gap-2 text-[11px] font-mono font-bold">
-            <span class="tactile-inset-sm rounded-full px-3 py-1.5">Queue + worker architectures</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">Redis as a distributed primitive</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">Fallback paths</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">WAL + replay</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">Idempotency</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">Staged processing</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">Per-stage telemetry</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">Multi-tenancy</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">Failure-mode testing</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">GPU lifecycle management</span>
+    <!-- SECURITY -->
+    <section id="security" class="space-y-6 reveal-on-scroll scroll-mt-28">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div class="lg:col-span-4 space-y-4">
+          <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7952EC] dark:text-[#A78BFA]">Security &amp; Reliability</span>
+          <h2 class="text-2xl sm:text-3xl font-black font-display">Security &amp; Reliability</h2>
+          <p class="text-sm text-[var(--text-muted)] leading-relaxed">Security and reliability are part of the architecture from the first design review. These are the practices we build into the systems we deliver and operate.</p>
+          <div class="tactile-navy rounded-3xl p-5 aspect-[4/3]"><img class="ill" src="/assets/img/ill-secure-servers.webp" alt="Protected servers" loading="lazy"></div>
+          <a href="/privacy" class="tactile-convex-pill px-5 py-2.5 text-xs inline-flex items-center gap-2">Privacy &amp; Compliance <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+        </div>
+        <div class="lg:col-span-8 grid grid-cols-2 sm:grid-cols-3 gap-3">
+          <div class="tactile-raised-sm rounded-2xl p-3 flex items-center gap-2.5"><span class="ico-well w-9 h-9 rounded-lg"><img src="/assets/img/ico-user.webp" alt=""></span><span class="text-xs font-bold">Authentication</span></div>
+          <div class="tactile-raised-sm rounded-2xl p-3 flex items-center gap-2.5"><span class="ico-well w-9 h-9 rounded-lg"><img src="/assets/img/ico-checklist.webp" alt=""></span><span class="text-xs font-bold">Authorization</span></div>
+          <div class="tactile-raised-sm rounded-2xl p-3 flex items-center gap-2.5"><span class="ico-well w-9 h-9 rounded-lg"><img src="/assets/img/ico-hierarchy.webp" alt=""></span><span class="text-xs font-bold">Tenant isolation</span></div>
+          <div class="tactile-raised-sm rounded-2xl p-3 flex items-center gap-2.5"><span class="ico-well w-9 h-9 rounded-lg"><img src="/assets/img/ico-shield.webp" alt=""></span><span class="text-xs font-bold">Encryption</span></div>
+          <div class="tactile-raised-sm rounded-2xl p-3 flex items-center gap-2.5"><span class="ico-well w-9 h-9 rounded-lg"><img src="/assets/img/ico-link.webp" alt=""></span><span class="text-xs font-bold">TLS</span></div>
+          <div class="tactile-raised-sm rounded-2xl p-3 flex items-center gap-2.5"><span class="ico-well w-9 h-9 rounded-lg"><img src="/assets/img/ico-filter.webp" alt=""></span><span class="text-xs font-bold">Scoped access</span></div>
+          <div class="tactile-raised-sm rounded-2xl p-3 flex items-center gap-2.5"><span class="ico-well w-9 h-9 rounded-lg"><img src="/assets/img/ico-bank.webp" alt=""></span><span class="text-xs font-bold">Secrets management</span></div>
+          <div class="tactile-raised-sm rounded-2xl p-3 flex items-center gap-2.5"><span class="ico-well w-9 h-9 rounded-lg"><img src="/assets/img/ico-doc.webp" alt=""></span><span class="text-xs font-bold">Audit logging</span></div>
+          <div class="tactile-raised-sm rounded-2xl p-3 flex items-center gap-2.5"><span class="ico-well w-9 h-9 rounded-lg"><img src="/assets/img/ico-sliders.webp" alt=""></span><span class="text-xs font-bold">Rate limiting</span></div>
+          <div class="tactile-raised-sm rounded-2xl p-3 flex items-center gap-2.5"><span class="ico-well w-9 h-9 rounded-lg"><img src="/assets/img/ico-trend.webp" alt=""></span><span class="text-xs font-bold">Monitoring</span></div>
+          <div class="tactile-raised-sm rounded-2xl p-3 flex items-center gap-2.5"><span class="ico-well w-9 h-9 rounded-lg"><img src="/assets/img/ico-db-cloud.webp" alt=""></span><span class="text-xs font-bold">Backup</span></div>
+          <div class="tactile-raised-sm rounded-2xl p-3 flex items-center gap-2.5"><span class="ico-well w-9 h-9 rounded-lg"><img src="/assets/img/ico-refresh.webp" alt=""></span><span class="text-xs font-bold">Recovery</span></div>
+          <div class="tactile-raised-sm rounded-2xl p-3 flex items-center gap-2.5"><span class="ico-well w-9 h-9 rounded-lg"><img src="/assets/img/ico-search.webp" alt=""></span><span class="text-xs font-bold">Observability</span></div>
           </div>
-        </div>
-        <div class="lg:col-span-5">
-          <div class="char-stage aspect-square max-w-[300px] mx-auto"><img src="/assets/img/cto-thinking.webp" alt="Character thinking through a problem" loading="lazy"></div>
-        </div>
       </div>
     </section>
 
     <!-- STACK -->
     <section id="stack" class="space-y-6 reveal-on-scroll scroll-mt-28">
       <div>
-        <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7952EC] dark:text-[#A78BFA]">Stack</span>
-        <h2 class="text-2xl sm:text-3xl font-black font-display">Core technical stack</h2>
-        <p class="text-xs sm:text-sm text-[var(--text-muted)] mt-1 max-w-2xl">Press a key to see where each area is used, and how deep the experience goes.</p>
+        <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7952EC] dark:text-[#A78BFA]">Technology</span>
+        <h2 class="text-2xl sm:text-3xl font-black font-display">The technology we work with</h2>
       </div>
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        <div class="lg:col-span-5 tactile-raised rounded-3xl p-6 space-y-5">
-          <div class="tactile-inset rounded-3xl p-5 flex flex-col items-center gap-4">
-            <div class="tactile-raised rounded-2xl p-3 grid grid-cols-3 gap-2.5 w-full max-w-[18rem] aspect-square select-none">
-              <button type="button" data-pad="Backend · deepest" data-detail="Python · FastAPI · asyncio · Pydantic · SQLAlchemy" class="tactile-clay interactive-press rounded-xl flex flex-col items-center justify-center gap-1 text-[10px] font-mono font-bold"><i data-lucide="zap" class="w-4 h-4 text-[#F97316]"></i>Backend</button>
-              <button type="button" data-pad="Distributed systems · deepest" data-detail="Redis · queues · workers · idempotency · retries · DLQs · circuit breakers · WAL" class="tactile-clay interactive-press rounded-xl flex flex-col items-center justify-center gap-1 text-[10px] font-mono font-bold"><i data-lucide="layers" class="w-4 h-4 text-[#FB7185]"></i>Queues</button>
-              <button type="button" data-pad="Frontend" data-detail="TypeScript · React · Next.js · Vite · Zustand · Tailwind" class="tactile-clay interactive-press rounded-xl flex flex-col items-center justify-center gap-1 text-[10px] font-mono font-bold"><i data-lucide="layout" class="w-4 h-4 text-[#38BDF8]"></i>Frontend</button>
-              <button type="button" data-pad="Data" data-detail="PostgreSQL · Firestore · Redis" class="tactile-clay interactive-press rounded-xl flex flex-col items-center justify-center gap-1 text-[10px] font-mono font-bold"><i data-lucide="database" class="w-4 h-4 text-[#445EAA]"></i>Data</button>
-              <button type="button" data-pad="Infrastructure · effective, not claimed as deepest" data-detail="Docker · Kubernetes/AKS · Terraform · Nginx · Cloudflare" class="tactile-clay interactive-press rounded-xl flex flex-col items-center justify-center gap-1 text-[10px] font-mono font-bold"><i data-lucide="server" class="w-4 h-4 text-[#4F46E5]"></i>Infra</button>
-              <button type="button" data-pad="Observability" data-detail="Prometheus · Grafana · Loki · OpenTelemetry" class="tactile-clay interactive-press rounded-xl flex flex-col items-center justify-center gap-1 text-[10px] font-mono font-bold"><i data-lucide="activity" class="w-4 h-4 text-[#2DD4BF]"></i>Observe</button>
-              <button type="button" data-pad="AI" data-detail="LLMs · STT · TTS · RAG · local inference · AI orchestration" class="tactile-clay interactive-press rounded-xl flex flex-col items-center justify-center gap-1 text-[10px] font-mono font-bold"><i data-lucide="brain" class="w-4 h-4 text-[#7952EC]"></i>AI</button>
-              <button type="button" data-pad="Media" data-detail="Whisper · XTTS · Kokoro · FFmpeg · GPU processing" class="tactile-clay interactive-press rounded-xl flex flex-col items-center justify-center gap-1 text-[10px] font-mono font-bold"><i data-lucide="audio-lines" class="w-4 h-4 text-[#EC4899]"></i>Media</button>
-              <button type="button" data-pad="Security" data-detail="Tenant isolation · RBAC · zero-trust boundaries · audit chains" class="tactile-clay interactive-press rounded-xl flex flex-col items-center justify-center gap-1 text-[10px] font-mono font-bold"><i data-lucide="shield" class="w-4 h-4 text-[#6380CE]"></i>Security</button>
-            </div>
-            <div class="w-full tactile-raised p-3 rounded-xl font-mono text-center space-y-1" aria-live="polite">
-              <span id="padLog" class="block text-xs font-black text-[#163387] dark:text-[#6380CE]">Press a key</span>
-              <span id="padDetail" class="block text-[11px] text-[var(--text-muted)]">Nine areas, covered end to end</span>
-            </div>
-          </div>
-        </div>
-        <div class="lg:col-span-7 space-y-5">
-          <div class="tactile-navy rounded-3xl p-6 space-y-3">
-            <div class="flex items-center gap-3"><span class="ico-well w-11 h-11 rounded-xl"><img src="/assets/img/ico-bars-2.webp" alt=""></span><h3 class="font-black font-display">How deep the experience goes</h3></div>
-            <p class="text-xs text-[var(--text-muted)] leading-relaxed">The deepest areas are Python/FastAPI, Redis primitives, queues and workers, and reliability engineering. Kubernetes, Terraform and model internals are areas where the work is effective, without claiming more depth than that.</p>
-            <div class="space-y-2.5 font-mono text-[11px]">
-              <div><div class="flex justify-between"><span>Python · FastAPI · asyncio</span><span class="opacity-60">deepest</span></div><div class="h-2.5 rounded-full tactile-inset-sm mt-1"><div class="h-full rounded-full bar-relax" style="width:95%"></div></div></div>
-              <div><div class="flex justify-between"><span>Redis · queues · workers</span><span class="opacity-60">deepest</span></div><div class="h-2.5 rounded-full tactile-inset-sm mt-1"><div class="h-full rounded-full bar-relax" style="width:93%"></div></div></div>
-              <div><div class="flex justify-between"><span>Reliability engineering</span><span class="opacity-60">deepest</span></div><div class="h-2.5 rounded-full tactile-inset-sm mt-1"><div class="h-full rounded-full bar-relax" style="width:95%"></div></div></div>
-              <div><div class="flex justify-between"><span>TypeScript · React</span><span class="opacity-60">strong</span></div><div class="h-2.5 rounded-full tactile-inset-sm mt-1"><div class="h-full rounded-full bar-strength" style="width:78%"></div></div></div>
-              <div><div class="flex justify-between"><span>Kubernetes · Terraform</span><span class="opacity-60">effective</span></div><div class="h-2.5 rounded-full tactile-inset-sm mt-1"><div class="h-full rounded-full bar-stretch" style="width:62%"></div></div></div>
-              <div><div class="flex justify-between"><span>Model internals / training</span><span class="opacity-60">integrator, not trainer</span></div><div class="h-2.5 rounded-full tactile-inset-sm mt-1"><div class="h-full rounded-full bar-stretch" style="width:40%"></div></div></div>
-            </div>
-          </div>
-          <div class="tactile-raised rounded-3xl p-6 space-y-3">
-            <div class="flex items-center gap-3"><span class="ico-well w-11 h-11 rounded-xl"><img src="/assets/img/ico-robot.webp" alt=""></span><h3 class="font-black font-display">AI &amp; machine learning: integration, not training</h3></div>
-            <div class="flex flex-wrap gap-2 text-[11px] font-mono font-bold">
-              <span class="tactile-inset-sm rounded-full px-3 py-1.5">PyTorch</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">Hugging Face</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">Whisper</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">Faster-Whisper</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">Deepgram</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">Kokoro</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">Coqui XTTS v2</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">Fish Audio</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">Qwen</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">LLaMA</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">llama.cpp</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">Stable Diffusion</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">FFmpeg</span>
-            </div>
-            <p class="text-xs text-[var(--text-muted)] leading-relaxed">The questions we answer are about systems: where the model fits, how to control latency, what happens when it fails, whether computation can be cached or reused, when to load a model, how to manage GPU memory, when to fall back to another provider, and how to observe the whole pipeline.</p>
-          </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="tactile-raised rounded-3xl p-5 space-y-3"><span class="ico-well w-11 h-11 rounded-xl"><img src="/assets/img/ico-code.webp" alt=""></span><h3 class="font-black font-display">Backend &amp; APIs</h3><p class="text-[11px] font-mono text-[var(--text-muted)]">Python · FastAPI · asyncio · Pydantic · SQLAlchemy · Node.js · REST · WebSockets</p></div>
+        <div class="card-sunk rounded-3xl p-5 space-y-3" tabindex="0"><span class="ico-well w-11 h-11 rounded-xl"><img src="/assets/img/ico-laptop.webp" alt=""></span><h3 class="font-black font-display">Frontend</h3><p class="text-[11px] font-mono text-[var(--text-muted)]">TypeScript · React · Next.js · Vite · Tailwind</p></div>
+        <div class="tactile-navy rounded-3xl p-5 space-y-3"><span class="ico-well w-11 h-11 rounded-xl"><img src="/assets/img/ico-chip.webp" alt=""></span><h3 class="font-black font-display">AI</h3><p class="text-[11px] font-mono text-[var(--text-muted)]">LLMs · RAG · agents · Whisper · Deepgram · XTTS · Kokoro · llama.cpp · Hugging Face</p></div>
+        <div class="card-sunk rounded-3xl p-5 space-y-3" tabindex="0"><span class="ico-well w-11 h-11 rounded-xl"><img src="/assets/img/ico-database.webp" alt=""></span><h3 class="font-black font-display">Data</h3><p class="text-[11px] font-mono text-[var(--text-muted)]">PostgreSQL · Redis · Firestore · queues · streams</p></div>
+        <div class="card-sunk rounded-3xl p-5 space-y-3" tabindex="0"><span class="ico-well w-11 h-11 rounded-xl"><img src="/assets/img/ico-cube.webp" alt=""></span><h3 class="font-black font-display">Cloud &amp; Infrastructure</h3><p class="text-[11px] font-mono text-[var(--text-muted)]">Azure · AWS · GCP · Docker · Kubernetes · Terraform · Nginx · Cloudflare</p></div>
+        <div class="tactile-raised rounded-3xl p-5 space-y-3"><span class="ico-well w-11 h-11 rounded-xl"><img src="/assets/img/ico-refresh.webp" alt=""></span><h3 class="font-black font-display">Delivery</h3><p class="text-[11px] font-mono text-[var(--text-muted)]">CI/CD · GitHub Actions · rolling deploys · infrastructure-as-code</p></div>
+        <div class="card-sunk rounded-3xl p-5 space-y-3" tabindex="0"><span class="ico-well w-11 h-11 rounded-xl"><img src="/assets/img/ico-trend.webp" alt=""></span><h3 class="font-black font-display">Observability</h3><p class="text-[11px] font-mono text-[var(--text-muted)]">Prometheus · Grafana · Loki · OpenTelemetry</p></div>
+        <div class="tactile-raised rounded-3xl p-5 space-y-3"><span class="ico-well w-11 h-11 rounded-xl"><img src="/assets/img/ico-chats.webp" alt=""></span><h3 class="font-black font-display">Communication</h3><p class="text-[11px] font-mono text-[var(--text-muted)]">Twilio · Telnyx · Vapi · SIP · WhatsApp Business API</p></div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="reveal-on-scroll">
+      <div class="tactile-navy rounded-[2rem] p-6 sm:p-10 text-center space-y-4">
+        <h2 class="text-2xl sm:text-3xl font-black font-display">Bring us an engineering challenge.</h2>
+        <p class="text-sm text-[var(--text-muted)]">Architecture, AI, infrastructure or a system that needs to scale: our specialists can help.</p>
+        <div class="flex flex-wrap gap-3 justify-center">
+          <a href="/contact" class="btn-deploy-edge px-7 py-3.5 text-xs"><i data-lucide="send" class="w-4 h-4"></i>Discuss Your Project</a>
+          <a href="/hire" class="tactile-convex-pill px-7 py-3.5 text-xs inline-flex items-center">Hire a Specialist</a>
         </div>
       </div>
     </section>
