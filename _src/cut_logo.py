@@ -1,7 +1,7 @@
 """Cut the AIM logo out of its source image.
 
-The source has a checkerboard baked in, so the outline is found from the
-logo itself: everything that is not a neutral checker square, cleaned up and
+The source has a checkerboard baked in. Its squares are mid greys and never
+white, so the logo is every near-white or tinted pixel, cleaned up and
 wrapped in its convex hull (the logo is a hexagon). The inner blue hexagon
 is made transparent so the logo can sit on the navy tile; white strokes
 inside it keep their anti-aliased edges by unmixing white from the blue.
@@ -29,16 +29,16 @@ def main():
     rgb = np.array(Image.open(os.path.join(HERE, 'logo-source.webp')).convert('RGB')).astype(int)
     r, g, b = rgb[..., 0], rgb[..., 1], rgb[..., 2]
     v = rgb.max(-1)
-    neutral = (abs(r - g) < 6) & (abs(g - b) < 6)
-    checker = neutral & (((v >= 185) & (v <= 212)) | (v >= 248))
-    # the logo's shaded edges carry a slight blue tint; the checker and its
-    # soft shadow are neutral, so the tint gives a tight outline
-    body = ndimage.binary_opening(((b - r) >= 6) & ~checker, iterations=2)
+    neutral = (abs(r - g) < 8) & (abs(g - b) < 8)
+    # the baked-in checker only uses mid greys (~120-215) and never white,
+    # so near-white or blue-tinted pixels belong to the logo
+    checker = neutral & (v < 224)
+    body = ndimage.binary_opening(~checker, iterations=2)
     lab, _ = ndimage.label(body)
     sizes = ndimage.sum(body, lab, range(1, lab.max() + 1))
     logo = lab == (int(np.argmax(sizes)) + 1)
     outer = hull_mask(np.argwhere(logo), logo.shape)
-    outer = ndimage.binary_erosion(outer, iterations=3)
+    outer = ndimage.binary_erosion(outer, iterations=2)
 
     blue = (b - r) > 100
     inner = hull_mask(np.argwhere(blue), blue.shape)
