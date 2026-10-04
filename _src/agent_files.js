@@ -137,22 +137,15 @@ out('.well-known/mcp/server-card.json', {
 const urn = n => `urn:air:aimsystem.in:${n}`;
 out('.well-known/ai-catalog.json', {
   specVersion: '1.0',
-  host: { name: 'AIM — AI Infrastructure & Machines', url: S + '/', contact: 'ankit@aimsystem.in' },
+  host: { displayName: 'AIM — AI Infrastructure & Machines', name: 'AIM — AI Infrastructure & Machines', url: S + '/', contact: 'ankit@aimsystem.in' },
   entries: [
     { identifier: urn('server:aim-mcp'), displayName: 'AIM MCP server', type: 'application/mcp-server-card+json', url: S + '/.well-known/mcp/server-card.json',
       description: 'Read-only MCP server (Streamable HTTP, no auth) at ' + MCP_URL + '.',
       capabilities: MCP_TOOLS,
-      representativeQueries: ['what case studies does AIM have in healthcare', 'list AIM engineering services', 'how do I hire a dedicated engineer from AIM'] },
-    { identifier: urn('api:profile'), displayName: 'AIM public profile API', type: 'application/openapi+json', url: S + '/data/openapi.json',
-      description: 'Read-only JSON profile of AIM: services, engagement models, platforms, selected work and contact.',
-      capabilities: ['getProfile'],
-      representativeQueries: ['what services does AIM offer', 'how can I hire engineers from AIM', 'what has AIM built for healthcare clients'] },
-    { identifier: urn('skill:aim-company'), displayName: 'AIM company skill', type: 'text/markdown', url: S + '/' + skill,
+      representativeQueries: ['what case studies does AIM have in healthcare', 'list AIM engineering services', 'how do I hire a dedicated engineer from AIM'] },
+    { identifier: urn('skill:aim-company'), displayName: 'AIM company skill', type: 'text/markdown; profile="urn:air:agent-skills"', url: S + '/' + skill,
       description: 'Agent skill for answering questions about AIM and helping a user hire engineers or start a project.',
-      representativeQueries: ['who is AIM aimsystem.in', 'how do I contact AIM about a project', 'how does AIM price engagements'] },
-    { identifier: urn('docs:llms'), displayName: 'AIM LLM-readable profile', type: 'text/plain', url: S + '/llms-full.txt',
-      description: 'Plain-text profile of AIM for language models.',
-      representativeQueries: ['summarise AIM AI Infrastructure & Machines', 'what platforms does AIM operate'] },
+      representativeQueries: ['who is AIM aimsystem.in', 'how do I contact AIM about a project', 'how does AIM price engagements'] },
   ],
 });
 console.log('agent files: profile, openapi, api-catalog, agent-skills (sha256:' + digest.slice(0, 12) + '…), ai-catalog');

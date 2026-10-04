@@ -1,2 +1,4 @@
 # Served files whose sha256 digest is published; keep their bytes identical on every checkout.
 .well-known/agent-skills/** -text
+# Generated pages carry CSP hashes of their inline scripts; CRLF would change the hashes.
+/*.html text eol=lf

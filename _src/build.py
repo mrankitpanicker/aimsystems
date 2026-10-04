@@ -73,7 +73,8 @@ HEAD = """<!DOCTYPE html>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800;900&family=JetBrains+Mono:wght@600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800;900&family=JetBrains+Mono:wght@600;700&display=swap" data-font>
+  <script>(function (l) {{ if (l) l.rel = 'stylesheet'; }})(document.querySelector('link[data-font]'));</script>
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800;900&family=JetBrains+Mono:wght@600;700&display=swap"></noscript>
   <link rel="stylesheet" href="/assets/css/aim.css">
   <link rel="stylesheet" href="/assets/css/tw.css">
@@ -107,22 +108,22 @@ HEADER = """
       <div class="flex items-center gap-2 sm:gap-2.5 shrink-0">
         <div class="relative">
           <button type="button" id="settingsToggle" class="tactile-convex-pill w-10 h-10 flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--text-main)]" aria-expanded="false" aria-controls="settingsPanel" aria-label="Settings">
-            <i data-lucide="settings" class="w-4 h-4 text-[#7952EC] dark:text-[#A78BFA]"></i>
+            <i data-lucide="settings" class="w-4 h-4 text-[#6438D9] dark:text-[#A78BFA]"></i>
           </button>
           <div id="settingsPanel" class="settings-panel tactile-raised rounded-2xl p-3 space-y-2 w-60" role="menu" aria-label="Settings" hidden>
             <div class="px-1 pb-1 text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--text-muted)]">Settings</div>
             <button type="button" data-theme-toggle role="menuitem" class="w-full tactile-inset-sm rounded-xl px-3 py-2.5 flex items-center gap-3 text-left text-xs font-bold">
-              <i data-theme-icon data-lucide="moon" class="w-4 h-4 text-[#7952EC] dark:text-[#A78BFA]"></i>
+              <i data-theme-icon data-lucide="moon" class="w-4 h-4 text-[#6438D9] dark:text-[#A78BFA]"></i>
               <span class="flex-1">Theme</span>
               <span data-theme-current class="text-[11px] font-semibold text-[var(--text-muted)]">Lilac Ice</span>
             </button>
             <button type="button" data-sound-toggle role="menuitem" class="w-full tactile-inset-sm rounded-xl px-3 py-2.5 flex items-center gap-3 text-left text-xs font-bold">
-              <i data-sound-icon data-lucide="volume-2" class="w-4 h-4 text-[#7952EC] dark:text-[#A78BFA]"></i>
+              <i data-sound-icon data-lucide="volume-2" class="w-4 h-4 text-[#6438D9] dark:text-[#A78BFA]"></i>
               <span class="flex-1">Sound effects</span>
               <span data-sound-label class="text-[11px] font-semibold text-[var(--text-muted)]">On</span>
             </button>
             <button type="button" data-cookie-settings role="menuitem" class="w-full tactile-inset-sm rounded-xl px-3 py-2.5 flex items-center gap-3 text-left text-xs font-bold">
-              <i data-lucide="cookie" class="w-4 h-4 text-[#7952EC] dark:text-[#A78BFA]"></i>
+              <i data-lucide="cookie" class="w-4 h-4 text-[#6438D9] dark:text-[#A78BFA]"></i>
               <span class="flex-1">Cookies</span>
               <span data-cookie-label class="text-[11px] font-semibold text-[var(--text-muted)]">Ask</span>
             </button>
@@ -167,21 +168,21 @@ FOOTER = """
       </div>
       <div class="md:col-span-2 space-y-2.5 text-xs">
         <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--text-muted)]">Agency</div>
-        <a class="block hover:text-[#7952EC]" href="/services">Services</a>
-        <a class="block hover:text-[#7952EC]" href="/hire">Hire</a>
-        <a class="block hover:text-[#7952EC]" href="/international">UK, US &amp; EU teams</a>
-        <a class="block hover:text-[#7952EC]" href="/work">Work</a>
-        <a class="block hover:text-[#7952EC]" href="/engineering">Engineering</a>
-        <a class="block hover:text-[#7952EC]" href="/about">About</a>
-        <a class="block hover:text-[#7952EC]" href="/jobs">Careers</a>
+        <a class="block hover:text-[#6438D9]" href="/services">Services</a>
+        <a class="block hover:text-[#6438D9]" href="/hire">Hire</a>
+        <a class="block hover:text-[#6438D9]" href="/international">UK, US &amp; EU teams</a>
+        <a class="block hover:text-[#6438D9]" href="/work">Work</a>
+        <a class="block hover:text-[#6438D9]" href="/engineering">Engineering</a>
+        <a class="block hover:text-[#6438D9]" href="/about">About</a>
+        <a class="block hover:text-[#6438D9]" href="/jobs">Careers</a>
       </div>
       <div class="md:col-span-3 space-y-2.5 text-xs">
         <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--text-muted)]">Platforms</div>
-        <a class="block hover:text-[#7952EC]" href="/products#apex-connect">APEX Connect</a>
-        <a class="block hover:text-[#7952EC]" href="/products#aim-remote">AIM Remote AI</a>
-        <a class="block hover:text-[#7952EC]" href="/products#healthcare">Healthcare Operations Platform</a>
-        <a class="block hover:text-[#7952EC]" href="/products#rnd">Research &amp; Development</a>
-        <a class="block hover:text-[#7952EC]" href="/privacy">Privacy &amp; Compliance</a>
+        <a class="block hover:text-[#6438D9]" href="/products#apex-connect">APEX Connect</a>
+        <a class="block hover:text-[#6438D9]" href="/products#aim-remote">AIM Remote AI</a>
+        <a class="block hover:text-[#6438D9]" href="/products#healthcare">Healthcare Operations Platform</a>
+        <a class="block hover:text-[#6438D9]" href="/products#rnd">Research &amp; Development</a>
+        <a class="block hover:text-[#6438D9]" href="/privacy">Privacy &amp; Compliance</a>
       </div>
       <div class="col-span-2 md:col-span-3 space-y-2.5 text-xs">
         <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--text-muted)]">Contact</div>
@@ -191,14 +192,14 @@ FOOTER = """
         </div>
         <p class="text-[var(--text-muted)]">Madhya Pradesh, India<br>Working with clients in India, the UK and Europe</p>
         <div class="flex gap-3">
-          <a class="hover:text-[#7952EC] inline-flex items-center gap-1.5" href="https://github.com/mrankitpanicker" target="_blank" rel="noopener"><i data-lucide="github" class="w-4 h-4"></i>GitHub</a>
-          <a data-social="linkedin" hidden class="hover:text-[#7952EC] inline-flex items-center gap-1.5" href="#" target="_blank" rel="noopener"><i data-lucide="linkedin" class="w-4 h-4"></i>LinkedIn</a>
+          <a class="hover:text-[#6438D9] inline-flex items-center gap-1.5" href="https://github.com/mrankitpanicker" target="_blank" rel="noopener"><i data-lucide="github" class="w-4 h-4"></i>GitHub</a>
+          <a data-social="linkedin" hidden class="hover:text-[#6438D9] inline-flex items-center gap-1.5" href="#" target="_blank" rel="noopener"><i data-lucide="linkedin" class="w-4 h-4"></i>LinkedIn</a>
         </div>
       </div>
     </div>
     <div class="text-center text-[11px] font-mono text-[var(--text-muted)] py-6 space-y-1">
       <div>© <span data-year>2026</span> AI Infrastructure &amp; Machines (AIM) · Udyam-registered MSME · <a class="underline underline-offset-2" href="/privacy">Privacy &amp; Compliance</a></div>
-      <div class="opacity-70">aimsystem.in · aimstudio.co.in</div>
+      <div>aimsystem.in · aimstudio.co.in</div>
     </div>
   </footer>
 
@@ -242,8 +243,8 @@ FOOTER = """
     </div>
   </div>
 
-  <script src="/assets/js/icons.js"></script>
-  <script src="/assets/js/aim.js"></script>
+  <script defer src="/assets/js/icons.js"></script>
+  <script defer src="/assets/js/aim.js"></script>
 {extra_foot}</body>
 </html>
 """
@@ -434,7 +435,40 @@ def optimize(page):
             src = mini
         return f'{m.group(1)}="{src}?v={_version(src)}"'
 
-    return re.sub(r'(href|src)="(/assets/(?:css|js)/[^"?]+)"', asset, page)
+    page = re.sub(r'(href|src)="(/assets/(?:css|js)/[^"?]+)"', asset, page)
+    return add_csp(page)
+
+
+def add_csp(page):
+    """Content-Security-Policy as a meta tag, built from the page's own inline scripts.
+    Every executable inline <script> is allowed by its sha256 hash, so no 'unsafe-inline'
+    for scripts; JSON-LD blocks are data and are not executed. Cloudflare Web Analytics
+    injects its beacon at the edge, so its script and reporting hosts are allowed."""
+    import base64, hashlib
+    hashes = []
+    for attrs, body in re.findall(r'<script(?![^>]*\bsrc=)([^>]*)>([\s\S]*?)</script>', page):
+        if 'application/ld+json' in attrs:
+            continue
+        digest = base64.b64encode(hashlib.sha256(body.encode('utf-8')).digest()).decode()
+        hashes.append(f"'sha256-{digest}'")
+    policy = '; '.join([
+        "default-src 'self'",
+        "script-src 'self' " + ' '.join(sorted(set(hashes))) + ' https://static.cloudflareinsights.com',
+        "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+        "font-src 'self' https://fonts.gstatic.com data:",
+        "img-src 'self' data: blob:",
+        "connect-src 'self' https://cloudflareinsights.com",
+        "media-src 'self' blob:",
+        "worker-src 'self' blob:",
+        "manifest-src 'self'",
+        "object-src 'none'",
+        "base-uri 'self'",
+        "form-action 'self'",
+        "frame-src 'none'",
+        'upgrade-insecure-requests',
+    ])
+    csp_meta = f'<meta http-equiv="Content-Security-Policy" content="{policy}">'
+    return page.replace('<meta charset="UTF-8">', '<meta charset="UTF-8">\n  ' + csp_meta, 1)
 
 
 def build():
@@ -460,7 +494,7 @@ def build():
             + body.rstrip() + '\n'
             + FOOTER.format(extra_foot=meta.get('foot', ''))
         )
-        open(os.path.join(ROOT, fn), 'w', encoding='utf-8').write(optimize(page))
+        open(os.path.join(ROOT, fn), 'w', encoding='utf-8', newline='\n').write(optimize(page))
         built.append(path)
     print('built:', ', '.join(built))
 

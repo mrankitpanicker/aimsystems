@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-GE2UBx0hUx5ruudoBH1BUb7AdSYCRLwoFSiUZJ99sZ0=' 'sha256-JgUn3eqaoTlwK2rlyrVMkiy9dsnbD08z6gnzrWlwZVE=' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://cloudflareinsights.com; media-src 'self' blob:; worker-src 'self' blob:; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'; upgrade-insecure-requests">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Privacy &amp; Compliance · AIM</title>
   <link rel="preload" as="image" href="/assets/img/ill-compliance.webp" fetchpriority="high">
@@ -217,10 +218,11 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800;900&family=JetBrains+Mono:wght@600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800;900&family=JetBrains+Mono:wght@600;700&display=swap" data-font>
+  <script>(function (l) { if (l) l.rel = 'stylesheet'; })(document.querySelector('link[data-font]'));</script>
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800;900&family=JetBrains+Mono:wght@600;700&display=swap"></noscript>
-  <link rel="stylesheet" href="/assets/css/aim.min.css?v=876ca469">
-  <link rel="stylesheet" href="/assets/css/tw.css?v=2f3c9c2b">
+  <link rel="stylesheet" href="/assets/css/aim.min.css?v=f736fc77">
+  <link rel="stylesheet" href="/assets/css/tw.css?v=4741e533">
 </head>
 <body class="min-h-screen py-6 sm:py-8 px-4 sm:px-6 lg:px-12 flex flex-col items-center">
   <a href="#main" class="skip-link btn-deploy-edge px-4 py-2 text-xs">Skip to content</a>
@@ -256,22 +258,22 @@
       <div class="flex items-center gap-2 sm:gap-2.5 shrink-0">
         <div class="relative">
           <button type="button" id="settingsToggle" class="tactile-convex-pill w-10 h-10 flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--text-main)]" aria-expanded="false" aria-controls="settingsPanel" aria-label="Settings">
-            <i data-lucide="settings" class="w-4 h-4 text-[#7952EC] dark:text-[#A78BFA]"></i>
+            <i data-lucide="settings" class="w-4 h-4 text-[#6438D9] dark:text-[#A78BFA]"></i>
           </button>
           <div id="settingsPanel" class="settings-panel tactile-raised rounded-2xl p-3 space-y-2 w-60" role="menu" aria-label="Settings" hidden>
             <div class="px-1 pb-1 text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--text-muted)]">Settings</div>
             <button type="button" data-theme-toggle role="menuitem" class="w-full tactile-inset-sm rounded-xl px-3 py-2.5 flex items-center gap-3 text-left text-xs font-bold">
-              <i data-theme-icon data-lucide="moon" class="w-4 h-4 text-[#7952EC] dark:text-[#A78BFA]"></i>
+              <i data-theme-icon data-lucide="moon" class="w-4 h-4 text-[#6438D9] dark:text-[#A78BFA]"></i>
               <span class="flex-1">Theme</span>
               <span data-theme-current class="text-[11px] font-semibold text-[var(--text-muted)]">Lilac Ice</span>
             </button>
             <button type="button" data-sound-toggle role="menuitem" class="w-full tactile-inset-sm rounded-xl px-3 py-2.5 flex items-center gap-3 text-left text-xs font-bold">
-              <i data-sound-icon data-lucide="volume-2" class="w-4 h-4 text-[#7952EC] dark:text-[#A78BFA]"></i>
+              <i data-sound-icon data-lucide="volume-2" class="w-4 h-4 text-[#6438D9] dark:text-[#A78BFA]"></i>
               <span class="flex-1">Sound effects</span>
               <span data-sound-label class="text-[11px] font-semibold text-[var(--text-muted)]">On</span>
             </button>
             <button type="button" data-cookie-settings role="menuitem" class="w-full tactile-inset-sm rounded-xl px-3 py-2.5 flex items-center gap-3 text-left text-xs font-bold">
-              <i data-lucide="cookie" class="w-4 h-4 text-[#7952EC] dark:text-[#A78BFA]"></i>
+              <i data-lucide="cookie" class="w-4 h-4 text-[#6438D9] dark:text-[#A78BFA]"></i>
               <span class="flex-1">Cookies</span>
               <span data-cookie-label class="text-[11px] font-semibold text-[var(--text-muted)]">Ask</span>
             </button>
@@ -304,13 +306,13 @@
     <section class="reveal-on-scroll">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
         <div class="lg:col-span-8 space-y-4">
-          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full tactile-inset-sm text-xs font-bold text-[#7952EC] dark:text-[#A78BFA]"><span class="w-2 h-2 rounded-full bg-[#7952EC]"></span><span>Legal</span></div>
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full tactile-inset-sm text-xs font-bold text-[#6438D9] dark:text-[#A78BFA]"><span class="w-2 h-2 rounded-full bg-[#7952EC]"></span><span>Legal</span></div>
           <h1 class="text-4xl sm:text-5xl font-black font-display tracking-tight leading-[1.08]">Privacy &amp; Compliance</h1>
           <p class="text-sm text-[var(--text-muted)] leading-relaxed max-w-2xl">How AI Infrastructure &amp; Machines (AIM) handles information on this website, in client engagements and on our platforms.</p>
           <p class="text-[11px] font-mono text-[var(--text-muted)]">Last updated: October 2026</p>
         </div>
         <div class="lg:col-span-4">
-          <div class="tactile-navy rounded-3xl p-5 aspect-[4/3]"><img fetchpriority="high" decoding="async" class="ill" src="/assets/img/ill-compliance.webp" alt="Illustration of security and compliance checks" onerror="this.src='/assets/img/ill-secure-servers.webp'"></div>
+          <div class="tactile-navy rounded-3xl p-5 aspect-[4/3]"><img fetchpriority="high" decoding="async" class="ill" src="/assets/img/ill-compliance.webp" alt="Illustration of security and compliance checks"></div>
         </div>
       </div>
       <nav aria-label="On this page" class="flex flex-wrap gap-2 mt-8 text-xs font-bold">
@@ -414,21 +416,21 @@
       </div>
       <div class="md:col-span-2 space-y-2.5 text-xs">
         <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--text-muted)]">Agency</div>
-        <a class="block hover:text-[#7952EC]" href="/services">Services</a>
-        <a class="block hover:text-[#7952EC]" href="/hire">Hire</a>
-        <a class="block hover:text-[#7952EC]" href="/international">UK, US &amp; EU teams</a>
-        <a class="block hover:text-[#7952EC]" href="/work">Work</a>
-        <a class="block hover:text-[#7952EC]" href="/engineering">Engineering</a>
-        <a class="block hover:text-[#7952EC]" href="/about">About</a>
-        <a class="block hover:text-[#7952EC]" href="/jobs">Careers</a>
+        <a class="block hover:text-[#6438D9]" href="/services">Services</a>
+        <a class="block hover:text-[#6438D9]" href="/hire">Hire</a>
+        <a class="block hover:text-[#6438D9]" href="/international">UK, US &amp; EU teams</a>
+        <a class="block hover:text-[#6438D9]" href="/work">Work</a>
+        <a class="block hover:text-[#6438D9]" href="/engineering">Engineering</a>
+        <a class="block hover:text-[#6438D9]" href="/about">About</a>
+        <a class="block hover:text-[#6438D9]" href="/jobs">Careers</a>
       </div>
       <div class="md:col-span-3 space-y-2.5 text-xs">
         <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--text-muted)]">Platforms</div>
-        <a class="block hover:text-[#7952EC]" href="/products#apex-connect">APEX Connect</a>
-        <a class="block hover:text-[#7952EC]" href="/products#aim-remote">AIM Remote AI</a>
-        <a class="block hover:text-[#7952EC]" href="/products#healthcare">Healthcare Operations Platform</a>
-        <a class="block hover:text-[#7952EC]" href="/products#rnd">Research &amp; Development</a>
-        <a class="block hover:text-[#7952EC]" href="/privacy">Privacy &amp; Compliance</a>
+        <a class="block hover:text-[#6438D9]" href="/products#apex-connect">APEX Connect</a>
+        <a class="block hover:text-[#6438D9]" href="/products#aim-remote">AIM Remote AI</a>
+        <a class="block hover:text-[#6438D9]" href="/products#healthcare">Healthcare Operations Platform</a>
+        <a class="block hover:text-[#6438D9]" href="/products#rnd">Research &amp; Development</a>
+        <a class="block hover:text-[#6438D9]" href="/privacy">Privacy &amp; Compliance</a>
       </div>
       <div class="col-span-2 md:col-span-3 space-y-2.5 text-xs">
         <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--text-muted)]">Contact</div>
@@ -438,14 +440,14 @@
         </div>
         <p class="text-[var(--text-muted)]">Madhya Pradesh, India<br>Working with clients in India, the UK and Europe</p>
         <div class="flex gap-3">
-          <a class="hover:text-[#7952EC] inline-flex items-center gap-1.5" href="https://github.com/mrankitpanicker" target="_blank" rel="noopener"><i data-lucide="github" class="w-4 h-4"></i>GitHub</a>
-          <a data-social="linkedin" hidden class="hover:text-[#7952EC] inline-flex items-center gap-1.5" href="#" target="_blank" rel="noopener"><i data-lucide="linkedin" class="w-4 h-4"></i>LinkedIn</a>
+          <a class="hover:text-[#6438D9] inline-flex items-center gap-1.5" href="https://github.com/mrankitpanicker" target="_blank" rel="noopener"><i data-lucide="github" class="w-4 h-4"></i>GitHub</a>
+          <a data-social="linkedin" hidden class="hover:text-[#6438D9] inline-flex items-center gap-1.5" href="#" target="_blank" rel="noopener"><i data-lucide="linkedin" class="w-4 h-4"></i>LinkedIn</a>
         </div>
       </div>
     </div>
     <div class="text-center text-[11px] font-mono text-[var(--text-muted)] py-6 space-y-1">
       <div>© <span data-year>2026</span> AI Infrastructure &amp; Machines (AIM) · Udyam-registered MSME · <a class="underline underline-offset-2" href="/privacy">Privacy &amp; Compliance</a></div>
-      <div class="opacity-70">aimsystem.in · aimstudio.co.in</div>
+      <div>aimsystem.in · aimstudio.co.in</div>
     </div>
   </footer>
 
@@ -489,7 +491,7 @@
     </div>
   </div>
 
-  <script src="/assets/js/icons.js?v=31d0926e"></script>
-  <script src="/assets/js/aim.min.js?v=475dc6d7"></script>
+  <script defer src="/assets/js/icons.js?v=31d0926e"></script>
+  <script defer src="/assets/js/aim.min.js?v=475dc6d7"></script>
 </body>
 </html>
