@@ -888,6 +888,75 @@
     if (navigator.clipboard) navigator.clipboard.writeText(b.dataset.copy).then(done, done); else done();
   }));
 
+  /* ---------- Cookies & analytics (consent first) ----------
+     aim_consent cookie = granted | denied. Without consent: anonymous page counts only
+     (no ids, no journey). With consent: aim_vid visitor cookie, a per-tab session id,
+     landing page, first referrer, UTM tags and the page journey. The Worker at
+     /api/track and /api/lead re-applies the same rule server-side. */
+  const COOKIE_DAYS = 365;
+  const getCookie = n => (document.cookie.match(new RegExp('(?:^|; )' + n + '=([^;]*)')) || [])[1] || '';
+  const setCookie = (n, v) => { document.cookie = `${n}=${v}; Max-Age=${COOKIE_DAYS * 86400}; Path=/; SameSite=Lax; Secure`; };
+  const delCookie = n => { document.cookie = `${n}=; Max-Age=0; Path=/; SameSite=Lax; Secure`; };
+  const uid = () => (crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(36) + Math.random().toString(36).slice(2));
+  const ss = { get: k => { try { return sessionStorage.getItem(k); } catch (e) { return null; } }, set: (k, v) => { try { sessionStorage.setItem(k, v); } catch (e) {} } };
+  const consented = () => getCookie('aim_consent') === 'granted';
+  const UTM = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+
+  function visitorContext() {
+    const ctx = {
+      consent: consented(), path: location.pathname, title: document.title.slice(0, 200),
+      screen: `${screen.width}x${screen.height}`, viewport: `${innerWidth}x${innerHeight}`,
+      lang: navigator.language, timezone: (() => { try { return Intl.DateTimeFormat().resolvedOptions().timeZone; } catch (e) { return ''; } })(),
+      referrer: document.referrer,
+    };
+    const q = new URLSearchParams(location.search);
+    UTM.forEach(k => { if (q.get(k)) ss.set(k, q.get(k)); ctx[k] = ss.get(k) || ''; });
+    if (ctx.consent) {
+      let vid = getCookie('aim_vid'); if (!vid) { vid = uid(); setCookie('aim_vid', vid); }
+      let sid = ss.get('aim_sid'); if (!sid) { sid = uid(); ss.set('aim_sid', sid); }
+      if (!ss.get('aim_landing')) { ss.set('aim_landing', location.pathname); ss.set('aim_first_ref', document.referrer || '(direct)'); }
+      Object.assign(ctx, { visitor_id: vid, session_id: sid, landing_page: ss.get('aim_landing'), first_referrer: ss.get('aim_first_ref') });
+      let j = []; try { j = JSON.parse(ss.get('aim_journey') || '[]'); } catch (e) {}
+      ctx.journey = j;
+    }
+    return ctx;
+  }
+  function send(url, data) {
+    const body = JSON.stringify(data);
+    if (navigator.sendBeacon && navigator.sendBeacon(url, new Blob([body], { type: 'application/json' }))) return;
+    fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body, keepalive: true }).catch(() => {});
+  }
+  const trackEvent = (event, extra) => send('/api/track', Object.assign(visitorContext(), { event }, extra || {}));
+  function recordPage() {
+    if (consented()) {
+      let j = []; try { j = JSON.parse(ss.get('aim_journey') || '[]'); } catch (e) {}
+      if (j[j.length - 1] !== location.pathname) { j.push(location.pathname); ss.set('aim_journey', JSON.stringify(j.slice(-30))); }
+    }
+    trackEvent('pageview');
+  }
+  const cookieBanner = $('[data-cookie-banner]');
+  const paintCookie = () => $$('[data-cookie-label]').forEach(el => { el.textContent = consented() ? 'Allowed' : getCookie('aim_consent') ? 'Declined' : 'Ask'; });
+  function chooseCookies(choice) {
+    setCookie('aim_consent', choice);
+    if (choice !== 'granted') { delCookie('aim_vid'); ['aim_sid', 'aim_journey', 'aim_landing', 'aim_first_ref'].forEach(k => { try { sessionStorage.removeItem(k); } catch (e) {} }); }
+    if (cookieBanner) cookieBanner.hidden = true;
+    paintCookie();
+    if (choice === 'granted') recordPage(); // the visit that was counted anonymously now joins the journey
+    toast(choice === 'granted' ? 'Thanks, analytics cookies allowed' : 'Only anonymous page counts will be kept');
+  }
+  $$('[data-cookie-choice]').forEach(b => b.addEventListener('click', () => { sound('press'); chooseCookies(b.dataset.cookieChoice); }));
+  $$('[data-cookie-settings]').forEach(b => b.addEventListener('click', () => { if (cookieBanner) cookieBanner.hidden = false; }));
+  if (cookieBanner && !getCookie('aim_consent')) cookieBanner.hidden = false;
+  paintCookie();
+  recordPage();
+  document.addEventListener('click', e => {
+    const a = e.target.closest && e.target.closest('a[href]');
+    if (!a) return;
+    const href = a.getAttribute('href');
+    if (/^https:\/\/wa\.me\//.test(a.href)) trackEvent('whatsapp_click', { target: a.href.split('?')[0] });
+    else if (/^mailto:/.test(href)) trackEvent('email_click', { target: 'mailto' });
+  }, true);
+
   /* ---------- Lead context: which page and service a visitor came from ----------
      Any click on a link to /contact records the page, the service (the nearest
      card or section heading, or data-service) and the region on /international.
@@ -914,7 +983,7 @@
   const readLead = () => { try { return JSON.parse(sessionStorage.getItem(LEAD_KEY) || 'null'); } catch (e) { return null; } };
   document.addEventListener('click', e => {
     const a = e.target.closest && e.target.closest('a[href^="/contact"]');
-    if (a) saveLead(a);
+    if (a) { saveLead(a); trackEvent('contact_click', { service: serviceFor(a), target: a.getAttribute('href') }); }
   }, true);
   // Arriving on any page directly still counts as context if the visitor then opens Contact from the nav.
   if (!/\/contact(\.html)?$/.test(location.pathname)) saveLead(null);
@@ -969,6 +1038,12 @@
         '',
         f.get('message'),
       ].join('\n');
+      // Keep a copy of every lead in Cloudflare D1, even if the visitor never presses send in WhatsApp or email
+      send('/api/lead', Object.assign(visitorContext(), {
+        via, page: lead && lead.page, path: lead && lead.path, service: lead && lead.service, region_choice: lead && lead.region,
+        need, timeline: f.get('timeline'), name: f.get('name'), company: f.get('org'), email: f.get('email'), message: f.get('message'),
+        website: f.get('website') || '',
+      }));
       if (via === 'whatsapp' && contactValue('wa')) {
         window.open(`https://wa.me/${contactValue('wa')}?text=${encodeURIComponent(body)}`, '_blank', 'noopener');
         toast('Opening WhatsApp with your brief filled in');

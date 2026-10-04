@@ -316,7 +316,7 @@
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800;900&family=JetBrains+Mono:wght@600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800;900&family=JetBrains+Mono:wght@600;700&display=swap"></noscript>
   <link rel="stylesheet" href="/assets/css/aim.min.css?v=876ca469">
-  <link rel="stylesheet" href="/assets/css/tw.css?v=1c82fc2d">
+  <link rel="stylesheet" href="/assets/css/tw.css?v=2f3c9c2b">
 </head>
 <body class="min-h-screen py-6 sm:py-8 px-4 sm:px-6 lg:px-12 flex flex-col items-center">
   <a href="#main" class="skip-link btn-deploy-edge px-4 py-2 text-xs">Skip to content</a>
@@ -365,6 +365,11 @@
               <i data-sound-icon data-lucide="volume-2" class="w-4 h-4 text-[#7952EC] dark:text-[#A78BFA]"></i>
               <span class="flex-1">Sound effects</span>
               <span data-sound-label class="text-[11px] font-semibold text-[var(--text-muted)]">On</span>
+            </button>
+            <button type="button" data-cookie-settings role="menuitem" class="w-full tactile-inset-sm rounded-xl px-3 py-2.5 flex items-center gap-3 text-left text-xs font-bold">
+              <i data-lucide="cookie" class="w-4 h-4 text-[#7952EC] dark:text-[#A78BFA]"></i>
+              <span class="flex-1">Cookies</span>
+              <span data-cookie-label class="text-[11px] font-semibold text-[var(--text-muted)]">Ask</span>
             </button>
           </div>
         </div>
@@ -640,7 +645,16 @@
     <span id="toastText">Ready</span>
   </div>
 
-  <script src="/assets/js/icons.js?v=34c339f5"></script>
-  <script src="/assets/js/aim.min.js?v=f89c6a3b"></script>
+  <div data-cookie-banner hidden role="dialog" aria-label="Cookie preferences" class="fixed z-50 left-4 right-4 bottom-4 sm:left-6 sm:right-auto sm:max-w-sm tactile-raised rounded-3xl p-5 space-y-3">
+    <div class="flex items-center gap-3"><span class="ico-well w-10 h-10 rounded-xl"><img src="/assets/img/ico-shield.webp" alt=""></span><b class="text-sm font-black">Cookies on aimsystem.in</b></div>
+    <p class="text-xs text-[var(--text-muted)] leading-relaxed">With your OK we use one first-party cookie to see which pages and services lead to enquiries: pages visited, referrer, device and approximate location. No ads, no third-party trackers. <a href="/privacy#cookies" class="underline underline-offset-2">Details</a></p>
+    <div class="grid grid-cols-2 gap-2">
+      <button type="button" data-cookie-choice="denied" class="tactile-convex-pill py-2.5 text-xs">Decline</button>
+      <button type="button" data-cookie-choice="granted" class="btn-deploy-edge py-2.5 text-xs">Accept</button>
+    </div>
+  </div>
+
+  <script src="/assets/js/icons.js?v=31d0926e"></script>
+  <script src="/assets/js/aim.min.js?v=475dc6d7"></script>
 </body>
 </html>

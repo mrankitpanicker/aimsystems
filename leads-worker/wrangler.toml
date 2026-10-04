@@ -1,0 +1,23 @@
+name = "aim-leads"
+main = "src/index.js"
+compatibility_date = "2026-01-15"
+account_id = "bd76b817f16b79a8b3b0425a67591c1e"
+
+# Visitor analytics (consent-based) and lead capture for aimsystem.in.
+# Separate from the CV upload Worker (worker/) and the MCP Worker (mcp-worker/).
+routes = [
+  { pattern = "aimsystem.in/api/track", zone_name = "aimsystem.in" },
+  { pattern = "aimsystem.in/api/lead", zone_name = "aimsystem.in" }
+]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "aimsystem-analytics"
+database_id = "7be7e335-c3d3-4fb6-8074-3095dae32163"
+
+# Daily: delete analytics events older than 13 months (stated on /privacy)
+[triggers]
+crons = ["15 3 * * *"]
+
+[observability]
+enabled = true

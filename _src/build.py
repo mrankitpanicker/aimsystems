@@ -121,6 +121,11 @@ HEADER = """
               <span class="flex-1">Sound effects</span>
               <span data-sound-label class="text-[11px] font-semibold text-[var(--text-muted)]">On</span>
             </button>
+            <button type="button" data-cookie-settings role="menuitem" class="w-full tactile-inset-sm rounded-xl px-3 py-2.5 flex items-center gap-3 text-left text-xs font-bold">
+              <i data-lucide="cookie" class="w-4 h-4 text-[#7952EC] dark:text-[#A78BFA]"></i>
+              <span class="flex-1">Cookies</span>
+              <span data-cookie-label class="text-[11px] font-semibold text-[var(--text-muted)]">Ask</span>
+            </button>
           </div>
         </div>
         <a href="/contact" class="btn-deploy-edge px-4 sm:px-5 py-2.5 text-xs tracking-wide hidden sm:inline-flex">
@@ -226,6 +231,15 @@ FOOTER = """
   <div id="toast" role="status" aria-live="polite" class="fixed bottom-6 right-6 left-6 sm:left-auto transform translate-y-28 opacity-0 pointer-events-none z-50 px-5 py-3 rounded-full text-xs font-bold flex items-center gap-2.5 text-white shadow-lg" style="background: var(--deploy-gradient); box-shadow: 0 8px 20px rgba(11, 28, 77, 0.35);">
     <div class="w-2.5 h-2.5 rounded-full bg-blue-300"></div>
     <span id="toastText">Ready</span>
+  </div>
+
+  <div data-cookie-banner hidden role="dialog" aria-label="Cookie preferences" class="fixed z-50 left-4 right-4 bottom-4 sm:left-6 sm:right-auto sm:max-w-sm tactile-raised rounded-3xl p-5 space-y-3">
+    <div class="flex items-center gap-3"><span class="ico-well w-10 h-10 rounded-xl"><img src="/assets/img/ico-shield.webp" alt=""></span><b class="text-sm font-black">Cookies on aimsystem.in</b></div>
+    <p class="text-xs text-[var(--text-muted)] leading-relaxed">With your OK we use one first-party cookie to see which pages and services lead to enquiries: pages visited, referrer, device and approximate location. No ads, no third-party trackers. <a href="/privacy#cookies" class="underline underline-offset-2">Details</a></p>
+    <div class="grid grid-cols-2 gap-2">
+      <button type="button" data-cookie-choice="denied" class="tactile-convex-pill py-2.5 text-xs">Decline</button>
+      <button type="button" data-cookie-choice="granted" class="btn-deploy-edge py-2.5 text-xs">Accept</button>
+    </div>
   </div>
 
   <script src="/assets/js/icons.js"></script>

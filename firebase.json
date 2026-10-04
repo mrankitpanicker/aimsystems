@@ -14,7 +14,8 @@
       "storage.rules",
       "worker/**",
       "_src/**",
-      "mcp-worker/**"
+      "mcp-worker/**",
+      "leads-worker/**"
     ],
     "cleanUrls": true,
     "headers": [
