@@ -24,7 +24,7 @@ NAV = [
 ]
 
 HEAD = """<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -44,6 +44,7 @@ HEAD = """<!DOCTYPE html>
   <link rel="apple-touch-icon" href="/assets/img/aim-logo-180.png">
 
   <script>
+    try {{ if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; }} catch (e) {{}}
     (function () {{
       var t = null;
       try {{ t = localStorage.getItem('aim-theme'); }} catch (e) {{}}
@@ -55,7 +56,8 @@ HEAD = """<!DOCTYPE html>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800;900&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800;900&family=JetBrains+Mono:wght@600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800;900&family=JetBrains+Mono:wght@600;700&display=swap"></noscript>
   <link rel="stylesheet" href="/assets/css/aim.css">
   <link rel="stylesheet" href="/assets/css/tw.css">
 {extra_head}</head>
@@ -64,7 +66,7 @@ HEAD = """<!DOCTYPE html>
 """
 
 HEADER = """
-  <header class="tactile-raised rounded-3xl p-3.5 sm:p-4 w-full max-w-6xl sticky top-3 z-50 backdrop-blur-md">
+  <header class="tactile-raised rounded-3xl p-3.5 sm:p-4 w-full max-w-6xl sticky top-3 z-50">
     <div class="flex items-center justify-between gap-3">
       <a href="/" class="flex items-center gap-2.5 sm:gap-3 min-w-0 flex-1 xl:flex-none overflow-hidden p-3 -m-3" aria-label="AIM home">
         <span class="logo-tile w-10 h-10 sm:w-11 sm:h-11 rounded-2xl flex items-center justify-center shrink-0">
@@ -226,6 +228,21 @@ def nav_html(active):
     return '\n'.join(links), '\n'.join(mobile)
 
 
+
+def optimise_images(body):
+    """Images decode off the main thread; those below the first section load lazily."""
+    cut = body.find('</section>')
+    def tag(img, lazy):
+        if 'decoding=' not in img:
+            img = img.replace('<img ', '<img decoding="async" ', 1)
+        if lazy and 'loading=' not in img:
+            img = img.replace('<img ', '<img loading="lazy" ', 1)
+        return img
+    head, tail = (body, '') if cut < 0 else (body[:cut], body[cut:])
+    head = re.sub(r'<img [^>]*>', lambda m: tag(m.group(0), False), head)
+    tail = re.sub(r'<img [^>]*>', lambda m: tag(m.group(0), True), tail)
+    return head + tail
+
 def build():
     built = []
     for fn in sorted(os.listdir(PAGES)):
@@ -236,7 +253,7 @@ def build():
         if not m:
             raise SystemExit(f'{fn}: missing meta line')
         meta = json.loads(m.group(1))
-        body = raw[m.end():]
+        body = optimise_images(raw[m.end():])
         name = fn[:-5]
         path = '/' if name == 'index' else f'/{name}'
         links, mobile = nav_html(meta.get('nav', name))

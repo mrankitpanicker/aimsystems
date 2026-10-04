@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,6 +19,7 @@
   <link rel="apple-touch-icon" href="/assets/img/aim-logo-180.png">
 
   <script>
+    try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch (e) {}
     (function () {
       var t = null;
       try { t = localStorage.getItem('aim-theme'); } catch (e) {}
@@ -30,14 +31,15 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800;900&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800;900&family=JetBrains+Mono:wght@600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800;900&family=JetBrains+Mono:wght@600;700&display=swap"></noscript>
   <link rel="stylesheet" href="/assets/css/aim.css">
   <link rel="stylesheet" href="/assets/css/tw.css">
 </head>
 <body class="min-h-screen py-6 sm:py-8 px-4 sm:px-6 lg:px-12 flex flex-col items-center">
   <a href="#main" class="skip-link btn-deploy-edge px-4 py-2 text-xs">Skip to content</a>
 
-  <header class="tactile-raised rounded-3xl p-3.5 sm:p-4 w-full max-w-6xl sticky top-3 z-50 backdrop-blur-md">
+  <header class="tactile-raised rounded-3xl p-3.5 sm:p-4 w-full max-w-6xl sticky top-3 z-50">
     <div class="flex items-center justify-between gap-3">
       <a href="/" class="flex items-center gap-2.5 sm:gap-3 min-w-0 flex-1 xl:flex-none overflow-hidden p-3 -m-3" aria-label="AIM home">
         <span class="logo-tile w-10 h-10 sm:w-11 sm:h-11 rounded-2xl flex items-center justify-center shrink-0">
@@ -154,18 +156,18 @@
 
         <div class="lg:col-span-6 relative">
           <div class="char-stage mx-auto max-w-[440px] aspect-[1/1]">
-            <img src="/assets/img/cto-explaining.webp" alt="AIM engineer presenting">
+            <img decoding="async" src="/assets/img/cto-explaining.webp" alt="AIM engineer presenting">
           </div>
           <div class="float-y absolute -left-1 sm:left-0 lg:-left-6 top-6 tactile-raised rounded-2xl p-2.5 pr-4 flex items-center gap-3">
-            <span class="ico-well w-10 h-10 rounded-xl"><img src="/assets/img/ico-code.webp" alt=""></span>
+            <span class="ico-well w-10 h-10 rounded-xl"><img decoding="async" src="/assets/img/ico-code.webp" alt=""></span>
             <span><span class="block text-xs font-black">Software</span><span class="flex items-center gap-1.5 text-[10px] font-mono font-bold text-emerald-600 dark:text-emerald-400"><span class="status-dot live bg-emerald-500"></span>SHIPPING</span></span>
           </div>
           <div class="float-y d1 absolute -right-1 sm:right-0 lg:-right-4 top-[42%] tactile-navy rounded-2xl p-2.5 pr-4 flex items-center gap-3">
-            <span class="ico-well w-10 h-10 rounded-xl"><img src="/assets/img/ico-chip.webp" alt=""></span>
+            <span class="ico-well w-10 h-10 rounded-xl"><img decoding="async" src="/assets/img/ico-chip.webp" alt=""></span>
             <span><span class="block text-xs font-black">AI Systems</span><span class="flex items-center gap-1.5 text-[10px] font-mono font-bold text-[#B9C8FF]"><span class="status-dot bg-[#A78BFA]"></span>RUNNING</span></span>
           </div>
           <div class="float-y d2 absolute left-4 sm:left-10 -bottom-4 tactile-raised rounded-2xl p-2.5 pr-4 flex items-center gap-3">
-            <span class="ico-well w-10 h-10 rounded-xl"><img src="/assets/img/ico-cloud.webp" alt=""></span>
+            <span class="ico-well w-10 h-10 rounded-xl"><img decoding="async" src="/assets/img/ico-cloud.webp" alt=""></span>
             <span><span class="block text-xs font-black">Infrastructure</span><span class="flex items-center gap-1.5 text-[10px] font-mono font-bold text-[#445EAA] dark:text-[#6380CE]"><span class="status-dot bg-[#38BDF8]"></span>ONLINE</span></span>
           </div>
         </div>
@@ -188,11 +190,11 @@
               <div class="pk-row grid grid-cols-5 gap-2">
                 <div class="pk-track"><div class="pk-fill"></div></div>
                 <span class="pk-dot"></span>
-                <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="Idea: goals, users and constraints"><span class="ico-well w-8 h-8 rounded-lg"><img src="/assets/img/ico-bulb.webp" alt=""></span><span class="text-[10px] font-black">Idea</span><span class="pk-led"></span></div>
-                <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="Architecture: system design and delivery plan"><span class="ico-well w-8 h-8 rounded-lg"><img src="/assets/img/ico-hierarchy.webp" alt=""></span><span class="text-[10px] font-black">Architect</span><span class="pk-led"></span></div>
-                <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="Build: features developed, integrated and tested"><span class="ico-well w-8 h-8 rounded-lg"><img src="/assets/img/ico-code.webp" alt=""></span><span class="text-[10px] font-black">Build</span><span class="pk-led"></span></div>
-                <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="Launch: deployed with monitoring in place"><span class="ico-well w-8 h-8 rounded-lg"><img src="/assets/img/ico-rocket.webp" alt=""></span><span class="text-[10px] font-black">Launch</span><span class="pk-led"></span></div>
-                <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="Scale: capacity and features grow with demand"><span class="ico-well w-8 h-8 rounded-lg"><img src="/assets/img/ico-trend.webp" alt=""></span><span class="text-[10px] font-black">Scale</span><span class="pk-led"></span></div>
+                <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="Idea: goals, users and constraints"><span class="ico-well w-8 h-8 rounded-lg"><img loading="lazy" decoding="async" src="/assets/img/ico-bulb.webp" alt=""></span><span class="text-[10px] font-black">Idea</span><span class="pk-led"></span></div>
+                <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="Architecture: system design and delivery plan"><span class="ico-well w-8 h-8 rounded-lg"><img loading="lazy" decoding="async" src="/assets/img/ico-hierarchy.webp" alt=""></span><span class="text-[10px] font-black">Architect</span><span class="pk-led"></span></div>
+                <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="Build: features developed, integrated and tested"><span class="ico-well w-8 h-8 rounded-lg"><img loading="lazy" decoding="async" src="/assets/img/ico-code.webp" alt=""></span><span class="text-[10px] font-black">Build</span><span class="pk-led"></span></div>
+                <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="Launch: deployed with monitoring in place"><span class="ico-well w-8 h-8 rounded-lg"><img loading="lazy" decoding="async" src="/assets/img/ico-rocket.webp" alt=""></span><span class="text-[10px] font-black">Launch</span><span class="pk-led"></span></div>
+                <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="Scale: capacity and features grow with demand"><span class="ico-well w-8 h-8 rounded-lg"><img loading="lazy" decoding="async" src="/assets/img/ico-trend.webp" alt=""></span><span class="text-[10px] font-black">Scale</span><span class="pk-led"></span></div>
               </div>
             </div>
             <div class="tactile-inset-sm rounded-xl px-3 py-2 font-mono text-[11px]"><span data-pk-status>Every engagement follows this path</span></div>
@@ -212,22 +214,22 @@
       </div>
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         <a href="/services#product" class="tactile-raised rounded-3xl p-4 sm:p-5 space-y-3 sm:space-y-4 block">
-          <span class="block aspect-[4/3]"><img class="ill" src="/assets/img/ill-coder.webp" alt=""></span>
+          <span class="block aspect-[4/3]"><img loading="lazy" decoding="async" class="ill" src="/assets/img/ill-coder.webp" alt=""></span>
           <h3 class="font-black font-display">Product Engineering</h3>
           <p class="text-xs text-[var(--text-muted)] leading-relaxed">Complete software products and platforms: SaaS, web applications, APIs and internal systems.</p>
         </a>
         <a href="/services#ai" class="tactile-raised rounded-3xl p-4 sm:p-5 space-y-3 sm:space-y-4 block">
-          <span class="block aspect-[4/3]"><img class="ill" src="/assets/img/ill-voice-robot.webp" alt=""></span>
+          <span class="block aspect-[4/3]"><img loading="lazy" decoding="async" class="ill" src="/assets/img/ill-voice-robot.webp" alt=""></span>
           <h3 class="font-black font-display">AI Engineering</h3>
           <p class="text-xs text-[var(--text-muted)] leading-relaxed">AI capabilities built into real products and workflows: LLM applications, agents, RAG and voice AI.</p>
         </a>
         <a href="/services#platform" class="tactile-raised rounded-3xl p-4 sm:p-5 space-y-3 sm:space-y-4 block">
-          <span class="block aspect-[4/3]"><img class="ill" src="/assets/img/ill-cloud-db.webp" alt=""></span>
+          <span class="block aspect-[4/3]"><img loading="lazy" decoding="async" class="ill" src="/assets/img/ill-cloud-db.webp" alt=""></span>
           <h3 class="font-black font-display">Platform Engineering</h3>
           <p class="text-xs text-[var(--text-muted)] leading-relaxed">Cloud, Kubernetes, CI/CD and observability that keep software reliable and scalable.</p>
         </a>
         <a href="/services#automation" class="tactile-raised rounded-3xl p-4 sm:p-5 space-y-3 sm:space-y-4 block">
-          <span class="block aspect-[4/3]"><img class="ill" src="/assets/img/ill-automation.webp" alt=""></span>
+          <span class="block aspect-[4/3]"><img loading="lazy" decoding="async" class="ill" src="/assets/img/ill-automation.webp" alt=""></span>
           <h3 class="font-black font-display">Automation &amp; Integrations</h3>
           <p class="text-xs text-[var(--text-muted)] leading-relaxed">Connected systems and automated workflows across CRM, WhatsApp, telephony and data.</p>
         </a>
@@ -243,19 +245,19 @@
       </div>
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-5">
         <figure class="tactile-navy rounded-3xl p-3 space-y-3">
-          <div class="char-stage aspect-[5/4]"><img src="/assets/img/cto-laptop.webp" alt="Engineer at a laptop"></div>
+          <div class="char-stage aspect-[5/4]"><img loading="lazy" decoding="async" src="/assets/img/cto-laptop.webp" alt="Engineer at a laptop"></div>
           <figcaption class="px-2 pb-2 space-y-1"><div class="text-[10px] font-mono font-bold text-[#B9C8FF]">01</div><div class="text-sm font-black">One Engineer</div><div class="text-[11px] text-[var(--text-muted)]">Dedicated technical capacity for focused development.</div></figcaption>
         </figure>
         <figure class="tactile-navy rounded-3xl p-3 space-y-3">
-          <div class="char-stage aspect-[5/4]"><img src="/assets/img/cto-thinking.webp" alt="Specialist thinking through a problem"></div>
+          <div class="char-stage aspect-[5/4]"><img loading="lazy" decoding="async" src="/assets/img/cto-thinking.webp" alt="Specialist thinking through a problem"></div>
           <figcaption class="px-2 pb-2 space-y-1"><div class="text-[10px] font-mono font-bold text-[#B9C8FF]">02</div><div class="text-sm font-black">Specialist</div><div class="text-[11px] text-[var(--text-muted)]">Senior expertise for a specific technical challenge.</div></figcaption>
         </figure>
         <figure class="tactile-navy rounded-3xl p-3 space-y-3">
-          <div class="char-stage aspect-[5/4]"><img src="/assets/img/cto-pair-laptop.webp" alt="Two engineers working together"></div>
+          <div class="char-stage aspect-[5/4]"><img loading="lazy" decoding="async" src="/assets/img/cto-pair-laptop.webp" alt="Two engineers working together"></div>
           <figcaption class="px-2 pb-2 space-y-1"><div class="text-[10px] font-mono font-bold text-[#B9C8FF]">03</div><div class="text-sm font-black">Engineering Pod</div><div class="text-[11px] text-[var(--text-muted)]">A cross-functional team for continuous product development.</div></figcaption>
         </figure>
         <figure class="tactile-navy rounded-3xl p-3 space-y-3">
-          <div class="char-stage aspect-[5/4]"><img src="/assets/img/cto-team-meeting.webp" alt="Product team collaborating"></div>
+          <div class="char-stage aspect-[5/4]"><img loading="lazy" decoding="async" src="/assets/img/cto-team-meeting.webp" alt="Product team collaborating"></div>
           <figcaption class="px-2 pb-2 space-y-1"><div class="text-[10px] font-mono font-bold text-[#B9C8FF]">04</div><div class="text-sm font-black">Complete Team</div><div class="text-[11px] text-[var(--text-muted)]">End-to-end product engineering from architecture to production.</div></figcaption>
         </figure>
       </div>
@@ -273,19 +275,19 @@
       </div>
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
         <div class="tactile-raised rounded-3xl p-5 flex items-center gap-4">
-          <span class="ico-well w-12 h-12 hidden sm:inline-flex"><img src="/assets/img/ico-phone.webp" alt=""></span>
+          <span class="ico-well w-12 h-12 hidden sm:inline-flex"><img loading="lazy" decoding="async" src="/assets/img/ico-phone.webp" alt=""></span>
           <div><div class="text-2xl sm:text-3xl font-black font-mono text-[#163387] dark:text-[#6380CE]"><span data-count="15" data-suffix="K+">0</span></div><div class="text-[10px] font-mono uppercase tracking-wider text-[var(--text-muted)]">Production calls processed</div></div>
         </div>
         <div class="card-sunk rounded-3xl p-5 flex items-center gap-4" tabindex="0">
-          <span class="ico-well w-12 h-12 hidden sm:inline-flex"><img src="/assets/img/ico-ok.webp" alt=""></span>
+          <span class="ico-well w-12 h-12 hidden sm:inline-flex"><img loading="lazy" decoding="async" src="/assets/img/ico-ok.webp" alt=""></span>
           <div><div class="text-2xl sm:text-3xl font-black font-mono text-[#7952EC] dark:text-[#A78BFA]"><span data-count="6.8" data-suffix="K+">0</span></div><div class="text-[10px] font-mono uppercase tracking-wider text-[var(--text-muted)]">Calls answered</div></div>
         </div>
         <div class="tactile-raised rounded-3xl p-5 flex items-center gap-4">
-          <span class="ico-well w-12 h-12 hidden sm:inline-flex"><img src="/assets/img/ico-trend.webp" alt=""></span>
+          <span class="ico-well w-12 h-12 hidden sm:inline-flex"><img loading="lazy" decoding="async" src="/assets/img/ico-trend.webp" alt=""></span>
           <div><div class="text-2xl sm:text-3xl font-black font-mono text-[#163387] dark:text-[#6380CE]">~<span data-count="45" data-suffix="%">0</span></div><div class="text-[10px] font-mono uppercase tracking-wider text-[var(--text-muted)]">Answered / connected</div></div>
         </div>
         <div class="card-sunk rounded-3xl p-5 flex items-center gap-4" tabindex="0">
-          <span class="ico-well w-12 h-12 hidden sm:inline-flex"><img src="/assets/img/ico-rocket.webp" alt=""></span>
+          <span class="ico-well w-12 h-12 hidden sm:inline-flex"><img loading="lazy" decoding="async" src="/assets/img/ico-rocket.webp" alt=""></span>
           <div><div class="text-2xl sm:text-3xl font-black font-mono text-[#F97316]">Multiple</div><div class="text-[10px] font-mono uppercase tracking-wider text-[var(--text-muted)]">Production client deployments</div></div>
         </div>
       </div>
@@ -303,12 +305,12 @@
           <div class="pk-row grid grid-cols-3 lg:grid-cols-6 gap-3">
             <div class="pk-track hidden lg:block"><div class="pk-fill"></div></div>
             <span class="pk-dot hidden lg:block"></span>
-            <div class="pk-node tactile-raised rounded-2xl p-3 flex flex-col items-center gap-1.5 text-center" data-msg="Input received over the voice channel"><span class="ico-well w-10 h-10 rounded-xl"><img src="/assets/img/ico-phone.webp" alt=""></span><span class="text-[11px] font-black">Input</span><span class="text-[9.5px] font-mono text-[var(--text-muted)]">voice · chat</span><span class="pk-led mt-0.5"></span></div>
-            <div class="pk-node tactile-raised rounded-2xl p-3 flex flex-col items-center gap-1.5 text-center" data-msg="Speech-to-text streaming the transcript"><span class="ico-well w-10 h-10 rounded-xl"><img src="/assets/img/ico-mic.webp" alt=""></span><span class="text-[11px] font-black">STT</span><span class="text-[9.5px] font-mono text-[var(--text-muted)]">streaming</span><span class="pk-led mt-0.5"></span></div>
-            <div class="pk-node tactile-raised rounded-2xl p-3 flex flex-col items-center gap-1.5 text-center" data-msg="LLM reasoning over the request and context"><span class="ico-well w-10 h-10 rounded-xl"><img src="/assets/img/ico-chip.webp" alt=""></span><span class="text-[11px] font-black">LLM</span><span class="text-[9.5px] font-mono text-[var(--text-muted)]">reasoning</span><span class="pk-led mt-0.5"></span></div>
-            <div class="pk-node tactile-raised rounded-2xl p-3 flex flex-col items-center gap-1.5 text-center" data-msg="Tools called: calendar, CRM or messaging"><span class="ico-well w-10 h-10 rounded-xl"><img src="/assets/img/ico-settings.webp" alt=""></span><span class="text-[11px] font-black">Tools</span><span class="text-[9.5px] font-mono text-[var(--text-muted)]">APIs · data</span><span class="pk-led mt-0.5"></span></div>
-            <div class="pk-node tactile-raised rounded-2xl p-3 flex flex-col items-center gap-1.5 text-center" data-msg="Text-to-speech streaming the reply"><span class="ico-well w-10 h-10 rounded-xl"><img src="/assets/img/ico-headphones.webp" alt=""></span><span class="text-[11px] font-black">TTS</span><span class="text-[9.5px] font-mono text-[var(--text-muted)]">sentence-level</span><span class="pk-led mt-0.5"></span></div>
-            <div class="pk-node tactile-raised rounded-2xl p-3 flex flex-col items-center gap-1.5 text-center" data-msg="Output delivered and the outcome recorded"><span class="ico-well w-10 h-10 rounded-xl"><img src="/assets/img/ico-ok.webp" alt=""></span><span class="text-[11px] font-black">Output</span><span class="text-[9.5px] font-mono text-[var(--text-muted)]">reply · record</span><span class="pk-led mt-0.5"></span></div>
+            <div class="pk-node tactile-raised rounded-2xl p-3 flex flex-col items-center gap-1.5 text-center" data-msg="Input received over the voice channel"><span class="ico-well w-10 h-10 rounded-xl"><img loading="lazy" decoding="async" src="/assets/img/ico-phone.webp" alt=""></span><span class="text-[11px] font-black">Input</span><span class="text-[9.5px] font-mono text-[var(--text-muted)]">voice · chat</span><span class="pk-led mt-0.5"></span></div>
+            <div class="pk-node tactile-raised rounded-2xl p-3 flex flex-col items-center gap-1.5 text-center" data-msg="Speech-to-text streaming the transcript"><span class="ico-well w-10 h-10 rounded-xl"><img loading="lazy" decoding="async" src="/assets/img/ico-mic.webp" alt=""></span><span class="text-[11px] font-black">STT</span><span class="text-[9.5px] font-mono text-[var(--text-muted)]">streaming</span><span class="pk-led mt-0.5"></span></div>
+            <div class="pk-node tactile-raised rounded-2xl p-3 flex flex-col items-center gap-1.5 text-center" data-msg="LLM reasoning over the request and context"><span class="ico-well w-10 h-10 rounded-xl"><img loading="lazy" decoding="async" src="/assets/img/ico-chip.webp" alt=""></span><span class="text-[11px] font-black">LLM</span><span class="text-[9.5px] font-mono text-[var(--text-muted)]">reasoning</span><span class="pk-led mt-0.5"></span></div>
+            <div class="pk-node tactile-raised rounded-2xl p-3 flex flex-col items-center gap-1.5 text-center" data-msg="Tools called: calendar, CRM or messaging"><span class="ico-well w-10 h-10 rounded-xl"><img loading="lazy" decoding="async" src="/assets/img/ico-settings.webp" alt=""></span><span class="text-[11px] font-black">Tools</span><span class="text-[9.5px] font-mono text-[var(--text-muted)]">APIs · data</span><span class="pk-led mt-0.5"></span></div>
+            <div class="pk-node tactile-raised rounded-2xl p-3 flex flex-col items-center gap-1.5 text-center" data-msg="Text-to-speech streaming the reply"><span class="ico-well w-10 h-10 rounded-xl"><img loading="lazy" decoding="async" src="/assets/img/ico-headphones.webp" alt=""></span><span class="text-[11px] font-black">TTS</span><span class="text-[9.5px] font-mono text-[var(--text-muted)]">sentence-level</span><span class="pk-led mt-0.5"></span></div>
+            <div class="pk-node tactile-raised rounded-2xl p-3 flex flex-col items-center gap-1.5 text-center" data-msg="Output delivered and the outcome recorded"><span class="ico-well w-10 h-10 rounded-xl"><img loading="lazy" decoding="async" src="/assets/img/ico-ok.webp" alt=""></span><span class="text-[11px] font-black">Output</span><span class="text-[9.5px] font-mono text-[var(--text-muted)]">reply · record</span><span class="pk-led mt-0.5"></span></div>
           </div>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-stretch">
@@ -328,12 +330,12 @@
         <h2 class="text-2xl sm:text-3xl font-black font-display">Built for Serious Engineering.</h2>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        <div class="tactile-raised rounded-3xl p-5 flex gap-4"><span class="ico-well w-12 h-12"><img src="/assets/img/ico-crown.webp" alt=""></span><div><h3 class="text-sm font-black">Senior Technical Expertise</h3><p class="text-xs text-[var(--text-muted)] mt-1">Experienced engineers working across modern software, AI and infrastructure.</p></div></div>
-        <div class="card-sunk rounded-3xl p-5 flex gap-4" tabindex="0"><span class="ico-well w-12 h-12"><img src="/assets/img/ico-users.webp" alt=""></span><div><h3 class="text-sm font-black">Flexible Team Structure</h3><p class="text-xs text-[var(--text-muted)] mt-1">Engineering capacity shaped around the project.</p></div></div>
-        <div class="tactile-navy rounded-3xl p-5 flex gap-4"><span class="ico-well w-12 h-12"><img src="/assets/img/ico-rocket.webp" alt=""></span><div><h3 class="text-sm font-black">End-to-End Delivery</h3><p class="text-xs text-[var(--text-muted)] mt-1">Architecture, development, infrastructure and production.</p></div></div>
-        <div class="card-sunk rounded-3xl p-5 flex gap-4" tabindex="0"><span class="ico-well w-12 h-12"><img src="/assets/img/ico-cloud-sync.webp" alt=""></span><div><h3 class="text-sm font-black">Modern Engineering</h3><p class="text-xs text-[var(--text-muted)] mt-1">API-first, cloud-native and automation-driven systems.</p></div></div>
-        <div class="tactile-raised rounded-3xl p-5 flex gap-4"><span class="ico-well w-12 h-12"><img src="/assets/img/ico-shield.webp" alt=""></span><div><h3 class="text-sm font-black">Production Mindset</h3><p class="text-xs text-[var(--text-muted)] mt-1">Systems designed for reliability, observability and maintainability.</p></div></div>
-        <div class="card-sunk rounded-3xl p-5 flex gap-4" tabindex="0"><span class="ico-well w-12 h-12"><img src="/assets/img/ico-chats.webp" alt=""></span><div><h3 class="text-sm font-black">Direct Communication</h3><p class="text-xs text-[var(--text-muted)] mt-1">Clear technical communication throughout the engagement.</p></div></div>
+        <div class="tactile-raised rounded-3xl p-5 flex gap-4"><span class="ico-well w-12 h-12"><img loading="lazy" decoding="async" src="/assets/img/ico-crown.webp" alt=""></span><div><h3 class="text-sm font-black">Senior Technical Expertise</h3><p class="text-xs text-[var(--text-muted)] mt-1">Experienced engineers working across modern software, AI and infrastructure.</p></div></div>
+        <div class="card-sunk rounded-3xl p-5 flex gap-4" tabindex="0"><span class="ico-well w-12 h-12"><img loading="lazy" decoding="async" src="/assets/img/ico-users.webp" alt=""></span><div><h3 class="text-sm font-black">Flexible Team Structure</h3><p class="text-xs text-[var(--text-muted)] mt-1">Engineering capacity shaped around the project.</p></div></div>
+        <div class="tactile-navy rounded-3xl p-5 flex gap-4"><span class="ico-well w-12 h-12"><img loading="lazy" decoding="async" src="/assets/img/ico-rocket.webp" alt=""></span><div><h3 class="text-sm font-black">End-to-End Delivery</h3><p class="text-xs text-[var(--text-muted)] mt-1">Architecture, development, infrastructure and production.</p></div></div>
+        <div class="card-sunk rounded-3xl p-5 flex gap-4" tabindex="0"><span class="ico-well w-12 h-12"><img loading="lazy" decoding="async" src="/assets/img/ico-cloud-sync.webp" alt=""></span><div><h3 class="text-sm font-black">Modern Engineering</h3><p class="text-xs text-[var(--text-muted)] mt-1">API-first, cloud-native and automation-driven systems.</p></div></div>
+        <div class="tactile-raised rounded-3xl p-5 flex gap-4"><span class="ico-well w-12 h-12"><img loading="lazy" decoding="async" src="/assets/img/ico-shield.webp" alt=""></span><div><h3 class="text-sm font-black">Production Mindset</h3><p class="text-xs text-[var(--text-muted)] mt-1">Systems designed for reliability, observability and maintainability.</p></div></div>
+        <div class="card-sunk rounded-3xl p-5 flex gap-4" tabindex="0"><span class="ico-well w-12 h-12"><img loading="lazy" decoding="async" src="/assets/img/ico-chats.webp" alt=""></span><div><h3 class="text-sm font-black">Direct Communication</h3><p class="text-xs text-[var(--text-muted)] mt-1">Clear technical communication throughout the engagement.</p></div></div>
       </div>
     </section>
 
@@ -344,15 +346,15 @@
           <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7952EC] dark:text-[#A78BFA]">How we work</span>
           <h2 class="text-2xl sm:text-3xl font-black font-display">From Requirement to Production.</h2>
         </div>
-        <div class="lg:col-span-4 hidden lg:block"><img src="/assets/img/cto-signpost.webp" alt="" class="h-36 mx-auto object-contain drop-shadow-xl"></div>
+        <div class="lg:col-span-4 hidden lg:block"><img loading="lazy" decoding="async" src="/assets/img/cto-signpost.webp" alt="" class="h-36 mx-auto object-contain drop-shadow-xl"></div>
       </div>
       <div class="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5" data-cycle="4800">
-        <div class="card-sunk cycle-card rounded-3xl p-5 space-y-2" tabindex="0"><div class="cycle-body space-y-2"><div class="flex items-center gap-3"><span class="ico-well w-10 h-10 rounded-xl"><img src="/assets/img/ico-search.webp" alt=""></span><span class="text-[10px] font-mono font-bold text-[#7952EC] dark:text-[#A78BFA]">01</span></div><h3 class="font-black font-display">Discover</h3><p class="text-xs text-[var(--text-muted)]">Understand the business, product and technical requirements.</p></div><div class="cycle-tick" aria-hidden="true"></div></div>
-        <div class="card-sunk cycle-card rounded-3xl p-5 space-y-2" tabindex="0"><div class="cycle-body space-y-2"><div class="flex items-center gap-3"><span class="ico-well w-10 h-10 rounded-xl"><img src="/assets/img/ico-hierarchy.webp" alt=""></span><span class="text-[10px] font-mono font-bold text-[#7952EC] dark:text-[#A78BFA]">02</span></div><h3 class="font-black font-display">Architect</h3><p class="text-xs text-[var(--text-muted)]">Define the system architecture, technology and delivery approach.</p></div><div class="cycle-tick" aria-hidden="true"></div></div>
-        <div class="card-sunk cycle-card rounded-3xl p-5 space-y-2" tabindex="0"><div class="cycle-body space-y-2"><div class="flex items-center gap-3"><span class="ico-well w-10 h-10 rounded-xl"><img src="/assets/img/ico-users.webp" alt=""></span><span class="text-[10px] font-mono font-bold text-[#7952EC] dark:text-[#A78BFA]">03</span></div><h3 class="font-black font-display">Assemble</h3><p class="text-xs text-[var(--text-muted)]">Bring together the engineering expertise required for the project.</p></div><div class="cycle-tick" aria-hidden="true"></div></div>
-        <div class="card-sunk cycle-card rounded-3xl p-5 space-y-2" tabindex="0"><div class="cycle-body space-y-2"><div class="flex items-center gap-3"><span class="ico-well w-10 h-10 rounded-xl"><img src="/assets/img/ico-code.webp" alt=""></span><span class="text-[10px] font-mono font-bold text-[#7952EC] dark:text-[#A78BFA]">04</span></div><h3 class="font-black font-display">Build</h3><p class="text-xs text-[var(--text-muted)]">Develop, integrate, test and continuously improve.</p></div><div class="cycle-tick" aria-hidden="true"></div></div>
-        <div class="card-sunk cycle-card rounded-3xl p-5 space-y-2" tabindex="0"><div class="cycle-body space-y-2"><div class="flex items-center gap-3"><span class="ico-well w-10 h-10 rounded-xl"><img src="/assets/img/ico-rocket.webp" alt=""></span><span class="text-[10px] font-mono font-bold text-[#7952EC] dark:text-[#A78BFA]">05</span></div><h3 class="font-black font-display">Deploy</h3><p class="text-xs text-[var(--text-muted)]">Move the system into production with infrastructure and observability.</p></div><div class="cycle-tick" aria-hidden="true"></div></div>
-        <div class="card-sunk cycle-card rounded-3xl p-5 space-y-2" tabindex="0"><div class="cycle-body space-y-2"><div class="flex items-center gap-3"><span class="ico-well w-10 h-10 rounded-xl"><img src="/assets/img/ico-trend.webp" alt=""></span><span class="text-[10px] font-mono font-bold text-[#7952EC] dark:text-[#A78BFA]">06</span></div><h3 class="font-black font-display">Operate</h3><p class="text-xs text-[var(--text-muted)]">Monitor, maintain and evolve the system.</p></div><div class="cycle-tick" aria-hidden="true"></div></div>
+        <div class="card-sunk cycle-card rounded-3xl p-5 space-y-2" tabindex="0"><div class="cycle-body space-y-2"><div class="flex items-center gap-3"><span class="ico-well w-10 h-10 rounded-xl"><img loading="lazy" decoding="async" src="/assets/img/ico-search.webp" alt=""></span><span class="text-[10px] font-mono font-bold text-[#7952EC] dark:text-[#A78BFA]">01</span></div><h3 class="font-black font-display">Discover</h3><p class="text-xs text-[var(--text-muted)]">Understand the business, product and technical requirements.</p></div><div class="cycle-tick" aria-hidden="true"></div></div>
+        <div class="card-sunk cycle-card rounded-3xl p-5 space-y-2" tabindex="0"><div class="cycle-body space-y-2"><div class="flex items-center gap-3"><span class="ico-well w-10 h-10 rounded-xl"><img loading="lazy" decoding="async" src="/assets/img/ico-hierarchy.webp" alt=""></span><span class="text-[10px] font-mono font-bold text-[#7952EC] dark:text-[#A78BFA]">02</span></div><h3 class="font-black font-display">Architect</h3><p class="text-xs text-[var(--text-muted)]">Define the system architecture, technology and delivery approach.</p></div><div class="cycle-tick" aria-hidden="true"></div></div>
+        <div class="card-sunk cycle-card rounded-3xl p-5 space-y-2" tabindex="0"><div class="cycle-body space-y-2"><div class="flex items-center gap-3"><span class="ico-well w-10 h-10 rounded-xl"><img loading="lazy" decoding="async" src="/assets/img/ico-users.webp" alt=""></span><span class="text-[10px] font-mono font-bold text-[#7952EC] dark:text-[#A78BFA]">03</span></div><h3 class="font-black font-display">Assemble</h3><p class="text-xs text-[var(--text-muted)]">Bring together the engineering expertise required for the project.</p></div><div class="cycle-tick" aria-hidden="true"></div></div>
+        <div class="card-sunk cycle-card rounded-3xl p-5 space-y-2" tabindex="0"><div class="cycle-body space-y-2"><div class="flex items-center gap-3"><span class="ico-well w-10 h-10 rounded-xl"><img loading="lazy" decoding="async" src="/assets/img/ico-code.webp" alt=""></span><span class="text-[10px] font-mono font-bold text-[#7952EC] dark:text-[#A78BFA]">04</span></div><h3 class="font-black font-display">Build</h3><p class="text-xs text-[var(--text-muted)]">Develop, integrate, test and continuously improve.</p></div><div class="cycle-tick" aria-hidden="true"></div></div>
+        <div class="card-sunk cycle-card rounded-3xl p-5 space-y-2" tabindex="0"><div class="cycle-body space-y-2"><div class="flex items-center gap-3"><span class="ico-well w-10 h-10 rounded-xl"><img loading="lazy" decoding="async" src="/assets/img/ico-rocket.webp" alt=""></span><span class="text-[10px] font-mono font-bold text-[#7952EC] dark:text-[#A78BFA]">05</span></div><h3 class="font-black font-display">Deploy</h3><p class="text-xs text-[var(--text-muted)]">Move the system into production with infrastructure and observability.</p></div><div class="cycle-tick" aria-hidden="true"></div></div>
+        <div class="card-sunk cycle-card rounded-3xl p-5 space-y-2" tabindex="0"><div class="cycle-body space-y-2"><div class="flex items-center gap-3"><span class="ico-well w-10 h-10 rounded-xl"><img loading="lazy" decoding="async" src="/assets/img/ico-trend.webp" alt=""></span><span class="text-[10px] font-mono font-bold text-[#7952EC] dark:text-[#A78BFA]">06</span></div><h3 class="font-black font-display">Operate</h3><p class="text-xs text-[var(--text-muted)]">Monitor, maintain and evolve the system.</p></div><div class="cycle-tick" aria-hidden="true"></div></div>
       </div>
     </section>
 
@@ -360,7 +362,7 @@
     <section id="cta" class="reveal-on-scroll">
       <div class="tactile-navy rounded-[2rem] p-6 sm:p-10 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
         <div class="md:col-span-4">
-          <div class="char-stage aspect-square max-w-[260px] mx-auto"><img src="/assets/img/cto-laptop-chat.webp" alt="Engineer ready to start a project"></div>
+          <div class="char-stage aspect-square max-w-[260px] mx-auto"><img loading="lazy" decoding="async" src="/assets/img/cto-laptop-chat.webp" alt="Engineer ready to start a project"></div>
         </div>
         <div class="md:col-span-8 space-y-5 text-center md:text-left">
           <h2 class="text-2xl sm:text-4xl font-black font-display leading-tight">Your Engineering Team, On Demand.</h2>

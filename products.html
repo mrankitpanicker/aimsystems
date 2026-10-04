@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,6 +19,7 @@
   <link rel="apple-touch-icon" href="/assets/img/aim-logo-180.png">
 
   <script>
+    try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch (e) {}
     (function () {
       var t = null;
       try { t = localStorage.getItem('aim-theme'); } catch (e) {}
@@ -30,14 +31,15 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800;900&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800;900&family=JetBrains+Mono:wght@600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800;900&family=JetBrains+Mono:wght@600;700&display=swap"></noscript>
   <link rel="stylesheet" href="/assets/css/aim.css">
   <link rel="stylesheet" href="/assets/css/tw.css">
 </head>
 <body class="min-h-screen py-6 sm:py-8 px-4 sm:px-6 lg:px-12 flex flex-col items-center">
   <a href="#main" class="skip-link btn-deploy-edge px-4 py-2 text-xs">Skip to content</a>
 
-  <header class="tactile-raised rounded-3xl p-3.5 sm:p-4 w-full max-w-6xl sticky top-3 z-50 backdrop-blur-md">
+  <header class="tactile-raised rounded-3xl p-3.5 sm:p-4 w-full max-w-6xl sticky top-3 z-50">
     <div class="flex items-center justify-between gap-3">
       <a href="/" class="flex items-center gap-2.5 sm:gap-3 min-w-0 flex-1 xl:flex-none overflow-hidden p-3 -m-3" aria-label="AIM home">
         <span class="logo-tile w-10 h-10 sm:w-11 sm:h-11 rounded-2xl flex items-center justify-center shrink-0">
@@ -122,7 +124,7 @@
           </div>
         </div>
         <div class="lg:col-span-5">
-          <div class="tactile-navy rounded-[2rem] p-6 aspect-square max-w-[400px] mx-auto"><img class="ill" src="/assets/img/ill-api.webp" alt="APIs connecting cloud services"></div>
+          <div class="tactile-navy rounded-[2rem] p-6 aspect-square max-w-[400px] mx-auto"><img decoding="async" class="ill" src="/assets/img/ill-api.webp" alt="APIs connecting cloud services"></div>
         </div>
       </div>
     </section>
@@ -138,7 +140,7 @@
       <div id="apex-connect" class="tactile-navy rounded-[2rem] p-6 sm:p-10 space-y-6 scroll-mt-28">
         <div class="flex flex-wrap items-start justify-between gap-4">
           <div class="flex items-center gap-4">
-            <span class="ico-well w-16 h-16 hidden sm:inline-flex"><img src="/assets/img/ico-robot.webp" alt=""></span>
+            <span class="ico-well w-16 h-16 hidden sm:inline-flex"><img loading="lazy" decoding="async" src="/assets/img/ico-robot.webp" alt=""></span>
             <div>
               <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#B9C8FF]">APEX Connect · Flagship platform</span>
               <h3 class="text-2xl sm:text-3xl font-black font-display">AI-Powered Customer Engagement Infrastructure</h3>
@@ -152,13 +154,13 @@
           <div class="tactile-inset rounded-2xl p-3 sm:p-4">
             <div class="pk-row grid grid-cols-4 lg:grid-cols-7 gap-2">
               <div class="pk-track hidden lg:block"><div class="pk-fill"></div></div><span class="pk-dot hidden lg:block"></span>
-              <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="Tenant: isolated workspace, limits and spend controls"><span class="ico-well w-8 h-8 rounded-lg"><img src="/assets/img/ico-hierarchy.webp" alt=""></span><span class="text-[10px] font-black">Tenant</span><span class="pk-led"></span></div>
-              <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="API: authenticated, rate-limited request"><span class="ico-well w-8 h-8 rounded-lg"><img src="/assets/img/ico-link.webp" alt=""></span><span class="text-[10px] font-black">API</span><span class="pk-led"></span></div>
-              <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="Queue: work placed for background processing"><span class="ico-well w-8 h-8 rounded-lg"><img src="/assets/img/ico-rack.webp" alt=""></span><span class="text-[10px] font-black">Queue</span><span class="pk-led"></span></div>
-              <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="Supervisor: schedules workers, retries and capacity"><span class="ico-well w-8 h-8 rounded-lg"><img src="/assets/img/ico-settings.webp" alt=""></span><span class="text-[10px] font-black">Supervisor</span><span class="pk-led"></span></div>
-              <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="AI: speech, language and voice models orchestrated"><span class="ico-well w-8 h-8 rounded-lg"><img src="/assets/img/ico-chip.webp" alt=""></span><span class="text-[10px] font-black">AI</span><span class="pk-led"></span></div>
-              <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="Communication: voice call or WhatsApp message delivered"><span class="ico-well w-8 h-8 rounded-lg"><img src="/assets/img/ico-chats.webp" alt=""></span><span class="text-[10px] font-black">Comms</span><span class="pk-led"></span></div>
-              <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="Analytics: outcomes, recordings and transcripts"><span class="ico-well w-8 h-8 rounded-lg"><img src="/assets/img/ico-pie.webp" alt=""></span><span class="text-[10px] font-black">Analytics</span><span class="pk-led"></span></div>
+              <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="Tenant: isolated workspace, limits and spend controls"><span class="ico-well w-8 h-8 rounded-lg"><img loading="lazy" decoding="async" src="/assets/img/ico-hierarchy.webp" alt=""></span><span class="text-[10px] font-black">Tenant</span><span class="pk-led"></span></div>
+              <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="API: authenticated, rate-limited request"><span class="ico-well w-8 h-8 rounded-lg"><img loading="lazy" decoding="async" src="/assets/img/ico-link.webp" alt=""></span><span class="text-[10px] font-black">API</span><span class="pk-led"></span></div>
+              <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="Queue: work placed for background processing"><span class="ico-well w-8 h-8 rounded-lg"><img loading="lazy" decoding="async" src="/assets/img/ico-rack.webp" alt=""></span><span class="text-[10px] font-black">Queue</span><span class="pk-led"></span></div>
+              <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="Supervisor: schedules workers, retries and capacity"><span class="ico-well w-8 h-8 rounded-lg"><img loading="lazy" decoding="async" src="/assets/img/ico-settings.webp" alt=""></span><span class="text-[10px] font-black">Supervisor</span><span class="pk-led"></span></div>
+              <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="AI: speech, language and voice models orchestrated"><span class="ico-well w-8 h-8 rounded-lg"><img loading="lazy" decoding="async" src="/assets/img/ico-chip.webp" alt=""></span><span class="text-[10px] font-black">AI</span><span class="pk-led"></span></div>
+              <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="Communication: voice call or WhatsApp message delivered"><span class="ico-well w-8 h-8 rounded-lg"><img loading="lazy" decoding="async" src="/assets/img/ico-chats.webp" alt=""></span><span class="text-[10px] font-black">Comms</span><span class="pk-led"></span></div>
+              <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="Analytics: outcomes, recordings and transcripts"><span class="ico-well w-8 h-8 rounded-lg"><img loading="lazy" decoding="async" src="/assets/img/ico-pie.webp" alt=""></span><span class="text-[10px] font-black">Analytics</span><span class="pk-led"></span></div>
             </div>
           </div>
           <div class="tactile-inset-sm rounded-xl px-3 py-2 mt-3 font-mono text-[11px]"><span data-pk-status>Platform architecture</span></div>
@@ -184,7 +186,7 @@
 
       <!-- AIM REMOTE -->
       <div id="aim-remote" class="tactile-raised rounded-[2rem] p-6 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center scroll-mt-28">
-        <div class="lg:col-span-5"><div class="aspect-[4/3]"><img class="ill" src="/assets/img/ill-devices.webp" alt="Phone and desktop sharing a workspace"></div></div>
+        <div class="lg:col-span-5"><div class="aspect-[4/3]"><img loading="lazy" decoding="async" class="ill" src="/assets/img/ill-devices.webp" alt="Phone and desktop sharing a workspace"></div></div>
         <div class="lg:col-span-7 space-y-4">
           <div class="flex flex-wrap items-center justify-between gap-3">
             <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7952EC] dark:text-[#A78BFA]">AIM Remote AI · Platform</span>
@@ -209,7 +211,7 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div id="healthcare" class="card-sunk rounded-3xl p-6 space-y-4 scroll-mt-28" tabindex="0">
           <div class="flex items-start justify-between gap-3">
-            <span class="ico-well w-14 h-14"><img src="/assets/img/ico-medical.webp" alt=""></span>
+            <span class="ico-well w-14 h-14"><img loading="lazy" decoding="async" src="/assets/img/ico-medical.webp" alt=""></span>
             <span class="tactile-inset-sm rounded-full px-3 py-1 text-[10px] font-mono font-bold text-amber-600 dark:text-amber-400">In Development</span>
           </div>
           <h3 class="text-xl font-black font-display">Healthcare Operations Platform</h3>
@@ -219,7 +221,7 @@
         </div>
         <div class="tactile-raised rounded-3xl p-6 space-y-4">
           <div class="flex items-start justify-between gap-3">
-            <span class="ico-well w-14 h-14"><img src="/assets/img/ico-megaphone.webp" alt=""></span>
+            <span class="ico-well w-14 h-14"><img loading="lazy" decoding="async" src="/assets/img/ico-megaphone.webp" alt=""></span>
             <span class="tactile-inset-sm rounded-full px-3 py-1 text-[10px] font-mono font-bold text-emerald-600 dark:text-emerald-400">In production</span>
           </div>
           <h3 class="text-xl font-black font-display">Automated Outreach Campaigns</h3>
@@ -239,19 +241,19 @@
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div class="tactile-raised rounded-3xl p-5 space-y-3">
-          <div class="flex items-center justify-between"><span class="ico-well w-12 h-12"><img src="/assets/img/ico-video-play.webp" alt=""></span><span class="text-[10px] font-mono font-bold text-[var(--text-muted)]">R&amp;D</span></div>
+          <div class="flex items-center justify-between"><span class="ico-well w-12 h-12"><img loading="lazy" decoding="async" src="/assets/img/ico-video-play.webp" alt=""></span><span class="text-[10px] font-mono font-bold text-[var(--text-muted)]">R&amp;D</span></div>
           <h3 class="font-black font-display">Shortz Media Pipeline</h3>
           <p class="text-xs text-[var(--text-muted)] leading-relaxed">Local AI video generation: script, text-to-speech, voice alignment, subtitles and rendering, with timing recorded for every stage.</p>
           <p class="text-[11px] font-mono text-[var(--text-muted)]">FastAPI · Redis · XTTS · Whisper · FFmpeg · Prometheus</p>
         </div>
         <div class="card-sunk rounded-3xl p-5 space-y-3" tabindex="0">
-          <div class="flex items-center justify-between"><span class="ico-well w-12 h-12"><img src="/assets/img/ico-settings.webp" alt=""></span><span class="text-[10px] font-mono font-bold text-[var(--text-muted)]">R&amp;D</span></div>
+          <div class="flex items-center justify-between"><span class="ico-well w-12 h-12"><img loading="lazy" decoding="async" src="/assets/img/ico-settings.webp" alt=""></span><span class="text-[10px] font-mono font-bold text-[var(--text-muted)]">R&amp;D</span></div>
           <h3 class="font-black font-display">Apex Core</h3>
           <p class="text-xs text-[var(--text-muted)] leading-relaxed">Deterministic automation and remote system control: explicit commands, controlled execution, observable state and auditable results.</p>
           <p class="text-[11px] font-mono text-[var(--text-muted)]">Process supervision · structured logging</p>
         </div>
         <div class="tactile-raised rounded-3xl p-5 space-y-3">
-          <div class="flex items-center justify-between"><span class="ico-well w-12 h-12"><img src="/assets/img/ico-doc.webp" alt=""></span><span class="text-[10px] font-mono font-bold text-emerald-600 dark:text-emerald-400">Available</span></div>
+          <div class="flex items-center justify-between"><span class="ico-well w-12 h-12"><img loading="lazy" decoding="async" src="/assets/img/ico-doc.webp" alt=""></span><span class="text-[10px] font-mono font-bold text-emerald-600 dark:text-emerald-400">Available</span></div>
           <h3 class="font-black font-display">Free Tools</h3>
           <p class="text-xs text-[var(--text-muted)] leading-relaxed">Browser-based PDF, image, audio and video utilities. Files are processed on the device and never uploaded.</p>
           <a href="https://aimstudio.co.in/freetools/" target="_blank" rel="noopener" class="tactile-convex-pill px-4 py-2 text-xs inline-flex items-center gap-2">Open Free Tools ↗</a>

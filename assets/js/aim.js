@@ -9,10 +9,16 @@
   const icons = () => { if (window.lucide) window.lucide.createIcons(); };
 
   /* ---------- Every page opens at the top (unless the link targets a section) ---------- */
-  try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch (e) {}
-  const toTop = () => { if (!location.hash) window.scrollTo({ top: 0, left: 0, behavior: 'instant' }); };
+  const root = document.documentElement;
+  const toTop = () => {
+    if (location.hash) return;
+    root.style.scrollBehavior = 'auto';
+    window.scrollTo(0, 0);
+  };
   toTop();
   window.addEventListener('pageshow', toTop);
+  // smooth scrolling only for in-page links, switched on once the page is in place
+  requestAnimationFrame(() => requestAnimationFrame(() => { root.style.scrollBehavior = 'smooth'; }));
 
   /* ---------- Toast ---------- */
   let toastTimer = null;

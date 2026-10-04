@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,6 +19,7 @@
   <link rel="apple-touch-icon" href="/assets/img/aim-logo-180.png">
 
   <script>
+    try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch (e) {}
     (function () {
       var t = null;
       try { t = localStorage.getItem('aim-theme'); } catch (e) {}
@@ -30,14 +31,15 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800;900&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800;900&family=JetBrains+Mono:wght@600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800;900&family=JetBrains+Mono:wght@600;700&display=swap"></noscript>
   <link rel="stylesheet" href="/assets/css/aim.css">
   <link rel="stylesheet" href="/assets/css/tw.css">
 </head>
 <body class="min-h-screen py-6 sm:py-8 px-4 sm:px-6 lg:px-12 flex flex-col items-center">
   <a href="#main" class="skip-link btn-deploy-edge px-4 py-2 text-xs">Skip to content</a>
 
-  <header class="tactile-raised rounded-3xl p-3.5 sm:p-4 w-full max-w-6xl sticky top-3 z-50 backdrop-blur-md">
+  <header class="tactile-raised rounded-3xl p-3.5 sm:p-4 w-full max-w-6xl sticky top-3 z-50">
     <div class="flex items-center justify-between gap-3">
       <a href="/" class="flex items-center gap-2.5 sm:gap-3 min-w-0 flex-1 xl:flex-none overflow-hidden p-3 -m-3" aria-label="AIM home">
         <span class="logo-tile w-10 h-10 sm:w-11 sm:h-11 rounded-2xl flex items-center justify-center shrink-0">
@@ -178,26 +180,26 @@
         <div class="lg:col-span-5 space-y-6">
           <div class="tactile-navy rounded-3xl p-6 space-y-4">
             <div class="flex items-center gap-4">
-              <div class="char-stage w-20 h-20 shrink-0 rounded-2xl"><img src="/assets/img/cto-blazer-thumbsup.webp" alt="Ankit Panicker"></div>
+              <div class="char-stage w-20 h-20 shrink-0 rounded-2xl"><img loading="lazy" decoding="async" src="/assets/img/cto-blazer-thumbsup.webp" alt="Ankit Panicker"></div>
               <div><b class="block text-base">Ankit Panicker</b><span class="text-xs text-[#B9C8FF]">Client Partner &amp; Technical Lead</span></div>
             </div>
             <button type="button" data-contact="email" class="w-full text-left tactile-raised-sm interactive-press rounded-2xl p-3 flex items-center gap-3">
-              <span class="ico-well w-11 h-11 rounded-xl"><img src="/assets/img/ico-mail.webp" alt=""></span>
+              <span class="ico-well w-11 h-11 rounded-xl"><img loading="lazy" decoding="async" src="/assets/img/ico-mail.webp" alt=""></span>
               <span class="flex-1"><b class="block text-sm">Business email</b><span class="text-[11px] text-[var(--text-muted)]">Click to copy</span></span>
               <i data-lucide="copy" class="w-4 h-4 opacity-70"></i>
             </button>
             <button type="button" data-contact="phone" hidden class="w-full text-left tactile-raised-sm interactive-press rounded-2xl p-3 flex items-center gap-3">
-              <span class="ico-well w-11 h-11 rounded-xl"><img src="/assets/img/ico-phone.webp" alt=""></span>
+              <span class="ico-well w-11 h-11 rounded-xl"><img loading="lazy" decoding="async" src="/assets/img/ico-phone.webp" alt=""></span>
               <span class="flex-1"><b class="block text-sm">Phone</b><span class="text-[11px] text-[var(--text-muted)]">Calls and WhatsApp · click to copy</span></span>
               <i data-lucide="copy" class="w-4 h-4 opacity-70"></i>
             </button>
             <div class="tactile-inset-sm rounded-2xl p-3 flex items-center gap-3">
-              <span class="ico-well w-11 h-11 rounded-xl"><img src="/assets/img/ico-globe.webp" alt=""></span>
+              <span class="ico-well w-11 h-11 rounded-xl"><img loading="lazy" decoding="async" src="/assets/img/ico-globe.webp" alt=""></span>
               <span><b class="block text-sm">Madhya Pradesh, India</b><span class="text-[11px] text-[var(--text-muted)]">Working with clients in India, the UK and Europe</span></span>
             </div>
           </div>
           <div class="card-sunk rounded-3xl p-5 flex items-center gap-4" tabindex="0">
-            <div class="char-stage w-24 h-24 shrink-0 rounded-2xl"><img src="/assets/img/cto-team-meeting.webp" alt=""></div>
+            <div class="char-stage w-24 h-24 shrink-0 rounded-2xl"><img loading="lazy" decoding="async" src="/assets/img/cto-team-meeting.webp" alt=""></div>
             <div class="space-y-2 min-w-0">
               <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7952EC] dark:text-[#A78BFA]">Hire</span>
               <h3 class="font-black font-display">Need engineering capacity?</h3>
@@ -205,7 +207,7 @@
             </div>
           </div>
           <div class="tactile-raised rounded-3xl p-5 flex items-center gap-4">
-            <div class="char-stage w-24 h-24 shrink-0 rounded-2xl"><img src="/assets/img/cto-walking.webp" alt=""></div>
+            <div class="char-stage w-24 h-24 shrink-0 rounded-2xl"><img loading="lazy" decoding="async" src="/assets/img/cto-walking.webp" alt=""></div>
             <div class="space-y-2 min-w-0">
               <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7952EC] dark:text-[#A78BFA]">Careers</span>
               <h3 class="font-black font-display">Join our engineering teams</h3>

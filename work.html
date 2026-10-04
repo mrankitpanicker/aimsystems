@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,6 +19,7 @@
   <link rel="apple-touch-icon" href="/assets/img/aim-logo-180.png">
 
   <script>
+    try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch (e) {}
     (function () {
       var t = null;
       try { t = localStorage.getItem('aim-theme'); } catch (e) {}
@@ -30,14 +31,15 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800;900&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800;900&family=JetBrains+Mono:wght@600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800;900&family=JetBrains+Mono:wght@600;700&display=swap"></noscript>
   <link rel="stylesheet" href="/assets/css/aim.css">
   <link rel="stylesheet" href="/assets/css/tw.css">
 </head>
 <body class="min-h-screen py-6 sm:py-8 px-4 sm:px-6 lg:px-12 flex flex-col items-center">
   <a href="#main" class="skip-link btn-deploy-edge px-4 py-2 text-xs">Skip to content</a>
 
-  <header class="tactile-raised rounded-3xl p-3.5 sm:p-4 w-full max-w-6xl sticky top-3 z-50 backdrop-blur-md">
+  <header class="tactile-raised rounded-3xl p-3.5 sm:p-4 w-full max-w-6xl sticky top-3 z-50">
     <div class="flex items-center justify-between gap-3">
       <a href="/" class="flex items-center gap-2.5 sm:gap-3 min-w-0 flex-1 xl:flex-none overflow-hidden p-3 -m-3" aria-label="AIM home">
         <span class="logo-tile w-10 h-10 sm:w-11 sm:h-11 rounded-2xl flex items-center justify-center shrink-0">
@@ -118,7 +120,7 @@
           <p class="text-sm text-[var(--text-muted)] leading-relaxed max-w-2xl mx-auto lg:mx-0">From AI-powered communication infrastructure to healthcare automation, institutional outreach and digital product experiences, our work spans different environments, technical requirements and delivery models.</p>
         </div>
         <div class="lg:col-span-5">
-          <div class="char-stage aspect-[5/4] max-w-[440px] mx-auto"><img src="/assets/img/cto-presenting.webp" alt="Engineer presenting results to a client team"></div>
+          <div class="char-stage aspect-[5/4] max-w-[440px] mx-auto"><img decoding="async" src="/assets/img/cto-presenting.webp" alt="Engineer presenting results to a client team"></div>
         </div>
       </div>
     </section>
@@ -159,11 +161,11 @@
             <div class="px-1 text-[10px] font-mono font-bold uppercase tracking-wider text-[#B9C8FF]">Campaign flow</div>
             <div class="pk-row grid grid-cols-5 gap-2">
               <div class="pk-track hidden sm:block"><div class="pk-fill"></div></div><span class="pk-dot hidden sm:block"></span>
-              <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="Contact list uploaded and validated"><span class="ico-well w-8 h-8 rounded-lg"><img src="/assets/img/ico-doc.webp" alt=""></span><span class="text-[9.5px] font-black leading-tight">List</span><span class="pk-led"></span></div>
-              <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="AI call placed in Hindi or English"><span class="ico-well w-8 h-8 rounded-lg"><img src="/assets/img/ico-phone.webp" alt=""></span><span class="text-[9.5px] font-black leading-tight">Call</span><span class="pk-led"></span></div>
-              <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="Unanswered numbers re-queued with backoff"><span class="ico-well w-8 h-8 rounded-lg"><img src="/assets/img/ico-refresh.webp" alt=""></span><span class="text-[9.5px] font-black leading-tight">Retry</span><span class="pk-led"></span></div>
-              <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="WhatsApp follow-up sent"><span class="ico-well w-8 h-8 rounded-lg"><img src="/assets/img/ico-chats.webp" alt=""></span><span class="text-[9.5px] font-black leading-tight">WhatsApp</span><span class="pk-led"></span></div>
-              <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="Outcome recorded in the report"><span class="ico-well w-8 h-8 rounded-lg"><img src="/assets/img/ico-pie.webp" alt=""></span><span class="text-[9.5px] font-black leading-tight">Report</span><span class="pk-led"></span></div>
+              <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="Contact list uploaded and validated"><span class="ico-well w-8 h-8 rounded-lg"><img loading="lazy" decoding="async" src="/assets/img/ico-doc.webp" alt=""></span><span class="text-[9.5px] font-black leading-tight">List</span><span class="pk-led"></span></div>
+              <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="AI call placed in Hindi or English"><span class="ico-well w-8 h-8 rounded-lg"><img loading="lazy" decoding="async" src="/assets/img/ico-phone.webp" alt=""></span><span class="text-[9.5px] font-black leading-tight">Call</span><span class="pk-led"></span></div>
+              <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="Unanswered numbers re-queued with backoff"><span class="ico-well w-8 h-8 rounded-lg"><img loading="lazy" decoding="async" src="/assets/img/ico-refresh.webp" alt=""></span><span class="text-[9.5px] font-black leading-tight">Retry</span><span class="pk-led"></span></div>
+              <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="WhatsApp follow-up sent"><span class="ico-well w-8 h-8 rounded-lg"><img loading="lazy" decoding="async" src="/assets/img/ico-chats.webp" alt=""></span><span class="text-[9.5px] font-black leading-tight">WhatsApp</span><span class="pk-led"></span></div>
+              <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="Outcome recorded in the report"><span class="ico-well w-8 h-8 rounded-lg"><img loading="lazy" decoding="async" src="/assets/img/ico-pie.webp" alt=""></span><span class="text-[9.5px] font-black leading-tight">Report</span><span class="pk-led"></span></div>
             </div>
             <div class="tactile-raised-sm rounded-xl px-3 py-2 font-mono text-[10.5px]"><span data-pk-status>Campaign flow: List → Call → Retry → WhatsApp → Report</span></div>
           </div>
@@ -175,7 +177,7 @@
     <section class="grid grid-cols-1 lg:grid-cols-2 gap-8 reveal-on-scroll items-start">
       <article id="education" tabindex="0" class="card-sunk rounded-[2rem] p-6 sm:p-8 space-y-5 scroll-mt-28">
         <div class="flex items-start gap-4">
-          <div class="char-stage w-24 h-24 shrink-0 rounded-2xl"><img src="/assets/img/ill-team.webp" alt=""></div>
+          <div class="char-stage w-24 h-24 shrink-0 rounded-2xl"><img loading="lazy" decoding="async" src="/assets/img/ill-team.webp" alt=""></div>
           <div class="space-y-1 min-w-0">
             <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7952EC] dark:text-[#A78BFA]">Education · Production System</span>
             <h2 class="text-xl font-black font-display">Multi-Tenant Institutional Communication</h2>
@@ -194,7 +196,7 @@
 
       <article id="hospitality" class="tactile-raised rounded-[2rem] p-6 sm:p-8 space-y-5 scroll-mt-28">
         <div class="flex items-start gap-4">
-          <div class="char-stage w-24 h-24 shrink-0 rounded-2xl"><img src="/assets/img/ill-devices.webp" alt=""></div>
+          <div class="char-stage w-24 h-24 shrink-0 rounded-2xl"><img loading="lazy" decoding="async" src="/assets/img/ill-devices.webp" alt=""></div>
           <div class="space-y-1 min-w-0">
             <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#F97316]">Hospitality · Client Delivery</span>
             <h2 class="text-xl font-black font-display">Digital Experience Engineering</h2>
@@ -224,10 +226,10 @@
         <p class="text-xs sm:text-sm text-[var(--text-muted)] mt-1">Our engagements span:</p>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        <div class="tactile-raised rounded-3xl p-5 space-y-3"><span class="ico-well w-12 h-12"><img src="/assets/img/ico-robot.webp" alt=""></span><h3 class="font-black font-display">AI &amp; Automation</h3><p class="text-xs text-[var(--text-muted)]">Voice workflows · AI orchestration · intelligent communication</p></div>
-        <div class="card-sunk rounded-3xl p-5 space-y-3" tabindex="0"><span class="ico-well w-12 h-12"><img src="/assets/img/ico-code.webp" alt=""></span><h3 class="font-black font-display">Software Platforms</h3><p class="text-xs text-[var(--text-muted)]">Multi-tenant applications · APIs · workflow systems</p></div>
-        <div class="tactile-raised rounded-3xl p-5 space-y-3"><span class="ico-well w-12 h-12"><img src="/assets/img/ico-cloud.webp" alt=""></span><h3 class="font-black font-display">Cloud &amp; Infrastructure</h3><p class="text-xs text-[var(--text-muted)]">Deployment · queues · databases · observability</p></div>
-        <div class="card-sunk rounded-3xl p-5 space-y-3" tabindex="0"><span class="ico-well w-12 h-12"><img src="/assets/img/ico-laptop.webp" alt=""></span><h3 class="font-black font-display">Digital Products</h3><p class="text-xs text-[var(--text-muted)]">Web experiences · customer platforms · institutional systems</p></div>
+        <div class="tactile-raised rounded-3xl p-5 space-y-3"><span class="ico-well w-12 h-12"><img loading="lazy" decoding="async" src="/assets/img/ico-robot.webp" alt=""></span><h3 class="font-black font-display">AI &amp; Automation</h3><p class="text-xs text-[var(--text-muted)]">Voice workflows · AI orchestration · intelligent communication</p></div>
+        <div class="card-sunk rounded-3xl p-5 space-y-3" tabindex="0"><span class="ico-well w-12 h-12"><img loading="lazy" decoding="async" src="/assets/img/ico-code.webp" alt=""></span><h3 class="font-black font-display">Software Platforms</h3><p class="text-xs text-[var(--text-muted)]">Multi-tenant applications · APIs · workflow systems</p></div>
+        <div class="tactile-raised rounded-3xl p-5 space-y-3"><span class="ico-well w-12 h-12"><img loading="lazy" decoding="async" src="/assets/img/ico-cloud.webp" alt=""></span><h3 class="font-black font-display">Cloud &amp; Infrastructure</h3><p class="text-xs text-[var(--text-muted)]">Deployment · queues · databases · observability</p></div>
+        <div class="card-sunk rounded-3xl p-5 space-y-3" tabindex="0"><span class="ico-well w-12 h-12"><img loading="lazy" decoding="async" src="/assets/img/ico-laptop.webp" alt=""></span><h3 class="font-black font-display">Digital Products</h3><p class="text-xs text-[var(--text-muted)]">Web experiences · customer platforms · institutional systems</p></div>
       </div>
     </section>
 
@@ -241,11 +243,11 @@
         </div>
         <div class="lg:col-span-7 tactile-inset rounded-2xl p-3" data-stack data-every="5400">
           <div class="flex flex-col gap-2">
-            <div class="stk-layer tactile-raised-sm rounded-xl px-4 py-3 flex items-center gap-3"><span class="ico-well w-9 h-9 rounded-lg shrink-0"><img src="/assets/img/ico-bulb.webp" alt=""></span><span class="min-w-0"><b class="block text-sm">Strategy</b><span class="text-[11px] opacity-80">Requirements · Architecture · Technical planning</span></span></div>
-            <div class="stk-layer tactile-raised-sm rounded-xl px-4 py-3 flex items-center gap-3"><span class="ico-well w-9 h-9 rounded-lg shrink-0"><img src="/assets/img/ico-laptop.webp" alt=""></span><span class="min-w-0"><b class="block text-sm">Product</b><span class="text-[11px] opacity-80">UX/UI · Frontend · Backend · APIs</span></span></div>
-            <div class="stk-layer tactile-raised-sm rounded-xl px-4 py-3 flex items-center gap-3"><span class="ico-well w-9 h-9 rounded-lg shrink-0"><img src="/assets/img/ico-chip.webp" alt=""></span><span class="min-w-0"><b class="block text-sm">Intelligence</b><span class="text-[11px] opacity-80">AI · LLM · STT · TTS · Automation</span></span></div>
-            <div class="stk-layer tactile-raised-sm rounded-xl px-4 py-3 flex items-center gap-3"><span class="ico-well w-9 h-9 rounded-lg shrink-0"><img src="/assets/img/ico-server.webp" alt=""></span><span class="min-w-0"><b class="block text-sm">Infrastructure</b><span class="text-[11px] opacity-80">Cloud · Containers · Queues · Databases · Observability</span></span></div>
-            <div class="stk-layer tactile-raised-sm rounded-xl px-4 py-3 flex items-center gap-3"><span class="ico-well w-9 h-9 rounded-lg shrink-0"><img src="/assets/img/ico-rocket.webp" alt=""></span><span class="min-w-0"><b class="block text-sm">Production</b><span class="text-[11px] opacity-80">Deployment · Monitoring · Optimization · Operations</span></span></div>
+            <div class="stk-layer tactile-raised-sm rounded-xl px-4 py-3 flex items-center gap-3"><span class="ico-well w-9 h-9 rounded-lg shrink-0"><img loading="lazy" decoding="async" src="/assets/img/ico-bulb.webp" alt=""></span><span class="min-w-0"><b class="block text-sm">Strategy</b><span class="text-[11px] opacity-80">Requirements · Architecture · Technical planning</span></span></div>
+            <div class="stk-layer tactile-raised-sm rounded-xl px-4 py-3 flex items-center gap-3"><span class="ico-well w-9 h-9 rounded-lg shrink-0"><img loading="lazy" decoding="async" src="/assets/img/ico-laptop.webp" alt=""></span><span class="min-w-0"><b class="block text-sm">Product</b><span class="text-[11px] opacity-80">UX/UI · Frontend · Backend · APIs</span></span></div>
+            <div class="stk-layer tactile-raised-sm rounded-xl px-4 py-3 flex items-center gap-3"><span class="ico-well w-9 h-9 rounded-lg shrink-0"><img loading="lazy" decoding="async" src="/assets/img/ico-chip.webp" alt=""></span><span class="min-w-0"><b class="block text-sm">Intelligence</b><span class="text-[11px] opacity-80">AI · LLM · STT · TTS · Automation</span></span></div>
+            <div class="stk-layer tactile-raised-sm rounded-xl px-4 py-3 flex items-center gap-3"><span class="ico-well w-9 h-9 rounded-lg shrink-0"><img loading="lazy" decoding="async" src="/assets/img/ico-server.webp" alt=""></span><span class="min-w-0"><b class="block text-sm">Infrastructure</b><span class="text-[11px] opacity-80">Cloud · Containers · Queues · Databases · Observability</span></span></div>
+            <div class="stk-layer tactile-raised-sm rounded-xl px-4 py-3 flex items-center gap-3"><span class="ico-well w-9 h-9 rounded-lg shrink-0"><img loading="lazy" decoding="async" src="/assets/img/ico-rocket.webp" alt=""></span><span class="min-w-0"><b class="block text-sm">Production</b><span class="text-[11px] opacity-80">Deployment · Monitoring · Optimization · Operations</span></span></div>
           </div>
         </div>
       </div>
@@ -258,12 +260,12 @@
         <h2 class="text-2xl sm:text-3xl font-black font-display">The range of our work.</h2>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        <div class="tactile-raised rounded-2xl p-4 flex items-center gap-3"><span class="ico-well w-11 h-11 rounded-xl shrink-0"><img src="/assets/img/ico-medical.webp" alt=""></span><span><b class="block text-sm">Healthcare</b><span class="text-xs text-[var(--text-muted)]">AI-powered patient communication</span></span></div>
-        <div class="tactile-raised rounded-2xl p-4 flex items-center gap-3"><span class="ico-well w-11 h-11 rounded-xl shrink-0"><img src="/assets/img/ico-graduation.webp" alt=""></span><span><b class="block text-sm">Education</b><span class="text-xs text-[var(--text-muted)]">Institutional outreach infrastructure</span></span></div>
-        <div class="tactile-raised rounded-2xl p-4 flex items-center gap-3"><span class="ico-well w-11 h-11 rounded-xl shrink-0"><img src="/assets/img/ico-star.webp" alt=""></span><span><b class="block text-sm">Hospitality</b><span class="text-xs text-[var(--text-muted)]">Digital product experience</span></span></div>
-        <div class="card-sunk rounded-2xl p-4 flex items-center gap-3" tabindex="0"><span class="ico-well w-11 h-11 rounded-xl shrink-0"><img src="/assets/img/ico-mic.webp" alt=""></span><span><b class="block text-sm">AI &amp; Automation</b><span class="text-xs text-[var(--text-muted)]">Voice and messaging workflows</span></span></div>
-        <div class="card-sunk rounded-2xl p-4 flex items-center gap-3" tabindex="0"><span class="ico-well w-11 h-11 rounded-xl shrink-0"><img src="/assets/img/ico-hierarchy.webp" alt=""></span><span><b class="block text-sm">Software Platforms</b><span class="text-xs text-[var(--text-muted)]">Multi-tenant systems and operational platforms</span></span></div>
-        <div class="card-sunk rounded-2xl p-4 flex items-center gap-3" tabindex="0"><span class="ico-well w-11 h-11 rounded-xl shrink-0"><img src="/assets/img/ico-cloud-sync.webp" alt=""></span><span><b class="block text-sm">Cloud Engineering</b><span class="text-xs text-[var(--text-muted)]">Production infrastructure and deployment</span></span></div>
+        <div class="tactile-raised rounded-2xl p-4 flex items-center gap-3"><span class="ico-well w-11 h-11 rounded-xl shrink-0"><img loading="lazy" decoding="async" src="/assets/img/ico-medical.webp" alt=""></span><span><b class="block text-sm">Healthcare</b><span class="text-xs text-[var(--text-muted)]">AI-powered patient communication</span></span></div>
+        <div class="tactile-raised rounded-2xl p-4 flex items-center gap-3"><span class="ico-well w-11 h-11 rounded-xl shrink-0"><img loading="lazy" decoding="async" src="/assets/img/ico-graduation.webp" alt=""></span><span><b class="block text-sm">Education</b><span class="text-xs text-[var(--text-muted)]">Institutional outreach infrastructure</span></span></div>
+        <div class="tactile-raised rounded-2xl p-4 flex items-center gap-3"><span class="ico-well w-11 h-11 rounded-xl shrink-0"><img loading="lazy" decoding="async" src="/assets/img/ico-star.webp" alt=""></span><span><b class="block text-sm">Hospitality</b><span class="text-xs text-[var(--text-muted)]">Digital product experience</span></span></div>
+        <div class="card-sunk rounded-2xl p-4 flex items-center gap-3" tabindex="0"><span class="ico-well w-11 h-11 rounded-xl shrink-0"><img loading="lazy" decoding="async" src="/assets/img/ico-mic.webp" alt=""></span><span><b class="block text-sm">AI &amp; Automation</b><span class="text-xs text-[var(--text-muted)]">Voice and messaging workflows</span></span></div>
+        <div class="card-sunk rounded-2xl p-4 flex items-center gap-3" tabindex="0"><span class="ico-well w-11 h-11 rounded-xl shrink-0"><img loading="lazy" decoding="async" src="/assets/img/ico-hierarchy.webp" alt=""></span><span><b class="block text-sm">Software Platforms</b><span class="text-xs text-[var(--text-muted)]">Multi-tenant systems and operational platforms</span></span></div>
+        <div class="card-sunk rounded-2xl p-4 flex items-center gap-3" tabindex="0"><span class="ico-well w-11 h-11 rounded-xl shrink-0"><img loading="lazy" decoding="async" src="/assets/img/ico-cloud-sync.webp" alt=""></span><span><b class="block text-sm">Cloud Engineering</b><span class="text-xs text-[var(--text-muted)]">Production infrastructure and deployment</span></span></div>
       </div>
     </section>
 
@@ -309,7 +311,7 @@
             <a href="/hire" class="tactile-convex-pill px-6 py-3 text-xs inline-flex items-center">Hire Engineering Capacity</a>
           </div>
         </div>
-        <div class="md:col-span-4"><div class="char-stage aspect-square max-w-[240px] mx-auto"><img src="/assets/img/cto-celebrate.webp" alt="Engineer celebrating a launch"></div></div>
+        <div class="md:col-span-4"><div class="char-stage aspect-square max-w-[240px] mx-auto"><img loading="lazy" decoding="async" src="/assets/img/cto-celebrate.webp" alt="Engineer celebrating a launch"></div></div>
       </div>
     </section>
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,6 +19,7 @@
   <link rel="apple-touch-icon" href="/assets/img/aim-logo-180.png">
 
   <script>
+    try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch (e) {}
     (function () {
       var t = null;
       try { t = localStorage.getItem('aim-theme'); } catch (e) {}
@@ -30,14 +31,15 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800;900&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800;900&family=JetBrains+Mono:wght@600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800;900&family=JetBrains+Mono:wght@600;700&display=swap"></noscript>
   <link rel="stylesheet" href="/assets/css/aim.css">
   <link rel="stylesheet" href="/assets/css/tw.css">
 </head>
 <body class="min-h-screen py-6 sm:py-8 px-4 sm:px-6 lg:px-12 flex flex-col items-center">
   <a href="#main" class="skip-link btn-deploy-edge px-4 py-2 text-xs">Skip to content</a>
 
-  <header class="tactile-raised rounded-3xl p-3.5 sm:p-4 w-full max-w-6xl sticky top-3 z-50 backdrop-blur-md">
+  <header class="tactile-raised rounded-3xl p-3.5 sm:p-4 w-full max-w-6xl sticky top-3 z-50">
     <div class="flex items-center justify-between gap-3">
       <a href="/" class="flex items-center gap-2.5 sm:gap-3 min-w-0 flex-1 xl:flex-none overflow-hidden p-3 -m-3" aria-label="AIM home">
         <span class="logo-tile w-10 h-10 sm:w-11 sm:h-11 rounded-2xl flex items-center justify-center shrink-0">
@@ -133,7 +135,7 @@
           <p class="text-sm sm:text-base text-[var(--text-muted)] leading-relaxed max-w-2xl mx-auto lg:mx-0">We work across architecture, development, AI, infrastructure and production operations to help companies move from technical requirements to working systems.</p>
         </div>
         <div class="lg:col-span-5">
-          <div class="tactile-navy rounded-[2rem] p-6 aspect-square max-w-[400px] mx-auto"><img class="ill" src="/assets/img/ill-team-settings.webp" alt="Team collaborating on a system"></div>
+          <div class="tactile-navy rounded-[2rem] p-6 aspect-square max-w-[400px] mx-auto"><img decoding="async" class="ill" src="/assets/img/ill-team-settings.webp" alt="Team collaborating on a system"></div>
         </div>
       </div>
     </section>
@@ -158,10 +160,10 @@
         <p class="text-xs sm:text-sm text-[var(--text-muted)] mt-1">Our delivery teams bring together the technical expertise required for each engagement, from individual specialists to cross-functional product teams.</p>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5" data-cycle="4800">
-        <div class="card-sunk cycle-card rounded-3xl p-5 space-y-3" tabindex="0"><div class="cycle-body space-y-3"><span class="ico-well w-12 h-12"><img src="/assets/img/ico-hierarchy.webp" alt=""></span><h3 class="font-black font-display">Architecture</h3><p class="text-xs text-[var(--text-muted)]">Technical Architecture · System Design · Technical Strategy</p></div><div class="cycle-tick" aria-hidden="true"></div></div>
-        <div class="card-sunk cycle-card rounded-3xl p-5 space-y-3" tabindex="0"><div class="cycle-body space-y-3"><span class="ico-well w-12 h-12"><img src="/assets/img/ico-code.webp" alt=""></span><h3 class="font-black font-display">Engineering</h3><p class="text-xs text-[var(--text-muted)]">Frontend · Backend · Full Stack · AI · Platform</p></div><div class="cycle-tick" aria-hidden="true"></div></div>
-        <div class="card-sunk cycle-card rounded-3xl p-5 space-y-3" tabindex="0"><div class="cycle-body space-y-3"><span class="ico-well w-12 h-12"><img src="/assets/img/ico-cloud.webp" alt=""></span><h3 class="font-black font-display">Infrastructure</h3><p class="text-xs text-[var(--text-muted)]">Cloud · DevOps · SRE · Observability</p></div><div class="cycle-tick" aria-hidden="true"></div></div>
-        <div class="card-sunk cycle-card rounded-3xl p-5 space-y-3" tabindex="0"><div class="cycle-body space-y-3"><span class="ico-well w-12 h-12"><img src="/assets/img/ico-star.webp" alt=""></span><h3 class="font-black font-display">Product &amp; Quality</h3><p class="text-xs text-[var(--text-muted)]">UX/UI · QA · Automation · Delivery</p></div><div class="cycle-tick" aria-hidden="true"></div></div>
+        <div class="card-sunk cycle-card rounded-3xl p-5 space-y-3" tabindex="0"><div class="cycle-body space-y-3"><span class="ico-well w-12 h-12"><img loading="lazy" decoding="async" src="/assets/img/ico-hierarchy.webp" alt=""></span><h3 class="font-black font-display">Architecture</h3><p class="text-xs text-[var(--text-muted)]">Technical Architecture · System Design · Technical Strategy</p></div><div class="cycle-tick" aria-hidden="true"></div></div>
+        <div class="card-sunk cycle-card rounded-3xl p-5 space-y-3" tabindex="0"><div class="cycle-body space-y-3"><span class="ico-well w-12 h-12"><img loading="lazy" decoding="async" src="/assets/img/ico-code.webp" alt=""></span><h3 class="font-black font-display">Engineering</h3><p class="text-xs text-[var(--text-muted)]">Frontend · Backend · Full Stack · AI · Platform</p></div><div class="cycle-tick" aria-hidden="true"></div></div>
+        <div class="card-sunk cycle-card rounded-3xl p-5 space-y-3" tabindex="0"><div class="cycle-body space-y-3"><span class="ico-well w-12 h-12"><img loading="lazy" decoding="async" src="/assets/img/ico-cloud.webp" alt=""></span><h3 class="font-black font-display">Infrastructure</h3><p class="text-xs text-[var(--text-muted)]">Cloud · DevOps · SRE · Observability</p></div><div class="cycle-tick" aria-hidden="true"></div></div>
+        <div class="card-sunk cycle-card rounded-3xl p-5 space-y-3" tabindex="0"><div class="cycle-body space-y-3"><span class="ico-well w-12 h-12"><img loading="lazy" decoding="async" src="/assets/img/ico-star.webp" alt=""></span><h3 class="font-black font-display">Product &amp; Quality</h3><p class="text-xs text-[var(--text-muted)]">UX/UI · QA · Automation · Delivery</p></div><div class="cycle-tick" aria-hidden="true"></div></div>
       </div>
     </section>
 
@@ -169,7 +171,7 @@
     <section id="ankit" class="reveal-on-scroll scroll-mt-28">
       <div class="tactile-navy hero-glow rounded-[2rem] p-6 sm:p-10 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
         <div class="md:col-span-4">
-          <div class="char-stage aspect-[4/5] max-w-[280px] mx-auto"><img src="/assets/img/cto-blazer-pointing.webp" alt="Ankit Panicker, Client Partner and Technical Lead"></div>
+          <div class="char-stage aspect-[4/5] max-w-[280px] mx-auto"><img loading="lazy" decoding="async" src="/assets/img/cto-blazer-pointing.webp" alt="Ankit Panicker, Client Partner and Technical Lead"></div>
         </div>
         <div class="md:col-span-8 space-y-4 text-center md:text-left">
           <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#B9C8FF]">Your point of contact</span>

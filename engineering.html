@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,6 +19,7 @@
   <link rel="apple-touch-icon" href="/assets/img/aim-logo-180.png">
 
   <script>
+    try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch (e) {}
     (function () {
       var t = null;
       try { t = localStorage.getItem('aim-theme'); } catch (e) {}
@@ -30,14 +31,15 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800;900&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800;900&family=JetBrains+Mono:wght@600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800;900&family=JetBrains+Mono:wght@600;700&display=swap"></noscript>
   <link rel="stylesheet" href="/assets/css/aim.css">
   <link rel="stylesheet" href="/assets/css/tw.css">
 </head>
 <body class="min-h-screen py-6 sm:py-8 px-4 sm:px-6 lg:px-12 flex flex-col items-center">
   <a href="#main" class="skip-link btn-deploy-edge px-4 py-2 text-xs">Skip to content</a>
 
-  <header class="tactile-raised rounded-3xl p-3.5 sm:p-4 w-full max-w-6xl sticky top-3 z-50 backdrop-blur-md">
+  <header class="tactile-raised rounded-3xl p-3.5 sm:p-4 w-full max-w-6xl sticky top-3 z-50">
     <div class="flex items-center justify-between gap-3">
       <a href="/" class="flex items-center gap-2.5 sm:gap-3 min-w-0 flex-1 xl:flex-none overflow-hidden p-3 -m-3" aria-label="AIM home">
         <span class="logo-tile w-10 h-10 sm:w-11 sm:h-11 rounded-2xl flex items-center justify-center shrink-0">
@@ -121,7 +123,7 @@
           </div>
         </div>
         <div class="lg:col-span-5">
-          <div class="char-stage aspect-square max-w-[400px] mx-auto"><img src="/assets/img/cto-whiteboard.webp" alt="Engineer mapping a system on a whiteboard"></div>
+          <div class="char-stage aspect-square max-w-[400px] mx-auto"><img decoding="async" src="/assets/img/cto-whiteboard.webp" alt="Engineer mapping a system on a whiteboard"></div>
         </div>
       </div>
     </section>
@@ -134,32 +136,32 @@
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         <article class="card-sunk rounded-3xl p-5 space-y-3" tabindex="0">
-          <span class="ico-well w-12 h-12"><img src="/assets/img/ico-link.webp" alt=""></span>
+          <span class="ico-well w-12 h-12"><img loading="lazy" decoding="async" src="/assets/img/ico-link.webp" alt=""></span>
           <h3 class="font-black font-display">API First</h3>
           <p class="text-xs text-[var(--text-muted)] leading-relaxed">Clear interfaces and modular systems.</p>
         </article>
         <article class="tactile-navy rounded-3xl p-5 space-y-3">
-          <span class="ico-well w-12 h-12"><img src="/assets/img/ico-search.webp" alt=""></span>
+          <span class="ico-well w-12 h-12"><img loading="lazy" decoding="async" src="/assets/img/ico-search.webp" alt=""></span>
           <h3 class="font-black font-display">Observable</h3>
           <p class="text-xs text-[var(--text-muted)] leading-relaxed">Metrics, logs and traces built into production systems.</p>
         </article>
         <article class="card-sunk rounded-3xl p-5 space-y-3" tabindex="0">
-          <span class="ico-well w-12 h-12"><img src="/assets/img/ico-refresh.webp" alt=""></span>
+          <span class="ico-well w-12 h-12"><img loading="lazy" decoding="async" src="/assets/img/ico-refresh.webp" alt=""></span>
           <h3 class="font-black font-display">Reliable</h3>
           <p class="text-xs text-[var(--text-muted)] leading-relaxed">Retries, idempotency, queues and controlled failure handling.</p>
         </article>
         <article class="card-sunk rounded-3xl p-5 space-y-3" tabindex="0">
-          <span class="ico-well w-12 h-12"><img src="/assets/img/ico-shield.webp" alt=""></span>
+          <span class="ico-well w-12 h-12"><img loading="lazy" decoding="async" src="/assets/img/ico-shield.webp" alt=""></span>
           <h3 class="font-black font-display">Secure</h3>
           <p class="text-xs text-[var(--text-muted)] leading-relaxed">Authentication, authorization and controlled access.</p>
         </article>
         <article class="card-sunk rounded-3xl p-5 space-y-3" tabindex="0">
-          <span class="ico-well w-12 h-12"><img src="/assets/img/ico-trend.webp" alt=""></span>
+          <span class="ico-well w-12 h-12"><img loading="lazy" decoding="async" src="/assets/img/ico-trend.webp" alt=""></span>
           <h3 class="font-black font-display">Scalable</h3>
           <p class="text-xs text-[var(--text-muted)] leading-relaxed">Architectures designed to scale with workload requirements.</p>
         </article>
         <article class="tactile-navy rounded-3xl p-5 space-y-3">
-          <span class="ico-well w-12 h-12"><img src="/assets/img/ico-doc.webp" alt=""></span>
+          <span class="ico-well w-12 h-12"><img loading="lazy" decoding="async" src="/assets/img/ico-doc.webp" alt=""></span>
           <h3 class="font-black font-display">Maintainable</h3>
           <p class="text-xs text-[var(--text-muted)] leading-relaxed">Clean boundaries, documentation and reproducible infrastructure.</p>
         </article>
@@ -275,7 +277,7 @@
           </div>
           <div class="tactile-inset rounded-3xl p-4 sm:p-5 space-y-4">
             <div class="tactile-raised-sm rounded-2xl p-3 flex items-center gap-3">
-              <span class="ico-well w-9 h-9 rounded-lg"><img src="/assets/img/ico-phone.webp" alt=""></span>
+              <span class="ico-well w-9 h-9 rounded-lg"><img loading="lazy" decoding="async" src="/assets/img/ico-phone.webp" alt=""></span>
               <span class="rt-utter text-xs font-semibold italic"></span>
             </div>
             <div class="grid grid-cols-12 items-center gap-1">
@@ -290,15 +292,15 @@
               </svg>
               <div class="col-span-7 flex flex-col gap-2.5">
               <button type="button" class="rt-dest tactile-raised-sm rounded-xl p-2.5 flex items-center gap-2.5 text-left" data-utter="“What are the OPD timings on Sunday?”" data-why="Question answered from the hospital knowledge base. No tool call needed.">
-                <span class="ico-well w-9 h-9 rounded-lg"><img src="/assets/img/ico-chip.webp" alt=""></span>
+                <span class="ico-well w-9 h-9 rounded-lg"><img loading="lazy" decoding="async" src="/assets/img/ico-chip.webp" alt=""></span>
                 <span class="min-w-0"><b class="block text-[11px]">Answer with the LLM</b><span class="text-[9.5px] font-mono text-[var(--text-muted)]">FAQ · knowledge base</span></span>
               </button>
               <button type="button" class="rt-dest tactile-raised-sm rounded-xl p-2.5 flex items-center gap-2.5 text-left" data-utter="“Book me with Dr. Sharma tomorrow at 10.”" data-why="Booking intent: the agent calls the appointment tool and confirms the slot.">
-                <span class="ico-well w-9 h-9 rounded-lg"><img src="/assets/img/ico-calendar.webp" alt=""></span>
+                <span class="ico-well w-9 h-9 rounded-lg"><img loading="lazy" decoding="async" src="/assets/img/ico-calendar.webp" alt=""></span>
                 <span class="min-w-0"><b class="block text-[11px]">Book an appointment</b><span class="text-[9.5px] font-mono text-[var(--text-muted)]">calendar tool</span></span>
               </button>
               <button type="button" class="rt-dest tactile-raised-sm rounded-xl p-2.5 flex items-center gap-2.5 text-left" data-utter="“Can you send me the report on WhatsApp?”" data-why="Delivery request: a WhatsApp message is queued in the durable outbox.">
-                <span class="ico-well w-9 h-9 rounded-lg"><img src="/assets/img/ico-chats.webp" alt=""></span>
+                <span class="ico-well w-9 h-9 rounded-lg"><img loading="lazy" decoding="async" src="/assets/img/ico-chats.webp" alt=""></span>
                 <span class="min-w-0"><b class="block text-[11px]">Follow up on WhatsApp</b><span class="text-[9.5px] font-mono text-[var(--text-muted)]">messaging queue</span></span>
               </button>
               </div>
@@ -376,23 +378,23 @@
           <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7952EC] dark:text-[#A78BFA]">Security &amp; Reliability</span>
           <h2 class="text-2xl sm:text-3xl font-black font-display">Security &amp; Reliability</h2>
           <p class="text-sm text-[var(--text-muted)] leading-relaxed">Security and reliability are part of the architecture from the first design review. These are the practices we build into the systems we deliver and operate.</p>
-          <div class="tactile-navy rounded-3xl p-5 aspect-[4/3]"><img class="ill" src="/assets/img/ill-secure-servers.webp" alt="Protected servers"></div>
+          <div class="tactile-navy rounded-3xl p-5 aspect-[4/3]"><img loading="lazy" decoding="async" class="ill" src="/assets/img/ill-secure-servers.webp" alt="Protected servers"></div>
           <a href="/privacy" class="tactile-convex-pill px-5 py-2.5 text-xs inline-flex items-center gap-2">Privacy &amp; Compliance <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
         </div>
         <div class="lg:col-span-8 grid grid-cols-2 sm:grid-cols-3 gap-3">
-          <div class="tactile-raised-sm rounded-2xl p-3 flex items-center gap-2.5"><span class="ico-well w-9 h-9 rounded-lg"><img src="/assets/img/ico-user.webp" alt=""></span><span class="text-xs font-bold">Authentication</span></div>
-          <div class="tactile-raised-sm rounded-2xl p-3 flex items-center gap-2.5"><span class="ico-well w-9 h-9 rounded-lg"><img src="/assets/img/ico-checklist.webp" alt=""></span><span class="text-xs font-bold">Authorization</span></div>
-          <div class="tactile-raised-sm rounded-2xl p-3 flex items-center gap-2.5"><span class="ico-well w-9 h-9 rounded-lg"><img src="/assets/img/ico-hierarchy.webp" alt=""></span><span class="text-xs font-bold">Tenant isolation</span></div>
-          <div class="tactile-raised-sm rounded-2xl p-3 flex items-center gap-2.5"><span class="ico-well w-9 h-9 rounded-lg"><img src="/assets/img/ico-shield.webp" alt=""></span><span class="text-xs font-bold">Encryption</span></div>
-          <div class="tactile-raised-sm rounded-2xl p-3 flex items-center gap-2.5"><span class="ico-well w-9 h-9 rounded-lg"><img src="/assets/img/ico-link.webp" alt=""></span><span class="text-xs font-bold">TLS</span></div>
-          <div class="tactile-raised-sm rounded-2xl p-3 flex items-center gap-2.5"><span class="ico-well w-9 h-9 rounded-lg"><img src="/assets/img/ico-filter.webp" alt=""></span><span class="text-xs font-bold">Scoped access</span></div>
-          <div class="tactile-raised-sm rounded-2xl p-3 flex items-center gap-2.5"><span class="ico-well w-9 h-9 rounded-lg"><img src="/assets/img/ico-bank.webp" alt=""></span><span class="text-xs font-bold">Secrets management</span></div>
-          <div class="tactile-raised-sm rounded-2xl p-3 flex items-center gap-2.5"><span class="ico-well w-9 h-9 rounded-lg"><img src="/assets/img/ico-doc.webp" alt=""></span><span class="text-xs font-bold">Audit logging</span></div>
-          <div class="tactile-raised-sm rounded-2xl p-3 flex items-center gap-2.5"><span class="ico-well w-9 h-9 rounded-lg"><img src="/assets/img/ico-sliders.webp" alt=""></span><span class="text-xs font-bold">Rate limiting</span></div>
-          <div class="tactile-raised-sm rounded-2xl p-3 flex items-center gap-2.5"><span class="ico-well w-9 h-9 rounded-lg"><img src="/assets/img/ico-trend.webp" alt=""></span><span class="text-xs font-bold">Monitoring</span></div>
-          <div class="tactile-raised-sm rounded-2xl p-3 flex items-center gap-2.5"><span class="ico-well w-9 h-9 rounded-lg"><img src="/assets/img/ico-db-cloud.webp" alt=""></span><span class="text-xs font-bold">Backup</span></div>
-          <div class="tactile-raised-sm rounded-2xl p-3 flex items-center gap-2.5"><span class="ico-well w-9 h-9 rounded-lg"><img src="/assets/img/ico-refresh.webp" alt=""></span><span class="text-xs font-bold">Recovery</span></div>
-          <div class="tactile-raised-sm rounded-2xl p-3 flex items-center gap-2.5"><span class="ico-well w-9 h-9 rounded-lg"><img src="/assets/img/ico-search.webp" alt=""></span><span class="text-xs font-bold">Observability</span></div>
+          <div class="tactile-raised-sm rounded-2xl p-3 flex items-center gap-2.5"><span class="ico-well w-9 h-9 rounded-lg"><img loading="lazy" decoding="async" src="/assets/img/ico-user.webp" alt=""></span><span class="text-xs font-bold">Authentication</span></div>
+          <div class="tactile-raised-sm rounded-2xl p-3 flex items-center gap-2.5"><span class="ico-well w-9 h-9 rounded-lg"><img loading="lazy" decoding="async" src="/assets/img/ico-checklist.webp" alt=""></span><span class="text-xs font-bold">Authorization</span></div>
+          <div class="tactile-raised-sm rounded-2xl p-3 flex items-center gap-2.5"><span class="ico-well w-9 h-9 rounded-lg"><img loading="lazy" decoding="async" src="/assets/img/ico-hierarchy.webp" alt=""></span><span class="text-xs font-bold">Tenant isolation</span></div>
+          <div class="tactile-raised-sm rounded-2xl p-3 flex items-center gap-2.5"><span class="ico-well w-9 h-9 rounded-lg"><img loading="lazy" decoding="async" src="/assets/img/ico-shield.webp" alt=""></span><span class="text-xs font-bold">Encryption</span></div>
+          <div class="tactile-raised-sm rounded-2xl p-3 flex items-center gap-2.5"><span class="ico-well w-9 h-9 rounded-lg"><img loading="lazy" decoding="async" src="/assets/img/ico-link.webp" alt=""></span><span class="text-xs font-bold">TLS</span></div>
+          <div class="tactile-raised-sm rounded-2xl p-3 flex items-center gap-2.5"><span class="ico-well w-9 h-9 rounded-lg"><img loading="lazy" decoding="async" src="/assets/img/ico-filter.webp" alt=""></span><span class="text-xs font-bold">Scoped access</span></div>
+          <div class="tactile-raised-sm rounded-2xl p-3 flex items-center gap-2.5"><span class="ico-well w-9 h-9 rounded-lg"><img loading="lazy" decoding="async" src="/assets/img/ico-bank.webp" alt=""></span><span class="text-xs font-bold">Secrets management</span></div>
+          <div class="tactile-raised-sm rounded-2xl p-3 flex items-center gap-2.5"><span class="ico-well w-9 h-9 rounded-lg"><img loading="lazy" decoding="async" src="/assets/img/ico-doc.webp" alt=""></span><span class="text-xs font-bold">Audit logging</span></div>
+          <div class="tactile-raised-sm rounded-2xl p-3 flex items-center gap-2.5"><span class="ico-well w-9 h-9 rounded-lg"><img loading="lazy" decoding="async" src="/assets/img/ico-sliders.webp" alt=""></span><span class="text-xs font-bold">Rate limiting</span></div>
+          <div class="tactile-raised-sm rounded-2xl p-3 flex items-center gap-2.5"><span class="ico-well w-9 h-9 rounded-lg"><img loading="lazy" decoding="async" src="/assets/img/ico-trend.webp" alt=""></span><span class="text-xs font-bold">Monitoring</span></div>
+          <div class="tactile-raised-sm rounded-2xl p-3 flex items-center gap-2.5"><span class="ico-well w-9 h-9 rounded-lg"><img loading="lazy" decoding="async" src="/assets/img/ico-db-cloud.webp" alt=""></span><span class="text-xs font-bold">Backup</span></div>
+          <div class="tactile-raised-sm rounded-2xl p-3 flex items-center gap-2.5"><span class="ico-well w-9 h-9 rounded-lg"><img loading="lazy" decoding="async" src="/assets/img/ico-refresh.webp" alt=""></span><span class="text-xs font-bold">Recovery</span></div>
+          <div class="tactile-raised-sm rounded-2xl p-3 flex items-center gap-2.5"><span class="ico-well w-9 h-9 rounded-lg"><img loading="lazy" decoding="async" src="/assets/img/ico-search.webp" alt=""></span><span class="text-xs font-bold">Observability</span></div>
           </div>
       </div>
     </section>
@@ -404,14 +406,14 @@
         <h2 class="text-2xl sm:text-3xl font-black font-display">The technology we work with</h2>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        <div class="tactile-raised rounded-3xl p-5 space-y-3"><span class="ico-well w-11 h-11 rounded-xl"><img src="/assets/img/ico-code.webp" alt=""></span><h3 class="font-black font-display">Backend &amp; APIs</h3><p class="text-[11px] font-mono text-[var(--text-muted)]">Python · FastAPI · asyncio · Pydantic · SQLAlchemy · Node.js · REST · WebSockets</p></div>
-        <div class="card-sunk rounded-3xl p-5 space-y-3" tabindex="0"><span class="ico-well w-11 h-11 rounded-xl"><img src="/assets/img/ico-laptop.webp" alt=""></span><h3 class="font-black font-display">Frontend</h3><p class="text-[11px] font-mono text-[var(--text-muted)]">TypeScript · React · Next.js · Vite · Tailwind</p></div>
-        <div class="tactile-navy rounded-3xl p-5 space-y-3"><span class="ico-well w-11 h-11 rounded-xl"><img src="/assets/img/ico-chip.webp" alt=""></span><h3 class="font-black font-display">AI</h3><p class="text-[11px] font-mono text-[var(--text-muted)]">LLMs · RAG · agents · Whisper · Deepgram · XTTS · Kokoro · llama.cpp · Hugging Face</p></div>
-        <div class="card-sunk rounded-3xl p-5 space-y-3" tabindex="0"><span class="ico-well w-11 h-11 rounded-xl"><img src="/assets/img/ico-database.webp" alt=""></span><h3 class="font-black font-display">Data</h3><p class="text-[11px] font-mono text-[var(--text-muted)]">PostgreSQL · Redis · Firestore · queues · streams</p></div>
-        <div class="card-sunk rounded-3xl p-5 space-y-3" tabindex="0"><span class="ico-well w-11 h-11 rounded-xl"><img src="/assets/img/ico-cube.webp" alt=""></span><h3 class="font-black font-display">Cloud &amp; Infrastructure</h3><p class="text-[11px] font-mono text-[var(--text-muted)]">Azure · AWS · GCP · Docker · Kubernetes · Terraform · Nginx · Cloudflare</p></div>
-        <div class="tactile-raised rounded-3xl p-5 space-y-3"><span class="ico-well w-11 h-11 rounded-xl"><img src="/assets/img/ico-refresh.webp" alt=""></span><h3 class="font-black font-display">Delivery</h3><p class="text-[11px] font-mono text-[var(--text-muted)]">CI/CD · GitHub Actions · rolling deploys · infrastructure-as-code</p></div>
-        <div class="card-sunk rounded-3xl p-5 space-y-3" tabindex="0"><span class="ico-well w-11 h-11 rounded-xl"><img src="/assets/img/ico-trend.webp" alt=""></span><h3 class="font-black font-display">Observability</h3><p class="text-[11px] font-mono text-[var(--text-muted)]">Prometheus · Grafana · Loki · OpenTelemetry</p></div>
-        <div class="tactile-raised rounded-3xl p-5 space-y-3"><span class="ico-well w-11 h-11 rounded-xl"><img src="/assets/img/ico-chats.webp" alt=""></span><h3 class="font-black font-display">Communication</h3><p class="text-[11px] font-mono text-[var(--text-muted)]">Twilio · Telnyx · Vapi · SIP · WhatsApp Business API</p></div>
+        <div class="tactile-raised rounded-3xl p-5 space-y-3"><span class="ico-well w-11 h-11 rounded-xl"><img loading="lazy" decoding="async" src="/assets/img/ico-code.webp" alt=""></span><h3 class="font-black font-display">Backend &amp; APIs</h3><p class="text-[11px] font-mono text-[var(--text-muted)]">Python · FastAPI · asyncio · Pydantic · SQLAlchemy · Node.js · REST · WebSockets</p></div>
+        <div class="card-sunk rounded-3xl p-5 space-y-3" tabindex="0"><span class="ico-well w-11 h-11 rounded-xl"><img loading="lazy" decoding="async" src="/assets/img/ico-laptop.webp" alt=""></span><h3 class="font-black font-display">Frontend</h3><p class="text-[11px] font-mono text-[var(--text-muted)]">TypeScript · React · Next.js · Vite · Tailwind</p></div>
+        <div class="tactile-navy rounded-3xl p-5 space-y-3"><span class="ico-well w-11 h-11 rounded-xl"><img loading="lazy" decoding="async" src="/assets/img/ico-chip.webp" alt=""></span><h3 class="font-black font-display">AI</h3><p class="text-[11px] font-mono text-[var(--text-muted)]">LLMs · RAG · agents · Whisper · Deepgram · XTTS · Kokoro · llama.cpp · Hugging Face</p></div>
+        <div class="card-sunk rounded-3xl p-5 space-y-3" tabindex="0"><span class="ico-well w-11 h-11 rounded-xl"><img loading="lazy" decoding="async" src="/assets/img/ico-database.webp" alt=""></span><h3 class="font-black font-display">Data</h3><p class="text-[11px] font-mono text-[var(--text-muted)]">PostgreSQL · Redis · Firestore · queues · streams</p></div>
+        <div class="card-sunk rounded-3xl p-5 space-y-3" tabindex="0"><span class="ico-well w-11 h-11 rounded-xl"><img loading="lazy" decoding="async" src="/assets/img/ico-cube.webp" alt=""></span><h3 class="font-black font-display">Cloud &amp; Infrastructure</h3><p class="text-[11px] font-mono text-[var(--text-muted)]">Azure · AWS · GCP · Docker · Kubernetes · Terraform · Nginx · Cloudflare</p></div>
+        <div class="tactile-raised rounded-3xl p-5 space-y-3"><span class="ico-well w-11 h-11 rounded-xl"><img loading="lazy" decoding="async" src="/assets/img/ico-refresh.webp" alt=""></span><h3 class="font-black font-display">Delivery</h3><p class="text-[11px] font-mono text-[var(--text-muted)]">CI/CD · GitHub Actions · rolling deploys · infrastructure-as-code</p></div>
+        <div class="card-sunk rounded-3xl p-5 space-y-3" tabindex="0"><span class="ico-well w-11 h-11 rounded-xl"><img loading="lazy" decoding="async" src="/assets/img/ico-trend.webp" alt=""></span><h3 class="font-black font-display">Observability</h3><p class="text-[11px] font-mono text-[var(--text-muted)]">Prometheus · Grafana · Loki · OpenTelemetry</p></div>
+        <div class="tactile-raised rounded-3xl p-5 space-y-3"><span class="ico-well w-11 h-11 rounded-xl"><img loading="lazy" decoding="async" src="/assets/img/ico-chats.webp" alt=""></span><h3 class="font-black font-display">Communication</h3><p class="text-[11px] font-mono text-[var(--text-muted)]">Twilio · Telnyx · Vapi · SIP · WhatsApp Business API</p></div>
       </div>
     </section>
 

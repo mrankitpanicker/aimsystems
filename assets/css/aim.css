@@ -1022,3 +1022,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 /* sections appear promptly: they start just before entering the screen and settle quickly */
 .reveal-on-scroll { transform: translate3d(0, 14px, 0); transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1) !important; }
 .reveal-on-scroll.revealed { transform: none; }
+/* performance: release compositor layers once revealed; the character glow stays still */
+.reveal-on-scroll.revealed { will-change: auto; }
+.char-stage::before { animation: none !important; }

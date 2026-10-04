@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,6 +19,7 @@
   <link rel="apple-touch-icon" href="/assets/img/aim-logo-180.png">
 
   <script>
+    try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch (e) {}
     (function () {
       var t = null;
       try { t = localStorage.getItem('aim-theme'); } catch (e) {}
@@ -30,14 +31,15 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800;900&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800;900&family=JetBrains+Mono:wght@600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800;900&family=JetBrains+Mono:wght@600;700&display=swap"></noscript>
   <link rel="stylesheet" href="/assets/css/aim.css">
   <link rel="stylesheet" href="/assets/css/tw.css">
 </head>
 <body class="min-h-screen py-6 sm:py-8 px-4 sm:px-6 lg:px-12 flex flex-col items-center">
   <a href="#main" class="skip-link btn-deploy-edge px-4 py-2 text-xs">Skip to content</a>
 
-  <header class="tactile-raised rounded-3xl p-3.5 sm:p-4 w-full max-w-6xl sticky top-3 z-50 backdrop-blur-md">
+  <header class="tactile-raised rounded-3xl p-3.5 sm:p-4 w-full max-w-6xl sticky top-3 z-50">
     <div class="flex items-center justify-between gap-3">
       <a href="/" class="flex items-center gap-2.5 sm:gap-3 min-w-0 flex-1 xl:flex-none overflow-hidden p-3 -m-3" aria-label="AIM home">
         <span class="logo-tile w-10 h-10 sm:w-11 sm:h-11 rounded-2xl flex items-center justify-center shrink-0">
@@ -123,7 +125,7 @@
           </div>
         </div>
         <div class="lg:col-span-5">
-          <div class="tactile-navy rounded-[2rem] p-6 aspect-square max-w-[400px] mx-auto"><img class="ill" src="/assets/img/ill-hub.webp" alt="Connected systems hub"></div>
+          <div class="tactile-navy rounded-[2rem] p-6 aspect-square max-w-[400px] mx-auto"><img decoding="async" class="ill" src="/assets/img/ill-hub.webp" alt="Connected systems hub"></div>
         </div>
       </div>
     </section>
@@ -131,7 +133,7 @@
     <!-- PRODUCT ENGINEERING -->
     <section id="product" class="reveal-on-scroll scroll-mt-28">
       <div class="tactile-raised rounded-[2rem] p-6 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-        <div class="lg:col-span-5"><div class="aspect-[4/3] max-w-[360px] mx-auto"><img class="ill" src="/assets/img/ill-coder.webp" alt="Engineer building software"></div></div>
+        <div class="lg:col-span-5"><div class="aspect-[4/3] max-w-[360px] mx-auto"><img loading="lazy" decoding="async" class="ill" src="/assets/img/ill-coder.webp" alt="Engineer building software"></div></div>
         <div class="lg:col-span-7 space-y-5">
           <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7952EC] dark:text-[#A78BFA]">01 · Product Engineering</span>
           <h2 class="text-3xl font-black font-display">Build complete software products and platforms.</h2>
@@ -157,14 +159,14 @@
             <span class="tactile-inset-sm rounded-xl px-3 py-2.5">Voice AI</span><span class="tactile-inset-sm rounded-xl px-3 py-2.5">STT / TTS</span><span class="tactile-inset-sm rounded-xl px-3 py-2.5">AI orchestration</span><span class="tactile-inset-sm rounded-xl px-3 py-2.5">Model integrations</span>
           </div>
         </div>
-        <div class="lg:col-span-5"><div class="aspect-[4/3] max-w-[360px] mx-auto"><img class="ill" src="/assets/img/ill-ai-chip.webp" alt="AI processor"></div></div>
+        <div class="lg:col-span-5"><div class="aspect-[4/3] max-w-[360px] mx-auto"><img loading="lazy" decoding="async" class="ill" src="/assets/img/ill-ai-chip.webp" alt="AI processor"></div></div>
       </div>
     </section>
 
     <!-- PLATFORM ENGINEERING -->
     <section id="platform" class="space-y-6 reveal-on-scroll scroll-mt-28">
       <div class="tactile-raised rounded-[2rem] p-6 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-        <div class="lg:col-span-5"><div class="aspect-[4/3] max-w-[360px] mx-auto"><img class="ill" src="/assets/img/ill-cloud-db.webp" alt="Cloud and databases"></div></div>
+        <div class="lg:col-span-5"><div class="aspect-[4/3] max-w-[360px] mx-auto"><img loading="lazy" decoding="async" class="ill" src="/assets/img/ill-cloud-db.webp" alt="Cloud and databases"></div></div>
         <div class="lg:col-span-7 space-y-5">
           <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7952EC] dark:text-[#A78BFA]">03 · Platform Engineering</span>
           <h2 class="text-3xl font-black font-display">Infrastructure that keeps software reliable and scalable.</h2>
@@ -180,11 +182,11 @@
         <div class="tactile-inset rounded-2xl p-3">
           <div class="pk-row grid grid-cols-5 gap-2">
             <div class="pk-track"><div class="pk-fill"></div></div><span class="pk-dot"></span>
-            <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="API accepts the request"><span class="ico-well w-8 h-8 rounded-lg"><img src="/assets/img/ico-link.webp" alt=""></span><span class="text-[10px] font-black">API</span><span class="pk-led"></span></div>
-            <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="Job placed on the queue"><span class="ico-well w-8 h-8 rounded-lg"><img src="/assets/img/ico-rack.webp" alt=""></span><span class="text-[10px] font-black">Queue</span><span class="pk-led"></span></div>
-            <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="Worker processes it with retries"><span class="ico-well w-8 h-8 rounded-lg"><img src="/assets/img/ico-gear.webp" alt=""></span><span class="text-[10px] font-black">Workers</span><span class="pk-led"></span></div>
-            <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="State written to the database"><span class="ico-well w-8 h-8 rounded-lg"><img src="/assets/img/ico-database.webp" alt=""></span><span class="text-[10px] font-black">Database</span><span class="pk-led"></span></div>
-            <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="Metrics, logs and traces recorded"><span class="ico-well w-8 h-8 rounded-lg"><img src="/assets/img/ico-trend.webp" alt=""></span><span class="text-[10px] font-black">Observe</span><span class="pk-led"></span></div>
+            <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="API accepts the request"><span class="ico-well w-8 h-8 rounded-lg"><img loading="lazy" decoding="async" src="/assets/img/ico-link.webp" alt=""></span><span class="text-[10px] font-black">API</span><span class="pk-led"></span></div>
+            <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="Job placed on the queue"><span class="ico-well w-8 h-8 rounded-lg"><img loading="lazy" decoding="async" src="/assets/img/ico-rack.webp" alt=""></span><span class="text-[10px] font-black">Queue</span><span class="pk-led"></span></div>
+            <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="Worker processes it with retries"><span class="ico-well w-8 h-8 rounded-lg"><img loading="lazy" decoding="async" src="/assets/img/ico-gear.webp" alt=""></span><span class="text-[10px] font-black">Workers</span><span class="pk-led"></span></div>
+            <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="State written to the database"><span class="ico-well w-8 h-8 rounded-lg"><img loading="lazy" decoding="async" src="/assets/img/ico-database.webp" alt=""></span><span class="text-[10px] font-black">Database</span><span class="pk-led"></span></div>
+            <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="Metrics, logs and traces recorded"><span class="ico-well w-8 h-8 rounded-lg"><img loading="lazy" decoding="async" src="/assets/img/ico-trend.webp" alt=""></span><span class="text-[10px] font-black">Observe</span><span class="pk-led"></span></div>
           </div>
         </div>
         <div class="tactile-inset-sm rounded-xl px-3 py-2 font-mono text-[11px]"><span data-pk-status>How work flows through a backend</span></div>
@@ -203,18 +205,18 @@
             <span class="tactile-inset-sm rounded-xl px-3 py-2.5">Workflow automation</span><span class="tactile-inset-sm rounded-xl px-3 py-2.5">Business process automation</span><span class="tactile-inset-sm rounded-xl px-3 py-2.5 col-span-2">Data pipelines</span>
           </div>
         </div>
-        <div class="lg:col-span-5"><div class="aspect-[4/3] max-w-[360px] mx-auto"><img class="ill" src="/assets/img/ill-automation.webp" alt="Automated workflow"></div></div>
+        <div class="lg:col-span-5"><div class="aspect-[4/3] max-w-[360px] mx-auto"><img loading="lazy" decoding="async" class="ill" src="/assets/img/ill-automation.webp" alt="Automated workflow"></div></div>
       </div>
       <div class="tactile-raised rounded-3xl p-5 space-y-4" data-packet data-every="22000" data-step="2200" data-done="Released to production" data-idle="Every change takes this path">
         <div><h3 class="font-black font-display">Software pipeline</h3><p class="text-xs text-[var(--text-muted)]">Every change is built, tested and deployed automatically.</p></div>
         <div class="tactile-inset rounded-2xl p-3">
           <div class="pk-row grid grid-cols-5 gap-2">
             <div class="pk-track"><div class="pk-fill"></div></div><span class="pk-dot"></span>
-            <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="Code reviewed and merged"><span class="ico-well w-8 h-8 rounded-lg"><img src="/assets/img/ico-code.webp" alt=""></span><span class="text-[10px] font-black">Code</span><span class="pk-led"></span></div>
-            <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="CI builds the artifacts"><span class="ico-well w-8 h-8 rounded-lg"><img src="/assets/img/ico-refresh.webp" alt=""></span><span class="text-[10px] font-black">CI</span><span class="pk-led"></span></div>
-            <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="Automated tests pass"><span class="ico-well w-8 h-8 rounded-lg"><img src="/assets/img/ico-checklist.webp" alt=""></span><span class="text-[10px] font-black">Tests</span><span class="pk-led"></span></div>
-            <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="Rolling deployment with health checks"><span class="ico-well w-8 h-8 rounded-lg"><img src="/assets/img/ico-upload.webp" alt=""></span><span class="text-[10px] font-black">Deploy</span><span class="pk-led"></span></div>
-            <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="Live in production and monitored"><span class="ico-well w-8 h-8 rounded-lg"><img src="/assets/img/ico-ok.webp" alt=""></span><span class="text-[10px] font-black">Production</span><span class="pk-led"></span></div>
+            <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="Code reviewed and merged"><span class="ico-well w-8 h-8 rounded-lg"><img loading="lazy" decoding="async" src="/assets/img/ico-code.webp" alt=""></span><span class="text-[10px] font-black">Code</span><span class="pk-led"></span></div>
+            <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="CI builds the artifacts"><span class="ico-well w-8 h-8 rounded-lg"><img loading="lazy" decoding="async" src="/assets/img/ico-refresh.webp" alt=""></span><span class="text-[10px] font-black">CI</span><span class="pk-led"></span></div>
+            <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="Automated tests pass"><span class="ico-well w-8 h-8 rounded-lg"><img loading="lazy" decoding="async" src="/assets/img/ico-checklist.webp" alt=""></span><span class="text-[10px] font-black">Tests</span><span class="pk-led"></span></div>
+            <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="Rolling deployment with health checks"><span class="ico-well w-8 h-8 rounded-lg"><img loading="lazy" decoding="async" src="/assets/img/ico-upload.webp" alt=""></span><span class="text-[10px] font-black">Deploy</span><span class="pk-led"></span></div>
+            <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="Live in production and monitored"><span class="ico-well w-8 h-8 rounded-lg"><img loading="lazy" decoding="async" src="/assets/img/ico-ok.webp" alt=""></span><span class="text-[10px] font-black">Production</span><span class="pk-led"></span></div>
           </div>
         </div>
         <div class="tactile-inset-sm rounded-xl px-3 py-2 font-mono text-[11px]"><span data-pk-status>Every change takes this path</span></div>
