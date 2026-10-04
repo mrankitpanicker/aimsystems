@@ -25,57 +25,90 @@
         <p class="text-xs text-[var(--text-muted)]" data-region-hint>Pick your region with the switch at the top.</p>
       </div>
 
-      <div data-region-panel="uk" class="grid grid-cols-1 md:grid-cols-3 gap-5">
-        <div class="tactile-navy rounded-3xl p-5 space-y-3">
-          <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#B9C8FF]">United Kingdom</div>
-          <div class="flex items-end gap-5 font-mono"><div><div class="text-[10px] text-[#B9C8FF]">LONDON</div><div class="text-2xl font-black" data-clock="Europe/London">--:--</div></div><div><div class="text-[10px] text-[#B9C8FF]">INDIA</div><div class="text-2xl font-black" data-clock="Asia/Kolkata">--:--</div></div></div>
-          <div class="flex flex-wrap gap-2"><span class="rounded-full px-3 py-1 text-[11px] font-bold bg-white/10">India <span data-diff="Europe/London">4h 30m</span> ahead</span><span class="rounded-full px-3 py-1 text-[11px] font-bold bg-white/10">Full-day overlap</span></div>
+      <div data-region-panel="uk" class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-center">
+        <div class="tactile-raised rg-lift rounded-3xl p-5 flex gap-4">
+          <div class="char-stage w-20 h-20 sm:w-24 sm:h-24 shrink-0 rounded-2xl"><img src="/assets/img/ill-secure-servers.webp" alt="Secure cloud servers"></div>
+          <div class="space-y-2 min-w-0">
+            <span class="text-[10px] font-mono font-bold text-[#7952EC] dark:text-[#A78BFA]">01 · DATA</span>
+            <h3 class="text-base font-black font-display">Your cloud, in a UK region.</h3>
+            <p class="text-xs text-[var(--text-muted)] leading-relaxed">Your accounts and a UK region you choose, under your UK GDPR terms.</p>
+            <div class="flex flex-wrap gap-1.5 text-[11px] font-bold"><span class="tactile-inset-sm rounded-full px-2.5 py-1">AWS London</span><span class="tactile-inset-sm rounded-full px-2.5 py-1">Azure UK South</span><span class="tactile-inset-sm rounded-full px-2.5 py-1">UK GDPR</span></div>
+          </div>
         </div>
-        <div class="tactile-raised rounded-3xl p-5 space-y-2">
-          <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7952EC] dark:text-[#A78BFA]">Data &amp; compliance</div>
-          <h3 class="text-sm font-black">Your cloud, in a UK region.</h3>
-          <p class="text-xs text-[var(--text-muted)]">We build in your accounts and a UK region you choose, such as AWS London or Azure UK South, under your security policies and UK GDPR data-processing terms.</p>
+        <div class="tactile-navy rg-depth rounded-3xl p-5 flex gap-4">
+          <div class="char-stage w-20 h-20 sm:w-24 sm:h-24 shrink-0 rounded-2xl"><img src="/assets/img/ill-globe.webp" alt="Globe showing connected time zones"></div>
+          <div class="space-y-2 min-w-0">
+            <span class="text-[10px] font-mono font-bold text-[#B9C8FF]">02 · HOURS · UNITED KINGDOM</span>
+            <div class="flex items-end gap-5 font-mono"><div><div class="text-[10px] text-[#B9C8FF]">LONDON</div><div class="text-2xl font-black" data-clock="Europe/London">--:--</div></div><div><div class="text-[10px] text-[#B9C8FF]">INDIA</div><div class="text-2xl font-black" data-clock="Asia/Kolkata">--:--</div></div></div>
+            <div class="flex flex-wrap gap-1.5 text-[11px] font-bold"><span class="rg-chip rounded-full px-2.5 py-1">India <span data-diff="Europe/London">4h 30m</span> ahead</span><span class="rg-chip rounded-full px-2.5 py-1">Full-day overlap</span></div>
+          </div>
         </div>
-        <div class="card-sunk rounded-3xl p-5 space-y-2" tabindex="0">
-          <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7952EC] dark:text-[#A78BFA]">Rhythm</div>
-          <h3 class="text-sm font-black">Live collaboration, all day.</h3>
-          <p class="text-xs text-[var(--text-muted)]">Standups in your morning, reviews and demos in your afternoon, same-day answers. Already delivered in London for Café Ciel at The OWO.</p>
-        </div>
-      </div>
-
-      <div data-region-panel="us" class="grid grid-cols-1 md:grid-cols-3 gap-5">
-        <div class="tactile-navy rounded-3xl p-5 space-y-3">
-          <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#B9C8FF]">United States</div>
-          <div class="flex items-end gap-5 font-mono"><div><div class="text-[10px] text-[#B9C8FF]">NEW YORK</div><div class="text-2xl font-black" data-clock="America/New_York">--:--</div></div><div><div class="text-[10px] text-[#B9C8FF]">INDIA</div><div class="text-2xl font-black" data-clock="Asia/Kolkata">--:--</div></div></div>
-          <div class="flex flex-wrap gap-2"><span class="rounded-full px-3 py-1 text-[11px] font-bold bg-white/10">India <span data-diff="America/New_York">9h 30m</span> ahead</span><span class="rounded-full px-3 py-1 text-[11px] font-bold bg-white/10">Overlap 08:00–10:30 ET</span></div>
-        </div>
-        <div class="tactile-raised rounded-3xl p-5 space-y-2">
-          <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7952EC] dark:text-[#A78BFA]">Data &amp; compliance</div>
-          <h3 class="text-sm font-black">Your cloud, in a US region.</h3>
-          <p class="text-xs text-[var(--text-muted)]">We build in your accounts and the US region you choose, under your security policies, access controls and contract terms.</p>
-        </div>
-        <div class="card-sunk rounded-3xl p-5 space-y-2" tabindex="0">
-          <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7952EC] dark:text-[#A78BFA]">Rhythm</div>
-          <h3 class="text-sm font-black">Work moves while you sleep.</h3>
-          <p class="text-xs text-[var(--text-muted)]">A daily overlap call in your morning; your end-of-day feedback is our next morning's work, so changes are ready when you log in. West Coast teams run async-first with a scheduled overlap.</p>
+        <div class="tactile-raised rg-lift rounded-3xl p-5 flex gap-4">
+          <div class="char-stage w-20 h-20 sm:w-24 sm:h-24 shrink-0 rounded-2xl"><img src="/assets/img/cto-laptop-chat.webp" alt="Engineer on a call with a client team"></div>
+          <div class="space-y-2 min-w-0">
+            <span class="text-[10px] font-mono font-bold text-[#7952EC] dark:text-[#A78BFA]">03 · RHYTHM</span>
+            <h3 class="text-base font-black font-display">Live collaboration, all day.</h3>
+            <p class="text-xs text-[var(--text-muted)] leading-relaxed">Standups in your morning, reviews in your afternoon.</p>
+            <div class="flex flex-wrap gap-1.5 text-[11px] font-bold"><span class="tactile-inset-sm rounded-full px-2.5 py-1">Same-day answers</span><span class="tactile-inset-sm rounded-full px-2.5 py-1">Slack or Teams</span><span class="tactile-inset-sm rounded-full px-2.5 py-1">Delivered in London</span></div>
+          </div>
         </div>
       </div>
 
-      <div data-region-panel="eu" class="grid grid-cols-1 md:grid-cols-3 gap-5">
-        <div class="tactile-navy rounded-3xl p-5 space-y-3">
-          <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#B9C8FF]">Europe</div>
-          <div class="flex items-end gap-5 font-mono"><div><div class="text-[10px] text-[#B9C8FF]">BERLIN</div><div class="text-2xl font-black" data-clock="Europe/Berlin">--:--</div></div><div><div class="text-[10px] text-[#B9C8FF]">INDIA</div><div class="text-2xl font-black" data-clock="Asia/Kolkata">--:--</div></div></div>
-          <div class="flex flex-wrap gap-2"><span class="rounded-full px-3 py-1 text-[11px] font-bold bg-white/10">India <span data-diff="Europe/Berlin">3h 30m</span> ahead</span><span class="rounded-full px-3 py-1 text-[11px] font-bold bg-white/10">Full-day overlap</span></div>
+      <div data-region-panel="us" class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-center">
+        <div class="tactile-raised rg-lift rounded-3xl p-5 flex gap-4">
+          <div class="char-stage w-20 h-20 sm:w-24 sm:h-24 shrink-0 rounded-2xl"><img src="/assets/img/ill-secure-servers.webp" alt="Secure cloud servers"></div>
+          <div class="space-y-2 min-w-0">
+            <span class="text-[10px] font-mono font-bold text-[#7952EC] dark:text-[#A78BFA]">01 · DATA</span>
+            <h3 class="text-base font-black font-display">Your cloud, in a US region.</h3>
+            <p class="text-xs text-[var(--text-muted)] leading-relaxed">Your accounts and the US region you choose, under your security policies.</p>
+            <div class="flex flex-wrap gap-1.5 text-[11px] font-bold"><span class="tactile-inset-sm rounded-full px-2.5 py-1">AWS · Azure · GCP</span><span class="tactile-inset-sm rounded-full px-2.5 py-1">Your access controls</span><span class="tactile-inset-sm rounded-full px-2.5 py-1">Your contract terms</span></div>
+          </div>
         </div>
-        <div class="tactile-raised rounded-3xl p-5 space-y-2">
-          <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7952EC] dark:text-[#A78BFA]">Data &amp; compliance</div>
-          <h3 class="text-sm font-black">Your cloud, in an EU region.</h3>
-          <p class="text-xs text-[var(--text-muted)]">We build in your accounts and an EU region you choose, such as Frankfurt or Ireland, under your security policies and GDPR data-processing terms.</p>
+        <div class="tactile-navy rg-depth rounded-3xl p-5 flex gap-4">
+          <div class="char-stage w-20 h-20 sm:w-24 sm:h-24 shrink-0 rounded-2xl"><img src="/assets/img/ill-globe.webp" alt="Globe showing connected time zones"></div>
+          <div class="space-y-2 min-w-0">
+            <span class="text-[10px] font-mono font-bold text-[#B9C8FF]">02 · HOURS · UNITED STATES</span>
+            <div class="flex items-end gap-5 font-mono"><div><div class="text-[10px] text-[#B9C8FF]">NEW YORK</div><div class="text-2xl font-black" data-clock="America/New_York">--:--</div></div><div><div class="text-[10px] text-[#B9C8FF]">INDIA</div><div class="text-2xl font-black" data-clock="Asia/Kolkata">--:--</div></div></div>
+            <div class="flex flex-wrap gap-1.5 text-[11px] font-bold"><span class="rg-chip rounded-full px-2.5 py-1">India <span data-diff="America/New_York">9h 30m</span> ahead</span><span class="rg-chip rounded-full px-2.5 py-1">Overlap 08:00–10:30 ET</span></div>
+          </div>
         </div>
-        <div class="card-sunk rounded-3xl p-5 space-y-2" tabindex="0">
-          <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7952EC] dark:text-[#A78BFA]">Rhythm</div>
-          <h3 class="text-sm font-black">Live collaboration, all day.</h3>
-          <p class="text-xs text-[var(--text-muted)]">Standups in your morning, reviews in your afternoon, same-day answers, in English across your Slack or Teams.</p>
+        <div class="tactile-raised rg-lift rounded-3xl p-5 flex gap-4">
+          <div class="char-stage w-20 h-20 sm:w-24 sm:h-24 shrink-0 rounded-2xl"><img src="/assets/img/ill-messaging.webp" alt="Messages moving between teams"></div>
+          <div class="space-y-2 min-w-0">
+            <span class="text-[10px] font-mono font-bold text-[#7952EC] dark:text-[#A78BFA]">03 · RHYTHM</span>
+            <h3 class="text-base font-black font-display">Work moves while you sleep.</h3>
+            <p class="text-xs text-[var(--text-muted)] leading-relaxed">A call in your morning; your end-of-day feedback is done by your next login.</p>
+            <div class="flex flex-wrap gap-1.5 text-[11px] font-bold"><span class="tactile-inset-sm rounded-full px-2.5 py-1">Daily overlap call</span><span class="tactile-inset-sm rounded-full px-2.5 py-1">Overnight progress</span><span class="tactile-inset-sm rounded-full px-2.5 py-1">Async-first West Coast</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div data-region-panel="eu" class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-center">
+        <div class="tactile-raised rg-lift rounded-3xl p-5 flex gap-4">
+          <div class="char-stage w-20 h-20 sm:w-24 sm:h-24 shrink-0 rounded-2xl"><img src="/assets/img/ill-secure-servers.webp" alt="Secure cloud servers"></div>
+          <div class="space-y-2 min-w-0">
+            <span class="text-[10px] font-mono font-bold text-[#7952EC] dark:text-[#A78BFA]">01 · DATA</span>
+            <h3 class="text-base font-black font-display">Your cloud, in an EU region.</h3>
+            <p class="text-xs text-[var(--text-muted)] leading-relaxed">Your accounts and an EU region you choose, under your GDPR terms.</p>
+            <div class="flex flex-wrap gap-1.5 text-[11px] font-bold"><span class="tactile-inset-sm rounded-full px-2.5 py-1">Frankfurt</span><span class="tactile-inset-sm rounded-full px-2.5 py-1">Ireland</span><span class="tactile-inset-sm rounded-full px-2.5 py-1">GDPR</span></div>
+          </div>
+        </div>
+        <div class="tactile-navy rg-depth rounded-3xl p-5 flex gap-4">
+          <div class="char-stage w-20 h-20 sm:w-24 sm:h-24 shrink-0 rounded-2xl"><img src="/assets/img/ill-globe.webp" alt="Globe showing connected time zones"></div>
+          <div class="space-y-2 min-w-0">
+            <span class="text-[10px] font-mono font-bold text-[#B9C8FF]">02 · HOURS · EUROPE</span>
+            <div class="flex items-end gap-5 font-mono"><div><div class="text-[10px] text-[#B9C8FF]">BERLIN</div><div class="text-2xl font-black" data-clock="Europe/Berlin">--:--</div></div><div><div class="text-[10px] text-[#B9C8FF]">INDIA</div><div class="text-2xl font-black" data-clock="Asia/Kolkata">--:--</div></div></div>
+            <div class="flex flex-wrap gap-1.5 text-[11px] font-bold"><span class="rg-chip rounded-full px-2.5 py-1">India <span data-diff="Europe/Berlin">3h 30m</span> ahead</span><span class="rg-chip rounded-full px-2.5 py-1">Full-day overlap</span></div>
+          </div>
+        </div>
+        <div class="tactile-raised rg-lift rounded-3xl p-5 flex gap-4">
+          <div class="char-stage w-20 h-20 sm:w-24 sm:h-24 shrink-0 rounded-2xl"><img src="/assets/img/cto-laptop-chat.webp" alt="Engineer on a call with a client team"></div>
+          <div class="space-y-2 min-w-0">
+            <span class="text-[10px] font-mono font-bold text-[#7952EC] dark:text-[#A78BFA]">03 · RHYTHM</span>
+            <h3 class="text-base font-black font-display">Live collaboration, all day.</h3>
+            <p class="text-xs text-[var(--text-muted)] leading-relaxed">Standups in your morning, reviews in your afternoon, in English.</p>
+            <div class="flex flex-wrap gap-1.5 text-[11px] font-bold"><span class="tactile-inset-sm rounded-full px-2.5 py-1">Same-day answers</span><span class="tactile-inset-sm rounded-full px-2.5 py-1">Slack or Teams</span><span class="tactile-inset-sm rounded-full px-2.5 py-1">English</span></div>
+          </div>
         </div>
       </div>
     </section>

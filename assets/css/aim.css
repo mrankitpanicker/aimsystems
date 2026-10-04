@@ -1049,3 +1049,13 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .rg-opt.on .rg-you { background: #6EE7B7; }
 .js [data-region-panel]:not(.on) { display: none; }
 [data-region-panel].on { animation: pkIn .45s ease both; }
+
+/* Region cards: side cards lifted, centre navy card pressed in deep, light inset chips */
+.rg-lift { transform: translateY(-8px); box-shadow: 14px 18px 34px rgba(11, 28, 77, 0.16), -10px -10px 24px rgba(255, 255, 255, 0.95), inset 0 1px 1.5px rgba(255, 255, 255, 0.7); transition: transform .45s cubic-bezier(.2,.8,.2,1), box-shadow .45s ease; }
+.rg-lift:hover { transform: translateY(-12px); }
+.dark .rg-lift { box-shadow: 14px 18px 34px rgba(0, 0, 0, 0.75), -6px -6px 18px rgba(45, 60, 110, 0.25); }
+.tactile-navy.rg-depth { box-shadow: inset 8px 10px 22px rgba(2, 6, 24, 0.7), inset -6px -6px 16px rgba(120, 150, 255, 0.18), 0 2px 0 rgba(255, 255, 255, 0.6); }
+.dark .tactile-navy.rg-depth { box-shadow: inset 8px 10px 22px rgba(0, 0, 0, 0.75), inset -6px -6px 16px rgba(120, 150, 255, 0.14); }
+.rg-chip { background: #E6EEF8; color: #11286B; box-shadow: inset 2px 3px 6px rgba(17, 40, 107, 0.28), inset -2px -2px 5px rgba(255, 255, 255, 0.95); }
+.dark .rg-chip { background: #DCE5F5; }
+@media (prefers-reduced-motion: reduce) { .rg-lift, .rg-lift:hover { transform: none; } }
