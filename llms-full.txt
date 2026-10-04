@@ -62,7 +62,7 @@ Remote B2B contracting directly with AIM (registered by the Government of India,
 AI Systems Engineer · Software Architect · CTO. Based in Madhya Pradesh, India. Works across the full software lifecycle — architecture, backend, frontend, APIs, AI orchestration, voice AI, automation, distributed workers, queues, databases, cloud infrastructure, containers, CI/CD, observability, reliability, security boundaries, deployment and operations.
 Guiding principle: design for the failure path first and the happy path second.
 Education: MBA (Finance), Sinhgad Business School; B.Com, Seva Sadan Mahavidyalaya. Earlier automation and process engineering work associated with Navalsingh Sahakari Shakkar Karkhana Maryadit. Certifications: IBM Cloud Essentials, Google Cloud Digital Leader, Cisco Networking Academy foundational credentials.
-Ventures: AIM — AI Infrastructure & Machines; Individuate System Solutions; Individuate Systems Architecture.
+Company: AIM — AI Infrastructure & Machines (AIM Studio).
 Deepest areas: Python/FastAPI, Redis primitives, queues/workers, reliability engineering. Kubernetes, Terraform and model internals: effective, not claimed as deepest. AI role: systems integrator and orchestrator, not a model trainer.
 
 ## Systems
