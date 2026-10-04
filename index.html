@@ -173,7 +173,7 @@
     <!-- PROOF STRIP -->
     <section id="proof" class="reveal-on-scroll">
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <div class="card-sunk rounded-3xl p-5 flex items-center gap-4" tabindex="0">
+        <div class="tactile-raised rounded-3xl p-5 flex items-center gap-4">
           <span class="ico-well w-12 h-12 hidden sm:inline-flex"><img src="/assets/img/ico-phone.webp" alt=""></span>
           <div><div class="text-2xl sm:text-3xl font-black font-mono text-[#163387] dark:text-[#6380CE]"><span data-count="15000" data-suffix="+">0</span></div><div class="text-[10px] font-mono uppercase tracking-wider text-[var(--text-muted)]">Calls dialled</div></div>
         </div>
@@ -181,7 +181,7 @@
           <span class="ico-well w-12 h-12 hidden sm:inline-flex"><img src="/assets/img/ico-ok.webp" alt=""></span>
           <div><div class="text-2xl sm:text-3xl font-black font-mono text-[#7952EC] dark:text-[#A78BFA]"><span data-count="6800" data-suffix="+">0</span></div><div class="text-[10px] font-mono uppercase tracking-wider text-[var(--text-muted)]">Calls answered</div></div>
         </div>
-        <div class="card-sunk rounded-3xl p-5 flex items-center gap-4" tabindex="0">
+        <div class="tactile-raised rounded-3xl p-5 flex items-center gap-4">
           <span class="ico-well w-12 h-12 hidden sm:inline-flex"><img src="/assets/img/ico-trend.webp" alt=""></span>
           <div><div class="text-2xl sm:text-3xl font-black font-mono text-[#163387] dark:text-[#6380CE]">~<span data-count="45" data-suffix="%">0</span></div><div class="text-[10px] font-mono uppercase tracking-wider text-[var(--text-muted)]">Answer rate</div></div>
         </div>
@@ -224,7 +224,7 @@
         </div>
 
         <div class="lg:col-span-5">
-          <div class="monolith-outer-fillet group select-none" tabindex="0" role="button" aria-label="APEX Connect live card; press to sink" data-toast-on="APEX Connect: pressed in" data-toast-off="APEX Connect: released">
+          <div class="monolith-outer-fillet rest-pressed group select-none" tabindex="0" role="button" aria-label="APEX Connect live card; press to sink" >
             <div class="monolith-inner-core space-y-5">
               <canvas class="ripple-canvas"></canvas>
               <div class="flex items-center justify-between relative z-10 pointer-events-none">
@@ -249,7 +249,7 @@
                 </div>
               </div>
               <div class="w-full py-3 rounded-full tactile-raised text-xs font-bold flex items-center justify-center gap-2 relative z-10 text-[var(--text-muted)] group-hover:text-[#163387] dark:group-hover:text-[#6380CE] transition">
-                <i data-lucide="move" class="w-4 h-4"></i><span>Press the card</span>
+                <i data-lucide="move" class="w-4 h-4"></i><span>Hover to lift the card</span>
               </div>
             </div>
           </div>
@@ -265,22 +265,22 @@
         <p class="text-xs sm:text-sm text-[var(--text-muted)] max-w-2xl mx-auto">We work across the whole stack, from architecture to operations.</p>
       </div>
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-        <a href="/products#apex-connect" class="card-sunk rounded-3xl p-4 sm:p-5 space-y-3 sm:space-y-4 block">
+        <a href="/products#apex-connect" class="tactile-raised rounded-3xl p-4 sm:p-5 space-y-3 sm:space-y-4 block">
           <span class="block aspect-[4/3]"><img class="ill" src="/assets/img/ill-voice-robot.webp" alt=""></span>
           <h3 class="font-black font-display">AI Voice &amp; Chat</h3>
           <p class="text-xs text-[var(--text-muted)] leading-relaxed">Telephony, speech-to-text, LLMs and text-to-speech in one tenant-aware pipeline, with WhatsApp running alongside.</p>
         </a>
-        <a href="/engineering" class="card-sunk rounded-3xl p-4 sm:p-5 space-y-3 sm:space-y-4 block">
+        <a href="/engineering" class="tactile-raised rounded-3xl p-4 sm:p-5 space-y-3 sm:space-y-4 block">
           <span class="block aspect-[4/3]"><img class="ill" src="/assets/img/ill-coder.webp" alt=""></span>
           <h3 class="font-black font-display">Software Development</h3>
           <p class="text-xs text-[var(--text-muted)] leading-relaxed">Backend, frontend and API design. Python/FastAPI and TypeScript/React, built to be operated as well as shipped.</p>
         </a>
-        <a href="/products#apex-core" class="card-sunk rounded-3xl p-4 sm:p-5 space-y-3 sm:space-y-4 block">
+        <a href="/products#apex-core" class="tactile-raised rounded-3xl p-4 sm:p-5 space-y-3 sm:space-y-4 block">
           <span class="block aspect-[4/3]"><img class="ill" src="/assets/img/ill-automation.webp" alt=""></span>
           <h3 class="font-black font-display">Process Automation</h3>
           <p class="text-xs text-[var(--text-muted)] leading-relaxed">Campaigns, workflows and controlled automation. Every action is explicit, observable and auditable.</p>
         </a>
-        <a href="/engineering#stack" class="card-sunk rounded-3xl p-4 sm:p-5 space-y-3 sm:space-y-4 block">
+        <a href="/engineering#stack" class="tactile-raised rounded-3xl p-4 sm:p-5 space-y-3 sm:space-y-4 block">
           <span class="block aspect-[4/3]"><img class="ill" src="/assets/img/ill-cloud-db.webp" alt=""></span>
           <h3 class="font-black font-display">Infrastructure &amp; Integration</h3>
           <p class="text-xs text-[var(--text-muted)] leading-relaxed">Docker, Kubernetes, Terraform, CI/CD and observability, plus integrations with the systems you already run.</p>
@@ -373,30 +373,26 @@
         </div>
         <div class="lg:col-span-4 hidden lg:block"><img src="/assets/img/cto-signpost.webp" alt="Signpost reading idea, build, deploy, scale" class="h-40 mx-auto object-contain drop-shadow-xl"></div>
       </div>
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6" data-cycle="3000">
-        <div class="card-sunk cycle-card rounded-3xl p-4 sm:p-5 space-y-3" tabindex="0">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <div class="tactile-raised rounded-3xl p-4 sm:p-5 space-y-3">
           <span class="block aspect-[4/3]"><img class="ill" src="/assets/img/ill-idea-to-app.webp" alt="" loading="lazy"></span>
           <div class="text-[10px] font-mono font-bold text-[#7952EC] dark:text-[#A78BFA]">01 · UNDERSTAND</div>
           <p class="text-xs text-[var(--text-muted)] leading-relaxed">What should exist, what can fail and what we should deliberately not build.</p>
-          <div class="cycle-tick" aria-hidden="true"></div>
         </div>
-        <div class="card-sunk cycle-card rounded-3xl p-4 sm:p-5 space-y-3" tabindex="0">
+        <div class="tactile-raised rounded-3xl p-4 sm:p-5 space-y-3">
           <span class="block aspect-[4/3]"><img class="ill" src="/assets/img/ill-flowchart.webp" alt="" loading="lazy"></span>
           <div class="text-[10px] font-mono font-bold text-[#38BDF8]">02 · DESIGN</div>
           <p class="text-xs text-[var(--text-muted)] leading-relaxed">The architecture, data model, failure modes and threat boundaries, signed off before production code.</p>
-          <div class="cycle-tick" aria-hidden="true"></div>
         </div>
-        <div class="card-sunk cycle-card rounded-3xl p-4 sm:p-5 space-y-3" tabindex="0">
+        <div class="tactile-raised rounded-3xl p-4 sm:p-5 space-y-3">
           <span class="block aspect-[4/3]"><img class="ill" src="/assets/img/ill-cicd.webp" alt="" loading="lazy"></span>
           <div class="text-[10px] font-mono font-bold text-[#F97316]">03 · BUILD</div>
           <p class="text-xs text-[var(--text-muted)] leading-relaxed">Backend, frontend, workers, queues and AI pipelines, tested against the failure path as well as the happy path.</p>
-          <div class="cycle-tick" aria-hidden="true"></div>
         </div>
-        <div class="card-sunk cycle-card rounded-3xl p-4 sm:p-5 space-y-3" tabindex="0">
+        <div class="tactile-raised rounded-3xl p-4 sm:p-5 space-y-3">
           <span class="block aspect-[4/3]"><img class="ill" src="/assets/img/ill-rocket.webp" alt="" loading="lazy"></span>
           <div class="text-[10px] font-mono font-bold text-[#EC4899]">04 · DEPLOY &amp; SCALE</div>
           <p class="text-xs text-[var(--text-muted)] leading-relaxed">CI/CD, observability, runbooks and handover, so the system can be operated, recovered and extended.</p>
-          <div class="cycle-tick" aria-hidden="true"></div>
         </div>
       </div>
     </section>

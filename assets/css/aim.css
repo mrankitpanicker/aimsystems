@@ -657,3 +657,18 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .char-stage img { position: relative; z-index: 1; filter: drop-shadow(0 14px 24px rgba(5, 10, 40, 0.5)); }
 @keyframes aimGlow { 0%, 100% { opacity: 0.8; transform: scale(1); } 50% { opacity: 1; transform: scale(1.06); } }
 @media (prefers-reduced-motion: reduce) { .char-stage::before { animation: none; } }
+
+/* hero floating status cards: a plain soft drop shadow, no white highlight */
+.float-y { box-shadow: 0 10px 24px rgba(17, 40, 107, 0.16) !important; }
+.dark .float-y { box-shadow: 0 10px 24px rgba(0, 0, 0, 0.55) !important; }
+
+/* monolith that rests pressed in and lifts out on hover / tap */
+.monolith-outer-fillet.rest-pressed { box-shadow: var(--neu-pressed); transform: translate3d(0, 4px, 0); }
+.monolith-outer-fillet.rest-pressed::before { opacity: 0.15; }
+.monolith-outer-fillet.rest-pressed .monolith-inner-core { box-shadow: var(--neu-pressed-deep); transform: translate3d(0, 3px, 0) scale(0.985); }
+.monolith-outer-fillet.rest-pressed:hover, .monolith-outer-fillet.rest-pressed.is-pressed { box-shadow: var(--neu-raised-lg) !important; transform: translate3d(0, -4px, 0); }
+.monolith-outer-fillet.rest-pressed:hover::before, .monolith-outer-fillet.rest-pressed.is-pressed::before { opacity: 0.85; }
+.monolith-outer-fillet.rest-pressed:hover .monolith-inner-core, .monolith-outer-fillet.rest-pressed.is-pressed .monolith-inner-core { box-shadow: var(--neu-clay-convex) !important; transform: none; }
+
+/* featured card lifted above its row */
+.lift-feature { transform: translate3d(0, -10px, 0); box-shadow: 0 24px 44px rgba(11, 28, 77, 0.32), inset 0 1px 1.5px rgba(255, 255, 255, 0.22) !important; }

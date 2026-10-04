@@ -8,6 +8,12 @@
   const isDark = () => document.documentElement.classList.contains('dark');
   const icons = () => { if (window.lucide) window.lucide.createIcons(); };
 
+  /* ---------- Every page opens at the top (unless the link targets a section) ---------- */
+  try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch (e) {}
+  const toTop = () => { if (!location.hash) window.scrollTo({ top: 0, left: 0, behavior: 'instant' }); };
+  toTop();
+  window.addEventListener('pageshow', toTop);
+
   /* ---------- Toast ---------- */
   let toastTimer = null;
   function toast(msg) {
@@ -204,12 +210,30 @@
       if (waves.length) requestAnimationFrame(frame); else running = false;
     }
     size(); window.addEventListener('resize', size);
+    const ripple = (x, y) => {
+      waves.push({ x, y, r: 4, life: 1 });
+      if (!running) { running = true; requestAnimationFrame(frame); }
+    };
     card.addEventListener('click', e => {
       toggle();
       const r = canvas.parentElement.getBoundingClientRect();
-      waves.push({ x: e.clientX - r.left, y: e.clientY - r.top, r: 4, life: 1 });
-      if (!running) { running = true; requestAnimationFrame(frame); }
+      ripple(e.clientX - r.left, e.clientY - r.top);
     });
+    // optional self-press: presses in, sends one wave from the centre, releases
+    const every = +card.dataset.autopress;
+    if (every && !(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) {
+      let hovering = false;
+      card.addEventListener('mouseenter', () => { hovering = true; });
+      card.addEventListener('mouseleave', () => { hovering = false; });
+      setInterval(() => {
+        if (hovering || document.hidden || card.classList.contains('is-pressed')) return;
+        const r = canvas.parentElement.getBoundingClientRect();
+        if (r.bottom < 0 || r.top > innerHeight) return;
+        card.classList.add('is-pressed');
+        ripple(r.width / 2, r.height / 2);
+        setTimeout(() => card.classList.remove('is-pressed'), 900);
+      }, every);
+    }
   });
 
   /* ---------- Pressed-in cards: tap to pop on touch screens ---------- */
@@ -331,8 +355,21 @@
       if (desc) desc.textContent = btn.dataset.text;
       if (!quiet) toast(btn.dataset.title);
     };
-    sides.forEach(s => s.addEventListener('click', () => { sound(s === sides[0] ? 'toggleOff' : 'toggleOn'); set(s); }));
+    let held = false;
+    sides.forEach(s => s.addEventListener('click', () => { held = true; sound(s === sides[0] ? 'toggleOff' : 'toggleOn'); set(s); }));
     if (sides[0]) set(sides[0], true);
+    // optional auto-flip, stopped for good once the visitor picks a side
+    const every = +rocker.dataset.rockerAuto;
+    if (every && sides.length > 1) {
+      let hovering = false;
+      rocker.addEventListener('mouseenter', () => { hovering = true; });
+      rocker.addEventListener('mouseleave', () => { hovering = false; });
+      setInterval(() => {
+        if (held || hovering || document.hidden) return;
+        const cur = sides.findIndex(x => x.classList.contains('rocker-side-active'));
+        set(sides[(cur + 1) % sides.length], true);
+      }, every);
+    }
   });
 
   /* ---------- Laser-etched circuit ---------- */
