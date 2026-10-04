@@ -85,7 +85,6 @@
     try { localStorage.setItem('aim-sound', soundOn ? 'on' : 'off'); } catch (e) {}
     paintSoundButtons();
     if (soundOn) sound('toggleOn');
-    toast(soundOn ? 'Sound on' : 'Sound off');
   }));
   // one delegated listener gives every control a sound that matches its weight
   document.addEventListener('pointerdown', e => {
@@ -116,7 +115,6 @@
     paintThemeButtons();
     placePill(activeLink());
     sound(dark ? 'toggleOn' : 'toggleOff');
-    toast(dark ? 'Midnight Cobalt' : 'Lilac Ice');
   }
 
   /* ---------- Sliding nav pill ---------- */
@@ -223,8 +221,7 @@
   /* ---------- Press buttons (deploy-edge / convex pills) ---------- */
   $$('[data-press-toast]').forEach(btn => btn.addEventListener('click', () => {
     btn.classList.add('is-pressed');
-    setTimeout(() => btn.classList.remove('is-pressed'), 350);
-    toast(btn.dataset.pressToast);
+    setTimeout(() => btn.classList.remove('is-pressed'), 500);
   }));
 
   /* ---------- Monolith chassis + water ripple ---------- */
@@ -232,7 +229,6 @@
     const canvas = card.querySelector('.ripple-canvas');
     const toggle = () => {
       card.classList.toggle('is-pressed');
-      if (card.dataset.toastOn) toast(card.classList.contains('is-pressed') ? card.dataset.toastOn : card.dataset.toastOff);
     };
     card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
     if (!canvas) { card.addEventListener('click', toggle); return; }
@@ -277,7 +273,7 @@
         if (r.bottom < 0 || r.top > innerHeight) return;
         card.classList.add('is-pressed');
         ripple(r.width / 2, r.height / 2);
-        setTimeout(() => card.classList.remove('is-pressed'), 900);
+        setTimeout(() => card.classList.remove('is-pressed'), 1400);
       }, every);
     }
   });
@@ -334,7 +330,6 @@
         t.setAttribute('aria-selected', String(on));
       });
       panels.forEach(p => { p.hidden = p.dataset.panel !== tab.dataset.tab; });
-      if (!quiet && group.dataset.tabsToast !== undefined) toast(tab.textContent.trim());
     };
     tabs.forEach(t => t.addEventListener('click', () => { sound('toggleOn'); select(t); }));
     const first = tabs.find(t => t.getAttribute('aria-selected') === 'true') || tabs[0];
@@ -397,7 +392,6 @@
       });
       if (status) { status.textContent = btn.dataset.title; status.style.color = btn.dataset.color || ''; }
       if (desc) desc.textContent = btn.dataset.text;
-      if (!quiet) toast(btn.dataset.title);
     };
     sides.forEach(s => s.addEventListener('click', () => { sound(s === sides[0] ? 'toggleOff' : 'toggleOn'); set(s); }));
     if (sides[0]) set(sides[0], true);

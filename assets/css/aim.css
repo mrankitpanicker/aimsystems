@@ -846,3 +846,69 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .settings-panel { position: absolute; right: 0; top: calc(100% + 12px); z-index: 60; animation: settings-in 0.28s var(--ease-smooth); }
 .settings-panel[hidden] { display: none; }
 @keyframes settings-in { from { opacity: 0; transform: translateY(-6px) scale(0.98); } to { opacity: 1; transform: none; } }
+
+/* =================== Calm motion =================== 
+   Everything slides, fades or flows on one soft curve with no overshoot,
+   no bounce and no scaling, so motion stays quiet and easy on the eye. */
+:root { --ease-calm: cubic-bezier(0.4, 0, 0.2, 1); --ease-flow: cubic-bezier(0.65, 0, 0.35, 1); }
+
+/* presses and lifts move, they never grow or shrink */
+.interactive-press:active, .interactive-press.is-pressed, .interactive-press-deep.is-pressed { transform: translate3d(0, 3px, 0) !important; }
+.btn-deploy-edge.is-pressed, .btn-deploy-edge:active { transform: translate3d(0, 2px, 0) !important; }
+.tactile-convex-pill.btn-pressed-in { transform: translate3d(0, 2px, 0) !important; }
+.monolith-outer-fillet.is-pressed .monolith-inner-core,
+.monolith-outer-fillet.rest-pressed .monolith-inner-core { transform: translate3d(0, 4px, 0) !important; }
+.speaker-dot.dot-active { transform: none !important; }
+.card-sunk:hover img, .card-sunk.is-popped img, .card-sunk.cycle-card.is-active img { transform: translate3d(0, -3px, 0) !important; }
+.pk-node.is-hit, .rt-dest.on { transform: translate3d(0, -3px, 0) !important; }
+.reveal-on-scroll { transform: translate3d(0, 28px, 0); transition: opacity 1s var(--ease-calm), transform 1.1s var(--ease-calm); }
+.reveal-on-scroll.revealed { transform: none; }
+
+/* one unhurried curve, no overshoot */
+.tactile-raised, .tactile-raised-sm, .tactile-raised-lg, .tactile-inset, .tactile-clay, .tactile-navy,
+.card-sunk, .card-sunk img, .cycle-card, .cycle-card .cycle-body,
+.interactive-press, .monolith-outer-fillet, .monolith-outer-fillet::before, .monolith-inner-core,
+.breaker-state, .stage-chip, [data-pin], .sc-pill, .rocker-pill button, [data-side],
+.accordion-card, .accordion-chevron, .dial-rotor, .trench-thumb, .speaker-dot {
+  transition-property: transform, box-shadow, background, background-color, color, opacity, border-color, max-height !important;
+  transition-duration: 0.7s !important;
+  transition-timing-function: var(--ease-calm) !important;
+}
+.btn-deploy-edge, .tactile-convex-pill, .aimbot-chips button {
+  transition: transform 0.5s var(--ease-calm), box-shadow 0.5s var(--ease-calm), background 0.5s ease, color 0.5s ease, opacity 0.5s ease !important;
+}
+.pk-node, .rt-dest { transition: transform 0.8s var(--ease-calm), box-shadow 0.8s var(--ease-calm), color 0.6s ease, border-color 0.8s ease, opacity 0.7s ease !important; }
+.pk-node::before, .rt-dest::before { transition: opacity 0.8s ease !important; }
+.pk-dot { transition: left 0.9s var(--ease-flow), opacity 0.6s ease, background 0.6s ease, box-shadow 0.6s ease !important; }
+.pk-fill { transition: width 0.9s var(--ease-flow) !important; }
+#navIndicatorPill { transition: transform 0.6s var(--ease-flow), width 0.6s var(--ease-flow) !important; }
+.pk-log div, .aimbot-msg { animation: calmIn 0.6s var(--ease-calm); }
+.sc-tier { animation: calmIn 0.8s var(--ease-calm); }
+@keyframes calmIn { from { opacity: 0; transform: translate3d(0, 6px, 0); } to { opacity: 1; transform: none; } }
+
+/* flowing lines and glows breathe slowly instead of flashing */
+.rt-line.on { animation-duration: 2.4s; }
+.char-stage::before { animation: calmGlow 9s ease-in-out infinite; }
+@keyframes calmGlow { 0%, 100% { opacity: 0.8; } 50% { opacity: 1; } }
+.animate-ping { animation: calmBreath 3.2s ease-in-out infinite !important; }
+.animate-pulse { animation: calmBreath 3.2s ease-in-out infinite !important; }
+.status-dot.live, .aimbot-dot { animation: calmBreath 3.2s ease-in-out infinite !important; box-shadow: none !important; }
+@keyframes calmBreath { 0%, 100% { opacity: 1; } 50% { opacity: 0.45; } }
+
+/* chat assistant drifts gently; panels slide in rather than pop */
+.aimbot-fab { animation: calmDrift 6s ease-in-out infinite !important; }
+@keyframes calmDrift { 0%, 100% { transform: translate3d(0, 0, 0); } 50% { transform: translate3d(0, -4px, 0); } }
+.aimbot-fab:hover .aimbot-img { transform: translate3d(0, -2px, 0) !important; }
+.aimbot-fab:active .aimbot-img { transform: translate3d(0, 1px, 0) !important; }
+.aimbot-img { transition: transform 0.6s var(--ease-calm) !important; }
+.aimbot-panel { animation: calmSlideUp 0.6s var(--ease-calm) !important; }
+@keyframes calmSlideUp { from { opacity: 0; transform: translate3d(0, 16px, 0); } to { opacity: 1; transform: none; } }
+.settings-panel { animation: calmSlideDown 0.5s var(--ease-calm) !important; }
+@keyframes calmSlideDown { from { opacity: 0; transform: translate3d(0, -8px, 0); } to { opacity: 1; transform: none; } }
+#toast { transition: transform 0.7s var(--ease-calm), opacity 0.6s ease !important; }
+.bt-knob { transition: transform 0.7s var(--ease-flow), width 0.7s var(--ease-flow) !important; }
+.bt-opt { transition: color 0.7s ease !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-ping, .animate-pulse, .status-dot.live, .aimbot-dot, .aimbot-fab, .char-stage::before { animation: none !important; }
+}
