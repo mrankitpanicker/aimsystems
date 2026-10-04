@@ -1,5 +1,5 @@
 # AIM — AI Infrastructure & Machines
-# https://aimsystem.in · Technology engineering agency · Udyam-registered MSME · Madhya Pradesh, India
+# https://aimsystem.in · AIM System · Technology engineering agency · Udyam-registered MSME · Madhya Pradesh, India
 # Machine-readable profiles are listed below.
 
 User-agent: *
@@ -43,9 +43,34 @@ Allow: /
 User-agent: cohere-ai
 Allow: /
 
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: DuckAssistBot
+Allow: /
+
+User-agent: MistralAI-User
+Allow: /
+
+User-agent: Google-CloudVertexBot
+Allow: /
+
 # Machine-readable profiles
 Allow: /llms.txt
 Allow: /llms-full.txt
-Allow: /.well-known/llms.txt
+Allow: /llm.txt
+Allow: /.well-known/
+
+# Content signals (contentsignals.org): search, AI answers and training allowed.
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
 
 Sitemap: https://aimsystem.in/sitemap.xml

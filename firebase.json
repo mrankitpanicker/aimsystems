@@ -49,24 +49,7 @@
         ]
       },
       {
-        "source": "/llms.txt",
-        "headers": [
-          {
-            "key": "Content-Type",
-            "value": "text/plain; charset=utf-8"
-          },
-          {
-            "key": "Access-Control-Allow-Origin",
-            "value": "*"
-          },
-          {
-            "key": "Cache-Control",
-            "value": "public, max-age=86400"
-          }
-        ]
-      },
-      {
-        "source": "/llms-full.txt",
+        "source": "/llm*.txt",
         "headers": [
           {
             "key": "Content-Type",
@@ -100,11 +83,20 @@
         ]
       },
       {
+        "source": "/.well-known/security.txt",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "text/plain; charset=utf-8"
+          }
+        ]
+      },
+      {
         "source": "/index.html",
         "headers": [
           {
             "key": "Cache-Control",
-            "value": "no-cache, no-store, must-revalidate"
+            "value": "no-cache"
           }
         ]
       },
@@ -134,7 +126,8 @@
         "destination": "/hire",
         "type": 301
       }
-    ]
+    ],
+    "trailingSlash": false
   },
   "firestore": {
     "rules": "firestore.rules"

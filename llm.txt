@@ -6,7 +6,7 @@
 - [Services](https://aimsystem.in/services): Product Engineering, AI Engineering, Platform Engineering, Automation & Integrations.
 - [Hire](https://aimsystem.in/hire): One engineer, a specialist, an engineering pod or a complete product team; engagement pricing; client ownership; FAQ.
 - [Platforms](https://aimsystem.in/products): APEX Connect, AIM Remote AI, Healthcare Operations Platform (in development), outreach campaigns, R&D.
-- [Work](https://aimsystem.in/work): Case studies — Apple Hospital, BIMTS College, Café Ciel (London).
+- [Work](https://aimsystem.in/work): Selected engineering work — AI-powered patient communication (healthcare), multi-tenant institutional communication (education), digital experience engineering (hospitality, London); workloads and delivery process.
 - [Engineering](https://aimsystem.in/engineering): Engineering principles, interactive lab, security & reliability, technology.
 - [About](https://aimsystem.in/about): The agency, the engineering team, client contact, company information.
 - [Contact](https://aimsystem.in/contact): Discuss a project or hire engineering capacity.
@@ -22,7 +22,7 @@
 Pricing: dedicated engineer and pods are custom engagements; product development is a scoped proposal; AI/infrastructure work is architecture-based.
 
 ## Production experience
-15K+ production calls processed, 6.8K+ answered (~45% answered/connected) on APEX Connect for Apple Hospital; multi-tenant deployment for BIMTS College; digital experience for Café Ciel, London.
+15K+ production calls processed, 6.8K+ answered (~45% connected/answered) on APEX Connect for Apple Hospital (AI-powered patient communication); a dedicated multi-tenant communication environment for BIMTS College; a digital experience for Café Ciel at The OWO, London, delivered on schedule. Three industry verticals served: healthcare, education, hospitality.
 
 ## Platforms
 - APEX Connect — AI-powered customer engagement infrastructure: multi-tenant platform for voice, messaging and AI workflows. Usage-based pricing varies by call duration, communication provider and AI processing requirements. https://aimstudio.co.in/app
