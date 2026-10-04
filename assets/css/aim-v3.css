@@ -1,0 +1,192 @@
+/* AIM v3 — temporary visual direction (branch aimsystem-v3-temp)
+   Loaded after aim.css and tw.css. It re-points the v2 tokens rather than
+   rewriting components, so removing this file restores v2.
+
+   Page        cool off-white  #F3F5FB → #EEF1F8
+   Light card  white, 20–24px radius, 0 10px 30px rgba(20,30,80,.08), 1px soft edge
+   Dark panel  midnight navy   #0B1440 → #1A2A78, always a contained rounded card
+   On dark     glass: rgba(255,255,255,.06) fill, rgba(255,255,255,.12) border, top highlight
+   Accent      one only        #4C6FFF (buttons and highlights) */
+
+:root {
+  --canvas-bg: #F3F5FB;
+  --surface: #FFFFFF;
+  --card-surface: #FFFFFF;
+  --inset-surface: #F1F4FB;
+  --text-main: #0E1638;
+  --text-muted: #5A6688;
+  --accent: #4C6FFF;
+  --accent-soft: rgba(76, 111, 255, 0.10);
+  --primary: #4C6FFF;
+  --primary-deep: #3F5FF0;
+  --primary-glow: rgba(76, 111, 255, 0.40);
+
+  --edge: 1px solid rgba(255, 255, 255, 0.8);
+  --shadow-light: rgba(255, 255, 255, 1);
+  --shadow-dark: rgba(20, 30, 80, 0.08);
+  --shadow-dark-deep: rgba(20, 30, 80, 0.16);
+
+  --neu-raised: 0 10px 30px rgba(20, 30, 80, 0.08);
+  --neu-raised-sm: 0 4px 14px rgba(20, 30, 80, 0.07);
+  --neu-raised-lg: 0 16px 40px rgba(20, 30, 80, 0.10);
+  --neu-clay-convex: 0 10px 30px rgba(20, 30, 80, 0.08);
+  --neu-pressed: inset 0 2px 6px rgba(20, 30, 80, 0.07);
+  --neu-pressed-sm: inset 0 1px 4px rgba(20, 30, 80, 0.07);
+  --neu-pressed-deep: inset 0 3px 10px rgba(20, 30, 80, 0.10);
+
+  --pill-convex-bg: #FFFFFF;
+  --pill-convex-shadow: 0 4px 12px rgba(20, 30, 80, 0.08), inset 0 0 0 1px rgba(20, 30, 80, 0.05);
+  --pill-convex-pressed-shadow: inset 0 2px 6px rgba(20, 30, 80, 0.12);
+
+  --deploy-gradient: linear-gradient(135deg, #5B7CFF 0%, #4C6FFF 55%, #3F5FF0 100%);
+  --deploy-gradient-pressed: linear-gradient(135deg, #3F5FF0 0%, #3554DE 100%);
+  --deploy-shadow: 0 8px 20px rgba(76, 111, 255, 0.32);
+
+  --navy-panel: linear-gradient(145deg, #0B1440 0%, #121F5C 55%, #1A2A78 100%);
+}
+
+:root.dark {
+  --canvas-bg: #080D22;
+  --surface: #10183A;
+  --card-surface: #131C42;
+  --inset-surface: #0C1331;
+  --text-main: #EEF1FA;
+  --text-muted: #9AA6C8;
+  --accent: #6F8BFF;
+  --accent-soft: rgba(111, 139, 255, 0.14);
+  --edge: 1px solid rgba(255, 255, 255, 0.06);
+  --shadow-light: rgba(255, 255, 255, 0.04);
+  --shadow-dark: rgba(0, 0, 0, 0.45);
+  --shadow-dark-deep: rgba(0, 0, 0, 0.6);
+  --neu-raised: 0 10px 30px rgba(0, 0, 0, 0.35);
+  --neu-raised-sm: 0 4px 14px rgba(0, 0, 0, 0.30);
+  --neu-raised-lg: 0 16px 40px rgba(0, 0, 0, 0.40);
+  --neu-clay-convex: 0 10px 30px rgba(0, 0, 0, 0.35);
+  --neu-pressed: inset 0 2px 8px rgba(0, 0, 0, 0.45);
+  --neu-pressed-sm: inset 0 1px 5px rgba(0, 0, 0, 0.4);
+  --neu-pressed-deep: inset 0 3px 12px rgba(0, 0, 0, 0.5);
+  --pill-convex-bg: #172152;
+  --pill-convex-shadow: 0 4px 12px rgba(0, 0, 0, 0.35), inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+  --navy-panel: linear-gradient(145deg, #0B1440 0%, #121F5C 55%, #1A2A78 100%);
+}
+
+body { background-color: #F1F3FA; background-image: linear-gradient(180deg, #F3F5FB 0%, #EEF1F8 100%); }
+.dark body { background-color: #090E25; background-image: linear-gradient(180deg, #080D22 0%, #0A1029 100%); }
+
+/* ---------- Light cards ---------- */
+.tactile-raised, .tactile-raised-sm, .tactile-raised-lg, .tactile-clay,
+.monolith-outer-fillet, .accordion-card {
+  background: var(--surface);
+  border: var(--edge);
+}
+.rounded-\[2rem\] { border-radius: 24px !important; }
+.tactile-inset, .tactile-inset-sm, .trench-track { background: var(--inset-surface); }
+.monolith-outer-fillet::before { display: none; }
+.monolith-inner-core { background: var(--surface); box-shadow: none; border: var(--edge); }
+.monolith-outer-fillet:hover .monolith-inner-core,
+.monolith-outer-fillet.is-pressed .monolith-inner-core { box-shadow: var(--neu-pressed) !important; }
+
+/* pressed-in cards rest on the tinted inset surface and lift to white */
+.card-sunk { background: var(--inset-surface); border: 1px solid rgba(20, 30, 80, 0.04); }
+.card-sunk:hover, .card-sunk:focus-within, .card-sunk.is-popped,
+.card-sunk.cycle-card.is-active { background: var(--surface); border-color: rgba(255, 255, 255, 0.8); }
+.dark .card-sunk { border-color: rgba(255, 255, 255, 0.04); }
+.dark .card-sunk:hover, .dark .card-sunk.is-popped, .dark .card-sunk.cycle-card.is-active { border-color: rgba(255, 255, 255, 0.08); }
+
+.ico-well { background: var(--inset-surface); box-shadow: var(--neu-pressed-sm); }
+.char-stage {
+  background: radial-gradient(ellipse at 50% 80%, rgba(76, 111, 255, 0.16) 0%, rgba(76, 111, 255, 0.04) 45%, var(--inset-surface) 75%);
+  box-shadow: inset 0 0 0 1px rgba(20, 30, 80, 0.04);
+}
+.speaker-dot { background: var(--inset-surface); }
+.speaker-dot.dot-active { background-color: var(--accent); box-shadow: 0 0 8px var(--primary-glow); }
+
+/* ---------- Single accent ---------- */
+.btn-deploy-edge { background: var(--deploy-gradient); box-shadow: var(--deploy-shadow); }
+.btn-deploy-edge:hover { box-shadow: 0 10px 24px rgba(76, 111, 255, 0.40); }
+.tactile-convex-pill:active, .tactile-convex-pill.btn-pressed-in { background: var(--deploy-gradient) !important; }
+#navIndicatorPill { background: var(--deploy-gradient); box-shadow: var(--deploy-shadow); }
+.trench-thumb { background: var(--deploy-gradient); }
+#toast { background: var(--navy-panel) !important; }
+
+/* every decorative hue used in v2 collapses to the one accent;
+   semantic status colours (emerald, amber, rose) are left alone */
+.text-\[\#7952EC\], .text-\[\#163387\], .text-\[\#445EAA\], .text-\[\#4F46E5\], .text-\[\#6380CE\],
+.text-\[\#38BDF8\], .text-\[\#2DD4BF\], .text-\[\#0EA5A4\], .text-\[\#F97316\], .text-\[\#EC4899\],
+.text-\[\#FB7185\], .text-\[\#7DD3FC\], .text-\[\#F9A8D4\] { color: var(--accent) !important; }
+.dark .dark\:text-\[\#A78BFA\], .dark .dark\:text-\[\#6380CE\] { color: var(--accent) !important; }
+.bg-\[\#7952EC\], .bg-\[\#A78BFA\], .bg-\[\#38BDF8\] { background-color: var(--accent) !important; }
+.bg-\[\#7952EC\]\/10 { background-color: var(--accent-soft) !important; }
+.laser-trace-active { stroke: var(--accent) !important; filter: drop-shadow(0 0 6px var(--primary-glow)); }
+.stage-chip.is-done { background: var(--deploy-gradient) !important; box-shadow: var(--deploy-shadow) !important; }
+.cycle-card .cycle-tick { background: var(--deploy-gradient); }
+.fluid-level-bar { background: linear-gradient(0deg, #1A2A78, var(--accent)) !important; }
+.bar-relax, .bar-strength, .bar-stretch { background: var(--deploy-gradient); box-shadow: 0 4px 14px rgba(76, 111, 255, 0.30); }
+
+/* ---------- Dark panels: midnight navy, contained ---------- */
+.tactile-navy {
+  --surface: rgba(255, 255, 255, 0.06);
+  --card-surface: rgba(255, 255, 255, 0.08);
+  --inset-surface: rgba(255, 255, 255, 0.04);
+  --text-main: #FFFFFF;
+  --text-muted: rgba(220, 228, 255, 0.74);
+  --accent: #8DA2FF;
+  --pill-convex-bg: rgba(255, 255, 255, 0.08);
+  --pill-convex-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10), 0 0 0 1px rgba(255, 255, 255, 0.12);
+  --neu-raised: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  --neu-raised-sm: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  --neu-pressed: inset 0 2px 8px rgba(0, 0, 0, 0.30);
+  --neu-pressed-sm: inset 0 1px 5px rgba(0, 0, 0, 0.28);
+  --neu-clay-convex: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  background: var(--navy-panel) !important;
+  box-shadow: 0 18px 40px rgba(11, 20, 64, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+.dark .tactile-navy { background: linear-gradient(145deg, #0E1A52 0%, #15236A 55%, #1E3190 100%) !important; }
+/* cards on dark are glass */
+.tactile-navy .tactile-raised, .tactile-navy .tactile-raised-sm, .tactile-navy .tactile-inset,
+.tactile-navy .tactile-inset-sm, .tactile-navy .card-sunk, .tactile-navy .ico-well, .tactile-navy .char-stage {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(6px);
+}
+.tactile-navy .char-stage {
+  background: radial-gradient(ellipse at 50% 80%, rgba(76, 111, 255, 0.45) 0%, rgba(76, 111, 255, 0.10) 50%, rgba(255, 255, 255, 0.04) 80%) !important;
+}
+.tactile-navy .btn-deploy-edge { background: var(--deploy-gradient); color: #FFFFFF; box-shadow: 0 8px 20px rgba(76, 111, 255, 0.45); }
+.tactile-navy .text-\[\#B9C8FF\] { color: #8DA2FF !important; }
+.logo-tile { background: var(--navy-panel); box-shadow: 0 6px 16px rgba(11, 20, 64, 0.30), inset 0 1px 0 rgba(255, 255, 255, 0.10); }
+.price-strip { background: rgba(255, 255, 255, 0.95); }
+
+/* ---------- Hero: glowing radial gradient on navy, soft glow behind the character ---------- */
+.hero-glow {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(620px circle at 74% 46%, rgba(76, 111, 255, 0.55), transparent 62%),
+    radial-gradient(420px circle at 12% 0%, rgba(91, 124, 255, 0.28), transparent 60%),
+    radial-gradient(520px circle at 95% 110%, rgba(26, 42, 120, 0.9), transparent 60%),
+    linear-gradient(145deg, #0B1440 0%, #121F5C 55%, #1A2A78 100%) !important;
+}
+.hero-glow .char-stage {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none;
+  overflow: visible;
+}
+.hero-glow .char-stage::before {
+  content: "";
+  position: absolute;
+  inset: 8% 6% 0;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 60%, rgba(120, 146, 255, 0.70) 0%, rgba(76, 111, 255, 0.30) 35%, transparent 68%);
+  filter: blur(18px);
+  animation: aimGlow 6s ease-in-out infinite;
+}
+.hero-glow .char-stage img { position: relative; z-index: 1; filter: drop-shadow(0 18px 30px rgba(5, 10, 40, 0.55)); }
+@keyframes aimGlow { 0%, 100% { opacity: 0.85; transform: scale(1); } 50% { opacity: 1; transform: scale(1.05); } }
+.hero-glow h1 { color: #FFFFFF; }
+.hero-glow .float-y { z-index: 2; }
+@media (prefers-reduced-motion: reduce) { .hero-glow .char-stage::before { animation: none; } }
