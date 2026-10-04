@@ -741,3 +741,53 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 /* the packet travels behind the nodes: visible in the pipes between them, hidden while "inside" one */
 .pk-dot { z-index: 1; }
 .pk-track { z-index: 0; }
+
+/* ---- active step turns navy blue; everything eases in and out ---- */
+.pk-node, .rt-dest { isolation: isolate; transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.6s ease, color 0.45s ease, border-color 0.6s ease, opacity 0.5s ease; }
+.pk-node::before, .rt-dest::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; z-index: -1;
+  background: var(--deploy-gradient); opacity: 0; transition: opacity 0.55s ease;
+}
+.pk-node > *, .rt-dest > * { transition: color 0.45s ease; }
+.pk-node.is-hit, .rt-dest.on {
+  color: #FFFFFF; transform: translate3d(0, -4px, 0) scale(1.02) !important; border-color: transparent !important;
+  box-shadow: var(--deploy-shadow), inset 0 1px 1.5px rgba(255, 255, 255, 0.25) !important;
+}
+.pk-node.is-hit::before, .rt-dest.on::before { opacity: 1; }
+.pk-node.is-hit [class*="text-[var(--text-muted)]"], .rt-dest.on [class*="text-[var(--text-muted)]"] { color: rgba(214, 224, 255, 0.82) !important; }
+.pk-node.is-hit .ico-well, .rt-dest.on .ico-well { background: rgba(255, 255, 255, 0.12); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18); }
+.pk-node.is-hit .pk-led { background: #7DD3FC; box-shadow: 0 0 12px #7DD3FC; }
+.pk-node .pk-led { transition: background 0.5s ease, box-shadow 0.5s ease, opacity 0.5s ease; }
+.pk-dot { transition: left 0.75s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.4s ease, background 0.4s ease, box-shadow 0.4s ease; }
+.pk-fill { transition: width 0.75s cubic-bezier(0.65, 0, 0.35, 1); }
+.rt-line { transition: stroke 0.5s ease, stroke-width 0.5s ease, filter 0.5s ease; }
+.rt-utter { transition: opacity 0.4s ease; }
+.sc-tier { animation: scIn 0.6s cubic-bezier(0.22, 1, 0.36, 1); }
+@keyframes scIn { from { opacity: 0; transform: translate3d(0, 8px, 0) scale(0.985); } to { opacity: 1; transform: none; } }
+.tactile-convex-pill { transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease, background 0.35s ease, color 0.35s ease; }
+
+/* active step inside a navy card uses the brighter accent so it still stands out */
+.tactile-navy .pk-node::before, .tactile-navy .rt-dest::before { background: linear-gradient(135deg, #5B7CFF 0%, #4C6FFF 55%, #3F5FF0 100%); }
+.tactile-navy .pk-node.is-hit, .tactile-navy .rt-dest.on { box-shadow: 0 8px 22px rgba(76, 111, 255, 0.45), inset 0 1px 1.5px rgba(255, 255, 255, 0.3) !important; }
+
+/* ---- one smooth easing for every animated control ---- */
+:root { --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1); }
+.card-sunk, .card-sunk img,
+.cycle-card, .cycle-card .cycle-body,
+.monolith-outer-fillet, .monolith-inner-core, .monolith-outer-fillet::before,
+.interactive-press, .tactile-raised, .tactile-raised-sm, .tactile-navy,
+.breaker-state, .stage-chip, [data-pin], .sc-pill,
+.rocker-pill button, [data-side], .accordion-card, .accordion-chevron {
+  transition-property: transform, box-shadow, background, background-color, color, opacity, border-color, max-height;
+  transition-duration: 0.55s;
+  transition-timing-function: var(--ease-smooth);
+}
+.btn-deploy-edge, .tactile-convex-pill { transition: transform 0.35s var(--ease-smooth), box-shadow 0.35s ease, background 0.35s ease, color 0.35s ease, opacity 0.35s ease; }
+.laser-trace { transition: stroke 0.6s ease, stroke-opacity 0.6s ease, filter 0.6s ease; }
+.speaker-dot { transition: background-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease; }
+.fluid-level-bar { transition: height 0.7s var(--ease-smooth); }
+#navIndicatorPill { transition: transform 0.5s var(--ease-smooth), width 0.5s var(--ease-smooth); }
+.accordion-body { transition: max-height 0.55s var(--ease-smooth), opacity 0.45s ease, padding 0.45s ease; }
+#toast { transition: transform 0.5s var(--ease-smooth), opacity 0.4s ease !important; }
+.float-y { animation-timing-function: cubic-bezier(0.45, 0, 0.55, 1); }
+@media (prefers-reduced-motion: reduce) { * { transition-duration: 0.01ms !important; } }

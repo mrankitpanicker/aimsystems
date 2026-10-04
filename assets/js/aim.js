@@ -629,7 +629,7 @@
         if (dot) dot.classList.add('ok');
         write(box.dataset.done || 'Done');
         if (manual) sound('success');
-        setTimeout(() => { running = false; reset(); if (status && box.dataset.idle) status.textContent = box.dataset.idle; }, 1800);
+        setTimeout(() => { running = false; reset(); if (status && box.dataset.idle) status.textContent = box.dataset.idle; }, 2200);
       }, nodes.length * step + 200);
     }
     const btn = $('[data-pk-run]', box);
@@ -648,7 +648,7 @@
       dests.forEach((d, i) => d.classList.toggle('on', i === k));
       lines.forEach((l, i) => l.classList.toggle('on', i === k));
       const d = dests[k];
-      if (utter) { utter.style.opacity = '0'; setTimeout(() => { utter.textContent = d.dataset.utter; utter.style.opacity = '1'; }, 200); }
+      if (utter) { utter.style.opacity = '0'; setTimeout(() => { utter.textContent = d.dataset.utter; utter.style.opacity = '1'; }, 380); }
       if (status) status.textContent = d.dataset.why;
       if (manual) sound('toggleOn');
     }
