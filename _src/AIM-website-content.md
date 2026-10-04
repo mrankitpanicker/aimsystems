@@ -142,24 +142,6 @@ Cloud, Kubernetes, CI/CD and observability that keep software reliable and scala
 
 Connected systems and automated workflows across CRM, WhatsApp, telephony and data.
 
-Ways to work with us
-
-### Choose Your Engineering Capacity.
-
-Whether you need one specialist or an entire delivery team, we adapt the engineering model to your requirements.
-
-01 One Engineer Dedicated technical capacity for focused development.
-
-02 Specialist Senior expertise for a specific technical challenge.
-
-03 Engineering Pod A cross-functional team for continuous product development.
-
-04 Complete Team End-to-end product engineering from architecture to production.
-
-Start with exactly the engineering capacity you need and expand the team as the project grows.
-
-[Find the Right Team]
-
 Production experience
 
 ### Built for Real-World Workloads.
@@ -229,6 +211,24 @@ Systems designed for reliability, observability and maintainability.
 #### Direct Communication
 
 Clear technical communication throughout the engagement.
+
+Ways to work with us
+
+### Choose Your Engineering Capacity.
+
+Whether you need one specialist or an entire delivery team, we adapt the engineering model to your requirements.
+
+01 One Engineer Dedicated technical capacity for focused development.
+
+02 Specialist Senior expertise for a specific technical challenge.
+
+03 Engineering Pod A cross-functional team for continuous product development.
+
+04 Complete Team End-to-end product engineering from architecture to production.
+
+Start with exactly the engineering capacity you need and expand the team as the project grows.
+
+[Find the Right Team]
 
 How we work
 
@@ -332,6 +332,46 @@ Database
 Observe
 
 How work flows through a backend
+
+#### How the architecture grows
+
+The system doesn't just get bigger servers; its shape changes as concurrent calls grow.
+
+10 100 1,000
+
+Telephony webhook
+
+One API + worker process
+
+PostgreSQL
+
+Simple and cheap. Retries and idempotency are already in place.
+
+NGINX ingress
+
+API
+
+Worker
+
+Redis queue + cache
+
+PostgreSQL
+
+Calls move to a Redis queue; workers scale on their own; circuit breakers guard every provider.
+
+Load balancer · Kubernetes (HPA)
+
+API
+
+Workers ×N
+
+Redis
+
+Per-tenant limits
+
+DB replicas
+
+Pods autoscale; each tenant has its own concurrency budget, so one campaign can't starve another.
 
 04 · Automation & Integrations
 
@@ -556,6 +596,26 @@ Connects phone, desktop and voice to the computer where the work happens, so tea
 Capabilities: remote control, AI delegation, voice commands, end-to-end encrypted WebRTC link. Technology: Windows, Android, Chrome; OpenAI, Gemini, Claude, OpenRouter, Groq or local models.
 
 Get AIM Remote AI
+
+Inside APEX Connect
+
+### How a conversation moves through the platform.
+
+#### Intent routing
+
+Each caller request goes to the branch that should handle it. It cycles through examples on its own; tap a branch to pick one.
+
+Router
+
+Answer with the LLM FAQ · knowledge base Book an appointment calendar tool Follow up on WhatsApp messaging queue
+
+#### The path a voice turn takes
+
+It steps through on its own; hover over or tap a stage to read it.
+
+Select a stage
+
+01 INGRESS 02 TENANT 03 STT 04 LLM 05 TTS 06 EFFECTS
 
 Solutions
 
@@ -986,62 +1046,6 @@ Local-first Cloud
 Chosen path
 
 Local-first
-
-#### Intent routing
-
-Each caller request goes to the branch that should handle it. It cycles through examples on its own; tap a branch to pick one.
-
-Router
-
-Answer with the LLM FAQ · knowledge base Book an appointment calendar tool Follow up on WhatsApp messaging queue
-
-#### How the architecture grows
-
-The system doesn't just get bigger servers; its shape changes as concurrent calls grow.
-
-10 100 1,000
-
-Telephony webhook
-
-One API + worker process
-
-PostgreSQL
-
-Simple and cheap. Retries and idempotency are already in place.
-
-NGINX ingress
-
-API
-
-Worker
-
-Redis queue + cache
-
-PostgreSQL
-
-Calls move to a Redis queue; workers scale on their own; circuit breakers guard every provider.
-
-Load balancer · Kubernetes (HPA)
-
-API
-
-Workers ×N
-
-Redis
-
-Per-tenant limits
-
-DB replicas
-
-Pods autoscale; each tenant has its own concurrency budget, so one campaign can't starve another.
-
-#### The path a voice turn takes
-
-It steps through on its own; hover over or tap a stage to read it.
-
-Select a stage
-
-01 INGRESS 02 TENANT 03 STT 04 LLM 05 TTS 06 EFFECTS
 
 Security & Reliability
 

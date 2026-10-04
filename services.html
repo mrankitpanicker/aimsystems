@@ -177,19 +177,56 @@
           </div>
         </div>
       </div>
-      <div class="tactile-navy rounded-3xl p-5 space-y-4" data-packet data-every="22000" data-step="2200" data-done="Job complete and visible in dashboards" data-idle="How work flows through a backend">
-        <div><h3 class="font-black font-display">Cloud pipeline</h3><p class="text-xs text-[var(--text-muted)]">Long-running work moves through queues and workers, never blocking the request.</p></div>
-        <div class="tactile-inset rounded-2xl p-3">
-          <div class="pk-row grid grid-cols-5 gap-2">
-            <div class="pk-track"><div class="pk-fill"></div></div><span class="pk-dot"></span>
-            <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="API accepts the request"><span class="ico-well w-8 h-8 rounded-lg"><img loading="lazy" decoding="async" src="/assets/img/ico-link.webp" alt=""></span><span class="text-[10px] font-black">API</span><span class="pk-led"></span></div>
-            <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="Job placed on the queue"><span class="ico-well w-8 h-8 rounded-lg"><img loading="lazy" decoding="async" src="/assets/img/ico-rack.webp" alt=""></span><span class="text-[10px] font-black">Queue</span><span class="pk-led"></span></div>
-            <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="Worker processes it with retries"><span class="ico-well w-8 h-8 rounded-lg"><img loading="lazy" decoding="async" src="/assets/img/ico-gear.webp" alt=""></span><span class="text-[10px] font-black">Workers</span><span class="pk-led"></span></div>
-            <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="State written to the database"><span class="ico-well w-8 h-8 rounded-lg"><img loading="lazy" decoding="async" src="/assets/img/ico-database.webp" alt=""></span><span class="text-[10px] font-black">Database</span><span class="pk-led"></span></div>
-            <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="Metrics, logs and traces recorded"><span class="ico-well w-8 h-8 rounded-lg"><img loading="lazy" decoding="async" src="/assets/img/ico-trend.webp" alt=""></span><span class="text-[10px] font-black">Observe</span><span class="pk-led"></span></div>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+        <div class="tactile-navy rounded-3xl p-5 space-y-4" data-packet data-every="22000" data-step="2200" data-done="Job complete and visible in dashboards" data-idle="How work flows through a backend">
+          <div><h3 class="font-black font-display">Cloud pipeline</h3><p class="text-xs text-[var(--text-muted)]">Long-running work moves through queues and workers, never blocking the request.</p></div>
+          <div class="tactile-inset rounded-2xl p-3">
+            <div class="pk-row grid grid-cols-5 gap-2">
+              <div class="pk-track"><div class="pk-fill"></div></div><span class="pk-dot"></span>
+              <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="API accepts the request"><span class="ico-well w-8 h-8 rounded-lg"><img loading="lazy" decoding="async" src="/assets/img/ico-link.webp" alt=""></span><span class="text-[10px] font-black">API</span><span class="pk-led"></span></div>
+              <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="Job placed on the queue"><span class="ico-well w-8 h-8 rounded-lg"><img loading="lazy" decoding="async" src="/assets/img/ico-rack.webp" alt=""></span><span class="text-[10px] font-black">Queue</span><span class="pk-led"></span></div>
+              <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="Worker processes it with retries"><span class="ico-well w-8 h-8 rounded-lg"><img loading="lazy" decoding="async" src="/assets/img/ico-gear.webp" alt=""></span><span class="text-[10px] font-black">Workers</span><span class="pk-led"></span></div>
+              <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="State written to the database"><span class="ico-well w-8 h-8 rounded-lg"><img loading="lazy" decoding="async" src="/assets/img/ico-database.webp" alt=""></span><span class="text-[10px] font-black">Database</span><span class="pk-led"></span></div>
+              <div class="pk-node tactile-raised-sm rounded-xl p-2 flex flex-col items-center gap-1 text-center" data-msg="Metrics, logs and traces recorded"><span class="ico-well w-8 h-8 rounded-lg"><img loading="lazy" decoding="async" src="/assets/img/ico-trend.webp" alt=""></span><span class="text-[10px] font-black">Observe</span><span class="pk-led"></span></div>
+            </div>
+          </div>
+          <div class="tactile-inset-sm rounded-xl px-3 py-2 font-mono text-[11px]"><span data-pk-status>How work flows through a backend</span></div>
+        </div>
+        <!-- Scaling -->
+        <div class="tactile-raised rounded-3xl p-6 sm:p-8 space-y-5" data-scale data-every="5700">
+          <div class="flex items-start justify-between gap-3">
+            <div class="space-y-1">
+              <h3 class="text-base font-black font-display">How the architecture grows</h3>
+              <p class="text-xs text-[var(--text-muted)]">The system doesn't just get bigger servers; its shape changes as concurrent calls grow.</p>
+            </div>
+            <span class="shrink-0 tactile-inset-sm rounded-full px-3 py-1 text-[10px] font-mono font-bold text-[#163387] dark:text-[#A78BFA]" data-sc-badge></span>
+          </div>
+          <div class="flex gap-2">
+            <button type="button" class="sc-pill tactile-convex-pill flex-1 py-2 text-[11px] font-mono font-bold"><span>10</span></button>
+            <button type="button" class="sc-pill tactile-convex-pill flex-1 py-2 text-[11px] font-mono font-bold"><span>100</span></button>
+            <button type="button" class="sc-pill tactile-convex-pill flex-1 py-2 text-[11px] font-mono font-bold"><span>1,000</span></button>
+          </div>
+          <div class="tactile-inset rounded-3xl p-4 min-h-[15rem] flex flex-col justify-center">
+            <div class="sc-tier space-y-3" data-tier="10 concurrent calls">
+              <div class="tactile-raised-sm rounded-xl px-3 py-2 text-center text-[11px] font-mono font-bold">Telephony webhook</div>
+              <div class="tactile-raised rounded-xl px-3 py-4 text-center text-xs font-mono font-bold">One API + worker process</div>
+              <div class="tactile-raised-sm rounded-xl px-3 py-2 text-center text-[11px] font-mono">PostgreSQL</div>
+              <p class="text-[11px] text-[var(--text-muted)] text-center">Simple and cheap. Retries and idempotency are already in place.</p>
+            </div>
+            <div class="sc-tier space-y-3" data-tier="100 concurrent calls" hidden>
+              <div class="tactile-raised-sm rounded-xl px-3 py-2 text-center text-[11px] font-mono font-bold">NGINX ingress</div>
+              <div class="grid grid-cols-3 gap-2"><div class="tactile-raised rounded-xl py-3 text-center text-[10px] font-mono font-bold">API</div><div class="tactile-raised rounded-xl py-3 text-center text-[10px] font-mono font-bold">Worker</div><div class="tactile-raised rounded-xl py-3 text-center text-[10px] font-mono font-bold">Worker</div></div>
+              <div class="grid grid-cols-2 gap-2"><div class="tactile-raised-sm rounded-xl py-2 text-center text-[10px] font-mono">Redis queue + cache</div><div class="tactile-raised-sm rounded-xl py-2 text-center text-[10px] font-mono">PostgreSQL</div></div>
+              <p class="text-[11px] text-[var(--text-muted)] text-center">Calls move to a Redis queue; workers scale on their own; circuit breakers guard every provider.</p>
+            </div>
+            <div class="sc-tier space-y-3" data-tier="1,000 concurrent calls" hidden>
+              <div class="tactile-raised-sm rounded-xl px-3 py-2 text-center text-[11px] font-mono font-bold">Load balancer · Kubernetes (HPA)</div>
+              <div class="grid grid-cols-4 gap-2"><div class="tactile-raised rounded-xl py-3 text-center text-[10px] font-mono font-bold">API</div><div class="tactile-raised rounded-xl py-3 text-center text-[10px] font-mono font-bold">API</div><div class="tactile-raised rounded-xl py-3 text-center text-[10px] font-mono font-bold">Workers ×N</div><div class="tactile-raised rounded-xl py-3 text-center text-[10px] font-mono font-bold">Workers ×N</div></div>
+              <div class="grid grid-cols-3 gap-2"><div class="tactile-raised-sm rounded-xl py-2 text-center text-[10px] font-mono">Redis</div><div class="tactile-raised-sm rounded-xl py-2 text-center text-[10px] font-mono">Per-tenant limits</div><div class="tactile-raised-sm rounded-xl py-2 text-center text-[10px] font-mono">DB replicas</div></div>
+              <p class="text-[11px] text-[var(--text-muted)] text-center">Pods autoscale; each tenant has its own concurrency budget, so one campaign can't starve another.</p>
+            </div>
           </div>
         </div>
-        <div class="tactile-inset-sm rounded-xl px-3 py-2 font-mono text-[11px]"><span data-pk-status>How work flows through a backend</span></div>
       </div>
     </section>
 
