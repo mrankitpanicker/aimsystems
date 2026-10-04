@@ -33,7 +33,8 @@ classes the pages use into `assets/css/tw.css`, and `icons.js` writes the Lucide
 ## Design & assets
 - `assets/css/aim.css` holds the tactile neumorphic design system (light "Lilac Ice" and dark "Midnight Cobalt") verbatim, with site additions at the end.
 - `assets/js/aim.js` holds all interactions: sliding nav pill, theme toggle (remembered per browser), monolith press with water ripple, folder tabs, accordions, rotary dial, rocker switch, laser-etched trace, speaker grille, Web Audio keypad, trench slider, fluid tank, circuit-breaker lab, pipeline runner and counters.
-- `assets/img/` holds characters, scenes and icons cropped from the asset sheet (`_src/asset-sheet.webp`). To re-crop from a higher-resolution export of the same sheet, run `python3 _src/crop_assets.py path/to/sheet.png` (needs Pillow).
+- `assets/img/` holds transparent art cut from three sheets in `_src/`: `cto-*` (the CTO character; blazer poses are used only where the CTO is the subject), `ill-*` (illustrations) and `ico-*` (3D icons). Re-cut with `python3 _src/cut_sheets.py` (needs Pillow, numpy, scipy).
+- Cards use two surfaces: the lilac-ice tactile card and `.tactile-navy`, the navy gradient from the buttons. Anything inside a navy card picks up navy tokens automatically.
 - `assets/video/` holds the scene reel (WebM + MP4).
 
 ## Deploy

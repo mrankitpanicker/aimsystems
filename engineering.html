@@ -105,7 +105,7 @@
           </div>
         </div>
         <div class="lg:col-span-5">
-          <div class="art-frame aspect-[465/612] max-w-[320px] mx-auto"><img src="/assets/img/char-teaching.webp" width="465" height="612" alt="Guide character explaining with a tablet"></div>
+          <div class="char-stage aspect-square max-w-[400px] mx-auto"><img src="/assets/img/cto-whiteboard.webp" alt="Character mapping a system flow on a whiteboard"></div>
         </div>
       </div>
     </section>
@@ -113,41 +113,41 @@
     <!-- PRINCIPLES -->
     <section id="principles" class="space-y-6 reveal-on-scroll">
       <div>
-        <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7952EC] dark:text-[#A78BFA]">01 · Principles</span>
+        <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7952EC] dark:text-[#A78BFA]">Principles</span>
         <h2 class="text-2xl sm:text-3xl font-black font-display">Architecture principles</h2>
         <p class="text-xs sm:text-sm text-[var(--text-muted)] mt-1">The same patterns show up in every project we build.</p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4" data-accordion>
         <div class="accordion-card tactile-raised rounded-2xl p-4 open">
-          <div class="flex items-center justify-between gap-3"><div class="flex items-center gap-3"><span class="w-7 h-7 rounded-lg tactile-inset-sm flex items-center justify-center font-mono font-bold text-[11px] text-[#7952EC] dark:text-[#A78BFA]">01</span><h3 class="text-sm font-extrabold font-display">Local-first where it makes sense</h3></div><i data-lucide="chevron-down" class="accordion-chevron w-4 h-4 text-[var(--text-muted)] transition-transform"></i></div>
+          <div class="flex items-center justify-between gap-3"><div class="flex items-center gap-3"><span class="ico-well w-10 h-10 rounded-xl"><img src="/assets/img/ico-db-cloud.webp" alt=""></span><h3 class="text-sm font-extrabold font-display">Local-first where it makes sense</h3></div><i data-lucide="chevron-down" class="accordion-chevron w-4 h-4 text-[var(--text-muted)] transition-transform"></i></div>
           <div class="accordion-body text-xs text-[var(--text-muted)] leading-relaxed pt-3">Keep critical workflows close to where they run when that improves latency, privacy, resilience or cost. Use the cloud where it adds leverage, and keep control locally where it adds resilience.</div>
         </div>
-        <div class="accordion-card tactile-raised rounded-2xl p-4">
-          <div class="flex items-center justify-between gap-3"><div class="flex items-center gap-3"><span class="w-7 h-7 rounded-lg tactile-inset-sm flex items-center justify-center font-mono font-bold text-[11px] text-[#38BDF8]">02</span><h3 class="text-sm font-extrabold font-display">Zero-trust boundaries</h3></div><i data-lucide="chevron-down" class="accordion-chevron w-4 h-4 text-[var(--text-muted)] transition-transform"></i></div>
+        <div class="accordion-card tactile-navy rounded-2xl p-4">
+          <div class="flex items-center justify-between gap-3"><div class="flex items-center gap-3"><span class="ico-well w-10 h-10 rounded-xl"><img src="/assets/img/ico-shield.webp" alt=""></span><h3 class="text-sm font-extrabold font-display">Zero-trust boundaries</h3></div><i data-lucide="chevron-down" class="accordion-chevron w-4 h-4 text-[var(--text-muted)] transition-transform"></i></div>
           <div class="accordion-body text-xs text-[var(--text-muted)] leading-relaxed pt-3">Components shouldn't trust each other just because they share an application or a network. Tenant scope is part of every key, query and cache entry.</div>
         </div>
-        <div class="accordion-card tactile-raised rounded-2xl p-4">
-          <div class="flex items-center justify-between gap-3"><div class="flex items-center gap-3"><span class="w-7 h-7 rounded-lg tactile-inset-sm flex items-center justify-center font-mono font-bold text-[11px] text-[#2DD4BF]">03</span><h3 class="text-sm font-extrabold font-display">Asynchronous execution</h3></div><i data-lucide="chevron-down" class="accordion-chevron w-4 h-4 text-[var(--text-muted)] transition-transform"></i></div>
+        <div class="accordion-card tactile-navy rounded-2xl p-4">
+          <div class="flex items-center justify-between gap-3"><div class="flex items-center gap-3"><span class="ico-well w-10 h-10 rounded-xl"><img src="/assets/img/ico-refresh.webp" alt=""></span><h3 class="text-sm font-extrabold font-display">Asynchronous execution</h3></div><i data-lucide="chevron-down" class="accordion-chevron w-4 h-4 text-[var(--text-muted)] transition-transform"></i></div>
           <div class="accordion-body text-xs text-[var(--text-muted)] leading-relaxed pt-3">Long-running and failure-prone work moves into controlled worker pipelines instead of blocking the request path.</div>
         </div>
         <div class="accordion-card tactile-raised rounded-2xl p-4">
-          <div class="flex items-center justify-between gap-3"><div class="flex items-center gap-3"><span class="w-7 h-7 rounded-lg tactile-inset-sm flex items-center justify-center font-mono font-bold text-[11px] text-[#FB7185]">04</span><h3 class="text-sm font-extrabold font-display">Redis as a systems primitive</h3></div><i data-lucide="chevron-down" class="accordion-chevron w-4 h-4 text-[var(--text-muted)] transition-transform"></i></div>
+          <div class="flex items-center justify-between gap-3"><div class="flex items-center gap-3"><span class="ico-well w-10 h-10 rounded-xl"><img src="/assets/img/ico-server.webp" alt=""></span><h3 class="text-sm font-extrabold font-display">Redis as a systems primitive</h3></div><i data-lucide="chevron-down" class="accordion-chevron w-4 h-4 text-[var(--text-muted)] transition-transform"></i></div>
           <div class="accordion-body text-xs text-[var(--text-muted)] leading-relaxed pt-3">Redis does much more than caching: queues, pub/sub, rate limiting, distributed coordination, circuit-breaker synchronisation, state, and memory/vector infrastructure.</div>
         </div>
         <div class="accordion-card tactile-raised rounded-2xl p-4">
-          <div class="flex items-center justify-between gap-3"><div class="flex items-center gap-3"><span class="w-7 h-7 rounded-lg tactile-inset-sm flex items-center justify-center font-mono font-bold text-[11px] text-[#FBBF24]">05</span><h3 class="text-sm font-extrabold font-display">Idempotency</h3></div><i data-lucide="chevron-down" class="accordion-chevron w-4 h-4 text-[var(--text-muted)] transition-transform"></i></div>
+          <div class="flex items-center justify-between gap-3"><div class="flex items-center gap-3"><span class="ico-well w-10 h-10 rounded-xl"><img src="/assets/img/ico-checklist.webp" alt=""></span><h3 class="text-sm font-extrabold font-display">Idempotency</h3></div><i data-lucide="chevron-down" class="accordion-chevron w-4 h-4 text-[var(--text-muted)] transition-transform"></i></div>
           <div class="accordion-body text-xs text-[var(--text-muted)] leading-relaxed pt-3">At-least-once delivery is the realistic guarantee, so running the same job twice has to be safe. A retried webhook rehydrates the existing session, and re-uploading a call list never double-dials.</div>
         </div>
-        <div class="accordion-card tactile-raised rounded-2xl p-4">
-          <div class="flex items-center justify-between gap-3"><div class="flex items-center gap-3"><span class="w-7 h-7 rounded-lg tactile-inset-sm flex items-center justify-center font-mono font-bold text-[11px] text-[#F97316]">06</span><h3 class="text-sm font-extrabold font-display">Backpressure</h3></div><i data-lucide="chevron-down" class="accordion-chevron w-4 h-4 text-[var(--text-muted)] transition-transform"></i></div>
+        <div class="accordion-card tactile-navy rounded-2xl p-4">
+          <div class="flex items-center justify-between gap-3"><div class="flex items-center gap-3"><span class="ico-well w-10 h-10 rounded-xl"><img src="/assets/img/ico-filter.webp" alt=""></span><h3 class="text-sm font-extrabold font-display">Backpressure</h3></div><i data-lucide="chevron-down" class="accordion-chevron w-4 h-4 text-[var(--text-muted)] transition-transform"></i></div>
           <div class="accordion-body text-xs text-[var(--text-muted)] leading-relaxed pt-3">A system should know when it's overloaded. A reliable system doesn't accept unlimited work until it collapses; it queues within limits and then refuses work cleanly.</div>
         </div>
-        <div class="accordion-card tactile-raised rounded-2xl p-4">
-          <div class="flex items-center justify-between gap-3"><div class="flex items-center gap-3"><span class="w-7 h-7 rounded-lg tactile-inset-sm flex items-center justify-center font-mono font-bold text-[11px] text-[#EC4899]">07</span><h3 class="text-sm font-extrabold font-display">Graceful degradation</h3></div><i data-lucide="chevron-down" class="accordion-chevron w-4 h-4 text-[var(--text-muted)] transition-transform"></i></div>
+        <div class="accordion-card tactile-navy rounded-2xl p-4">
+          <div class="flex items-center justify-between gap-3"><div class="flex items-center gap-3"><span class="ico-well w-10 h-10 rounded-xl"><img src="/assets/img/ico-sliders.webp" alt=""></span><h3 class="text-sm font-extrabold font-display">Graceful degradation</h3></div><i data-lucide="chevron-down" class="accordion-chevron w-4 h-4 text-[var(--text-muted)] transition-transform"></i></div>
           <div class="accordion-body text-xs text-[var(--text-muted)] leading-relaxed pt-3">When a dependency fails, the whole system shouldn't fail with it. We rely on fallbacks, retries, bounded concurrency and controlled degradation.</div>
         </div>
         <div class="accordion-card tactile-raised rounded-2xl p-4">
-          <div class="flex items-center justify-between gap-3"><div class="flex items-center gap-3"><span class="w-7 h-7 rounded-lg tactile-inset-sm flex items-center justify-center font-mono font-bold text-[11px] text-[#445EAA] dark:text-[#6380CE]">08</span><h3 class="text-sm font-extrabold font-display">Observability</h3></div><i data-lucide="chevron-down" class="accordion-chevron w-4 h-4 text-[var(--text-muted)] transition-transform"></i></div>
+          <div class="flex items-center justify-between gap-3"><div class="flex items-center gap-3"><span class="ico-well w-10 h-10 rounded-xl"><img src="/assets/img/ico-search.webp" alt=""></span><h3 class="text-sm font-extrabold font-display">Observability</h3></div><i data-lucide="chevron-down" class="accordion-chevron w-4 h-4 text-[var(--text-muted)] transition-transform"></i></div>
           <div class="accordion-body text-xs text-[var(--text-muted)] leading-relaxed pt-3">Logs alone aren't enough. We combine metrics, structured logs, traces and operational state, because debugging a distributed system means reconstructing what actually happened.</div>
         </div>
       </div>
@@ -157,7 +157,7 @@
     <section id="lab" class="space-y-6 reveal-on-scroll scroll-mt-28">
       <div class="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7952EC] dark:text-[#A78BFA]">02 · Reliability lab</span>
+          <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7952EC] dark:text-[#A78BFA]">Reliability lab</span>
           <h2 class="text-2xl sm:text-3xl font-black font-display">Try the failure handling yourself</h2>
           <p class="text-xs sm:text-sm text-[var(--text-muted)] mt-1 max-w-2xl">These are small simulations of mechanisms that run in production. Turn the dial, drag the slider and inject failures.</p>
         </div>
@@ -188,7 +188,7 @@
         </div>
 
         <!-- Rotary dial -->
-        <div class="tactile-raised rounded-3xl p-6 sm:p-8 space-y-5">
+        <div class="tactile-navy rounded-3xl p-6 sm:p-8 space-y-5">
           <div class="space-y-1">
             <h3 class="text-base font-black font-display">Per-tenant call capacity</h3>
             <p class="text-xs text-[var(--text-muted)]">Each tenant gets its own concurrency budget, so one busy campaign can't starve another tenant. Turn the dial to raise demand (drag, scroll or use the arrow keys).</p>
@@ -209,7 +209,7 @@
         </div>
 
         <!-- Backpressure slider -->
-        <div class="tactile-raised rounded-3xl p-6 sm:p-8 space-y-5">
+        <div class="tactile-navy rounded-3xl p-6 sm:p-8 space-y-5">
           <div class="space-y-1">
             <h3 class="text-base font-black font-display">Backpressure</h3>
             <p class="text-xs text-[var(--text-muted)]">Workers handle 60 jobs a second and the queue holds 40. Drag the thumb along the track to increase the load.</p>
@@ -279,9 +279,9 @@
 
     <!-- SIGNATURE -->
     <section id="signature" class="reveal-on-scroll">
-      <div class="tactile-clay rounded-[2rem] p-6 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      <div class="tactile-navy rounded-[2rem] p-6 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
         <div class="lg:col-span-7 space-y-4">
-          <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7952EC] dark:text-[#A78BFA]">03 · Signature</span>
+          <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#B9C8FF]">Signature</span>
           <h2 class="text-2xl sm:text-3xl font-black font-display">Reliability engineering is the strongest technical signature</h2>
           <p class="text-sm text-[var(--text-muted)] leading-relaxed">The portfolio audit names reliability engineering as the most defensible skill because the evidence for it is spread across several independent repositories, not one showcase project.</p>
           <div class="flex flex-wrap gap-2 text-[11px] font-mono font-bold">
@@ -289,7 +289,7 @@
           </div>
         </div>
         <div class="lg:col-span-5">
-          <div class="art-frame aspect-[465/588] max-w-[280px] mx-auto"><img src="/assets/img/team-strategist.webp" alt="Strategist character thinking through a problem" loading="lazy"></div>
+          <div class="char-stage aspect-square max-w-[300px] mx-auto"><img src="/assets/img/cto-thinking.webp" alt="Character thinking through a problem" loading="lazy"></div>
         </div>
       </div>
     </section>
@@ -297,7 +297,7 @@
     <!-- STACK -->
     <section id="stack" class="space-y-6 reveal-on-scroll scroll-mt-28">
       <div>
-        <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7952EC] dark:text-[#A78BFA]">04 · Stack</span>
+        <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7952EC] dark:text-[#A78BFA]">Stack</span>
         <h2 class="text-2xl sm:text-3xl font-black font-display">Core technical stack</h2>
         <p class="text-xs sm:text-sm text-[var(--text-muted)] mt-1 max-w-2xl">Press a key to see where each area is used, and how deep the experience goes.</p>
       </div>
@@ -322,8 +322,8 @@
           </div>
         </div>
         <div class="lg:col-span-7 space-y-5">
-          <div class="tactile-raised rounded-3xl p-6 space-y-3">
-            <h3 class="font-black font-display">How deep the experience goes</h3>
+          <div class="tactile-navy rounded-3xl p-6 space-y-3">
+            <div class="flex items-center gap-3"><span class="ico-well w-11 h-11 rounded-xl"><img src="/assets/img/ico-bars-2.webp" alt=""></span><h3 class="font-black font-display">How deep the experience goes</h3></div>
             <p class="text-xs text-[var(--text-muted)] leading-relaxed">The deepest areas are Python/FastAPI, Redis primitives, queues and workers, and reliability engineering. Kubernetes, Terraform and model internals are areas where the work is effective, without claiming more depth than that.</p>
             <div class="space-y-2.5 font-mono text-[11px]">
               <div><div class="flex justify-between"><span>Python · FastAPI · asyncio</span><span class="opacity-60">deepest</span></div><div class="h-2.5 rounded-full tactile-inset-sm mt-1"><div class="h-full rounded-full bar-relax" style="width:95%"></div></div></div>
@@ -335,7 +335,7 @@
             </div>
           </div>
           <div class="tactile-raised rounded-3xl p-6 space-y-3">
-            <h3 class="font-black font-display">AI &amp; machine learning: integration, not training</h3>
+            <div class="flex items-center gap-3"><span class="ico-well w-11 h-11 rounded-xl"><img src="/assets/img/ico-robot.webp" alt=""></span><h3 class="font-black font-display">AI &amp; machine learning: integration, not training</h3></div>
             <div class="flex flex-wrap gap-2 text-[11px] font-mono font-bold">
               <span class="tactile-inset-sm rounded-full px-3 py-1.5">PyTorch</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">Hugging Face</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">Whisper</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">Faster-Whisper</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">Deepgram</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">Kokoro</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">Coqui XTTS v2</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">Fish Audio</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">Qwen</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">LLaMA</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">llama.cpp</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">Stable Diffusion</span><span class="tactile-inset-sm rounded-full px-3 py-1.5">FFmpeg</span>
             </div>

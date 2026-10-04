@@ -525,3 +525,61 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
   .reveal-on-scroll { opacity: 1; transform: none; }
 }
+
+/* ---------- Second surface: navy gradient (the button colour) ----------
+   Cards alternate between the lilac-ice clay and this navy. Components
+   inside a navy card read their tokens from here, so insets, pills and
+   muted text all stay legible without per-element overrides. */
+.tactile-navy {
+  --surface: #12286E;
+  --card-surface: #1A3486;
+  --text-main: #FFFFFF;
+  --text-muted: rgba(214, 224, 255, 0.78);
+  --shadow-light: rgba(120, 150, 255, 0.18);
+  --shadow-dark: rgba(4, 10, 36, 0.55);
+  --shadow-dark-deep: rgba(3, 8, 30, 0.75);
+  --pill-convex-bg: linear-gradient(145deg, #2A4AA8 0%, #1B3790 60%, #142C7A 100%);
+  --pill-convex-shadow: 4px 6px 12px rgba(3, 8, 30, 0.45), -2px -2px 8px rgba(120, 150, 255, 0.12), inset 0 1px 1.5px rgba(255, 255, 255, 0.22);
+  --pill-convex-pressed-shadow: inset 4px 5px 10px rgba(3, 8, 30, 0.6), inset -2px -2px 6px rgba(120, 150, 255, 0.15);
+  --neu-raised: 6px 8px 16px var(--shadow-dark), -4px -4px 12px var(--shadow-light);
+  --neu-raised-sm: 4px 5px 10px var(--shadow-dark), -2px -2px 8px var(--shadow-light);
+  --neu-pressed: inset 5px 6px 12px var(--shadow-dark-deep), inset -4px -4px 10px var(--shadow-light);
+  --neu-pressed-sm: inset 3px 4px 8px var(--shadow-dark-deep), inset -2px -2px 6px var(--shadow-light);
+  --neu-clay-convex: 6px 8px 18px var(--shadow-dark), -3px -3px 10px var(--shadow-light), inset 0 1px 2px rgba(255, 255, 255, 0.18);
+  background: var(--deploy-gradient);
+  color: var(--text-main);
+  box-shadow: 14px 16px 32px rgba(11, 28, 77, 0.28), -10px -10px 24px var(--shadow-light-canvas, rgba(255, 255, 255, 0.85)), inset 0 1px 1.5px rgba(255, 255, 255, 0.22);
+  transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.dark .tactile-navy {
+  --surface: #172F78;
+  --card-surface: #1E3A8F;
+  background: linear-gradient(145deg, #1E3C96 0%, #152D78 55%, #0E2160 100%);
+  box-shadow: 14px 16px 32px rgba(0, 0, 0, 0.8), -6px -6px 18px rgba(45, 60, 110, 0.25), inset 0 1px 1.5px rgba(196, 210, 255, 0.25);
+}
+.tactile-navy.interactive-press:hover { box-shadow: inset 6px 8px 18px rgba(2, 6, 24, 0.7), inset -4px -4px 12px rgba(120, 150, 255, 0.15) !important; }
+.tactile-navy .tactile-raised, .tactile-navy .tactile-raised-sm, .tactile-navy .tactile-inset, .tactile-navy .tactile-inset-sm { background: var(--surface); }
+/* accent text that is navy-on-light becomes periwinkle on navy */
+.tactile-navy .text-\[\#163387\], .tactile-navy .text-\[\#445EAA\], .tactile-navy .text-\[\#7952EC\], .tactile-navy .text-\[\#4F46E5\] { color: #B9C8FF !important; }
+.tactile-navy .bg-\[\#7952EC\]\/10 { background-color: rgba(185, 200, 255, 0.16) !important; }
+/* the primary button flips to white on navy so it still reads as the action */
+.tactile-navy .btn-deploy-edge { background: #FFFFFF; color: #11286B; box-shadow: 0 5px 14px rgba(3, 8, 30, 0.35), inset 0 -1.5px 2px rgba(17, 40, 107, 0.15); }
+.tactile-navy .btn-deploy-edge:active { background: #E6EEF8 !important; }
+
+/* Transparent 3D icons: sit on a soft well, never on a flat card colour */
+.ico-well {
+  display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
+  border-radius: 18px; background: var(--surface); box-shadow: var(--neu-pressed-sm);
+}
+.ico-well img { width: 72%; height: 72%; object-fit: contain; filter: drop-shadow(0 4px 6px rgba(20, 40, 110, 0.18)); }
+.ill { display: block; width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 12px 18px rgba(20, 40, 110, 0.16)); }
+.char-stage {
+  position: relative; display: flex; align-items: flex-end; justify-content: center;
+  border-radius: 28px; background: radial-gradient(ellipse at 50% 85%, var(--card-surface) 0%, var(--surface) 70%);
+  box-shadow: var(--neu-pressed);
+  overflow: hidden;
+}
+.char-stage img { height: 94%; width: auto; max-width: 100%; object-fit: contain; object-position: bottom; display: block; }
+.avatar { border-radius: 9999px; overflow: hidden; background: var(--card-surface); box-shadow: var(--neu-raised-sm); flex-shrink: 0; }
+.avatar img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.dark .char-stage img, .dark .ill { filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.5)); }
