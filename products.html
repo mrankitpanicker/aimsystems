@@ -425,6 +425,32 @@
     </div>
   </footer>
 
+  <!-- Chat assistant -->
+  <div id="aimBot" class="aimbot">
+    <section id="aimBotPanel" class="aimbot-panel" role="dialog" aria-modal="false" aria-labelledby="aimBotTitle" hidden>
+      <header class="aimbot-head">
+        <span class="aimbot-avatar"><img src="/assets/img/aim-bot.webp" alt=""></span>
+        <span class="min-w-0 flex-1">
+          <b id="aimBotTitle" class="block text-sm">AIM Assistant</b>
+          <span class="flex items-center gap-1.5 text-[10px] font-mono text-[#B9C8FF]"><span class="status-dot live bg-emerald-400"></span>Answers from this site</span>
+        </span>
+        <button type="button" id="aimBotClose" class="aimbot-x" aria-label="Close chat"><i data-lucide="x" class="w-4 h-4"></i></button>
+      </header>
+      <div id="aimBotLog" class="aimbot-log" aria-live="polite"></div>
+      <div id="aimBotChips" class="aimbot-chips"></div>
+      <form id="aimBotForm" class="aimbot-form">
+        <label for="aimBotInput" class="sr-only">Your question</label>
+        <input id="aimBotInput" type="text" autocomplete="off" placeholder="Ask about pricing, products, hiring…" class="aimbot-input">
+        <button type="submit" class="btn-deploy-edge w-10 h-10 shrink-0" aria-label="Send"><i data-lucide="send" class="w-4 h-4"></i></button>
+      </form>
+    </section>
+    <button type="button" id="aimBotToggle" class="aimbot-fab" aria-expanded="false" aria-controls="aimBotPanel" aria-label="Open chat with the AIM assistant">
+      <span id="aimBotHint" class="aimbot-hint">Hi! Ask me anything</span>
+      <img src="/assets/img/aim-bot.webp" alt="" class="aimbot-img">
+      <span class="aimbot-dot"></span>
+    </button>
+  </div>
+
   <div id="toast" role="status" aria-live="polite" class="fixed bottom-6 right-6 left-6 sm:left-auto transform translate-y-28 opacity-0 pointer-events-none z-50 px-5 py-3 rounded-full text-xs font-bold flex items-center gap-2.5 transition-all duration-300 text-white shadow-lg" style="background: var(--deploy-gradient); box-shadow: 0 8px 20px rgba(11, 28, 77, 0.35);">
     <div class="w-2.5 h-2.5 rounded-full bg-blue-300 animate-ping"></div>
     <span id="toastText">Ready</span>

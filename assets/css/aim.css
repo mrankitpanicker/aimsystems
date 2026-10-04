@@ -791,3 +791,47 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 #toast { transition: transform 0.5s var(--ease-smooth), opacity 0.4s ease !important; }
 .float-y { animation-timing-function: cubic-bezier(0.45, 0, 0.55, 1); }
 @media (prefers-reduced-motion: reduce) { * { transition-duration: 0.01ms !important; } }
+/* figures stand on the bottom edge of their frame */
+.char-stage { align-items: flex-end; padding-bottom: 0 !important; }
+.char-stage img { margin-bottom: 0; object-position: center bottom; }
+
+/* =================== Chat assistant =================== */
+.aimbot { position: fixed; right: 18px; bottom: calc(18px + env(safe-area-inset-bottom, 0px)); z-index: 60; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
+.aimbot-fab { position: relative; width: 92px; height: 86px; border: 0; background: none; padding: 0; cursor: pointer; animation: botBob 3.6s cubic-bezier(0.45, 0, 0.55, 1) infinite; }
+.aimbot-img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 12px 18px rgba(17, 40, 107, 0.35)); transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1); }
+.aimbot-fab:hover .aimbot-img { transform: scale(1.08) rotate(-4deg); }
+.aimbot-fab:active .aimbot-img { transform: scale(0.96); }
+.aimbot-dot { position: absolute; right: 14px; top: 10px; width: 12px; height: 12px; border-radius: 9999px; background: #10B981; border: 2px solid #fff; box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6); animation: aimPing 1.8s ease-out infinite; }
+@keyframes botBob { 0%, 100% { transform: translate3d(0, 0, 0); } 50% { transform: translate3d(0, -8px, 0); } }
+.aimbot-hint { position: absolute; right: 86px; top: 18px; white-space: nowrap; padding: 8px 12px; border-radius: 14px 14px 4px 14px; font-size: 12px; font-weight: 700; color: #fff; background: var(--deploy-gradient); box-shadow: var(--deploy-shadow); opacity: 0; transform: translate3d(8px, 0, 0); transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1); pointer-events: none; }
+.aimbot-hint.show, .aimbot-fab:hover .aimbot-hint { opacity: 1; transform: none; }
+.aimbot.open .aimbot-hint { opacity: 0 !important; }
+.aimbot-panel { width: min(370px, calc(100vw - 36px)); height: min(540px, calc(100vh - 140px)); display: flex; flex-direction: column; border-radius: 26px; overflow: hidden; background: var(--surface); box-shadow: var(--neu-raised-lg); transform-origin: bottom right; animation: botOpen 0.45s cubic-bezier(0.22, 1, 0.36, 1); }
+@keyframes botOpen { from { opacity: 0; transform: translate3d(0, 14px, 0) scale(0.94); } to { opacity: 1; transform: none; } }
+.aimbot-head { display: flex; align-items: center; gap: 10px; padding: 12px 14px; color: #fff; background: var(--deploy-gradient); }
+.aimbot-avatar { width: 42px; height: 42px; border-radius: 14px; background: rgba(255, 255, 255, 0.12); display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.aimbot-avatar img { width: 36px; height: 36px; object-fit: contain; }
+.aimbot-x { width: 34px; height: 34px; border-radius: 9999px; display: inline-flex; align-items: center; justify-content: center; background: rgba(255, 255, 255, 0.12); color: #fff; transition: background 0.3s ease; }
+.aimbot-x:hover { background: rgba(255, 255, 255, 0.22); }
+.aimbot-log { flex: 1; overflow-y: auto; padding: 14px; display: flex; flex-direction: column; gap: 10px; scroll-behavior: smooth; }
+.aimbot-msg { max-width: 86%; padding: 10px 12px; border-radius: 16px; font-size: 12.5px; line-height: 1.5; animation: pkIn 0.35s ease; }
+.aimbot-msg.bot { align-self: flex-start; background: var(--surface); box-shadow: var(--neu-raised-sm); border-bottom-left-radius: 5px; }
+.aimbot-msg.me { align-self: flex-end; color: #fff; background: var(--deploy-gradient); box-shadow: var(--deploy-shadow); border-bottom-right-radius: 5px; }
+.aimbot-msg a, .aimbot-msg button.aimbot-link { color: #4C6FFF; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+.dark .aimbot-msg a, .dark .aimbot-msg button.aimbot-link { color: #A5B4FF; }
+.aimbot-typing { display: inline-flex; gap: 4px; }
+.aimbot-typing span { width: 6px; height: 6px; border-radius: 9999px; background: var(--text-muted); animation: botDot 1s ease-in-out infinite; }
+.aimbot-typing span:nth-child(2) { animation-delay: 0.15s; } .aimbot-typing span:nth-child(3) { animation-delay: 0.3s; }
+@keyframes botDot { 0%, 100% { opacity: 0.3; transform: none; } 50% { opacity: 1; transform: translateY(-3px); } }
+.aimbot-chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 14px 10px; }
+.aimbot-chips button { font-size: 11px; font-weight: 700; padding: 6px 10px; border-radius: 9999px; background: var(--surface); box-shadow: var(--neu-raised-sm); transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease; }
+.aimbot-chips button:hover { transform: translateY(-2px); }
+.aimbot-chips button:active { box-shadow: var(--neu-pressed-sm); transform: translateY(1px); }
+.aimbot-form { display: flex; gap: 8px; padding: 10px 12px 12px; border-top: 1px solid rgba(20, 40, 110, 0.06); }
+.aimbot-input { flex: 1; min-width: 0; border-radius: 9999px; padding: 0 14px; font-size: 13px; background: var(--surface); box-shadow: var(--neu-pressed-sm); color: var(--text-main); outline: none; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@media (max-width: 640px) { .aimbot-fab { width: 72px; height: 68px; } .aimbot-hint { right: 70px; top: 12px; } }
+@media (prefers-reduced-motion: reduce) { .aimbot-fab, .aimbot-dot { animation: none; } }
+/* keep the toast clear of the chat button */
+#toast { right: 120px !important; }
+@media (max-width: 640px) { #toast { right: 24px !important; bottom: 100px !important; } }

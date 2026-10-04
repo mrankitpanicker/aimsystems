@@ -46,34 +46,28 @@ ICONS = ('sheet-icons.webp', 'ico', [
 
 
 def cut(sheet):
+    """Each grid cell only *selects* shapes (by their centre); the crop is the
+    shapes' own outline plus their soft edge, so nothing is clipped by the grid."""
     fn, prefix, rows = sheet
-    im = Image.open(os.path.join(HERE, fn)).convert('RGBA')
-    arr = np.array(im)
+    arr = np.array(Image.open(os.path.join(HERE, fn)).convert('RGBA'))
     solid = arr[:, :, 3] > 160
     lab, _ = ndimage.label(solid)
-    centres = ndimage.center_of_mass(solid, lab, range(1, lab.max() + 1))
-    sizes = ndimage.sum(solid, lab, range(1, lab.max() + 1))
+    ids = range(1, lab.max() + 1)
+    centres = ndimage.center_of_mass(solid, lab, ids)
+    sizes = ndimage.sum(solid, lab, ids)
     n = 0
     for (y0, y1), cols in rows:
         for x0, x1, name in cols:
-            cell = arr[y0:y1, x0:x1].copy()
-            cl = lab[y0:y1, x0:x1]
-            for k in np.unique(cl):
-                if k == 0:
-                    continue
-                cy, cx = centres[k - 1]
-                if not (y0 <= cy < y1 and x0 <= cx < x1) or sizes[k - 1] < 30:
-                    # erase this foreign shape plus its soft halo
-                    mask = ndimage.binary_dilation(cl == k, iterations=3)
-                    if y0 <= cy < y1 and x0 <= cx < x1:
-                        continue
-                    cell[mask] = 0
-            a = cell[:, :, 3] > 20
-            ys, xs = np.nonzero(a)
-            crop = Image.fromarray(cell[ys.min():ys.max() + 1, xs.min():xs.max() + 1])
+            mine = [k for k in ids if sizes[k - 1] >= 30 and y0 <= centres[k - 1][0] < y1 and x0 <= centres[k - 1][1] < x1]
+            mask = np.isin(lab, mine)
+            soft = ndimage.binary_dilation(mask, iterations=6) & (arr[:, :, 3] > 0)
+            ys, xs = np.nonzero(soft)
+            t, b_, l, r = ys.min(), ys.max() + 1, xs.min(), xs.max() + 1
+            piece = arr[t:b_, l:r].copy()
+            piece[:, :, 3] = np.where(soft[t:b_, l:r], piece[:, :, 3], 0)
             pad = 6
-            canvas = Image.new('RGBA', (crop.width + pad * 2, crop.height + pad * 2), (0, 0, 0, 0))
-            canvas.paste(crop, (pad, pad))
+            canvas = Image.new('RGBA', (r - l + pad * 2, b_ - t + pad * 2), (0, 0, 0, 0))
+            canvas.paste(Image.fromarray(piece), (pad, pad))
             canvas.save(os.path.join(OUT, f'{prefix}-{name}.webp'), 'WEBP', quality=88, method=6)
             n += 1
     print(f'{fn}: {n} images')

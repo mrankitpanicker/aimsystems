@@ -688,6 +688,103 @@
     });
   });
 
+  /* =================== Chat assistant ===================
+     Answers come from a small knowledge base written from this site's own
+     content. Nothing is sent anywhere; unknown questions point to the brief. */
+  const bot = $('#aimBot');
+  if (bot) {
+    const panel = $('#aimBotPanel'), toggle = $('#aimBotToggle'), log = $('#aimBotLog');
+    const chipsBox = $('#aimBotChips'), form = $('#aimBotForm'), input = $('#aimBotInput'), hint = $('#aimBotHint');
+    // works both on the real site (/products) and in a static preview (products.html)
+    const href = slug => {
+      const a = document.querySelector(`a[href="/${slug}"], a[href="${slug}.html"], a[href^="/${slug}#"], a[href^="${slug}.html#"]`);
+      return a ? a.getAttribute('href').split('#')[0] : '/' + slug;
+    };
+    const L = (slug, text, hash) => `<a href="${href(slug)}${hash ? '#' + hash : ''}">${text}</a>`;
+    const KB = [
+      { k: ['price', 'pricing', 'cost', 'plan', 'plans', '₹', 'rupee', 'subscription', 'how much', 'charges', 'fee'],
+        a: () => `APEX Connect is priced per tenant a month: <b>₹4,999</b> with your own SIP carrier, or all-inclusive plans: <b>Starter ₹14,999</b> (2,000 AI calls), <b>Growth ₹29,999</b> (4,500) and <b>Scale ₹49,999</b> (10,000). Business, Enterprise and White-label are custom. ${L('products', 'See all plans', 'apex-connect')}.` },
+      { k: ['apex connect', 'voice agent', 'voice ai', 'receptionist', 'appointment', 'calls', 'calling', 'campaign', 'whatsapp'],
+        a: () => `APEX Connect is our multi-tenant SaaS for AI voice agents, an AI receptionist, appointment booking and WhatsApp automation, in Hindi and English. ${L('products', 'Read more', 'apex-connect')}, or try the <a href="https://aimstudio.co.in/app" target="_blank" rel="noopener">live platform ↗</a>.` },
+      { k: ['carrier', 'sip', 'twilio', 'telnyx', 'vapi', 'language', 'hindi', 'english'],
+        a: () => `It works with Twilio, Telnyx, Vapi and Indian SIP trunk providers, plus the WhatsApp Business API. Calls run in Hindi and English.` },
+      { k: ['remote ai', 'aim app', 'free', 'download', 'windows', 'android', 'chrome', 'operating layer'],
+        a: () => `AIM is our free AI operating layer: it runs on your Windows PC and lets your phone, desktop and voice see, control and hand work to that machine. Local models or OpenAI, Gemini, Claude, OpenRouter, Groq. ${L('products', 'Get it free', 'aim-remote')}.` },
+      { k: ['hms', 'hospital management', 'offline', 'clinic software'],
+        a: () => `APEX HMS is an offline-first hospital platform (OPD/IPD, beds, pharmacy, lab, billing) built on a write-ahead log, replay and tamper-evident audit chains. It is still under active construction. ${L('products', 'Details', 'apex-hms')}.` },
+      { k: ['shortz', 'video', 'media'],
+        a: () => `Shortz is a local AI video pipeline: script → TTS → voice alignment → subtitles → FFmpeg render, with timing and failure classification for every stage. ${L('products', 'Run the demo', 'shortz')}.` },
+      { k: ['tool', 'pdf', 'image', 'converter'],
+        a: () => `Our Free Tools are browser-based PDF, image, audio and video utilities. Files are processed on your device and never uploaded. <a href="https://aimstudio.co.in/freetools/" target="_blank" rel="noopener">Open Free Tools ↗</a>` },
+      { k: ['hire', 'team', 'engineer', 'developer', 'build', 'project', 'engage', 'engagement', 'retainer', 'rescue', 'review', 'incident'],
+        a: () => `You can hire one dedicated engineer or a team sized to the scope. Engagements: AI platform build (4–12 weeks), architecture review & rescue (1–2 weeks), incident response, and fractional platform engineering (3–6 months). ${L('engage', 'See how it works')}.` },
+      { k: ['result', 'client', 'case', 'apple hospital', 'bimts', 'cafe', 'proof', 'production'],
+        a: () => `At Apple Hospital, APEX Connect dialled <b>15,000+</b> calls with <b>6,800+</b> answered (about 45%). We also run a platform for BIMTS College and delivered Café Ciel in London. ${L('work', 'See the work')}.` },
+      { k: ['cto', 'ankit', 'founder', 'who', 'about', 'leader'],
+        a: () => `Ankit Panicker is the CTO: an AI systems engineer and software architect focused on reliability. His principle: design for the failure path first. ${L('about', 'Meet the CTO')}.` },
+      { k: ['stack', 'technology', 'tech', 'python', 'fastapi', 'redis', 'kubernetes', 'reliab', 'circuit', 'architecture'],
+        a: () => `Core stack: Python/FastAPI, Redis queues and workers, PostgreSQL, TypeScript/React, Docker, Kubernetes, Terraform and Prometheus/Grafana, with circuit breakers, idempotency and backpressure throughout. ${L('engineering', 'Try the reliability lab')}.` },
+      { k: ['where', 'location', 'based', 'india', 'timezone', 'uk', 'eu', 'register', 'udyam', 'msme', 'ir35'],
+        a: () => `AIM is based in Madhya Pradesh, India, and registered by the Government of India (Udyam MSME). We work with India, UK and EU clients, with full UK/EU morning overlap, on B2B contracts outside IR35.` },
+      { k: ['contact', 'email', 'mail', 'reach', 'talk', 'call you', 'phone', 'number', 'quote', 'demo', 'meeting'],
+        a: () => `The quickest route is the ${L('contact', 'project brief')}: the CTO reads every one. You can also <button type="button" class="aimbot-link" data-bot-copy="email">copy our email address</button>.` },
+      { k: ['hi', 'hello', 'hey', 'namaste', 'hii'],
+        a: () => `Hello! I can tell you about pricing, our products, hiring a team, results or how to reach us.` },
+      { k: ['thank', 'thanks', 'great', 'ok', 'cool'],
+        a: () => `Happy to help. Anything else?` },
+    ];
+    const CHIPS = ['Pricing', 'APEX Connect', 'Hire a team', 'Results', 'Contact'];
+    const score = (q, e) => e.k.reduce((n, w) => n + (q.includes(w) ? w.length : 0), 0);
+    function answer(text) {
+      const q = ' ' + text.toLowerCase() + ' ';
+      let best = null, top = 0;
+      KB.forEach(e => { const sc = score(q, e); if (sc > top) { top = sc; best = e; } });
+      return best ? best.a() : `I'm not sure about that one. Send it in a ${L('contact', 'project brief')} and the CTO will reply, or ask me about pricing, products, hiring or results.`;
+    }
+    function add(html, who) {
+      const d = document.createElement('div');
+      d.className = 'aimbot-msg ' + who;
+      if (who === 'me') d.textContent = html; else d.innerHTML = html;
+      log.appendChild(d); log.scrollTop = log.scrollHeight;
+      return d;
+    }
+    function reply(text) {
+      const t = add('<span class="aimbot-typing"><span></span><span></span><span></span></span>', 'bot');
+      setTimeout(() => { t.innerHTML = answer(text); log.scrollTop = log.scrollHeight; sound('tick'); }, 650);
+    }
+    function ask(text) {
+      text = text.trim(); if (!text) return;
+      add(text, 'me'); sound('tap'); reply(text);
+    }
+    CHIPS.forEach(c => {
+      const b = document.createElement('button'); b.type = 'button'; b.textContent = c;
+      b.addEventListener('click', () => ask(c)); chipsBox.appendChild(b);
+    });
+    let greeted = false;
+    function setOpen(open) {
+      panel.hidden = !open;
+      bot.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+      if (open) {
+        sound('pop');
+        if (!greeted) { greeted = true; add(`Hi, I'm the AIM assistant. Ask me about pricing, APEX Connect, hiring one engineer or a full team, or how to reach the CTO.`, 'bot'); }
+        setTimeout(() => input.focus(), 250);
+      }
+    }
+    toggle.addEventListener('click', () => setOpen(panel.hidden));
+    $('#aimBotClose').addEventListener('click', () => { setOpen(false); toggle.focus(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && !panel.hidden) { setOpen(false); toggle.focus(); } });
+    form.addEventListener('submit', e => { e.preventDefault(); ask(input.value); input.value = ''; });
+    log.addEventListener('click', e => {
+      const c = e.target.closest('[data-bot-copy]'); if (!c) return;
+      const v = contactValue(c.dataset.botCopy);
+      const ok = () => { sound('success'); toast('Email address copied'); };
+      if (navigator.clipboard) navigator.clipboard.writeText(v).then(ok, () => toast('Email: ' + v)); else toast('Email: ' + v);
+    });
+    // a short greeting bubble the first time, then it only shows on hover
+    setTimeout(() => { hint.classList.add('show'); setTimeout(() => hint.classList.remove('show'), 4500); }, 2500);
+  }
+
   /* ---------- Copy buttons ---------- */
   $$('[data-copy]').forEach(b => b.addEventListener('click', () => {
     const done = () => { sound('success'); toast('Copied'); };
