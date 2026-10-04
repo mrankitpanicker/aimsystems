@@ -632,9 +632,7 @@
   }
   const clock = () => new Date().toLocaleTimeString([], { hour12: false });
 
-  /* Liquid lens: one highlight that flows between items instead of each item
-     lighting up on its own. It stretches across both, then draws in around
-     the new one, on a slow curve with no overshoot. */
+  /* Glide: a selector highlight that slides smoothly to the chosen option. */
   function reduceMotion() { return !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches); }
   function liquid(container, variant) {
     if (getComputedStyle(container).position === 'static') container.style.position = 'relative';
@@ -652,22 +650,11 @@
         if (!el) { lens.style.opacity = '0'; cur = null; return; }
         const b = box(el);
         if (!cur || reduceMotion()) { lens.style.transition = 'none'; put(b); lens.offsetWidth; lens.style.transition = ''; }
-        else {
-          const a = box(cur), x = Math.min(a.x, b.x), y = Math.min(a.y, b.y);
-          const u = { x, y, w: Math.max(a.x + a.w, b.x + b.w) - x, h: Math.max(a.y + a.h, b.y + b.h) - y };
-          // anything the lens flows over reads in white while it is covered
-          const under = $$(':scope > :not(.lq-lens)', container).filter(n => {
-            const c = box(n);
-            return n.matches('.pk-node, .rt-dest, .sc-pill, [data-side], .stk-layer') && c.x < u.x + u.w && c.x + c.w > u.x && c.y < u.y + u.h && c.y + c.h > u.y;
-          });
-          if (variant !== 'well') under.forEach(n => n.classList.add('lq-under'));
-          put(u);
-          t = setTimeout(() => { put(b); under.forEach(n => n.classList.remove('lq-under')); }, 600);
-        }
+        else put(b);
         lens.style.opacity = '1';
         cur = el;
       },
-      hide() { clearTimeout(t); lens.style.opacity = '0'; cur = null; $$('.lq-under', container).forEach(n => n.classList.remove('lq-under')); },
+      hide() { clearTimeout(t); lens.style.opacity = '0'; cur = null; },
       refresh() { if (cur) put(box(cur)); }
     };
     window.addEventListener('resize', () => api.refresh());
@@ -679,7 +666,6 @@
     const nodes = $$('.pk-node', box), dot = $('.pk-dot', box), fill = $('.pk-fill', box), row = $('.pk-row', box);
     const status = $('[data-pk-status]', box), log = $('[data-pk-log]', box);
     const step = +box.dataset.step || 1100;
-    const lens = row ? liquid(row) : null;
     let running = false;
     const centre = n => n.offsetLeft + n.offsetWidth / 2;
     function write(msg) {
@@ -694,7 +680,6 @@
       nodes.forEach(n => n.classList.remove('is-hit', 'is-done'));
       if (fill) fill.style.width = '0';
       if (dot) dot.classList.remove('on', 'ok');
-      if (lens) lens.hide();
     }
     function run(manual) {
       if (running) return;
@@ -704,7 +689,6 @@
       nodes.forEach((n, i) => setTimeout(() => {
         if (i) { nodes[i - 1].classList.remove('is-hit'); nodes[i - 1].classList.add('is-done'); }
         n.classList.add('is-hit');
-        if (lens) lens.to(n);
         if (dot) dot.style.left = centre(n) + 'px';
         if (fill && row) {
           const first = centre(nodes[0]), last = centre(nodes[nodes.length - 1]);
@@ -716,7 +700,6 @@
       setTimeout(() => {
         const lastN = nodes[nodes.length - 1];
         lastN.classList.remove('is-hit'); lastN.classList.add('is-done');
-        if (lens) lens.hide();
         if (dot) dot.classList.add('ok');
         write(box.dataset.done || 'Done');
         if (manual) sound('success');
@@ -733,9 +716,8 @@
   $$('[data-stack]').forEach(box => {
     const layers = $$('.stk-layer', box);
     if (!layers.length) return;
-    const lens = liquid(layers[0].parentElement);
     let k = 0;
-    const go = n => { k = n; layers.forEach((l, i) => l.classList.toggle('on', i === k)); lens.to(layers[k]); };
+    const go = n => { k = n; layers.forEach((l, i) => l.classList.toggle('on', i === k)); };
     layers.forEach((l, i) => l.addEventListener('click', () => go(i)));
     go(0);
     autoplay(box, +box.dataset.every || 5400, () => go((k + 1) % layers.length));
@@ -746,11 +728,9 @@
     const dests = $$('.rt-dest', box), lines = $$('.rt-line', box);
     const utter = $('.rt-utter', box), status = $('[data-rt-status]', box);
     let k = -1;
-    const lens = dests[0] ? liquid(dests[0].parentElement) : null;
     function go(n, manual) {
       k = n;
       dests.forEach((d, i) => d.classList.toggle('on', i === k));
-      if (lens) lens.to(dests[k]);
       lines.forEach((l, i) => l.classList.toggle('on', i === k));
       const d = dests[k];
       if (utter) { utter.style.opacity = '0'; setTimeout(() => { utter.textContent = d.dataset.utter; utter.style.opacity = '1'; }, 380); }

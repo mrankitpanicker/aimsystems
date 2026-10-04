@@ -968,3 +968,20 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .lq-host .stk-layer > * { position: relative; z-index: 3; }
 .lq-host .stk-layer.on { background: transparent !important; box-shadow: none !important; color: #FFFFFF; }
 .stk-layer { cursor: pointer; }
+
+/* ---- Cards change in place: the active step's colour fades in and out softly.
+   Nothing lifts, grows or moves across neighbouring cards; only the progress
+   line and dot slide along their track. ---- */
+.pk-node.is-hit, .rt-dest.on { transform: none !important; }
+.pk-node, .rt-dest { transition: box-shadow 1.2s var(--ease-calm), color 1.2s ease, border-color 1.2s ease, opacity 1.2s ease !important; }
+.pk-node::before, .rt-dest::before { transition: opacity 1.2s var(--ease-calm) !important; }
+.pk-node > *, .rt-dest > * { transition: color 1.2s ease !important; }
+.stk-layer { position: relative; isolation: isolate; transition: box-shadow 1.2s var(--ease-calm), color 1.2s ease !important; }
+.stk-layer::before { content: ""; position: absolute; inset: 0; border-radius: inherit; z-index: -1; opacity: 0; background: var(--deploy-gradient); transition: opacity 1.2s var(--ease-calm); }
+.tactile-navy .stk-layer::before { background: linear-gradient(135deg, #5B7CFF 0%, #4C6FFF 55%, #3F5FF0 100%); }
+.stk-layer.on { color: #FFFFFF; box-shadow: 0 8px 22px rgba(76, 111, 255, 0.28) !important; }
+.stk-layer.on::before { opacity: 1; }
+.stk-layer > * { transition: color 1.2s ease; }
+/* selector highlights glide straight to the new option */
+.lq-lens { transition: transform 1s var(--ease-calm), width 1s var(--ease-calm), height 1s var(--ease-calm), opacity 0.9s ease !important; }
+.pk-node, .rt-dest, .stk-layer { position: relative; }
