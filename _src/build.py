@@ -164,7 +164,7 @@ FOOTER = """
         <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--text-muted)]">Agency</div>
         <a class="block hover:text-[#7952EC]" href="/services">Services</a>
         <a class="block hover:text-[#7952EC]" href="/hire">Hire</a>
-        <a class="block hover:text-[#7952EC]" href="/uk-eu">UK &amp; EU contractors</a>
+        <a class="block hover:text-[#7952EC]" href="/international">UK, US &amp; EU teams</a>
         <a class="block hover:text-[#7952EC]" href="/work">Work</a>
         <a class="block hover:text-[#7952EC]" href="/engineering">Engineering</a>
         <a class="block hover:text-[#7952EC]" href="/about">About</a>
@@ -247,7 +247,7 @@ SERVICES = [
 PAGE_TYPES = {'about': 'AboutPage', 'contact': 'ContactPage', 'work': 'CollectionPage', 'privacy': 'WebPage'}
 CRUMBS = {'services': 'Services', 'hire': 'Hire', 'products': 'Platforms', 'work': 'Work',
           'engineering': 'Engineering', 'about': 'About', 'contact': 'Contact', 'privacy': 'Privacy & Compliance',
-          'uk-eu': 'UK & EU'}
+          'international': 'UK, US & EU'}
 
 ORG = {
     '@type': ['Organization', 'ProfessionalService'],
@@ -332,6 +332,20 @@ def schema_for(name, path, meta, body):
     if faq:
         graph.append({'@type': 'FAQPage', '@id': url + '#faq', 'mainEntity': faq})
     return json.dumps({'@context': 'https://schema.org', '@graph': graph}, ensure_ascii=False, indent=2).replace('</', '<\\/')
+
+
+def region_toggle(page):
+    """Hire | UK | US | EU switch shown at the top of /hire and /international.
+    On /international aimjs switches panels in place and marks the visitor's region."""
+    opts = [('/hire', 'Hire', None), ('/international#uk', 'UK', 'uk'), ('/international#us', 'US', 'us'), ('/international#eu', 'EU', 'eu')]
+    links = []
+    for href, label, region in opts:
+        on = ' on' if (page == 'hire' and region is None) else ''
+        cur = ' aria-current="page"' if on else ''
+        data = f' data-region="{region}"' if region else ''
+        links.append(f'<a href="{href}" class="rg-opt{on}"{data}{cur}>{label}</a>')
+    return ('<nav class="rg-toggle tactile-inset-sm" aria-label="Hire by region" data-region-toggle>'
+            + ''.join(links) + '</nav>')
 
 
 def nav_html(active):
@@ -420,6 +434,7 @@ def build():
             raise SystemExit(f'{fn}: missing meta line')
         meta = json.loads(m.group(1))
         body = optimise_images(raw[m.end():])
+        body = body.replace('<!--region-toggle-->', region_toggle(fn[:-5]))
         name = fn[:-5]
         path = '/' if name == 'index' else f'/{name}'
         links, mobile = nav_html(meta.get('nav', name))

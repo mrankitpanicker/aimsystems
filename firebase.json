@@ -158,7 +158,7 @@
         ]
       },
       {
-        "source": "/@(services|hire|uk-eu|products|work|engineering|about|contact|privacy)",
+        "source": "/@(services|hire|international|products|work|engineering|about|contact|privacy)",
         "headers": [
           {
             "key": "Link",
@@ -208,6 +208,11 @@
       {
         "source": "/engage",
         "destination": "/hire",
+        "type": 301
+      },
+      {
+        "source": "/uk-eu",
+        "destination": "/international",
         "type": 301
       }
     ],

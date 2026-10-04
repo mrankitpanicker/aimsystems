@@ -1039,3 +1039,13 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   box-shadow: 10px 12px 26px rgba(0, 0, 0, 0.8), -6px -6px 18px rgba(45, 60, 110, 0.25), inset 0 1px 1.5px rgba(196, 210, 255, 0.25);
 }
 .accordion-card.open a { color: #FFFFFF; }
+
+/* Region switch (Hire | UK | US | EU) on /hire and /international */
+.rg-toggle { display: inline-flex; align-items: center; gap: 2px; padding: 4px; border-radius: 9999px; }
+.rg-opt { position: relative; padding: 7px 16px; border-radius: 9999px; font-size: 12px; font-weight: 800; letter-spacing: .01em; color: var(--text-muted); transition: color .3s ease, background .35s ease, box-shadow .35s ease; }
+.rg-opt:hover { color: var(--text-main); }
+.rg-opt.on { background: var(--deploy-gradient); color: #fff; box-shadow: var(--deploy-shadow); }
+.rg-you { position: absolute; top: 3px; right: 5px; width: 7px; height: 7px; border-radius: 9999px; background: #10B981; box-shadow: 0 0 0 2px var(--surface, #E6EEF8); }
+.rg-opt.on .rg-you { background: #6EE7B7; }
+.js [data-region-panel]:not(.on) { display: none; }
+[data-region-panel].on { animation: pkIn .45s ease both; }

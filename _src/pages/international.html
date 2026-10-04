@@ -1,18 +1,81 @@
-<!--meta {"title": "Engineering Contractors for UK & EU Teams · AIM", "description": "Senior engineers and teams for UK and European companies: overlapping hours, one B2B contract, your cloud, your code. Already delivering in London.", "nav": "hire"} -->
+<!--meta {"title": "Engineering Contractors for UK, US & EU Teams · AIM", "description": "Senior engineers and teams for UK, US and European companies: overlapping hours, one B2B contract, your cloud and region, your code. Delivering in London.", "nav": "hire"} -->
     <!-- INTRO -->
     <section class="reveal-on-scroll">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
         <div class="lg:col-span-7 space-y-5 text-center lg:text-left">
-          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full tactile-inset-sm text-xs font-bold text-[#7952EC] dark:text-[#A78BFA]"><span class="w-2 h-2 rounded-full bg-[#7952EC] animate-pulse"></span><span>UK &amp; EU</span></div>
-          <h1 class="text-4xl sm:text-5xl font-black font-display tracking-tight leading-[1.08]">Engineering Contractors for UK &amp; European Teams.</h1>
-          <p class="text-sm sm:text-base text-[var(--text-muted)] leading-relaxed max-w-2xl mx-auto lg:mx-0">One senior engineer, a specialist, a pod or a complete product team, contracted company-to-company and working hours that overlap yours. One owner from architecture to on-call, already delivering for clients in London.</p>
+          <!--region-toggle-->
+          <h1 class="text-4xl sm:text-5xl font-black font-display tracking-tight leading-[1.08]">Engineering Contractors for UK, US &amp; European Teams.</h1>
+          <p class="text-sm sm:text-base text-[var(--text-muted)] leading-relaxed max-w-2xl mx-auto lg:mx-0">One senior engineer, a specialist, a pod or a complete product team, contracted company-to-company, with working hours planned around yours. One owner from architecture to on-call, already delivering for clients in London.</p>
           <div class="flex flex-wrap gap-3 justify-center lg:justify-start">
             <a href="/contact" class="btn-deploy-edge px-6 py-3 text-xs"><i data-lucide="send" class="w-4 h-4"></i>Discuss Your Project</a>
-            <a href="#how" class="tactile-convex-pill px-6 py-3 text-xs inline-flex items-center">How contracting works</a>
+            <a href="#region" class="tactile-convex-pill px-6 py-3 text-xs inline-flex items-center">Hours in your time zone</a>
           </div>
         </div>
         <div class="lg:col-span-5">
           <div class="char-stage aspect-square max-w-[380px] mx-auto"><img src="/assets/img/cto-laptop-chat.webp" alt="Engineer talking with a client team over a video call"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REGION: one panel per region; aim.js shows the visitor's region and fills live times -->
+    <section id="region" class="space-y-5 reveal-on-scroll scroll-mt-28">
+      <div class="text-center space-y-2">
+        <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7952EC] dark:text-[#A78BFA]">Your region</span>
+        <h2 class="text-2xl sm:text-3xl font-black font-display">How we work with your team.</h2>
+        <p class="text-xs text-[var(--text-muted)]" data-region-hint>Pick your region with the switch at the top.</p>
+      </div>
+
+      <div data-region-panel="uk" class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div class="tactile-navy rounded-3xl p-5 space-y-2">
+          <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#B9C8FF]">United Kingdom · hours</div>
+          <div class="flex items-end gap-5 font-mono"><div><div class="text-[10px] text-[#B9C8FF]">LONDON</div><div class="text-2xl font-black" data-clock="Europe/London">--:--</div></div><div><div class="text-[10px] text-[#B9C8FF]">INDIA</div><div class="text-2xl font-black" data-clock="Asia/Kolkata">--:--</div></div></div>
+          <p class="text-xs text-[var(--text-muted)]">India is <b class="text-white" data-diff="Europe/London">4h 30m</b> ahead of you (5h 30m in UK winter). Your 09:00–17:30 is <b class="text-white" data-window="Europe/London">13:30–22:00</b> in India, so the whole UK working day overlaps ours.</p>
+        </div>
+        <div class="tactile-raised rounded-3xl p-5 space-y-2">
+          <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7952EC] dark:text-[#A78BFA]">Data &amp; compliance</div>
+          <h3 class="text-sm font-black">Your cloud, in a UK region.</h3>
+          <p class="text-xs text-[var(--text-muted)]">We build in your accounts and a UK region you choose, such as AWS London or Azure UK South, under your security policies and UK GDPR data-processing terms.</p>
+        </div>
+        <div class="card-sunk rounded-3xl p-5 space-y-2" tabindex="0">
+          <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7952EC] dark:text-[#A78BFA]">Rhythm</div>
+          <h3 class="text-sm font-black">Live collaboration, all day.</h3>
+          <p class="text-xs text-[var(--text-muted)]">Standups in your morning, reviews and demos in your afternoon, same-day answers. Already delivered in London for Café Ciel at The OWO.</p>
+        </div>
+      </div>
+
+      <div data-region-panel="us" class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div class="tactile-navy rounded-3xl p-5 space-y-2">
+          <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#B9C8FF]">United States · hours</div>
+          <div class="flex items-end gap-5 font-mono"><div><div class="text-[10px] text-[#B9C8FF]">NEW YORK</div><div class="text-2xl font-black" data-clock="America/New_York">--:--</div></div><div><div class="text-[10px] text-[#B9C8FF]">INDIA</div><div class="text-2xl font-black" data-clock="Asia/Kolkata">--:--</div></div></div>
+          <p class="text-xs text-[var(--text-muted)]">India is <b class="text-white" data-diff="America/New_York">9h 30m</b> ahead of the East Coast (10h 30m in US winter). Your 08:00–10:30 is <b class="text-white" data-window="America/New_York" data-from="8:00" data-to="10:30">17:30–20:00</b> in India: that's the live overlap.</p>
+        </div>
+        <div class="tactile-raised rounded-3xl p-5 space-y-2">
+          <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7952EC] dark:text-[#A78BFA]">Data &amp; compliance</div>
+          <h3 class="text-sm font-black">Your cloud, in a US region.</h3>
+          <p class="text-xs text-[var(--text-muted)]">We build in your accounts and the US region you choose, under your security policies, access controls and contract terms.</p>
+        </div>
+        <div class="card-sunk rounded-3xl p-5 space-y-2" tabindex="0">
+          <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7952EC] dark:text-[#A78BFA]">Rhythm</div>
+          <h3 class="text-sm font-black">Work moves while you sleep.</h3>
+          <p class="text-xs text-[var(--text-muted)]">A daily overlap call in your morning; your end-of-day feedback is our next morning's work, so changes are ready when you log in. West Coast teams run async-first with a scheduled overlap.</p>
+        </div>
+      </div>
+
+      <div data-region-panel="eu" class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div class="tactile-navy rounded-3xl p-5 space-y-2">
+          <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#B9C8FF]">Europe · hours</div>
+          <div class="flex items-end gap-5 font-mono"><div><div class="text-[10px] text-[#B9C8FF]">BERLIN</div><div class="text-2xl font-black" data-clock="Europe/Berlin">--:--</div></div><div><div class="text-[10px] text-[#B9C8FF]">INDIA</div><div class="text-2xl font-black" data-clock="Asia/Kolkata">--:--</div></div></div>
+          <p class="text-xs text-[var(--text-muted)]">India is <b class="text-white" data-diff="Europe/Berlin">3h 30m</b> ahead of central Europe (4h 30m in winter). Your 09:00–17:30 is <b class="text-white" data-window="Europe/Berlin">12:30–21:00</b> in India, so your full working day overlaps ours.</p>
+        </div>
+        <div class="tactile-raised rounded-3xl p-5 space-y-2">
+          <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7952EC] dark:text-[#A78BFA]">Data &amp; compliance</div>
+          <h3 class="text-sm font-black">Your cloud, in an EU region.</h3>
+          <p class="text-xs text-[var(--text-muted)]">We build in your accounts and an EU region you choose, such as Frankfurt or Ireland, under your security policies and GDPR data-processing terms.</p>
+        </div>
+        <div class="card-sunk rounded-3xl p-5 space-y-2" tabindex="0">
+          <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7952EC] dark:text-[#A78BFA]">Rhythm</div>
+          <h3 class="text-sm font-black">Live collaboration, all day.</h3>
+          <p class="text-xs text-[var(--text-muted)]">Standups in your morning, reviews in your afternoon, same-day answers, in English across your Slack or Teams.</p>
         </div>
       </div>
     </section>
@@ -24,9 +87,9 @@
         <h2 class="text-2xl sm:text-3xl font-black font-display">What you get.</h2>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        <div class="tactile-raised rounded-3xl p-5 flex gap-4"><span class="ico-well w-12 h-12"><img src="/assets/img/ico-globe.webp" alt=""></span><div><h3 class="text-sm font-black">Hours that overlap yours.</h3><p class="text-xs text-[var(--text-muted)] mt-1">India is 4½ hours ahead of the UK in summer and 5½ in winter. Standups, reviews and calls happen in your business hours; the rest of the day is build time.</p></div></div>
+        <div class="tactile-raised rounded-3xl p-5 flex gap-4"><span class="ico-well w-12 h-12"><img src="/assets/img/ico-globe.webp" alt=""></span><div><h3 class="text-sm font-black">Hours that overlap yours.</h3><p class="text-xs text-[var(--text-muted)] mt-1">Full-day overlap with the UK and Europe, a daily morning overlap with the US. Calls happen in your hours; the rest of the day is build time.</p></div></div>
         <div class="card-sunk rounded-3xl p-5 flex gap-4" tabindex="0"><span class="ico-well w-12 h-12"><img src="/assets/img/ico-doc.webp" alt=""></span><div><h3 class="text-sm font-black">One B2B contract.</h3><p class="text-xs text-[var(--text-muted)] mt-1">You contract with AIM, a registered company, not with individuals. No local entity, payroll or employment overhead on your side.</p></div></div>
-        <div class="tactile-navy rounded-3xl p-5 flex gap-4"><span class="ico-well w-12 h-12"><img src="/assets/img/ico-shield.webp" alt=""></span><div><h3 class="text-sm font-black">Your cloud, your data, your region.</h3><p class="text-xs text-[var(--text-muted)] mt-1">We build in your accounts and your chosen UK or EU region, under your security policies and data-processing terms.</p></div></div>
+        <div class="tactile-navy rounded-3xl p-5 flex gap-4"><span class="ico-well w-12 h-12"><img src="/assets/img/ico-shield.webp" alt=""></span><div><h3 class="text-sm font-black">Your cloud, your data, your region.</h3><p class="text-xs text-[var(--text-muted)] mt-1">We build in your accounts and your chosen UK, US or EU region, under your security policies and data-processing terms.</p></div></div>
         <div class="card-sunk rounded-3xl p-5 flex gap-4" tabindex="0"><span class="ico-well w-12 h-12"><img src="/assets/img/ico-code.webp" alt=""></span><div><h3 class="text-sm font-black">You own the code.</h3><p class="text-xs text-[var(--text-muted)] mt-1">Source in your repositories, credentials you control, documented deployments. Nothing to hand back when the engagement ends.</p></div></div>
         <div class="tactile-raised rounded-3xl p-5 flex gap-4"><span class="ico-well w-12 h-12"><img src="/assets/img/ico-chats.webp" alt=""></span><div><h3 class="text-sm font-black">You talk to the engineer.</h3><p class="text-xs text-[var(--text-muted)] mt-1">No account managers relaying messages. The people in your Slack or Teams are the people writing the code.</p></div></div>
         <div class="card-sunk rounded-3xl p-5 flex gap-4" tabindex="0"><span class="ico-well w-12 h-12"><img src="/assets/img/ico-rocket.webp" alt=""></span><div><h3 class="text-sm font-black">Production-first defaults.</h3><p class="text-xs text-[var(--text-muted)] mt-1">Every build ships with monitoring, CI/CD and a runbook, and we can stay on for operations after launch.</p></div></div>
@@ -65,12 +128,12 @@
     <section id="faq" class="space-y-6 reveal-on-scroll scroll-mt-28">
       <div class="text-center space-y-2">
         <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7952EC] dark:text-[#A78BFA]">FAQ</span>
-        <h2 class="text-2xl sm:text-3xl font-black font-display">UK &amp; EU questions</h2>
+        <h2 class="text-2xl sm:text-3xl font-black font-display">UK, US &amp; EU questions</h2>
       </div>
       <div class="max-w-3xl mx-auto space-y-3.5" data-accordion>
         <div class="accordion-card tactile-raised rounded-2xl p-4 open">
           <div class="flex items-center justify-between gap-3"><h3 class="text-sm font-extrabold font-display">Which hours do you work?</h3><i data-lucide="chevron-down" class="accordion-chevron w-4 h-4 text-[var(--text-muted)] transition-transform shrink-0"></i></div>
-          <div class="accordion-body text-xs text-[var(--text-muted)] leading-relaxed pt-3">We are in India (IST, UTC+5:30), 4½ hours ahead of the UK in summer and 5½ in winter, and 3½–4½ hours ahead of central Europe. Meetings, reviews and support run in your business hours.</div>
+          <div class="accordion-body text-xs text-[var(--text-muted)] leading-relaxed pt-3">We are in India (IST, UTC+5:30): 4½–5½ hours ahead of the UK, 3½–4½ ahead of central Europe and 9½–10½ ahead of the US East Coast. UK and European teams get a full working-day overlap; US teams get a daily overlap in their morning, with work continuing overnight.</div>
         </div>
         <div class="accordion-card tactile-raised rounded-2xl p-4">
           <div class="flex items-center justify-between gap-3"><h3 class="text-sm font-extrabold font-display">Who do we sign the contract with?</h3><i data-lucide="chevron-down" class="accordion-chevron w-4 h-4 text-[var(--text-muted)] transition-transform shrink-0"></i></div>
@@ -98,7 +161,7 @@
     <!-- CTA -->
     <section class="reveal-on-scroll">
       <div class="tactile-navy rounded-[2rem] p-6 sm:p-10 text-center space-y-4">
-        <h2 class="text-2xl sm:text-3xl font-black font-display">Need engineers who overlap your day?</h2>
+        <h2 class="text-2xl sm:text-3xl font-black font-display">Need engineers who work around your day?</h2>
         <p class="text-sm text-[var(--text-muted)] max-w-xl mx-auto">Tell us what you're building. You'll get a team proposal with composition, start date and pricing.</p>
         <div class="flex flex-wrap gap-3 justify-center">
           <a href="/contact" class="btn-deploy-edge px-6 py-3 text-xs"><i data-lucide="send" class="w-4 h-4"></i>Discuss Your Project</a>

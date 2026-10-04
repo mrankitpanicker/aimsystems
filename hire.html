@@ -240,7 +240,7 @@
           "name": "Which time zones do you cover?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "We are based in India (IST) and work with clients across India, the UK and Europe, with overlapping working hours for collaboration. More on working with UK & EU teams."
+            "text": "We are based in India (IST) and work with clients across India, the UK and Europe, with overlapping working hours for collaboration. More on working with UK, US & EU teams."
           }
         },
         {
@@ -273,7 +273,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800;900&family=JetBrains+Mono:wght@600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800;900&family=JetBrains+Mono:wght@600;700&display=swap"></noscript>
-  <link rel="stylesheet" href="/assets/css/aim.min.css?v=2a1bc010">
+  <link rel="stylesheet" href="/assets/css/aim.min.css?v=9ed564bb">
   <link rel="stylesheet" href="/assets/css/tw.css?v=bb349b41">
 </head>
 <body class="min-h-screen py-6 sm:py-8 px-4 sm:px-6 lg:px-12 flex flex-col items-center">
@@ -354,7 +354,7 @@
     <section class="reveal-on-scroll">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
         <div class="lg:col-span-7 space-y-5 text-center lg:text-left">
-          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full tactile-inset-sm text-xs font-bold text-[#7952EC] dark:text-[#A78BFA]"><span class="w-2 h-2 rounded-full bg-[#7952EC] animate-pulse"></span><span>Hire</span></div>
+          <nav class="rg-toggle tactile-inset-sm" aria-label="Hire by region" data-region-toggle><a href="/hire" class="rg-opt on" aria-current="page">Hire</a><a href="/international#uk" class="rg-opt" data-region="uk">UK</a><a href="/international#us" class="rg-opt" data-region="us">US</a><a href="/international#eu" class="rg-opt" data-region="eu">EU</a></nav>
           <h1 class="text-4xl sm:text-5xl font-black font-display tracking-tight leading-[1.08]">Choose Your Engineering Capacity.</h1>
           <p class="text-sm sm:text-base text-[var(--text-muted)] leading-relaxed max-w-2xl mx-auto lg:mx-0">Whether you need one specialist or an entire delivery team, we adapt the engineering model to your requirements. Start with exactly the capacity you need and expand the team as the project grows.</p>
           <div class="flex flex-wrap gap-3 justify-center lg:justify-start">
@@ -506,7 +506,7 @@
         </div>
         <div class="accordion-card tactile-raised rounded-2xl p-4">
           <div class="flex items-center justify-between gap-3"><h3 class="text-sm font-extrabold font-display">Which time zones do you cover?</h3><i data-lucide="chevron-down" class="accordion-chevron w-4 h-4 text-[var(--text-muted)] transition-transform shrink-0"></i></div>
-          <div class="accordion-body text-xs text-[var(--text-muted)] leading-relaxed pt-3">We are based in India (IST) and work with clients across India, the UK and Europe, with overlapping working hours for collaboration. More on <a class="underline underline-offset-2" href="/uk-eu">working with UK &amp; EU teams</a>.</div>
+          <div class="accordion-body text-xs text-[var(--text-muted)] leading-relaxed pt-3">We are based in India (IST) and work with clients across India, the UK and Europe, with overlapping working hours for collaboration. More on <a class="underline underline-offset-2" href="/international">working with UK, US &amp; EU teams</a>.</div>
         </div>
         <div class="accordion-card tactile-raised rounded-2xl p-4">
           <div class="flex items-center justify-between gap-3"><h3 class="text-sm font-extrabold font-display">How are engagements priced?</h3><i data-lucide="chevron-down" class="accordion-chevron w-4 h-4 text-[var(--text-muted)] transition-transform shrink-0"></i></div>
@@ -547,7 +547,7 @@
         <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--text-muted)]">Agency</div>
         <a class="block hover:text-[#7952EC]" href="/services">Services</a>
         <a class="block hover:text-[#7952EC]" href="/hire">Hire</a>
-        <a class="block hover:text-[#7952EC]" href="/uk-eu">UK &amp; EU contractors</a>
+        <a class="block hover:text-[#7952EC]" href="/international">UK, US &amp; EU teams</a>
         <a class="block hover:text-[#7952EC]" href="/work">Work</a>
         <a class="block hover:text-[#7952EC]" href="/engineering">Engineering</a>
         <a class="block hover:text-[#7952EC]" href="/about">About</a>
@@ -612,6 +612,6 @@
   </div>
 
   <script src="/assets/js/icons.js?v=34c339f5"></script>
-  <script src="/assets/js/aim.min.js?v=5d46d587"></script>
+  <script src="/assets/js/aim.min.js?v=d677eee0"></script>
 </body>
 </html>

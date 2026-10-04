@@ -82,7 +82,7 @@
                     "process": {
                       "type": "array"
                     },
-                    "ukEu": {
+                    "international": {
                       "type": "object"
                     },
                     "clientOwnership": {

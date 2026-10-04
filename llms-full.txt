@@ -20,8 +20,12 @@ One team owns it, architecture to on-call. Architecture, backend, frontend, AI, 
 - Named stack: Python/FastAPI, Node/TypeScript, React/Next.js, PostgreSQL, Redis, Docker, Kubernetes, Terraform on AWS, Azure or GCP.
 - No account managers: clients talk directly to the engineers writing the code.
 
-## UK & EU contractors (https://aimsystem.in/uk-eu)
-Engineers, specialists, pods or complete teams for UK and European companies. One business-to-business contract with AIM. Working hours overlap UK/CET business hours (IST is 4.5 hours ahead of the UK in summer, 5.5 in winter). Work happens in the client's cloud accounts and chosen UK or EU region, under the client's security policies and data-processing terms. Client owns all code from the first commit. Delivered in London: Café Ciel at The OWO.
+## UK, US & EU teams (https://aimsystem.in/international)
+Engineers, specialists, pods or complete teams for UK, US and European companies. One business-to-business contract with AIM.
+- UK: IST is 4.5 h ahead in summer, 5.5 h in winter; the whole UK working day overlaps. Work in a UK region (e.g. AWS London, Azure UK South) under UK GDPR data-processing terms.
+- Europe: IST is 3.5–4.5 h ahead of central Europe; full working-day overlap. Work in an EU region (e.g. Frankfurt, Ireland) under GDPR data-processing terms.
+- US: IST is 9.5–10.5 h ahead of the East Coast; a daily overlap in the US morning (about 08:00–10:30 ET), with work continuing overnight. West Coast teams run async-first with a scheduled overlap. Work in the US region the client chooses.
+Work happens in the client's cloud accounts, under the client's security policies and data-processing terms. Client owns all code from the first commit. Delivered in London: Café Ciel at The OWO.
 
 ## Services
 - Product Engineering: SaaS, web applications, APIs, backend systems, internal platforms, enterprise applications, product modernization.

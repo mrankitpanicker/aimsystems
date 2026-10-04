@@ -954,3 +954,67 @@
     try { var r = mc.registerTool(t); if (r && r.catch) r.catch(function () {}); } catch (e) {}
   });
 })();
+
+/* Region switch: marks the visitor's region (from their time zone) and, on
+   /international, shows that region's panel with live clocks and the overlap
+   window computed for today's offsets (summer/winter time included). */
+(function () {
+  'use strict';
+  var toggle = document.querySelector('[data-region-toggle]');
+  if (!toggle) return;
+  var opts = Array.prototype.slice.call(toggle.querySelectorAll('[data-region]'));
+  var panels = Array.prototype.slice.call(document.querySelectorAll('[data-region-panel]'));
+  var tz = '';
+  try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (e) {}
+  var detected = /^Europe\/(London|Belfast|Guernsey|Jersey|Isle_of_Man)$/.test(tz) ? 'uk'
+    : /^(America\/|US\/|Pacific\/Honolulu)/.test(tz) ? 'us'
+    : /^(Europe\/|Atlantic\/(Canary|Madeira|Azores))/.test(tz) ? 'eu' : '';
+  opts.forEach(function (a) {
+    if (a.getAttribute('data-region') === detected) {
+      var dot = document.createElement('span');
+      dot.className = 'rg-you'; dot.title = 'Your region'; dot.setAttribute('aria-hidden', 'true');
+      a.appendChild(dot); a.setAttribute('title', 'Your region');
+    }
+  });
+  if (!panels.length) return;
+
+  function minutesIn(zone, d) {
+    var p = {};
+    new Intl.DateTimeFormat('en-US', { timeZone: zone, hourCycle: 'h23', year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric' })
+      .formatToParts(d).forEach(function (x) { p[x.type] = +x.value; });
+    return Date.UTC(p.year, p.month - 1, p.day, p.hour % 24, p.minute) / 60000;
+  }
+  var pad = function (n) { return (n < 10 ? '0' : '') + n; };
+  var hm = function (m) { m = ((m % 1440) + 1440) % 1440; return pad(Math.floor(m / 60)) + ':' + pad(m % 60); };
+  var parse = function (s) { var t = s.split(':'); return +t[0] * 60 + +t[1]; };
+  function tick() {
+    var now = new Date(), ist = minutesIn('Asia/Kolkata', now);
+    document.querySelectorAll('[data-clock]').forEach(function (el) { el.textContent = hm(minutesIn(el.getAttribute('data-clock'), now)); });
+    document.querySelectorAll('[data-diff]').forEach(function (el) {
+      var d = ist - minutesIn(el.getAttribute('data-diff'), now);
+      el.textContent = Math.floor(d / 60) + 'h' + (d % 60 ? ' ' + (d % 60) + 'm' : '');
+    });
+    document.querySelectorAll('[data-window]').forEach(function (el) {
+      var d = ist - minutesIn(el.getAttribute('data-window'), now);
+      el.textContent = hm(parse(el.getAttribute('data-from') || '9:00') + d) + '–' + hm(parse(el.getAttribute('data-to') || '17:30') + d);
+    });
+  }
+  function show(region, push) {
+    panels.forEach(function (p) { p.classList.toggle('on', p.getAttribute('data-region-panel') === region); });
+    opts.forEach(function (a) {
+      var on = a.getAttribute('data-region') === region;
+      a.classList.toggle('on', on);
+      if (on) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
+    });
+    var hint = document.querySelector('[data-region-hint]');
+    if (hint) hint.textContent = region === detected ? 'Showing your region, based on your time zone.' : 'Switch region with the toggle at the top.';
+    if (push) { try { history.replaceState(null, '', '#' + region); } catch (e) {} }
+  }
+  opts.forEach(function (a) {
+    a.addEventListener('click', function (e) { e.preventDefault(); show(a.getAttribute('data-region'), true); });
+  });
+  var fromHash = (location.hash || '').slice(1);
+  show(['uk', 'us', 'eu'].indexOf(fromHash) >= 0 ? fromHash : (detected || 'uk'), false);
+  tick();
+  setInterval(tick, 30000);
+})();

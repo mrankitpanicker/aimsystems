@@ -51,9 +51,9 @@ const profile = {
     { step: 'Deploy', deliverable: 'Production release, monitoring dashboards and a runbook.' },
     { step: 'Operate', deliverable: 'On-call cover, regular reports and a prioritised improvement backlog.' },
   ],
-  ukEu: {
-    page: S + '/uk-eu',
-    summary: 'Engineering contractors for UK and European companies: one B2B contract with AIM, working hours overlapping UK/CET business hours (IST is 4.5–5.5 hours ahead of the UK), work in the client cloud and chosen UK or EU region under the client data-processing terms, client owns all code.',
+  international: {
+    page: S + '/international',
+    summary: 'Engineering contractors for UK, US and European companies: one B2B contract with AIM; full working-day overlap with the UK and Europe and a daily morning overlap with the US East Coast (IST is 4.5–5.5 h ahead of the UK, 3.5–4.5 h of central Europe, 9.5–10.5 h of US Eastern); work in the client cloud and chosen UK, US or EU region under the client data-processing terms; client owns all code.',
   },
   clientOwnership: 'Client cloud, client API accounts, client-controlled credentials, documented deployment, source ownership, transferable infrastructure.',
   platforms: [
@@ -66,7 +66,7 @@ const profile = {
     { title: 'Multi-Tenant Institutional Communication', industry: 'Education', client: 'BIMTS College', status: 'production', outcome: 'Dedicated tenant for voice outreach and WhatsApp automation.' },
     { title: 'Digital Experience Engineering', industry: 'Hospitality', client: 'Café Ciel at The OWO, London', status: 'delivered', outcome: 'Delivered on schedule on a compressed timeline.' },
   ],
-  pages: Object.fromEntries(['services', 'hire', 'uk-eu', 'products', 'work', 'engineering', 'about', 'contact', 'privacy'].map(p => [p, `${S}/${p}`])),
+  pages: Object.fromEntries(['services', 'hire', 'international', 'products', 'work', 'engineering', 'about', 'contact', 'privacy'].map(p => [p, `${S}/${p}`])),
 };
 out('data/profile.json', profile);
 
