@@ -611,3 +611,14 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 /* status colours brightened for contrast on navy */
 .tactile-navy .text-emerald-600 { color: #6EE7B7 !important; }
 .tactile-navy .text-amber-600 { color: #FCD34D !important; }
+
+/* ---------- Cycling cards ----------
+   One card at a time presses in and its content settles a few pixels down;
+   aim.js moves the active state to the next card every few seconds. */
+.cycle-card { transition: box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1), transform 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
+.cycle-card .cycle-body { transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.5s ease; opacity: 0.82; }
+.cycle-card.is-active { box-shadow: var(--neu-pressed) !important; transform: translate3d(0, 3px, 0); }
+.cycle-card.is-active .cycle-body { transform: translate3d(0, 5px, 0); opacity: 1; }
+.cycle-card .cycle-tick { width: 0; height: 3px; border-radius: 9999px; background: var(--deploy-gradient); }
+.cycle-card.is-active .cycle-tick { animation: aimTick var(--cycle-ms, 3600ms) linear forwards; }
+@keyframes aimTick { to { width: 100%; } }

@@ -74,34 +74,37 @@
         <h2 class="text-2xl sm:text-3xl font-black font-display">We document the limitations too</h2>
         <p class="text-xs sm:text-sm text-[var(--text-muted)] mt-1 max-w-2xl">None of these systems is perfect. We'd rather write the limitations down than present an artificially polished picture.</p>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <article class="tactile-raised rounded-3xl p-5 space-y-3">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch" data-cycle="3600">
+        <article class="tactile-raised cycle-card rounded-3xl p-5 space-y-3" tabindex="0">
           <div class="flex items-center gap-3"><span class="ico-well w-11 h-11 rounded-xl"><img src="/assets/img/ico-phone.webp" alt=""></span><h3 class="text-sm font-extrabold font-display">APEX Connect</h3></div>
-          <div class="text-xs text-[var(--text-muted)] leading-relaxed space-y-2">
+          <div class="cycle-body text-xs text-[var(--text-muted)] leading-relaxed space-y-2">
             <p><b class="text-[var(--text-main)]">Strengths:</b> at-least-once delivery, idempotency guards, Redis-synced circuit breaking, per-tenant capacity control, persistent queue/WAL state, plus chaos, stress and end-to-end tests.</p>
             <p><b class="text-[var(--text-main)]">Audit findings:</b> persistence is complex, some behaviour fails open, the surface area is large, and files that look like credentials raise due-diligence concerns.</p>
           </div>
+          <div class="cycle-tick" aria-hidden="true"></div>
         </article>
-        <article class="tactile-raised rounded-3xl p-5 space-y-3">
+        <article class="tactile-raised cycle-card rounded-3xl p-5 space-y-3" tabindex="0">
           <div class="flex items-center gap-3"><span class="ico-well w-11 h-11 rounded-xl"><img src="/assets/img/ico-medical.webp" alt=""></span><h3 class="text-sm font-extrabold font-display">APEX HMS</h3></div>
-          <div class="text-xs text-[var(--text-muted)] leading-relaxed space-y-2">
+          <div class="cycle-body text-xs text-[var(--text-muted)] leading-relaxed space-y-2">
             <p><b class="text-[var(--text-main)]">Strengths:</b> WAL and replay recovery, single-authority supervision, tamper-evident audit chains, durable outboxes.</p>
             <p><b class="text-[var(--text-main)]">Audit findings:</b> still under active construction. 30 test suites: 28 passing, 2 failing, and 94 tests pending or skipped.</p>
           </div>
+          <div class="cycle-tick" aria-hidden="true"></div>
         </article>
-        <article class="tactile-raised rounded-3xl p-5 space-y-3">
+        <article class="tactile-raised cycle-card rounded-3xl p-5 space-y-3" tabindex="0">
           <div class="flex items-center gap-3"><span class="ico-well w-11 h-11 rounded-xl"><img src="/assets/img/ico-video-play.webp" alt=""></span><h3 class="text-sm font-extrabold font-display">Shortz</h3></div>
-          <div class="text-xs text-[var(--text-muted)] leading-relaxed space-y-2">
+          <div class="cycle-body text-xs text-[var(--text-muted)] leading-relaxed space-y-2">
             <p><b class="text-[var(--text-main)]">Strengths:</b> per-stage telemetry, failure classification, soak testing and failure-injection infrastructure.</p>
             <p><b class="text-[var(--text-main)]">Audit findings:</b> best described as systems-oriented application engineering rather than a mature production service. Test coverage is uneven.</p>
           </div>
+          <div class="cycle-tick" aria-hidden="true"></div>
         </article>
       </div>
     </section>
 
     <!-- CTA -->
     <section class="reveal-on-scroll">
-      <div class="tactile-raised rounded-[2rem] p-6 sm:p-10 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+      <div class="tactile-navy rounded-[2rem] p-6 sm:p-10 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
         <div class="md:col-span-8 space-y-4 text-center md:text-left">
           <h2 class="text-2xl sm:text-3xl font-black font-display">Want to see the platform running?</h2>
           <p class="text-sm text-[var(--text-muted)]">Open the live APEX Connect platform, or ask for a walkthrough and a reference.</p>

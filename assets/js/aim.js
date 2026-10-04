@@ -155,6 +155,25 @@
     if (!was) card.classList.add('is-popped');
   }));
 
+  /* ---------- Cycling cards: one presses in at a time ---------- */
+  $$('[data-cycle]').forEach(group => {
+    const cards = $$('.cycle-card', group);
+    if (!cards.length) return;
+    const ms = +group.dataset.cycle || 3600;
+    group.style.setProperty('--cycle-ms', ms + 'ms');
+    const still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let i = 0, timer = null;
+    const show = k => { i = k; cards.forEach((c, n) => c.classList.toggle('is-active', n === k)); };
+    const start = () => { if (still) return; clearInterval(timer); timer = setInterval(() => show((i + 1) % cards.length), ms); };
+    cards.forEach((c, n) => {
+      c.addEventListener('mouseenter', () => { clearInterval(timer); show(n); });
+      c.addEventListener('focusin', () => { clearInterval(timer); show(n); });
+      c.addEventListener('click', () => { clearInterval(timer); show(n); });
+    });
+    group.addEventListener('mouseleave', start);
+    show(0); start();
+  });
+
   /* ---------- Accordion ---------- */
   $$('.accordion-card').forEach(card => {
     card.setAttribute('tabindex', '0');
