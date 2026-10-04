@@ -14,6 +14,14 @@
 - [Careers](https://aimsystem.in/jobs)
 - [Full profile](https://aimsystem.in/llms-full.txt)
 
+## For agents
+- [Profile API (JSON)](https://aimsystem.in/data/profile.json): read-only, no auth; described by [OpenAPI](https://aimsystem.in/data/openapi.json) and listed in the [API catalog](https://aimsystem.in/.well-known/api-catalog).
+- [Agent skill: aim-company](https://aimsystem.in/.well-known/agent-skills/aim-company/SKILL.md), indexed at https://aimsystem.in/.well-known/agent-skills/index.json.
+- [ARD catalog](https://aimsystem.in/.well-known/ai-catalog.json).
+- In-browser agents: WebMCP tools get_aim_profile, get_aim_contact, open_aim_page.
+
+
+
 ## Ways to work with AIM
 1. Hire an Engineer — backend, frontend, full-stack, AI, cloud, DevOps, platform.
 2. Hire a Specialist — AI architecture, voice AI, cloud infrastructure, distributed systems, API architecture, automation, DevOps, system modernization, technical architecture.

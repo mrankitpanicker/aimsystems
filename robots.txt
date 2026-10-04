@@ -69,6 +69,7 @@ Allow: /llms.txt
 Allow: /llms-full.txt
 Allow: /llm.txt
 Allow: /.well-known/
+Allow: /data/
 
 # Content signals (contentsignals.org): search, AI answers and training allowed.
 Content-Signal: search=yes, ai-input=yes, ai-train=yes

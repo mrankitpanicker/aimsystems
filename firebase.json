@@ -69,10 +69,6 @@
         "source": "/.well-known/**",
         "headers": [
           {
-            "key": "Content-Type",
-            "value": "text/plain; charset=utf-8"
-          },
-          {
             "key": "Access-Control-Allow-Origin",
             "value": "*"
           },
@@ -83,11 +79,89 @@
         ]
       },
       {
-        "source": "/.well-known/security.txt",
+        "source": "/.well-known/@(llms.txt|security.txt)",
         "headers": [
           {
             "key": "Content-Type",
             "value": "text/plain; charset=utf-8"
+          },
+          {
+            "key": "Access-Control-Allow-Origin",
+            "value": "*"
+          }
+        ]
+      },
+      {
+        "source": "/.well-known/api-catalog",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/linkset+json"
+          },
+          {
+            "key": "Access-Control-Allow-Origin",
+            "value": "*"
+          }
+        ]
+      },
+      {
+        "source": "/.well-known/**/*.json",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json; charset=utf-8"
+          },
+          {
+            "key": "Access-Control-Allow-Origin",
+            "value": "*"
+          }
+        ]
+      },
+      {
+        "source": "/.well-known/**/*.md",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "text/markdown; charset=utf-8"
+          },
+          {
+            "key": "Access-Control-Allow-Origin",
+            "value": "*"
+          }
+        ]
+      },
+      {
+        "source": "/data/**",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json; charset=utf-8"
+          },
+          {
+            "key": "Access-Control-Allow-Origin",
+            "value": "*"
+          },
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=3600"
+          }
+        ]
+      },
+      {
+        "source": "/",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "</.well-known/api-catalog>; rel=\"api-catalog\", </data/openapi.json>; rel=\"service-desc\"; type=\"application/openapi+json\", </llms.txt>; rel=\"describedby\"; type=\"text/plain\", </llms-full.txt>; rel=\"service-doc\"; type=\"text/plain\", </.well-known/agent-skills/index.json>; rel=\"https://agentskills.io/rel/index\", </sitemap.xml>; rel=\"sitemap\"; type=\"application/xml\""
+          }
+        ]
+      },
+      {
+        "source": "/@(services|hire|products|work|engineering|about|contact|privacy)",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "</.well-known/api-catalog>; rel=\"api-catalog\", </data/openapi.json>; rel=\"service-desc\"; type=\"application/openapi+json\", </llms.txt>; rel=\"describedby\"; type=\"text/plain\", </llms-full.txt>; rel=\"service-doc\"; type=\"text/plain\", </.well-known/agent-skills/index.json>; rel=\"https://agentskills.io/rel/index\", </sitemap.xml>; rel=\"sitemap\"; type=\"application/xml\""
           }
         ]
       },

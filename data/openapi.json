@@ -1,0 +1,100 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "AIM public profile API",
+    "version": "1.0.0",
+    "description": "Read-only, unauthenticated JSON describing AIM — AI Infrastructure & Machines: services, engagement models, platforms, selected work and contact.",
+    "contact": {
+      "name": "Ankit Panicker",
+      "email": "ankit@aimsystem.in",
+      "url": "https://aimsystem.in/contact"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://aimsystem.in"
+    }
+  ],
+  "paths": {
+    "/data/profile.json": {
+      "get": {
+        "operationId": "getProfile",
+        "summary": "Company profile, services, engagement models, platforms and selected work",
+        "responses": {
+          "200": {
+            "description": "Profile document",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "name",
+                    "summary",
+                    "services",
+                    "contact"
+                  ],
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "legalName": {
+                      "type": "string"
+                    },
+                    "alternateNames": {
+                      "type": "array"
+                    },
+                    "tagline": {
+                      "type": "string"
+                    },
+                    "summary": {
+                      "type": "string"
+                    },
+                    "registration": {
+                      "type": "string"
+                    },
+                    "location": {
+                      "type": "string"
+                    },
+                    "markets": {
+                      "type": "array"
+                    },
+                    "websites": {
+                      "type": "array"
+                    },
+                    "contact": {
+                      "type": "object"
+                    },
+                    "services": {
+                      "type": "array"
+                    },
+                    "engagementModels": {
+                      "type": "array"
+                    },
+                    "pricing": {
+                      "type": "string"
+                    },
+                    "process": {
+                      "type": "array"
+                    },
+                    "clientOwnership": {
+                      "type": "string"
+                    },
+                    "platforms": {
+                      "type": "array"
+                    },
+                    "work": {
+                      "type": "array"
+                    },
+                    "pages": {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

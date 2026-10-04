@@ -911,3 +911,46 @@
   setTimeout(settle, 60);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(settle);
 })();
+
+/* WebMCP: read-only tools for AI agents running in the visitor's browser.
+   Nothing here submits a form or sends data; agents can read the public profile
+   and move between pages, which the visitor could do themselves. */
+(function () {
+  'use strict';
+  var mc = (navigator && navigator.modelContext) || document.modelContext;
+  if (!mc || typeof mc.registerTool !== 'function') return;
+  var PAGES = ['home', 'services', 'hire', 'products', 'work', 'engineering', 'about', 'contact', 'privacy'];
+  var text = function (t) { return { content: [{ type: 'text', text: t }] }; };
+  var tools = [
+    {
+      name: 'get_aim_profile',
+      description: 'Get the AIM (AI Infrastructure & Machines) company profile as JSON: services, engagement models, pricing approach, platforms, selected work and contact details.',
+      inputSchema: { type: 'object', properties: {} },
+      execute: function () {
+        return fetch('/data/profile.json').then(function (r) { return r.text(); }).then(text);
+      }
+    },
+    {
+      name: 'get_aim_contact',
+      description: 'Get how to contact AIM to discuss a project or hire engineers.',
+      inputSchema: { type: 'object', properties: {} },
+      execute: function () {
+        return Promise.resolve(text('Ankit Panicker, Client Partner & Technical Lead — ankit@aimsystem.in — https://aimsystem.in/contact'));
+      }
+    },
+    {
+      name: 'open_aim_page',
+      description: 'Navigate this tab to a page of aimsystem.in.',
+      inputSchema: { type: 'object', properties: { page: { type: 'string', enum: PAGES, description: 'Which page to open' } }, required: ['page'] },
+      execute: function (args) {
+        var p = args && args.page;
+        if (PAGES.indexOf(p) < 0) return Promise.resolve(text('Unknown page. Use one of: ' + PAGES.join(', ')));
+        location.href = p === 'home' ? '/' : '/' + p;
+        return Promise.resolve(text('Opening https://aimsystem.in' + (p === 'home' ? '/' : '/' + p)));
+      }
+    }
+  ];
+  tools.forEach(function (t) {
+    try { var r = mc.registerTool(t); if (r && r.catch) r.catch(function () {}); } catch (e) {}
+  });
+})();

@@ -1,0 +1,25 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://aimsystem.in/data/profile.json",
+      "service-desc": [
+        {
+          "href": "https://aimsystem.in/data/openapi.json",
+          "type": "application/openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://aimsystem.in/llms-full.txt",
+          "type": "text/plain"
+        }
+      ],
+      "describedby": [
+        {
+          "href": "https://aimsystem.in/llms.txt",
+          "type": "text/plain"
+        }
+      ]
+    }
+  ]
+}

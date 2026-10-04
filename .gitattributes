@@ -1,0 +1,2 @@
+# Served files whose sha256 digest is published; keep their bytes identical on every checkout.
+.well-known/agent-skills/** -text

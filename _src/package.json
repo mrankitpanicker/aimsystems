@@ -3,7 +3,7 @@
   "private": true,
   "description": "Build tooling for the AIM static site. Output is committed; this is only needed to rebuild.",
   "scripts": {
-    "build": "npm run minify && python3 build.py && tailwindcss -c tailwind.config.js -i tailwind.css -o ../assets/css/tw.css --minify && node icons.js && python3 build.py",
+    "build": "node agent_files.js && npm run minify && python3 build.py && tailwindcss -c tailwind.config.js -i tailwind.css -o ../assets/css/tw.css --minify && node icons.js && python3 build.py",
     "minify": "esbuild ../assets/css/aim.css --minify --outfile=../assets/css/aim.min.css --log-level=warning && esbuild ../assets/js/aim.js --minify --outfile=../assets/js/aim.min.js --log-level=warning"
   },
   "devDependencies": {

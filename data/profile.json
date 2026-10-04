@@ -1,0 +1,157 @@
+{
+  "name": "AIM — AI Infrastructure & Machines",
+  "legalName": "AI Infrastructure & Machines",
+  "alternateNames": [
+    "AIM",
+    "AIM System",
+    "AIM Systems",
+    "AIM Studio"
+  ],
+  "tagline": "Your Engineering Team, On Demand",
+  "summary": "Technology engineering agency. From one senior engineer to a complete product team, AIM designs, builds, deploys and operates production-grade software, AI systems, automation and cloud infrastructure.",
+  "registration": "Udyam-registered MSME (India)",
+  "location": "Madhya Pradesh, India",
+  "markets": [
+    "India",
+    "United Kingdom",
+    "Europe"
+  ],
+  "websites": [
+    "https://aimsystem.in/",
+    "https://aimstudio.co.in/"
+  ],
+  "contact": {
+    "name": "Ankit Panicker",
+    "role": "Client Partner & Technical Lead",
+    "email": "ankit@aimsystem.in",
+    "page": "https://aimsystem.in/contact"
+  },
+  "services": [
+    {
+      "name": "Product Engineering",
+      "scope": [
+        "SaaS",
+        "web applications",
+        "APIs",
+        "backend systems",
+        "internal platforms",
+        "enterprise applications",
+        "product modernization"
+      ]
+    },
+    {
+      "name": "AI Engineering",
+      "scope": [
+        "LLM applications",
+        "AI agents",
+        "RAG",
+        "AI automation",
+        "voice AI",
+        "STT/TTS",
+        "AI orchestration",
+        "model integrations"
+      ]
+    },
+    {
+      "name": "Platform Engineering",
+      "scope": [
+        "cloud",
+        "Kubernetes",
+        "infrastructure-as-code",
+        "CI/CD",
+        "observability",
+        "distributed systems",
+        "reliability engineering"
+      ]
+    },
+    {
+      "name": "Automation & Integrations",
+      "scope": [
+        "API and CRM integrations",
+        "WhatsApp",
+        "telephony",
+        "workflow automation",
+        "business process automation",
+        "data pipelines"
+      ]
+    }
+  ],
+  "engagementModels": [
+    {
+      "name": "Hire an Engineer",
+      "detail": "Backend, frontend, full-stack, AI, cloud, DevOps or platform engineer."
+    },
+    {
+      "name": "Hire a Specialist",
+      "detail": "AI architecture, voice AI, cloud infrastructure, distributed systems, API architecture, automation, DevOps, system modernization."
+    },
+    {
+      "name": "Engineering Pod",
+      "detail": "Cross-functional team, e.g. technical lead, backend, frontend, AI/platform engineer, QA."
+    },
+    {
+      "name": "Complete Product Team",
+      "detail": "Product strategy, UX/UI, architecture, frontend, backend, AI, infrastructure, DevOps, QA, deployment, operations."
+    }
+  ],
+  "pricing": "Dedicated engineers and pods are custom engagements; product development is a scoped proposal; AI and infrastructure work is priced from the architecture.",
+  "process": [
+    "Understand",
+    "Architect",
+    "Build",
+    "Integrate",
+    "Deploy",
+    "Operate"
+  ],
+  "clientOwnership": "Client cloud, client API accounts, client-controlled credentials, documented deployment, source ownership, transferable infrastructure.",
+  "platforms": [
+    {
+      "name": "APEX Connect",
+      "url": "https://aimstudio.co.in/app",
+      "summary": "AI-powered customer engagement infrastructure: multi-tenant voice, messaging and AI workflows. Usage-based pricing."
+    },
+    {
+      "name": "AIM Remote AI",
+      "url": "https://aimstudio.co.in/remoteai",
+      "summary": "AI operating layer connecting phone, desktop and voice to your machine (Windows, Android, Chrome)."
+    },
+    {
+      "name": "Healthcare Operations Platform",
+      "status": "in development",
+      "summary": "Hospital workflows, patient operations and clinical administration."
+    }
+  ],
+  "work": [
+    {
+      "title": "AI-Powered Patient Communication",
+      "industry": "Healthcare",
+      "client": "Apple Hospital",
+      "status": "production",
+      "outcome": "15K+ calls processed, 6.8K+ answered, ~45% connected/answered."
+    },
+    {
+      "title": "Multi-Tenant Institutional Communication",
+      "industry": "Education",
+      "client": "BIMTS College",
+      "status": "production",
+      "outcome": "Dedicated tenant for voice outreach and WhatsApp automation."
+    },
+    {
+      "title": "Digital Experience Engineering",
+      "industry": "Hospitality",
+      "client": "Café Ciel at The OWO, London",
+      "status": "delivered",
+      "outcome": "Delivered on schedule on a compressed timeline."
+    }
+  ],
+  "pages": {
+    "services": "https://aimsystem.in/services",
+    "hire": "https://aimsystem.in/hire",
+    "products": "https://aimsystem.in/products",
+    "work": "https://aimsystem.in/work",
+    "engineering": "https://aimsystem.in/engineering",
+    "about": "https://aimsystem.in/about",
+    "contact": "https://aimsystem.in/contact",
+    "privacy": "https://aimsystem.in/privacy"
+  }
+}
