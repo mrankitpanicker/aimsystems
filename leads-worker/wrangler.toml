@@ -15,6 +15,11 @@ binding = "DB"
 database_name = "aimsystem-analytics"
 database_id = "7be7e335-c3d3-4fb6-8074-3095dae32163"
 
+# Instant lead alerts through Cloudflare Email Routing (destination must be verified there)
+[[send_email]]
+name = "ALERT"
+destination_address = "mr.ankitpanicker@gmail.com"
+
 # Daily: delete analytics events older than 13 months (stated on /privacy)
 [triggers]
 crons = ["15 3 * * *"]
