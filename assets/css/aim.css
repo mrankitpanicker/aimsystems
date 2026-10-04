@@ -672,3 +672,25 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 /* featured card lifted above its row */
 .lift-feature { transform: translate3d(0, -10px, 0); box-shadow: 0 24px 44px rgba(11, 28, 77, 0.32), inset 0 1px 1.5px rgba(255, 255, 255, 0.22) !important; }
+
+/* header brand: tagline engraved into the surface */
+.brand-groove { text-shadow: 0 1px 0 var(--shadow-light), 0 -1px 0 rgba(20, 40, 110, 0.12); letter-spacing: 0.01em; }
+.dark .brand-groove { text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.6), 0 1px 0 rgba(120, 140, 200, 0.12); }
+
+/* character stages sit pressed into the surface: inner shadows instead of a drop shadow,
+   plus a light rim from the canvas around the cut-out */
+.char-stage {
+  box-shadow:
+    inset 10px 12px 24px rgba(2, 6, 24, 0.72),
+    inset -6px -6px 16px rgba(120, 150, 255, 0.16),
+    0 0 0 4px var(--surface),
+    6px 6px 14px var(--shadow-light),
+    -6px -6px 14px var(--shadow-dark) !important;
+}
+.dark .char-stage {
+  box-shadow:
+    inset 10px 12px 24px rgba(0, 0, 0, 0.85),
+    inset -6px -6px 16px rgba(120, 150, 255, 0.12),
+    0 0 0 4px var(--surface),
+    -4px -4px 12px rgba(0, 0, 0, 0.6) !important;
+}

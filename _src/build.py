@@ -72,9 +72,9 @@ HEADER = """
         <span class="min-w-0">
           <span class="flex items-center gap-2">
             <span class="text-base font-black font-display tracking-tight">AIM</span>
-            <span class="hidden sm:inline px-2 py-0.5 rounded-full text-[9px] font-mono font-bold uppercase bg-[#7952EC]/10 text-[#7952EC] dark:text-[#A78BFA]">Systems</span>
+            <span class="hidden sm:inline tactile-convex-pill px-2.5 py-0.5 text-[9px] font-mono font-bold uppercase text-[#7952EC] dark:text-[#A78BFA] cursor-default">Systems</span>
           </span>
-          <span class="block text-[11px] text-[var(--text-muted)] font-medium truncate">AI Infrastructure &amp; Machines</span>
+          <span class="brand-groove mt-1 inline-block tactile-inset-sm rounded-full px-2 sm:px-2.5 py-0.5 text-[8.5px] sm:text-[10.5px] text-[var(--text-muted)] font-semibold whitespace-nowrap">AI Infrastructure &amp; Machines</span>
         </span>
       </a>
 
