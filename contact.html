@@ -46,8 +46,8 @@
         <span class="min-w-0 inline-grid gap-1">
           <span class="brand-toggle tactile-inset-sm rounded-full" data-brand-toggle>
             <span class="bt-knob" aria-hidden="true"></span>
-            <span class="bt-opt text-base sm:text-[20px] font-black font-display tracking-tight">AIM</span>
-            <span class="bt-opt is-on text-[9px] sm:text-[10.5px] font-black font-display tracking-[0.2em] uppercase">Systems</span>
+            <span class="bt-opt text-[15px] sm:text-[19px] font-black font-display tracking-tight">AIM</span>
+            <span class="bt-opt is-on text-[15px] sm:text-[19px] font-black font-display tracking-tight uppercase">Systems</span>
           </span>
           <span class="brand-groove block tactile-inset-sm rounded-full px-2 sm:px-2.5 py-0.5 text-[8.5px] sm:text-[10px] text-[var(--text-muted)] font-semibold whitespace-nowrap truncate max-w-full">AI Infrastructure &amp; Machines</span>
         </span>
@@ -66,13 +66,24 @@
       </nav>
 
       <div class="flex items-center gap-2 sm:gap-2.5 shrink-0">
-        <button type="button" data-sound-toggle class="hidden sm:flex tactile-convex-pill w-10 h-10 items-center justify-center text-[var(--text-muted)] hover:text-[var(--text-main)]" aria-label="Mute sound effects">
-          <i data-sound-icon data-lucide="volume-2" class="w-4 h-4 text-[#7952EC] dark:text-[#A78BFA]"></i>
-        </button>
-        <button type="button" data-theme-toggle class="tactile-convex-pill w-10 h-10 md:w-auto md:h-auto md:px-3.5 md:py-2 text-xs flex justify-center items-center gap-2 text-[var(--text-muted)] hover:text-[var(--text-main)]" aria-label="Toggle dark mode">
-          <i data-theme-icon data-lucide="moon" class="w-4 h-4 text-[#7952EC] dark:text-[#A78BFA]"></i>
-          <span data-theme-label class="hidden md:inline">Midnight Cobalt</span>
-        </button>
+        <div class="relative">
+          <button type="button" id="settingsToggle" class="tactile-convex-pill w-10 h-10 flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--text-main)]" aria-expanded="false" aria-controls="settingsPanel" aria-label="Settings">
+            <i data-lucide="settings" class="w-4 h-4 text-[#7952EC] dark:text-[#A78BFA]"></i>
+          </button>
+          <div id="settingsPanel" class="settings-panel tactile-raised rounded-2xl p-3 space-y-2 w-60" role="menu" aria-label="Settings" hidden>
+            <div class="px-1 pb-1 text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--text-muted)]">Settings</div>
+            <button type="button" data-theme-toggle role="menuitem" class="w-full tactile-inset-sm rounded-xl px-3 py-2.5 flex items-center gap-3 text-left text-xs font-bold">
+              <i data-theme-icon data-lucide="moon" class="w-4 h-4 text-[#7952EC] dark:text-[#A78BFA]"></i>
+              <span class="flex-1">Theme</span>
+              <span data-theme-current class="text-[11px] font-semibold text-[var(--text-muted)]">Lilac Ice</span>
+            </button>
+            <button type="button" data-sound-toggle role="menuitem" class="w-full tactile-inset-sm rounded-xl px-3 py-2.5 flex items-center gap-3 text-left text-xs font-bold">
+              <i data-sound-icon data-lucide="volume-2" class="w-4 h-4 text-[#7952EC] dark:text-[#A78BFA]"></i>
+              <span class="flex-1">Sound effects</span>
+              <span data-sound-label class="text-[11px] font-semibold text-[var(--text-muted)]">On</span>
+            </button>
+          </div>
+        </div>
         <a href="/contact" class="btn-deploy-edge px-4 sm:px-5 py-2.5 text-xs tracking-wide hidden sm:inline-flex">
           <i data-lucide="send" class="w-3.5 h-3.5 opacity-90"></i>
           <span>Discuss Your Project</span>
@@ -93,7 +104,6 @@
       <a href="/about" class="tactile-convex-pill px-4 py-2.5 text-xs text-center">About</a>
       <a href="/contact" aria-current="page" class="btn-deploy-edge px-4 py-2.5 text-xs text-center">Contact</a>
       <a href="/contact" class="btn-deploy-edge col-span-2 sm:col-span-1 px-4 py-2.5 text-xs text-center">Discuss Your Project</a>
-      <button type="button" data-sound-toggle class="sm:hidden tactile-convex-pill px-4 py-2.5 text-xs inline-flex items-center justify-center gap-2"><i data-sound-icon data-lucide="volume-2" class="w-4 h-4 text-[#7952EC]"></i>Sound</button>
     </nav>
   </header>
 

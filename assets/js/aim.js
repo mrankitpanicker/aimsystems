@@ -74,6 +74,8 @@
       const i = b.querySelector('[data-sound-icon]');
       if (i) i.setAttribute('data-lucide', soundOn ? 'volume-2' : 'volume-x');
       b.setAttribute('aria-pressed', String(soundOn));
+      const l = b.querySelector('[data-sound-label]');
+      if (l) l.textContent = soundOn ? 'On' : 'Off';
       b.setAttribute('aria-label', soundOn ? 'Mute sound effects' : 'Turn on sound effects');
     });
     icons();
@@ -101,6 +103,8 @@
       const l = btn.querySelector('[data-theme-label]');
       if (i) i.setAttribute('data-lucide', isDark() ? 'sun' : 'moon');
       if (l) l.textContent = isDark() ? 'Lilac Ice' : 'Midnight Cobalt';
+      const c = btn.querySelector('[data-theme-current]');
+      if (c) c.textContent = isDark() ? 'Midnight Cobalt' : 'Lilac Ice';
       btn.setAttribute('aria-pressed', String(isDark()));
     });
     icons();
@@ -160,6 +164,18 @@
     if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     setInterval(() => { if (!document.hidden) { on = (on + 1) % opts.length; place(); } }, 2600);
   });
+
+  /* ---------- Settings menu: theme and sound ---------- */
+  const setBtn = $('#settingsToggle'), setPanel = $('#settingsPanel');
+  if (setBtn && setPanel) {
+    const openSettings = open => {
+      setPanel.hidden = !open;
+      setBtn.setAttribute('aria-expanded', String(open));
+    };
+    setBtn.addEventListener('click', e => { e.stopPropagation(); openSettings(setPanel.hidden); });
+    document.addEventListener('click', e => { if (!setPanel.hidden && !e.target.closest('#settingsPanel, #settingsToggle')) openSettings(false); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && !setPanel.hidden) { openSettings(false); setBtn.focus(); } });
+  }
 
   /* ---------- Mobile menu ---------- */
   const menuBtn = $('#menuToggle'), menu = $('#mobileMenu');
