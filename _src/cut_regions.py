@@ -16,7 +16,8 @@ from scipy import ndimage
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, '..', 'assets', 'img')
 ROWS = [('uk', 0, 260), ('us', 260, 493), ('eu', 493, 724)]
-COLS = [('data', 27, 743), ('hours', 950, 1245), ('rhythm', 1458, 2143)]
+# The hours images come from their own sheet (cut_hours.py).
+COLS = [('data', 27, 743), ('rhythm', 1458, 2143)]
 
 
 def main(src):
