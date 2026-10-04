@@ -214,7 +214,7 @@
         $$('[data-count]', en.target).forEach(c => { if (!c.dataset.done) { c.dataset.done = 1; countUp(c); } });
         io.unobserve(en.target);
       });
-    }, { threshold: 0.12 });
+    }, { threshold: 0, rootMargin: '0px 0px 35% 0px' });
     $$('.reveal-on-scroll').forEach(el => io.observe(el));
   } else {
     $$('.reveal-on-scroll').forEach(el => el.classList.add('revealed'));
