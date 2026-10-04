@@ -11,7 +11,7 @@ Single reference for the aimsystem.in website (v2, neumorphic): what the company
 | **Capabilities** | Software · AI · Cloud · Automation · Infrastructure |
 | **Registration** | Udyam-registered MSME, India |
 | **Location** | Madhya Pradesh, India · working with clients in India, the UK and Europe |
-| **Point of contact** | Ankit Panicker — Client Partner & Technical Lead ("Talk to Ankit") |
+| **Point of contact** | Ankit Panicker — CTO & AI Systems Architect ("Talk to Ankit") |
 | **Primary / secondary CTA** | Discuss Your Project · Hire Engineering Capacity |
 | **Contact** | Email and phone are never printed; buttons copy them. Phone (`CONTACT.phone`) and LinkedIn (`SOCIAL.linkedin`) in `assets/js/aim.js` stay hidden until set. |
 

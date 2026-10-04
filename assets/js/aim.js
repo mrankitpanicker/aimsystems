@@ -818,7 +818,7 @@
       { k: ['own', 'ownership', 'source code', 'our cloud', 'credentials'],
         a: () => `You keep ownership: we deploy into your cloud with your accounts and credentials, document the deployment and hand over the source.` },
       { k: ['ankit', 'contact person', 'who', 'lead', 'talk'],
-        a: () => `Ankit Panicker is our Client Partner & Technical Lead. He works with clients on requirements, technical direction and delivery. ${L('contact', 'Talk to Ankit')}.` },
+        a: () => `Ankit Panicker is our CTO & AI Systems Architect. He works with clients on requirements, technical direction and delivery. ${L('contact', 'Talk to Ankit')}.` },
       { k: ['where', 'location', 'based', 'india', 'timezone', 'uk', 'europe', 'msme', 'udyam', 'company'],
         a: () => `AIM is a Udyam-registered MSME based in Madhya Pradesh, India, working with clients in India, the UK and Europe. ${L('about', 'About the agency', 'company')}.` },
       { k: ['contact', 'email', 'mail', 'reach', 'phone', 'number', 'meeting', 'call you', 'start'],
@@ -935,7 +935,7 @@
       description: 'Get how to contact AIM to discuss a project or hire engineers.',
       inputSchema: { type: 'object', properties: {} },
       execute: function () {
-        return Promise.resolve(text('Ankit Panicker, Client Partner & Technical Lead — ankit@aimsystem.in — https://aimsystem.in/contact'));
+        return Promise.resolve(text('Ankit Panicker, CTO & AI Systems Architect — ankit@aimsystem.in — https://aimsystem.in/contact'));
       }
     },
     {

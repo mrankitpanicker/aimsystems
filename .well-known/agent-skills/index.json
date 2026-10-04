@@ -6,7 +6,7 @@
       "type": "skill-md",
       "description": "Answer questions about AIM (aimsystem.in), a technology engineering agency: services, engagement models, platforms, case studies, and how to hire engineers or discuss a project.",
       "url": "/.well-known/agent-skills/aim-company/SKILL.md",
-      "digest": "sha256:cd65074db0b7378b28da28b9599691f9008c2dae4e43a1b815f92a0f3c0a615a"
+      "digest": "sha256:250bc63db1878b7da93b20202966307c64175a12fa4ad6eecccd0e609d3d1c0f"
     }
   ]
 }

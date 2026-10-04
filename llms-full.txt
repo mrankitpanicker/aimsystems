@@ -8,7 +8,7 @@ Also known as: AIM, AIM System, AIM Systems, AIM Studio
 Registration: Udyam-registered MSME (India)
 Location: Madhya Pradesh, India; clients in India, the UK and Europe
 Websites: https://aimsystem.in/ · https://aimstudio.co.in/
-Client Partner & Technical Lead: Ankit Panicker — works with clients to understand requirements, shape technical direction and coordinate engineering delivery.
+CTO & AI Systems Architect: Ankit Panicker — leads product architecture, AI systems, cloud infrastructure and engineering delivery, and works directly with clients on requirements and technical direction.
 
 ## Positioning
 One team owns it, architecture to on-call. Architecture, backend, frontend, AI, cloud, CI/CD, monitoring: no handoffs between vendors, no orphaned code. AIM runs production platforms itself, so what it builds is built to stay up. From one senior engineer to a complete product team.
@@ -61,4 +61,4 @@ High-volume communication (campaign orchestration, queues, retries, capacity con
 Delivery process for an engagement: Understand → Architect → Build → Integrate → Deploy → Operate.
 
 ## Contact
-Ankit Panicker, Client Partner & Technical Lead — ankit@aimsystem.in · https://aimsystem.in/contact
+Ankit Panicker, CTO & AI Systems Architect — ankit@aimsystem.in · https://aimsystem.in/contact
