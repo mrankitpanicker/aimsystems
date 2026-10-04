@@ -625,3 +625,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 /* cycling inside a pressed-in group: the active card lifts out instead */
 .card-sunk.cycle-card.is-active { box-shadow: var(--neu-raised) !important; transform: translate3d(0, -4px, 0); }
 .card-sunk.cycle-card.is-active img { transform: translate3d(0, -3px, 0) scale(1.03); }
+
+/* logo sits on the navy button gradient */
+.logo-tile {
+  background: var(--deploy-gradient);
+  box-shadow: var(--deploy-shadow), inset 0 1px 1.5px rgba(255, 255, 255, 0.25), inset 0 -1.5px 2px rgba(0, 0, 0, 0.35);
+}
+.logo-tile img { filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.35)); }
