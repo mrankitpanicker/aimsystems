@@ -41,7 +41,7 @@ Single reference for the aimsystem.in website (v2, neumorphic): what the company
 | Services | `/services` | Four services with software, cloud and AI pipelines |
 | Hire | `/hire` | Team assembly, four models, pricing, ownership, FAQ (`/engage` redirects here) |
 | Platforms | `/products` | Platforms, Solutions, R&D |
-| Work | `/work` | Real-world workloads and case studies |
+| Work | `/work` | Selected Engineering Work: three case studies, range of work, engineering across the stack, workloads, process |
 | Engineering | `/engineering` | Engineering by Design, interactive lab, Security & Reliability, technology |
 | About | `/about` | About the Agency, the Engineering Team, Ankit, company details |
 | Contact | `/contact` | Project brief form (opens email app), copy-to-clipboard contact |

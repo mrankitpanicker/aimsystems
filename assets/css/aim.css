@@ -912,3 +912,59 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 @media (prefers-reduced-motion: reduce) {
   .animate-ping, .animate-pulse, .status-dot.live, .aimbot-dot, .aimbot-fab, .char-stage::before { animation: none !important; }
 }
+
+/* ---- Liquid lens: the active highlight flows between items ---- */
+.lq-lens { position: absolute; left: 0; top: 0; width: 0; height: 0; z-index: 1; pointer-events: none; opacity: 0; border-radius: 0.75rem;
+  background: var(--deploy-gradient); box-shadow: var(--deploy-shadow), inset 0 1px 1.5px rgba(255, 255, 255, 0.22);
+  transition: transform 0.75s var(--ease-flow), width 0.75s var(--ease-flow), height 0.75s var(--ease-flow), opacity 0.7s ease; will-change: transform, width, height; }
+.tactile-navy .lq-lens { background: linear-gradient(135deg, #5B7CFF 0%, #4C6FFF 55%, #3F5FF0 100%); box-shadow: 0 8px 22px rgba(76, 111, 255, 0.4), inset 0 1px 1.5px rgba(255, 255, 255, 0.3); }
+.lq-lens.lq-pill { border-radius: 9999px; }
+.tactile-navy .lq-lens.lq-pill { background: #FFFFFF; box-shadow: 0 6px 16px rgba(3, 8, 30, 0.35); }
+.lq-lens.lq-well { border-radius: 0.75rem; background: var(--surface); box-shadow: var(--neu-pressed); }
+
+/* items sit above the lens; the active one simply lets the lens show through */
+.lq-host .pk-node, .lq-host .rt-dest, .lq-host .sc-pill, .lq-host [data-side] { position: relative; z-index: 2; }
+.lq-host .pk-node.is-hit, .lq-host .rt-dest.on, .lq-host .sc-pill.on {
+  background: transparent !important; box-shadow: none !important; transform: none !important; border-color: transparent !important; color: #FFFFFF !important; }
+.lq-host .pk-node::before, .lq-host .rt-dest::before { display: none; }
+.tactile-navy .lq-host .sc-pill.on { color: #11286B !important; }
+.lq-host .sc-pill { background: transparent; }
+.lq-host [data-side], .lq-host .rocker-side-active, .lq-host .rocker-side-inactive { background: transparent !important; box-shadow: none !important; transform: none !important; }
+.lq-host .pk-track { z-index: 0; }
+
+/* cycling cards change state softly in place instead of lifting */
+.cycle-card, .cycle-card .cycle-body { transition-duration: 0.9s !important; }
+.card-sunk.cycle-card.is-active { transform: translate3d(0, 0, 0) !important; }
+.card-sunk.cycle-card.is-active img { transform: none !important; }
+.cycle-card.is-active .cycle-body { transform: translate3d(0, 3px, 0); }
+[data-pin].btn-pressed-in { transform: translate3d(0, 1px, 0) !important; }
+/* lens paints above item backgrounds but below their content, so it reads as one liquid shape while it moves */
+.lq-host .pk-node, .lq-host .rt-dest, .lq-host .sc-pill, .lq-host [data-side] { z-index: auto !important; isolation: auto !important; transform: none !important; }
+.lq-host .lq-lens { z-index: 2; }
+.lq-host .pk-node > *, .lq-host .rt-dest > *, .lq-host [data-side] > *, .lq-host .sc-pill > * { position: relative; z-index: 3; }
+.lq-host .sc-pill { position: relative; }
+.lq-host .sc-pill::after { content: none; }
+.lq-host .pk-dot { z-index: 4; }
+.lq-host .rt-dest { opacity: 1 !important; }
+.lq-host .sc-pill { will-change: auto !important; }
+.lq-host .lq-under, .lq-host .lq-under * { color: #FFFFFF !important; transition: color 0.4s ease !important; }
+.tactile-navy .lq-host .sc-pill.lq-under, .tactile-navy .lq-host .sc-pill.lq-under * { color: #11286B !important; }
+.lq-host .lq-under { background: transparent !important; box-shadow: none !important; }
+/* slower, softer timing for every automatic animation */
+.lq-lens { transition: transform 1.1s var(--ease-flow), width 1.1s var(--ease-flow), height 1.1s var(--ease-flow), opacity 0.9s ease !important; }
+.pk-dot { transition: left 1.3s var(--ease-flow), opacity 0.8s ease, background 0.8s ease, box-shadow 0.8s ease !important; }
+.pk-fill { transition: width 1.3s var(--ease-flow) !important; }
+.pk-node, .rt-dest, .pk-node > *, .rt-dest > *, .sc-pill, .sc-pill > *, [data-side], [data-side] > * { transition-duration: 1s !important; }
+.lq-host .lq-under, .lq-host .lq-under * { transition: color 0.6s ease !important; }
+.cycle-card, .cycle-card .cycle-body { transition-duration: 1.2s !important; }
+.monolith-outer-fillet, .monolith-inner-core, .monolith-outer-fillet::before { transition-duration: 1.1s !important; }
+[data-pin], .laser-trace { transition-duration: 1s !important; }
+.bt-knob { transition: transform 1s var(--ease-flow), width 1s var(--ease-flow) !important; }
+.bt-opt { transition: color 0.9s ease !important; }
+.sc-tier { animation-duration: 1.1s !important; }
+.rt-line.on { animation-duration: 3.2s !important; }
+/* engineering stack layers share the liquid lens */
+.lq-host .stk-layer { position: relative; z-index: auto !important; transform: none !important; transition: background 1s ease, box-shadow 1s ease, color 1s ease !important; }
+.lq-host .stk-layer > * { position: relative; z-index: 3; }
+.lq-host .stk-layer.on { background: transparent !important; box-shadow: none !important; color: #FFFFFF; }
+.stk-layer { cursor: pointer; }

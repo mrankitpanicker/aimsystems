@@ -85,6 +85,7 @@
     try { localStorage.setItem('aim-sound', soundOn ? 'on' : 'off'); } catch (e) {}
     paintSoundButtons();
     if (soundOn) sound('toggleOn');
+    toast(soundOn ? 'Sound on' : 'Sound off');
   }));
   // one delegated listener gives every control a sound that matches its weight
   document.addEventListener('pointerdown', e => {
@@ -115,6 +116,7 @@
     paintThemeButtons();
     placePill(activeLink());
     sound(dark ? 'toggleOn' : 'toggleOff');
+    toast(dark ? 'Midnight Cobalt' : 'Lilac Ice');
   }
 
   /* ---------- Sliding nav pill ---------- */
@@ -159,13 +161,13 @@
       sw.classList.add('is-flowing');
       set(l, r - l);
       opts.forEach((x, i) => x.classList.toggle('is-on', i === on));
-      setTimeout(() => { sw.classList.remove('is-flowing'); set(o.offsetLeft, o.offsetWidth); }, 520);
+      setTimeout(() => { sw.classList.remove('is-flowing'); set(o.offsetLeft, o.offsetWidth); }, 750);
     };
     place();
     window.addEventListener('resize', place);
     if (document.fonts) document.fonts.ready.then(place);
     if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    setInterval(() => { if (!document.hidden) { const from = on; on = (on + 1) % opts.length; flow(from); } }, 4200);
+    setInterval(() => { if (!document.hidden) { const from = on; on = (on + 1) % opts.length; flow(from); } }, 6000);
   });
 
   /* ---------- Settings menu: theme and sound ---------- */
@@ -222,6 +224,7 @@
   $$('[data-press-toast]').forEach(btn => btn.addEventListener('click', () => {
     btn.classList.add('is-pressed');
     setTimeout(() => btn.classList.remove('is-pressed'), 500);
+    toast(btn.dataset.pressToast);
   }));
 
   /* ---------- Monolith chassis + water ripple ---------- */
@@ -229,6 +232,7 @@
     const canvas = card.querySelector('.ripple-canvas');
     const toggle = () => {
       card.classList.toggle('is-pressed');
+      if (card.dataset.toastOn) toast(card.classList.contains('is-pressed') ? card.dataset.toastOn : card.dataset.toastOff);
     };
     card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
     if (!canvas) { card.addEventListener('click', toggle); return; }
@@ -273,7 +277,7 @@
         if (r.bottom < 0 || r.top > innerHeight) return;
         card.classList.add('is-pressed');
         ripple(r.width / 2, r.height / 2);
-        setTimeout(() => card.classList.remove('is-pressed'), 1400);
+        setTimeout(() => card.classList.remove('is-pressed'), 2000);
       }, every);
     }
   });
@@ -290,7 +294,7 @@
   $$('[data-cycle]').forEach(group => {
     const cards = $$('.cycle-card', group);
     if (!cards.length) return;
-    const ms = +group.dataset.cycle || 3600;
+    const ms = +group.dataset.cycle || 5200;
     group.style.setProperty('--cycle-ms', ms + 'ms');
     const still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
     let i = 0, timer = null;
@@ -330,6 +334,7 @@
         t.setAttribute('aria-selected', String(on));
       });
       panels.forEach(p => { p.hidden = p.dataset.panel !== tab.dataset.tab; });
+      if (!quiet && group.dataset.tabsToast !== undefined) toast(tab.textContent.trim());
     };
     tabs.forEach(t => t.addEventListener('click', () => { sound('toggleOn'); select(t); }));
     const first = tabs.find(t => t.getAttribute('aria-selected') === 'true') || tabs[0];
@@ -381,7 +386,9 @@
   $$('[data-rocker]').forEach(rocker => {
     const sides = $$('[data-side]', rocker);
     const status = $(rocker.dataset.status), desc = $(rocker.dataset.desc);
+    const well = liquid(rocker, 'well');
     const set = (btn, quiet) => {
+      well.to(btn);
       sides.forEach(s => {
         const on = s === btn;
         s.classList.toggle('rocker-side-active', on);
@@ -392,6 +399,7 @@
       });
       if (status) { status.textContent = btn.dataset.title; status.style.color = btn.dataset.color || ''; }
       if (desc) desc.textContent = btn.dataset.text;
+      if (!quiet) toast(btn.dataset.title);
     };
     sides.forEach(s => s.addEventListener('click', () => { sound(s === sides[0] ? 'toggleOff' : 'toggleOn'); set(s); }));
     if (sides[0]) set(sides[0], true);
@@ -624,11 +632,54 @@
   }
   const clock = () => new Date().toLocaleTimeString([], { hour12: false });
 
+  /* Liquid lens: one highlight that flows between items instead of each item
+     lighting up on its own. It stretches across both, then draws in around
+     the new one, on a slow curve with no overshoot. */
+  function reduceMotion() { return !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches); }
+  function liquid(container, variant) {
+    if (getComputedStyle(container).position === 'static') container.style.position = 'relative';
+    container.classList.add('lq-host');
+    const lens = document.createElement('span');
+    lens.className = 'lq-lens' + (variant ? ' lq-' + variant : '');
+    lens.setAttribute('aria-hidden', 'true');
+    container.prepend(lens);
+    let cur = null, t = null;
+    const box = el => ({ x: el.offsetLeft, y: el.offsetTop, w: el.offsetWidth, h: el.offsetHeight });
+    const put = b => { lens.style.transform = `translate3d(${b.x}px, ${b.y}px, 0)`; lens.style.width = b.w + 'px'; lens.style.height = b.h + 'px'; };
+    const api = {
+      to(el) {
+        clearTimeout(t);
+        if (!el) { lens.style.opacity = '0'; cur = null; return; }
+        const b = box(el);
+        if (!cur || reduceMotion()) { lens.style.transition = 'none'; put(b); lens.offsetWidth; lens.style.transition = ''; }
+        else {
+          const a = box(cur), x = Math.min(a.x, b.x), y = Math.min(a.y, b.y);
+          const u = { x, y, w: Math.max(a.x + a.w, b.x + b.w) - x, h: Math.max(a.y + a.h, b.y + b.h) - y };
+          // anything the lens flows over reads in white while it is covered
+          const under = $$(':scope > :not(.lq-lens)', container).filter(n => {
+            const c = box(n);
+            return n.matches('.pk-node, .rt-dest, .sc-pill, [data-side], .stk-layer') && c.x < u.x + u.w && c.x + c.w > u.x && c.y < u.y + u.h && c.y + c.h > u.y;
+          });
+          if (variant !== 'well') under.forEach(n => n.classList.add('lq-under'));
+          put(u);
+          t = setTimeout(() => { put(b); under.forEach(n => n.classList.remove('lq-under')); }, 600);
+        }
+        lens.style.opacity = '1';
+        cur = el;
+      },
+      hide() { clearTimeout(t); lens.style.opacity = '0'; cur = null; $$('.lq-under', container).forEach(n => n.classList.remove('lq-under')); },
+      refresh() { if (cur) put(box(cur)); }
+    };
+    window.addEventListener('resize', () => api.refresh());
+    return api;
+  }
+
   /* Packet pipeline */
   $$('[data-packet]').forEach(box => {
     const nodes = $$('.pk-node', box), dot = $('.pk-dot', box), fill = $('.pk-fill', box), row = $('.pk-row', box);
     const status = $('[data-pk-status]', box), log = $('[data-pk-log]', box);
-    const step = +box.dataset.step || 520;
+    const step = +box.dataset.step || 1100;
+    const lens = row ? liquid(row) : null;
     let running = false;
     const centre = n => n.offsetLeft + n.offsetWidth / 2;
     function write(msg) {
@@ -643,6 +694,7 @@
       nodes.forEach(n => n.classList.remove('is-hit', 'is-done'));
       if (fill) fill.style.width = '0';
       if (dot) dot.classList.remove('on', 'ok');
+      if (lens) lens.hide();
     }
     function run(manual) {
       if (running) return;
@@ -652,6 +704,7 @@
       nodes.forEach((n, i) => setTimeout(() => {
         if (i) { nodes[i - 1].classList.remove('is-hit'); nodes[i - 1].classList.add('is-done'); }
         n.classList.add('is-hit');
+        if (lens) lens.to(n);
         if (dot) dot.style.left = centre(n) + 'px';
         if (fill && row) {
           const first = centre(nodes[0]), last = centre(nodes[nodes.length - 1]);
@@ -663,16 +716,29 @@
       setTimeout(() => {
         const lastN = nodes[nodes.length - 1];
         lastN.classList.remove('is-hit'); lastN.classList.add('is-done');
+        if (lens) lens.hide();
         if (dot) dot.classList.add('ok');
         write(box.dataset.done || 'Done');
         if (manual) sound('success');
-        setTimeout(() => { running = false; reset(); if (status && box.dataset.idle) status.textContent = box.dataset.idle; }, 2200);
+        setTimeout(() => { running = false; reset(); if (status && box.dataset.idle) status.textContent = box.dataset.idle; }, 3200);
       }, nodes.length * step + 200);
     }
     const btn = $('[data-pk-run]', box);
     btn && btn.addEventListener('click', () => run(true));
     if (box.hasAttribute('data-pk-hover')) box.addEventListener('mouseenter', () => run(false));
-    autoplay(box, +box.dataset.every || 6000, () => run(false), { onEnter: () => setTimeout(() => run(false), 400) });
+    autoplay(box, +box.dataset.every || 10000, () => run(false), { onEnter: () => setTimeout(() => run(false), 400) });
+  });
+
+  /* Engineering stack: the highlight flows slowly from layer to layer */
+  $$('[data-stack]').forEach(box => {
+    const layers = $$('.stk-layer', box);
+    if (!layers.length) return;
+    const lens = liquid(layers[0].parentElement);
+    let k = 0;
+    const go = n => { k = n; layers.forEach((l, i) => l.classList.toggle('on', i === k)); lens.to(layers[k]); };
+    layers.forEach((l, i) => l.addEventListener('click', () => go(i)));
+    go(0);
+    autoplay(box, +box.dataset.every || 5400, () => go((k + 1) % layers.length));
   });
 
   /* Intent router */
@@ -680,9 +746,11 @@
     const dests = $$('.rt-dest', box), lines = $$('.rt-line', box);
     const utter = $('.rt-utter', box), status = $('[data-rt-status]', box);
     let k = -1;
+    const lens = dests[0] ? liquid(dests[0].parentElement) : null;
     function go(n, manual) {
       k = n;
       dests.forEach((d, i) => d.classList.toggle('on', i === k));
+      if (lens) lens.to(dests[k]);
       lines.forEach((l, i) => l.classList.toggle('on', i === k));
       const d = dests[k];
       if (utter) { utter.style.opacity = '0'; setTimeout(() => { utter.textContent = d.dataset.utter; utter.style.opacity = '1'; }, 380); }
@@ -693,30 +761,32 @@
     const btn = $('[data-rt-next]', box);
     btn && btn.addEventListener('click', () => go((k + 1) % dests.length, true));
     go(0);
-    autoplay(box, +box.dataset.every || 3400, () => go((k + 1) % dests.length));
+    autoplay(box, +box.dataset.every || 5400, () => go((k + 1) % dests.length));
   });
 
   /* Scaling tiers */
   $$('[data-scale]').forEach(box => {
     const tiers = $$('[data-tier]', box), pills = $$('.sc-pill', box), badge = $('[data-sc-badge]', box);
     let k = 0;
+    const lens = pills[0] ? liquid(pills[0].parentElement, 'pill') : null;
     function go(n, manual) {
       k = n;
       tiers.forEach((t, i) => { t.hidden = i !== k; });
       pills.forEach((p, i) => p.classList.toggle('on', i === k));
+      if (lens) lens.to(pills[k]);
       if (badge) badge.textContent = tiers[k].dataset.tier;
       if (manual) sound('toggleOn');
     }
     pills.forEach((p, i) => p.addEventListener('click', () => go(i, true)));
     go(0);
-    autoplay(box, +box.dataset.every || 3800, () => go((k + 1) % tiers.length));
+    autoplay(box, +box.dataset.every || 5800, () => go((k + 1) % tiers.length));
   });
 
   /* Laser circuit: steps through its pins on its own */
   $$('[data-circuit][data-auto]').forEach(box => {
     const pins = $$('[data-pin]', box), label = $('[data-circuit-label]', box), traces = $$('.laser-trace', box);
     let k = -1;
-    autoplay(box, +box.dataset.auto || 1500, () => {
+    autoplay(box, +box.dataset.auto || 2600, () => {
       pins.forEach(p => p.classList.remove('btn-pressed-in'));
       k = (k + 1) % pins.length;
       pins[k].classList.add('btn-pressed-in');

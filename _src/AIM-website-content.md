@@ -41,7 +41,7 @@ Single reference for the aimsystem.in website (v2, neumorphic): what the company
 | Services | `/services` | Four services with software, cloud and AI pipelines |
 | Hire | `/hire` | Team assembly, four models, pricing, ownership, FAQ (`/engage` redirects here) |
 | Platforms | `/products` | Platforms, Solutions, R&D |
-| Work | `/work` | Real-world workloads and case studies |
+| Work | `/work` | Selected Engineering Work: three case studies, range of work, engineering across the stack, workloads, process |
 | Engineering | `/engineering` | Engineering by Design, interactive lab, Security & Reliability, technology |
 | About | `/about` | About the Agency, the Engineering Team, Ankit, company details |
 | Contact | `/contact` | Project brief form (opens email app), copy-to-clipboard contact |
@@ -317,22 +317,6 @@ Reproducible environments, automated delivery and the monitoring needed to run s
 
 Cloud Kubernetes Infrastructure-as-code CI/CD Observability Distributed systems Platform engineering Reliability engineering
 
-#### Software pipeline
-
-Every change is built, tested and deployed automatically.
-
-Code
-
-CI
-
-Tests
-
-Deploy
-
-Production
-
-Every change takes this path
-
 #### Cloud pipeline
 
 Long-running work moves through queues and workers, never blocking the request.
@@ -356,6 +340,22 @@ How work flows through a backend
 We link the tools a business already runs on and automate the work between them, with every step explicit, observable and auditable.
 
 API integrations CRM integrations WhatsApp Telephony Workflow automation Business process automation Data pipelines
+
+#### Software pipeline
+
+Every change is built, tested and deployed automatically.
+
+Code
+
+CI
+
+Tests
+
+Deploy
+
+Production
+
+Every change takes this path
 
 ### Tell us what you need to build.
 
@@ -621,14 +621,16 @@ The teams behind our platforms are the teams we put on client work.
 
 ## Page: Work (`/work`)
 
-**Browser title:** Work — Case Studies in Healthcare, Education and Hospitality · AIM  
-**Search description:** Case studies from AIM: an automated patient outreach platform for Apple Hospital, a multi-tenant communication platform for BIMTS College and a hospitality platform for Café Ciel, London.
+**Browser title:** Selected Engineering Work · AIM  
+**Search description:** A representative selection of the systems AIM has built and delivered across healthcare, education, hospitality and technology: AI-powered patient communication, multi-tenant institutional communication and digital experience engineering.
 
 Work
 
-## Built for Real-World Workloads.
+## Selected Engineering Work
 
-Selected engagements across healthcare, education and hospitality: the challenge, what we built and the result.
+A representative selection of the systems we've built and delivered across healthcare, education, hospitality and technology.
+
+From AI-powered communication infrastructure to healthcare automation, institutional outreach and digital product experiences, our work spans different environments, technical requirements and delivery models.
 
 15K+
 
@@ -640,29 +642,57 @@ Calls answered
 
 ~ 45%
 
-Answered / connected
+Connected / answered rate
 
 3
 
-Industries in production
+Industry verticals served
 
-Healthcare · Case study
+Healthcare · Education · Hospitality
 
-### Automated patient outreach for Apple Hospital
+Healthcare · Production System
 
-Live in production
+### AI-Powered Patient Communication
 
-Client Apple Hospital, Madhya Pradesh
+Production
 
-Challenge Reach large patient lists for outreach drives without tying up front-desk staff.
+The challenge
 
-Solution We designed and deployed a multi-tenant communication platform supporting automated patient outreach by voice and WhatsApp.
+Healthcare teams often need to communicate with large patient populations while keeping operational workload manageable.
 
-Engineering Queue-based campaign workers, retry scheduling, per-tenant capacity control and outcome reporting.
+What we built
 
-Technology APEX Connect · Python · Redis · PostgreSQL · telephony · STT/LLM/TTS · WhatsApp Business API
+A multi-tenant communication platform supporting automated patient outreach across voice and WhatsApp, with campaign management, scheduling and outcome tracking.
 
-Result 15K+ calls processed, 6.8K+ answered, about 45% connected.
+Engineering
+
+- · Campaign orchestration
+
+- · Queue-based workers
+
+- · Retry scheduling
+
+- · Per-tenant capacity controls
+
+- · Communication provider integrations
+
+- · Outcome tracking
+
+- · Automated reporting
+
+Technology
+
+APEX Connect · Python · Redis · PostgreSQL · Telephony · STT · LLM · TTS · WhatsApp Business API
+
+Production outcome
+
+15K+ calls processed
+
+6.8K+ answered
+
+~45% connected / answered
+
+Campaign flow
 
 List
 
@@ -674,47 +704,185 @@ WhatsApp
 
 Report
 
-Campaign flow · hover to replay
+Campaign flow: List → Call → Retry → WhatsApp → Report
 
-Education · Case study
+Education · Production System
 
-### Multi-tenant communication for BIMTS College
+### Multi-Tenant Institutional Communication
 
-In production
+Production
 
-Client · BIMTS College, Madhya Pradesh
+The challenge
 
-Challenge · Coordinate student communication and admissions outreach at scale.
+Educational institutions require reliable communication workflows for student outreach, admissions activity and ongoing engagement.
 
-Solution · We deployed a dedicated tenant on our communication platform for outreach and WhatsApp automation.
+What we built
 
-Engineering · Isolated tenant data, independent billing and campaign automation.
+A dedicated communication environment on the platform supporting voice outreach and WhatsApp automation, with isolated tenant operations and campaign workflows.
 
-Technology · APEX Connect · WhatsApp Business API · telephony
+Engineering
 
-Result · A second institutional vertical running on the same platform.
+Isolated tenant architecture Campaign automation Communication workflows Independent tenant configuration Billing separation Outreach tracking
 
-Hospitality · Case study
+Technology
 
-### Digital experience for Café Ciel, London
+APEX Connect · WhatsApp Business API · Telephony · Campaign Automation
+
+Production outcome
+
+A dedicated institutional communication environment operating within the same multi-tenant platform architecture.
+
+Hospitality · Client Delivery
+
+### Digital Experience Engineering
 
 Delivered
 
-Client · Café Ciel at The OWO, London
+The challenge
 
-Challenge · Launch a production digital experience on a compressed timeline.
+Deliver a polished digital experience within a compressed launch timeline while accommodating rapid revisions and production requirements.
 
-Solution · We handled implementation, revisions, deployment and technical execution end to end.
+What we built
 
-Result · Delivered on schedule for a UK client.
+A complete digital experience for a hospitality brand in London, covering implementation, iterative revisions, deployment and technical delivery.
+
+Engineering
+
+Frontend implementation Responsive experience Content integration Iterative development Production deployment Technical execution
+
+Delivery
+
+Design → Implementation → Revisions → Deployment
+
+Outcome
+
+Delivered on schedule for a UK hospitality client.
 
 > “Ankit independently delivered a production digital experience for Café Ciel at The OWO, London, within a highly compressed timeline. He handled implementation, revisions, deployment, and technical execution with strong ownership and responsiveness throughout. We would confidently recommend him for future technical engagements.” — Vedika, Café Ciel
 
+More Than Individual Projects
+
+### Different industries. Different systems. One engineering approach.
+
+Our engagements span:
+
+#### AI & Automation
+
+Voice workflows · AI orchestration · intelligent communication
+
+#### Software Platforms
+
+Multi-tenant applications · APIs · workflow systems
+
+#### Cloud & Infrastructure
+
+Deployment · queues · databases · observability
+
+#### Digital Products
+
+Web experiences · customer platforms · institutional systems
+
+Engineering Across the Stack
+
+### One team from strategy to production.
+
+Every engagement draws on the same layers of engineering, shaped to the system being built.
+
+Strategy Requirements · Architecture · Technical planning
+
+Product UX/UI · Frontend · Backend · APIs
+
+Intelligence AI · LLM · STT · TTS · Automation
+
+Infrastructure Cloud · Containers · Queues · Databases · Observability
+
+Production Deployment · Monitoring · Optimization · Operations
+
+Selected Engagements
+
+### The range of our work.
+
+Healthcare AI-powered patient communication
+
+Education Institutional outreach infrastructure
+
+Hospitality Digital product experience
+
+AI & Automation Voice and messaging workflows
+
+Software Platforms Multi-tenant systems and operational platforms
+
+Cloud Engineering Production infrastructure and deployment
+
+Workloads
+
+### How We Approach Different Workloads
+
+#### High-volume communication
+
+Campaign orchestration, queues, retries and capacity controls.
+
+#### Multi-tenant platforms
+
+Tenant isolation, independent configuration and scalable workflows.
+
+#### AI-powered systems
+
+STT → LLM → TTS pipelines with provider integrations and orchestration.
+
+#### Digital experiences
+
+Rapid implementation, iterative development and production deployment.
+
+#### Institutional systems
+
+Reliable workflows designed around operational requirements.
+
+Process
+
+### From Requirement to Production
+
+01
+
+#### Understand
+
+Business objectives, users and technical requirements.
+
+02
+
+#### Architect
+
+System boundaries, APIs, infrastructure and workflows.
+
+03
+
+#### Build
+
+Engineering across frontend, backend, AI and infrastructure.
+
+04
+
+#### Integrate
+
+Connect communication providers, APIs, databases and external systems.
+
+05
+
+#### Deploy
+
+Move the system into production with the required infrastructure.
+
+06
+
+#### Operate
+
+Monitor, improve and evolve the system over time.
+
 ### Planning something similar?
 
-Tell us about the workload and we'll show you how we'd approach it. References are available on request.
+Tell us about the workload and we'll show you how we'd approach it.
 
-Discuss Your Project See the platform ↗
+Discuss Your Project Hire Engineering Capacity
 
 ---
 
