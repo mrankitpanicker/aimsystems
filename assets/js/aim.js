@@ -665,7 +665,7 @@
   $$('[data-packet]').forEach(box => {
     const nodes = $$('.pk-node', box), dot = $('.pk-dot', box), fill = $('.pk-fill', box), row = $('.pk-row', box);
     const status = $('[data-pk-status]', box), log = $('[data-pk-log]', box);
-    const step = +box.dataset.step || 1100;
+    const step = +box.dataset.step || 2200;
     let running = false;
     const centre = n => n.offsetLeft + n.offsetWidth / 2;
     function write(msg) {
@@ -703,7 +703,7 @@
         if (dot) dot.classList.add('ok');
         write(box.dataset.done || 'Done');
         if (manual) sound('success');
-        setTimeout(() => { running = false; reset(); if (status && box.dataset.idle) status.textContent = box.dataset.idle; }, 3200);
+        setTimeout(() => { running = false; reset(); if (status && box.dataset.idle) status.textContent = box.dataset.idle; }, 4500);
       }, nodes.length * step + 200);
     }
     const btn = $('[data-pk-run]', box);

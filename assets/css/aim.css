@@ -985,3 +985,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 /* selector highlights glide straight to the new option */
 .lq-lens { transition: transform 1s var(--ease-calm), width 1s var(--ease-calm), height 1s var(--ease-calm), opacity 0.9s ease !important; }
 .pk-node, .rt-dest, .stk-layer { position: relative; }
+/* pipelines move one step about every 2 seconds; the dot glides for most of it */
+.pk-dot { transition: left 1.9s var(--ease-flow), opacity 1s ease, background 1s ease, box-shadow 1s ease !important; }
+.pk-fill { transition: width 1.9s var(--ease-flow) !important; }
+.pk-node, .rt-dest { transition: box-shadow 1.6s var(--ease-calm), color 1.6s ease, border-color 1.6s ease, opacity 1.6s ease !important; }
+.pk-node::before, .rt-dest::before { transition: opacity 1.6s var(--ease-calm) !important; }
+.pk-node > *, .rt-dest > * { transition: color 1.6s ease !important; }
+.pk-log div { animation-duration: 1s; }
