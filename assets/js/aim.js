@@ -134,6 +134,16 @@
     track.addEventListener('mouseleave', () => placePill(activeLink()));
   }
 
+  /* Auto motion keeps running under the pointer; a visitor's own click, tap
+     or key press pauses it briefly so they can look, then it carries on. */
+  function userPause(el, ms) {
+    let until = 0;
+    const hit = () => { until = Date.now() + (ms || 8000); };
+    el.addEventListener('pointerdown', hit);
+    el.addEventListener('keydown', hit);
+    return () => Date.now() < until;
+  }
+
   /* ---------- Brand switch: AIM | SYSTEMS flips itself ---------- */
   $$('[data-brand-toggle]').forEach(sw => {
     const knob = $('.bt-knob', sw), opts = $$('.bt-opt', sw);
@@ -148,10 +158,7 @@
     window.addEventListener('resize', place);
     if (document.fonts) document.fonts.ready.then(place);
     if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    let hover = false;
-    sw.addEventListener('mouseenter', () => { hover = true; });
-    sw.addEventListener('mouseleave', () => { hover = false; });
-    setInterval(() => { if (!hover && !document.hidden) { on = (on + 1) % opts.length; place(); } }, 2600);
+    setInterval(() => { if (!document.hidden) { on = (on + 1) % opts.length; place(); } }, 2600);
   });
 
   /* ---------- Mobile menu ---------- */
@@ -242,11 +249,9 @@
     // optional self-press: presses in, sends one wave from the centre, releases
     const every = +card.dataset.autopress;
     if (every && !(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) {
-      let hovering = false;
-      card.addEventListener('mouseenter', () => { hovering = true; });
-      card.addEventListener('mouseleave', () => { hovering = false; });
+      const paused = userPause(card);
       setInterval(() => {
-        if (hovering || document.hidden || card.classList.contains('is-pressed')) return;
+        if (paused() || document.hidden || card.classList.contains('is-pressed')) return;
         const r = canvas.parentElement.getBoundingClientRect();
         if (r.bottom < 0 || r.top > innerHeight) return;
         card.classList.add('is-pressed');
@@ -275,11 +280,9 @@
     const show = k => { i = k; cards.forEach((c, n) => c.classList.toggle('is-active', n === k)); };
     const start = () => { if (still) return; clearInterval(timer); timer = setInterval(() => show((i + 1) % cards.length), ms); };
     cards.forEach((c, n) => {
-      c.addEventListener('mouseenter', () => { clearInterval(timer); show(n); });
-      c.addEventListener('focusin', () => { clearInterval(timer); show(n); });
-      c.addEventListener('click', () => { clearInterval(timer); show(n); });
+      // showing a card restarts the clock, so it stays for one full turn and the cycle carries on
+      ['mouseenter', 'focusin', 'click'].forEach(t => c.addEventListener(t, () => { show(n); start(); }));
     });
-    group.addEventListener('mouseleave', start);
     show(0); start();
   });
 
@@ -375,17 +378,14 @@
       if (desc) desc.textContent = btn.dataset.text;
       if (!quiet) toast(btn.dataset.title);
     };
-    let held = false;
-    sides.forEach(s => s.addEventListener('click', () => { held = true; sound(s === sides[0] ? 'toggleOff' : 'toggleOn'); set(s); }));
+    sides.forEach(s => s.addEventListener('click', () => { sound(s === sides[0] ? 'toggleOff' : 'toggleOn'); set(s); }));
     if (sides[0]) set(sides[0], true);
-    // optional auto-flip, stopped for good once the visitor picks a side
+    // optional auto-flip, paused for a while after the visitor picks a side
     const every = +rocker.dataset.rockerAuto;
     if (every && sides.length > 1) {
-      let hovering = false;
-      rocker.addEventListener('mouseenter', () => { hovering = true; });
-      rocker.addEventListener('mouseleave', () => { hovering = false; });
+      const paused = userPause(rocker, 12000);
       setInterval(() => {
-        if (held || hovering || document.hidden) return;
+        if (paused() || document.hidden) return;
         const cur = sides.findIndex(x => x.classList.contains('rocker-side-active'));
         set(sides[(cur + 1) % sides.length], true);
       }, every);
@@ -592,21 +592,20 @@
 
   /* =================== Live automation ===================
      Each widget runs itself on a timer, only while it is on screen and the
-     tab is visible, never for reduced-motion users, and pauses on hover.
+     tab is visible, never for reduced-motion users, and pauses briefly after a click.
      Automatic runs are silent; a visitor's own click gets a sound. */
   const stillMotion = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   function autoplay(el, ms, fn, opts) {
-    let visible = false, hovering = false;
+    let visible = false;
+    const paused = userPause(el);
     if ('IntersectionObserver' in window) {
       new IntersectionObserver(es => es.forEach(en => {
-        const was = visible; visible = en.isIntersecting;
+        const was = visible; visible = en.isIntersecting && en.intersectionRatio >= 0.15;
         if (visible && !was && opts && opts.onEnter) opts.onEnter();
-      }), { threshold: 0.35 }).observe(el);
+      }), { threshold: [0, 0.15] }).observe(el);
     } else visible = true;
-    el.addEventListener('mouseenter', () => { hovering = true; });
-    el.addEventListener('mouseleave', () => { hovering = false; });
     if (stillMotion) return;
-    setInterval(() => { if (visible && !hovering && !document.hidden) fn(); }, ms);
+    setInterval(() => { if (visible && !paused() && !document.hidden) fn(); }, ms);
   }
   const clock = () => new Date().toLocaleTimeString([], { hour12: false });
 
