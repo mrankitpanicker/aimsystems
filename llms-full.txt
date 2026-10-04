@@ -4,7 +4,7 @@
 ## Organization
 Name: AIM — AI Infrastructure & Machines
 Legal name: AI Infrastructure & Machines
-Also known as: AIM, AIM Studio, AIM Systems
+Also known as: AIM, AIM System, AIM Systems, AIM Studio
 Registration: Udyam-registered MSME (India)
 Location: Madhya Pradesh, India; clients in India, the UK and Europe
 Websites: https://aimsystem.in/ · https://aimstudio.co.in/
@@ -37,7 +37,14 @@ Python, FastAPI, Node.js, TypeScript, React, Next.js; PostgreSQL, Redis, Firesto
 - Healthcare Operations Platform: hospital workflows, patient operations and clinical administration — in development.
 - R&D: Shortz media pipeline, Apex Core deterministic automation, Free Tools.
 
-## Case studies
-- Apple Hospital (healthcare): multi-tenant communication platform for automated patient outreach; 15K+ calls processed, 6.8K+ answered, ~45% connected. Live in production.
-- BIMTS College (education): dedicated tenant for student communication, admissions outreach and WhatsApp automation. In production.
-- Café Ciel, London (hospitality): production digital experience delivered on a compressed timeline.
+## Selected engineering work
+- Healthcare — AI-Powered Patient Communication (Apple Hospital; production): multi-tenant communication platform for automated patient outreach across voice and WhatsApp, with campaign management, scheduling and outcome tracking. Engineering: campaign orchestration, queue-based workers, retry scheduling, per-tenant capacity controls, provider integrations, outcome tracking, automated reporting. Stack: APEX Connect, Python, Redis, PostgreSQL, telephony, STT, LLM, TTS, WhatsApp Business API. Campaign flow: List → Call → Retry → WhatsApp → Report. Outcome: 15K+ calls processed, 6.8K+ answered, ~45% connected/answered.
+- Education — Multi-Tenant Institutional Communication (BIMTS College; production): dedicated environment for voice outreach and WhatsApp automation with isolated tenant operations. Engineering: isolated tenant architecture, campaign automation, independent tenant configuration, billing separation, outreach tracking.
+- Hospitality — Digital Experience Engineering (Café Ciel at The OWO, London; delivered): complete digital experience covering implementation, iterative revisions, deployment and technical delivery on a compressed timeline. Delivery: Design → Implementation → Revisions → Deployment. Delivered on schedule. Testimonial (Vedika, Café Ciel): "Ankit independently delivered a production digital experience for Café Ciel at The OWO, London, within a highly compressed timeline… We would confidently recommend him for future technical engagements."
+
+## Workloads
+High-volume communication (campaign orchestration, queues, retries, capacity controls) · multi-tenant platforms (tenant isolation, independent configuration) · AI-powered systems (STT → LLM → TTS pipelines, provider integrations, orchestration) · digital experiences (rapid implementation, iterative development, production deployment) · institutional systems.
+Delivery process for an engagement: Understand → Architect → Build → Integrate → Deploy → Operate.
+
+## Contact
+Ankit Panicker, Client Partner & Technical Lead — ankit@aimsystem.in · https://aimsystem.in/contact

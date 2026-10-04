@@ -30,25 +30,42 @@ HEAD = """<!DOCTYPE html>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{title}</title>
   <meta name="description" content="{description}">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="author" content="AIM — AI Infrastructure &amp; Machines">
   <link rel="canonical" href="{url}">
+  <link rel="alternate" hreflang="en" href="{url}">
+  <link rel="alternate" hreflang="x-default" href="{url}">
+  <link rel="alternate" type="text/plain" title="LLM-readable summary" href="/llms.txt">
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="AIM — AI Infrastructure &amp; Machines">
+  <meta property="og:locale" content="en_IN">
   <meta property="og:title" content="{title}">
   <meta property="og:description" content="{description}">
   <meta property="og:url" content="{url}">
   <meta property="og:image" content="{site}/assets/img/og-aim.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="AIM — AI Infrastructure &amp; Machines: Your Engineering Team, On Demand">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{title}">
+  <meta name="twitter:description" content="{description}">
+  <meta name="twitter:image" content="{site}/assets/img/og-aim.png">
   <meta name="theme-color" content="#E6EEF8">
   <link rel="icon" href="/assets/img/aim-logo-32.png" sizes="32x32" type="image/png">
   <link rel="icon" href="/favicon.png" sizes="192x192" type="image/png">
   <link rel="apple-touch-icon" href="/assets/img/aim-logo-180.png">
+  <script type="application/ld+json">
+{schema}
+  </script>
 
   <script>
     try {{ if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; }} catch (e) {{}}
     (function () {{
+      document.documentElement.classList.add('js');
       var t = null;
       try {{ t = localStorage.getItem('aim-theme'); }} catch (e) {{}}
-      if (t === 'dark' || (!t && window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches)) {{
+      if (t === 'dark') {{
         document.documentElement.classList.add('dark');
       }}
     }})();
@@ -217,6 +234,104 @@ FOOTER = """
 """
 
 
+ORG_ID = SITE + '/#organization'
+PERSON_ID = SITE + '/#ankit-panicker'
+SERVICES = [
+    ('Product Engineering', 'SaaS, web applications, APIs, backend systems, internal platforms, enterprise applications and product modernization.'),
+    ('AI Engineering', 'LLM applications, AI agents, RAG, AI automation, voice AI, STT/TTS, AI orchestration and model integrations.'),
+    ('Platform Engineering', 'Cloud, Kubernetes, infrastructure-as-code, CI/CD, observability, distributed systems and reliability engineering.'),
+    ('Automation & Integrations', 'API and CRM integrations, WhatsApp, telephony, workflow and business process automation, and data pipelines.'),
+]
+# Page type and breadcrumb label per page; anything else is a plain WebPage.
+PAGE_TYPES = {'about': 'AboutPage', 'contact': 'ContactPage', 'work': 'CollectionPage', 'privacy': 'WebPage'}
+CRUMBS = {'services': 'Services', 'hire': 'Hire', 'products': 'Platforms', 'work': 'Work',
+          'engineering': 'Engineering', 'about': 'About', 'contact': 'Contact', 'privacy': 'Privacy & Compliance'}
+
+ORG = {
+    '@type': ['Organization', 'ProfessionalService'],
+    '@id': ORG_ID,
+    'name': 'AIM — AI Infrastructure & Machines',
+    'legalName': 'AI Infrastructure & Machines',
+    'alternateName': ['AIM', 'AIM System', 'AIM Systems', 'AIM Studio'],
+    'slogan': 'Your Engineering Team, On Demand',
+    'description': 'Technology engineering agency. From one senior engineer to a complete product team, AIM designs, builds, deploys and operates production-grade software, AI systems, automation and cloud infrastructure. Udyam-registered MSME.',
+    'url': SITE + '/',
+    'logo': {'@type': 'ImageObject', 'url': SITE + '/favicon.png', 'width': 192, 'height': 192},
+    'image': SITE + '/assets/img/og-aim.png',
+    'email': 'ankit@aimsystem.in',
+    'address': {'@type': 'PostalAddress', 'addressRegion': 'Madhya Pradesh', 'addressCountry': 'IN'},
+    'areaServed': [{'@type': 'Country', 'name': 'India'}, {'@type': 'Country', 'name': 'United Kingdom'}, {'@type': 'Place', 'name': 'Europe'}],
+    'knowsAbout': ['Software engineering', 'SaaS development', 'AI engineering', 'LLM applications', 'AI agents', 'Retrieval-augmented generation',
+                   'Voice AI', 'Cloud infrastructure', 'Kubernetes', 'DevOps', 'Workflow automation', 'WhatsApp Business API', 'Telephony'],
+    'sameAs': ['https://aimstudio.co.in/', 'https://github.com/mrankitpanicker'],
+    'employee': {'@id': PERSON_ID},
+    'contactPoint': {'@type': 'ContactPoint', 'contactType': 'sales', 'email': 'ankit@aimsystem.in',
+                     'url': SITE + '/contact', 'availableLanguage': ['English']},
+    'hasOfferCatalog': {'@type': 'OfferCatalog', 'name': 'Engineering services', 'itemListElement': [
+        {'@type': 'Offer', 'itemOffered': {'@type': 'Service', 'name': n, 'description': d}} for n, d in SERVICES]},
+}
+PERSON = {
+    '@type': 'Person', '@id': PERSON_ID, 'name': 'Ankit Panicker',
+    'jobTitle': 'Client Partner & Technical Lead', 'worksFor': {'@id': ORG_ID},
+    'url': SITE + '/about', 'sameAs': ['https://github.com/mrankitpanicker'],
+}
+WEBSITE = {
+    '@type': 'WebSite', '@id': SITE + '/#website', 'url': SITE + '/', 'name': 'AIM — AI Infrastructure & Machines',
+    'alternateName': 'AIM System', 'publisher': {'@id': ORG_ID}, 'inLanguage': 'en',
+}
+
+
+def faq_items(body):
+    """Question/answer pairs from the page's accordion cards, so FAQ schema never drifts from the copy."""
+    pairs = re.findall(r'accordion-card.*?<h3[^>]*>(.*?)</h3>.*?accordion-body[^>]*>(.*?)</div>', body, re.S)
+    clean = lambda s: html.unescape(re.sub(r'<[^>]+>', '', s)).strip()
+    return [{'@type': 'Question', 'name': clean(q), 'acceptedAnswer': {'@type': 'Answer', 'text': clean(a)}} for q, a in pairs]
+
+
+def schema_for(name, path, meta, body):
+    url = SITE + path
+    page = {
+        '@type': PAGE_TYPES.get(name, 'WebPage'), '@id': url + '#webpage', 'url': url,
+        'name': meta['title'], 'description': meta['description'], 'inLanguage': 'en',
+        'isPartOf': {'@id': SITE + '/#website'}, 'about': {'@id': ORG_ID},
+        'primaryImageOfPage': {'@type': 'ImageObject', 'url': SITE + '/assets/img/og-aim.png'},
+    }
+    graph = [ORG, WEBSITE, page]
+    if name in CRUMBS:
+        page['breadcrumb'] = {'@id': url + '#breadcrumb'}
+        graph.append({'@type': 'BreadcrumbList', '@id': url + '#breadcrumb', 'itemListElement': [
+            {'@type': 'ListItem', 'position': 1, 'name': 'Home', 'item': SITE + '/'},
+            {'@type': 'ListItem', 'position': 2, 'name': CRUMBS[name], 'item': url}]})
+    if name in ('index', 'about', 'contact'):
+        graph.append(PERSON)
+    if name == 'services':
+        graph += [{'@type': 'Service', '@id': f'{url}#{n.lower().split()[0]}', 'name': n, 'description': d,
+                   'serviceType': n, 'provider': {'@id': ORG_ID}, 'areaServed': ORG['areaServed']} for n, d in SERVICES]
+    if name == 'products':
+        graph += [
+            {'@type': 'SoftwareApplication', 'name': 'APEX Connect', 'url': 'https://aimstudio.co.in/app',
+             'applicationCategory': 'BusinessApplication', 'operatingSystem': 'Web',
+             'description': 'AI-powered customer engagement infrastructure: a multi-tenant platform for voice, messaging and AI workflows, with queues, retries, spend controls and observability. Usage-based pricing.',
+             'publisher': {'@id': ORG_ID}},
+            {'@type': 'SoftwareApplication', 'name': 'AIM Remote AI', 'url': 'https://aimstudio.co.in/remoteai',
+             'applicationCategory': 'UtilitiesApplication', 'operatingSystem': 'Windows, Android, ChromeOS',
+             'description': 'An AI operating layer that connects phone, desktop and voice to your machine, with local or cloud models.',
+             'publisher': {'@id': ORG_ID}},
+        ]
+    if name == 'work':
+        page['mainEntity'] = {'@type': 'ItemList', 'itemListElement': [
+            {'@type': 'ListItem', 'position': i + 1, 'item': {'@type': 'CreativeWork', 'name': n, 'about': a, 'description': d, 'creator': {'@id': ORG_ID}}}
+            for i, (n, a, d) in enumerate([
+                ('AI-Powered Patient Communication', 'Healthcare', 'Multi-tenant communication platform for automated patient outreach across voice and WhatsApp for Apple Hospital: 15K+ calls processed, 6.8K+ answered, ~45% connected/answered.'),
+                ('Multi-Tenant Institutional Communication', 'Education', 'Dedicated communication environment for BIMTS College with voice outreach, WhatsApp automation and isolated tenant operations.'),
+                ('Digital Experience Engineering', 'Hospitality', 'Complete digital experience for Café Ciel at The OWO, London, delivered on schedule on a compressed timeline.'),
+            ])]}
+    faq = faq_items(body)
+    if faq:
+        graph.append({'@type': 'FAQPage', '@id': url + '#faq', 'mainEntity': faq})
+    return json.dumps({'@context': 'https://schema.org', '@graph': graph}, ensure_ascii=False, indent=2).replace('</', '<\\/')
+
+
 def nav_html(active):
     links, mobile = [], []
     for key, href, label in NAV:
@@ -259,7 +374,8 @@ def build():
         links, mobile = nav_html(meta.get('nav', name))
         page = (
             HEAD.format(title=html.escape(meta['title']), description=html.escape(meta['description']),
-                        url=SITE + path, site=SITE, extra_head=meta.get('head', ''))
+                        url=SITE + path, site=SITE, extra_head=meta.get('head', ''),
+                        schema=schema_for(name, path, meta, body))
             + HEADER.format(nav_links=links, mobile_links=mobile)
             + body.rstrip() + '\n'
             + FOOTER.format(extra_foot=meta.get('foot', ''))
