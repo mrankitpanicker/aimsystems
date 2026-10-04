@@ -118,7 +118,8 @@ FOOTER = """
             <div class="text-[11px] text-[var(--text-muted)]">AI Infrastructure &amp; Machines</div>
           </div>
         </div>
-        <p class="text-xs text-[var(--text-muted)] leading-relaxed">Infrastructure behind real-world software: voice AI, automation, queues, workers, offline-first systems and the failure paths in between. Built in Burhanpur, Madhya Pradesh.</p>
+        <p class="text-xs text-[var(--text-muted)] leading-relaxed">Infrastructure behind real-world software: voice AI, automation, queues, workers, offline-first systems and the failure paths in between. Built in Madhya Pradesh, India.</p>
+        <p class="inline-flex items-center gap-2 tactile-inset-sm rounded-full px-3 py-1.5 text-[10px] font-mono font-bold"><span class="status-dot bg-emerald-500"></span>Udyam registered (MSME, Govt. of India)</p>
         <p class="text-xs font-mono font-bold text-[#163387] dark:text-[#A78BFA]">Build for the failure path first.</p>
       </div>
       <div class="md:col-span-2 space-y-2.5 text-xs">
@@ -143,11 +144,11 @@ FOOTER = """
         <a class="block font-bold hover:text-[#7952EC]" href="mailto:ankit@aimsystem.in">ankit@aimsystem.in</a>
         <a class="block hover:text-[#7952EC]" href="https://aimstudio.co.in/" target="_blank" rel="noopener">aimstudio.co.in ↗</a>
         <a class="block hover:text-[#7952EC]" href="https://aimstudio.co.in/developer-docs" target="_blank" rel="noopener">Developer docs ↗</a>
-        <p class="text-[var(--text-muted)]">Burhanpur, MP, India · IST (UTC+5:30)<br>UK/EU morning overlap</p>
+        <p class="text-[var(--text-muted)]">Madhya Pradesh, India · IST (UTC+5:30)<br>UK/EU morning overlap · Udyam registered</p>
       </div>
     </div>
     <div class="text-center text-[11px] font-mono text-[var(--text-muted)] py-6 space-y-1">
-      <div>© <span data-year>2026</span> AIM — AI Infrastructure &amp; Machines · Ankit Panicker, CTO</div>
+      <div>© <span data-year>2026</span> AIM — AI Infrastructure &amp; Machines · Udyam registered · Ankit Panicker, CTO</div>
       <div class="opacity-70">aimsystem.in · aimstudio.co.in · aimmarketing.in</div>
     </div>
   </footer>

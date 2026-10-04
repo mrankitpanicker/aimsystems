@@ -622,3 +622,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .cycle-card .cycle-tick { width: 0; height: 3px; border-radius: 9999px; background: var(--deploy-gradient); }
 .cycle-card.is-active .cycle-tick { animation: aimTick var(--cycle-ms, 3600ms) linear forwards; }
 @keyframes aimTick { to { width: 100%; } }
+/* cycling inside a pressed-in group: the active card lifts out instead */
+.card-sunk.cycle-card.is-active { box-shadow: var(--neu-raised) !important; transform: translate3d(0, -4px, 0); }
+.card-sunk.cycle-card.is-active img { transform: translate3d(0, -3px, 0) scale(1.03); }

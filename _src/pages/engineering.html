@@ -27,7 +27,7 @@
         <p class="text-xs sm:text-sm text-[var(--text-muted)] mt-1">The same patterns show up in every project we build.</p>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        <article class="tactile-raised rounded-3xl p-5 space-y-3">
+        <article class="card-sunk rounded-3xl p-5 space-y-3" tabindex="0">
           <span class="ico-well w-12 h-12"><img src="/assets/img/ico-db-cloud.webp" alt=""></span>
           <h3 class="text-sm font-extrabold font-display">Local-first where it makes sense</h3>
           <p class="text-xs text-[var(--text-muted)] leading-relaxed">Keep critical workflows close to where they run when that improves latency, privacy, resilience or cost. Use the cloud where it adds leverage, and keep control locally where it adds resilience.</p>
@@ -37,22 +37,22 @@
           <h3 class="text-sm font-extrabold font-display">Zero-trust boundaries</h3>
           <p class="text-xs text-[var(--text-muted)] leading-relaxed">Components shouldn't trust each other just because they share an application or a network. Tenant scope is part of every key, query and cache entry.</p>
         </article>
-        <article class="tactile-raised rounded-3xl p-5 space-y-3">
+        <article class="card-sunk rounded-3xl p-5 space-y-3" tabindex="0">
           <span class="ico-well w-12 h-12"><img src="/assets/img/ico-refresh.webp" alt=""></span>
           <h3 class="text-sm font-extrabold font-display">Asynchronous execution</h3>
           <p class="text-xs text-[var(--text-muted)] leading-relaxed">Long-running and failure-prone work moves into controlled worker pipelines instead of blocking the request path.</p>
         </article>
-        <article class="tactile-raised rounded-3xl p-5 space-y-3">
+        <article class="card-sunk rounded-3xl p-5 space-y-3" tabindex="0">
           <span class="ico-well w-12 h-12"><img src="/assets/img/ico-server.webp" alt=""></span>
           <h3 class="text-sm font-extrabold font-display">Redis as a systems primitive</h3>
           <p class="text-xs text-[var(--text-muted)] leading-relaxed">Redis does much more than caching: queues, pub/sub, rate limiting, distributed coordination, circuit-breaker synchronisation, state, and memory/vector infrastructure.</p>
         </article>
-        <article class="tactile-raised rounded-3xl p-5 space-y-3">
+        <article class="card-sunk rounded-3xl p-5 space-y-3" tabindex="0">
           <span class="ico-well w-12 h-12"><img src="/assets/img/ico-checklist.webp" alt=""></span>
           <h3 class="text-sm font-extrabold font-display">Idempotency</h3>
           <p class="text-xs text-[var(--text-muted)] leading-relaxed">At-least-once delivery is the realistic guarantee, so running the same job twice has to be safe. A retried webhook rehydrates the existing session, and re-uploading a call list never double-dials.</p>
         </article>
-        <article class="tactile-raised rounded-3xl p-5 space-y-3">
+        <article class="card-sunk rounded-3xl p-5 space-y-3" tabindex="0">
           <span class="ico-well w-12 h-12"><img src="/assets/img/ico-filter.webp" alt=""></span>
           <h3 class="text-sm font-extrabold font-display">Backpressure</h3>
           <p class="text-xs text-[var(--text-muted)] leading-relaxed">A system should know when it's overloaded. A reliable system doesn't accept unlimited work until it collapses; it queues within limits and then refuses work cleanly.</p>
@@ -62,7 +62,7 @@
           <h3 class="text-sm font-extrabold font-display">Graceful degradation</h3>
           <p class="text-xs text-[var(--text-muted)] leading-relaxed">When a dependency fails, the whole system shouldn't fail with it. We rely on fallbacks, retries, bounded concurrency and controlled degradation.</p>
         </article>
-        <article class="tactile-raised rounded-3xl p-5 space-y-3">
+        <article class="card-sunk rounded-3xl p-5 space-y-3" tabindex="0">
           <span class="ico-well w-12 h-12"><img src="/assets/img/ico-search.webp" alt=""></span>
           <h3 class="text-sm font-extrabold font-display">Observability</h3>
           <p class="text-xs text-[var(--text-muted)] leading-relaxed">Logs alone aren't enough. We combine metrics, structured logs, traces and operational state, because debugging a distributed system means reconstructing what actually happened.</p>
@@ -234,7 +234,7 @@
             </div>
             <div class="w-full tactile-raised p-3 rounded-xl font-mono text-center space-y-1" aria-live="polite">
               <span id="padLog" class="block text-xs font-black text-[#163387] dark:text-[#6380CE]">Press a key</span>
-              <span id="padDetail" class="block text-[11px] text-[var(--text-muted)]">Nine areas, one owner</span>
+              <span id="padDetail" class="block text-[11px] text-[var(--text-muted)]">Nine areas, covered end to end</span>
             </div>
           </div>
         </div>

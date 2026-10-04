@@ -8,7 +8,9 @@ Also known as: AIM, AIM Studio, AIM Marketing, AI Infrastructure and Machines
 Primary site: https://aimstudio.co.in/
 Alternate site: https://aimmarketing.in/
 Products: APEX CONNECT — multi-tenant AI voice and WhatsApp SaaS; AIM — free AI operating layer for your machines (https://aimstudio.co.in/remoteai)
-Chief Technology Officer & AI Systems Engineer: Ankit Panicker (also founder)
+Chief Technology Officer & AI Systems Engineer: Ankit Panicker
+Registration: Udyam registered (MSME, Government of India)
+Location: Madhya Pradesh, India
 Free tools: https://aimstudio.co.in/freetools/ — browser-based PDF, image, audio and video utilities; files are processed locally and never uploaded.
 
 ## Domain Index
@@ -50,14 +52,14 @@ AIM gives your AI a machine — and gives you the controls. It runs on your Wind
 * **CI/CD**: Automated build, test and rolling deploy on every release.
 
 ## B2B Engagement Scope
-Remote B2B contracting through a UK Ltd company, fully outside IR35.
+Remote B2B contracting directly with AIM (Udyam registered, India), outside IR35. Hire one dedicated engineer or a team sized to the scope.
 * **AI Platform Build**: 4–12 weeks.
 * **Architecture Review & Rescue**: 1–2 weeks.
 * **Production Incident Response**: Days to 2 weeks.
 * **Fractional Platform Engineering**: 3–6 month retainer.
 
 ## Chief Technology Officer: Ankit Panicker
-AI Systems Engineer · Software Architect · CTO. Based in Burhanpur, Madhya Pradesh, India. Works across the full software lifecycle — architecture, backend, frontend, APIs, AI orchestration, voice AI, automation, distributed workers, queues, databases, cloud infrastructure, containers, CI/CD, observability, reliability, security boundaries, deployment and operations.
+AI Systems Engineer · Software Architect · CTO. Based in Madhya Pradesh, India. Works across the full software lifecycle — architecture, backend, frontend, APIs, AI orchestration, voice AI, automation, distributed workers, queues, databases, cloud infrastructure, containers, CI/CD, observability, reliability, security boundaries, deployment and operations.
 Guiding principle: design for the failure path first and the happy path second.
 Education: MBA (Finance), Sinhgad Business School; B.Com, Seva Sadan Mahavidyalaya. Earlier automation and process engineering work associated with Navalsingh Sahakari Shakkar Karkhana Maryadit. Certifications: IBM Cloud Essentials, Google Cloud Digital Leader, Cisco Networking Academy foundational credentials.
 Ventures: AIM — AI Infrastructure & Machines; Individuate System Solutions; Individuate Systems Architecture.

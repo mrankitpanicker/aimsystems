@@ -1,6 +1,6 @@
 # AIM — AI Infrastructure & Machines
-# https://aimsystem.in · Ankit Panicker, Chief Technology Officer &
-# AI Systems Engineer. Machine-readable profiles are listed below.
+# https://aimsystem.in · Udyam registered (MSME, Government of India) · Madhya Pradesh, India
+# CTO & AI Systems Engineer: Ankit Panicker. Machine-readable profiles are listed below.
 
 User-agent: *
 Allow: /
