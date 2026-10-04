@@ -76,7 +76,7 @@ HEADER = """
             <span class="bt-opt text-[15px] sm:text-[19px] font-black font-display tracking-tight">AIM</span>
             <span class="bt-opt is-on text-[15px] sm:text-[19px] font-black font-display tracking-tight uppercase">System</span>
           </span>
-          <span class="block px-1.5 text-[9px] sm:text-[10.5px] text-[var(--text-muted)] font-semibold tracking-[0.01em] whitespace-nowrap truncate max-w-full">AI Infrastructure &amp; Machines</span>
+          <span class="block px-1.5 text-[9px] sm:text-[10.5px] text-[var(--text-main)] font-bold tracking-[0.01em] whitespace-nowrap truncate max-w-full">AI Infrastructure &amp; Machines</span>
         </span>
       </a>
 
