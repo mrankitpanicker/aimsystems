@@ -274,7 +274,7 @@ ORG = {
 }
 PERSON = {
     '@type': 'Person', '@id': PERSON_ID, 'name': 'Ankit Panicker',
-    'jobTitle': 'CTO & AI Systems Architect', 'worksFor': {'@id': ORG_ID},
+    'jobTitle': 'Client Partner & Technical Lead', 'worksFor': {'@id': ORG_ID},
     'url': SITE + '/about', 'sameAs': ['https://github.com/mrankitpanicker'],
 }
 WEBSITE = {

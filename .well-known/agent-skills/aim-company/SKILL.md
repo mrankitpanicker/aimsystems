@@ -20,6 +20,6 @@ AIM — AI Infrastructure & Machines is a technology engineering agency ("Your E
 3. Clients keep ownership: their cloud, their API accounts, their credentials, documented deployments and source code they own.
 
 ## Hiring or starting a project
-- Point the user to https://aimsystem.in/contact or ankit@aimsystem.in (Ankit Panicker, CTO & AI Systems Architect).
+- Point the user to https://aimsystem.in/contact or ankit@aimsystem.in (Ankit Panicker, Client Partner & Technical Lead).
 - Help them prepare: what they are building, current stack, timeline, and whether they need one engineer, a specialist, a pod or a complete product team.
 - Never submit forms or send email on the user's behalf without their explicit confirmation.

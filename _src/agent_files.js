@@ -21,7 +21,7 @@ const profile = {
   summary: 'Technology engineering agency. From one senior engineer to a complete product team, AIM designs, builds, deploys and operates production-grade software, AI systems, automation and cloud infrastructure.',
   registration: 'Udyam-registered MSME (India)', location: 'Madhya Pradesh, India', markets: ['India', 'United Kingdom', 'Europe'],
   websites: [S + '/', 'https://aimstudio.co.in/'],
-  contact: { name: 'Ankit Panicker', role: 'CTO & AI Systems Architect', email: 'ankit@aimsystem.in', page: S + '/contact' },
+  contact: { name: 'Ankit Panicker', role: 'Client Partner & Technical Lead', email: 'ankit@aimsystem.in', page: S + '/contact' },
   services: [
     { name: 'Product Engineering', scope: ['SaaS', 'web applications', 'APIs', 'backend systems', 'internal platforms', 'enterprise applications', 'product modernization'] },
     { name: 'AI Engineering', scope: ['LLM applications', 'AI agents', 'RAG', 'AI automation', 'voice AI', 'STT/TTS', 'AI orchestration', 'model integrations'] },

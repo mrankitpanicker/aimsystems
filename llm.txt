@@ -1,5 +1,5 @@
 # AIM — AI Infrastructure & Machines
-> AIM is a technology engineering agency: "Your Engineering Team, On Demand." From one senior engineer to a complete product team, AIM designs, builds, deploys and operates production-grade software, AI systems, automation and cloud infrastructure. One team owns it, architecture to on-call: no handoffs between vendors, no orphaned code, and every build ships with monitoring, CI/CD and a runbook. AIM runs its own production platform (APEX Connect). Udyam-registered MSME based in Madhya Pradesh, India; contracts with UK, US and EU companies. CTO & AI Systems Architect: Ankit Panicker.
+> AIM is a technology engineering agency: "Your Engineering Team, On Demand." From one senior engineer to a complete product team, AIM designs, builds, deploys and operates production-grade software, AI systems, automation and cloud infrastructure. One team owns it, architecture to on-call: no handoffs between vendors, no orphaned code, and every build ships with monitoring, CI/CD and a runbook. AIM runs its own production platform (APEX Connect). Udyam-registered MSME based in Madhya Pradesh, India; contracts with UK, US and EU companies. Client Partner & Technical Lead: Ankit Panicker.
 
 ## Pages on aimsystem.in
 - [Home](https://aimsystem.in/): Positioning, services, engineering capacity, production experience, how we work.
@@ -40,5 +40,5 @@ Pricing: dedicated engineer and pods are custom engagements; product development
 - Healthcare Operations Platform — in development.
 
 ## Contact
-- Ankit Panicker, CTO & AI Systems Architect — ankit@aimsystem.in
+- Ankit Panicker, Client Partner & Technical Lead — ankit@aimsystem.in
 - Madhya Pradesh, India · clients in India, the UK and Europe
