@@ -98,11 +98,32 @@ out('.well-known/agent-skills/index.json', {
   }],
 });
 
+// MCP Server Card for the read-only Worker in mcp-worker/ (routed at /api/mcp).
+const MCP_URL = S + '/api/mcp';
+const MCP_TOOLS = ['get_company_profile', 'list_services', 'list_engagement_models', 'list_platforms', 'get_case_studies', 'get_contact'];
+out('.well-known/mcp/server-card.json', {
+  version: '1.0',
+  protocolVersion: '2025-06-18',
+  serverInfo: { name: 'aim-mcp', title: 'AIM — AI Infrastructure & Machines', version: '1.0.0' },
+  description: 'Read-only public information about AIM: services, engagement models, platforms, case studies and contact.',
+  documentationUrl: S + '/llms-full.txt',
+  transport: { type: 'streamable-http', endpoint: '/api/mcp' },
+  transports: [{ type: 'streamable-http', url: MCP_URL }],
+  remotes: [{ type: 'streamable-http', url: MCP_URL }],
+  capabilities: { tools: { listChanged: false } },
+  authentication: { required: false },
+  tools: MCP_TOOLS,
+});
+
 const urn = n => `urn:air:aimsystem.in:${n}`;
 out('.well-known/ai-catalog.json', {
   specVersion: '1.0',
   host: { name: 'AIM — AI Infrastructure & Machines', url: S + '/', contact: 'ankit@aimsystem.in' },
   entries: [
+    { identifier: urn('server:aim-mcp'), displayName: 'AIM MCP server', type: 'application/mcp-server-card+json', url: S + '/.well-known/mcp/server-card.json',
+      description: 'Read-only MCP server (Streamable HTTP, no auth) at ' + MCP_URL + '.',
+      capabilities: MCP_TOOLS,
+      representativeQueries: ['what case studies does AIM have in healthcare', 'list AIM engineering services', 'how do I hire a dedicated engineer from AIM'] },
     { identifier: urn('api:profile'), displayName: 'AIM public profile API', type: 'application/openapi+json', url: S + '/data/openapi.json',
       description: 'Read-only JSON profile of AIM: services, engagement models, platforms, selected work and contact.',
       capabilities: ['getProfile'],

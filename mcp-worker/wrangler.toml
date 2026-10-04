@@ -1,0 +1,14 @@
+name = "aim-mcp"
+main = "src/index.js"
+compatibility_date = "2026-01-15"
+account_id = "bd76b817f16b79a8b3b0425a67591c1e"
+
+# Read-only MCP server for agents. Separate from the CV upload Worker (worker/)
+# so neither can break the other. Only this path is routed here; everything else
+# on the domain is still served by Firebase Hosting.
+routes = [
+  { pattern = "aimsystem.in/api/mcp", zone_name = "aimsystem.in" }
+]
+
+[observability]
+enabled = true

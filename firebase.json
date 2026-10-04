@@ -13,7 +13,8 @@
       "firestore.rules",
       "storage.rules",
       "worker/**",
-      "_src/**"
+      "_src/**",
+      "mcp-worker/**"
     ],
     "cleanUrls": true,
     "headers": [

@@ -10,6 +10,7 @@ AIM — AI Infrastructure & Machines is a technology engineering agency ("Your E
 ## Sources (fetch, do not guess)
 - Structured profile (JSON): https://aimsystem.in/data/profile.json — services, engagement models, platforms, selected work, contact.
 - API description (OpenAPI): https://aimsystem.in/data/openapi.json
+- MCP server (read-only, no auth): https://aimsystem.in/api/mcp — tools get_company_profile, list_services, list_engagement_models, list_platforms, get_case_studies, get_contact.
 - Full text profile: https://aimsystem.in/llms-full.txt
 - Pages: /services, /hire, /products, /work, /engineering, /about, /contact
 

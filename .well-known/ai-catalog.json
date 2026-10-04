@@ -7,6 +7,26 @@
   },
   "entries": [
     {
+      "identifier": "urn:air:aimsystem.in:server:aim-mcp",
+      "displayName": "AIM MCP server",
+      "type": "application/mcp-server-card+json",
+      "url": "https://aimsystem.in/.well-known/mcp/server-card.json",
+      "description": "Read-only MCP server (Streamable HTTP, no auth) at https://aimsystem.in/api/mcp.",
+      "capabilities": [
+        "get_company_profile",
+        "list_services",
+        "list_engagement_models",
+        "list_platforms",
+        "get_case_studies",
+        "get_contact"
+      ],
+      "representativeQueries": [
+        "what case studies does AIM have in healthcare",
+        "list AIM engineering services",
+        "how do I hire a dedicated engineer from AIM"
+      ]
+    },
+    {
       "identifier": "urn:air:aimsystem.in:api:profile",
       "displayName": "AIM public profile API",
       "type": "application/openapi+json",

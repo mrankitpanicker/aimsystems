@@ -1,0 +1,43 @@
+{
+  "version": "1.0",
+  "protocolVersion": "2025-06-18",
+  "serverInfo": {
+    "name": "aim-mcp",
+    "title": "AIM — AI Infrastructure & Machines",
+    "version": "1.0.0"
+  },
+  "description": "Read-only public information about AIM: services, engagement models, platforms, case studies and contact.",
+  "documentationUrl": "https://aimsystem.in/llms-full.txt",
+  "transport": {
+    "type": "streamable-http",
+    "endpoint": "/api/mcp"
+  },
+  "transports": [
+    {
+      "type": "streamable-http",
+      "url": "https://aimsystem.in/api/mcp"
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://aimsystem.in/api/mcp"
+    }
+  ],
+  "capabilities": {
+    "tools": {
+      "listChanged": false
+    }
+  },
+  "authentication": {
+    "required": false
+  },
+  "tools": [
+    "get_company_profile",
+    "list_services",
+    "list_engagement_models",
+    "list_platforms",
+    "get_case_studies",
+    "get_contact"
+  ]
+}

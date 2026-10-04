@@ -18,6 +18,7 @@
 - [Profile API (JSON)](https://aimsystem.in/data/profile.json): read-only, no auth; described by [OpenAPI](https://aimsystem.in/data/openapi.json) and listed in the [API catalog](https://aimsystem.in/.well-known/api-catalog).
 - [Agent skill: aim-company](https://aimsystem.in/.well-known/agent-skills/aim-company/SKILL.md), indexed at https://aimsystem.in/.well-known/agent-skills/index.json.
 - [ARD catalog](https://aimsystem.in/.well-known/ai-catalog.json).
+- MCP server (read-only, Streamable HTTP, no auth): https://aimsystem.in/api/mcp — [server card](https://aimsystem.in/.well-known/mcp/server-card.json).
 - In-browser agents: WebMCP tools get_aim_profile, get_aim_contact, open_aim_page.
 
 
