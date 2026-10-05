@@ -1,5 +1,5 @@
 # AIM — AI Infrastructure & Machines
-> AIM is a production systems engineering company. We take technically difficult products from architecture to production — and stay accountable after launch. Software · AI · Cloud · Automation · Reliability. Delivered by one senior engineer, a specialist or a complete team, depending on the system. AIM runs its own production platform (APEX Connect). Senior-led; Udyam-registered MSME based in Madhya Pradesh, India; clients in India, the UK and Europe. Client Partner & Technical Lead: Ankit Panicker.
+> AIM is a production systems engineering company. We take technically difficult products from architecture to production — and stay accountable after launch. Software · AI · Cloud · Automation · Reliability. Delivered by one senior engineer, a specialist or a complete team, depending on the system. AIM runs its own production platform (APEX Connect). Senior-led; Udyam-registered MSME based in Madhya Pradesh, India; clients in India, the UK, the US and Europe. Client Partner & Technical Lead: Ankit Panicker.
 
 ## Pages on aimsystem.in
 - [Home](https://aimsystem.in/): Positioning, production results, what we do, APEX Connect architecture, case studies, engagements, how we work, architecture review.
@@ -40,4 +40,4 @@ APEX Connect for Apple Hospital (healthcare): 15K+ production calls processed, 6
 
 ## Contact
 - Ankit Panicker, Client Partner & Technical Lead — ankit@aimsystem.in
-- Madhya Pradesh, India · clients in India, the UK and Europe
+- Madhya Pradesh, India · clients in India, the UK, the US and Europe

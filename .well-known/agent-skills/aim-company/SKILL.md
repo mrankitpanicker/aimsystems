@@ -5,7 +5,7 @@ description: Answer questions about AIM (AI Infrastructure & Machines, aimsystem
 
 # AIM company skill
 
-AIM — AI Infrastructure & Machines is a production systems engineering company: it takes technically difficult products from architecture to production and stays accountable after launch (software, AI, cloud, automation, reliability). It runs its own production platform, APEX Connect. Udyam-registered MSME in Madhya Pradesh, India, working with clients in India, the UK and Europe.
+AIM — AI Infrastructure & Machines is a production systems engineering company: it takes technically difficult products from architecture to production and stays accountable after launch (software, AI, cloud, automation, reliability). It runs its own production platform, APEX Connect. Udyam-registered MSME in Madhya Pradesh, India, working with clients in India, the UK, the US and Europe.
 
 ## Sources (fetch, do not guess)
 - Structured profile (JSON): https://aimsystem.in/data/profile.json — services, engagements, team shapes, platforms, selected work, contact.

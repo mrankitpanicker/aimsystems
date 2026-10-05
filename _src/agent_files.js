@@ -19,7 +19,7 @@ const profile = {
   alternateNames: ['AIM', 'AIM System', 'AIM Systems', 'AIM Studio'],
   tagline: 'Production systems. From architecture to operations.',
   summary: 'AIM is a production systems engineering company. We take technically difficult products from architecture to production, and stay accountable after launch. Software · AI · Cloud · Automation · Reliability. Delivered by one senior engineer, a specialist or a complete team, depending on the system.',
-  registration: 'Udyam-registered MSME (India)', location: 'Madhya Pradesh, India', markets: ['India', 'United Kingdom', 'Europe'],
+  registration: 'Udyam-registered MSME (India)', location: 'Madhya Pradesh, India', markets: ['India', 'United Kingdom', 'United States', 'Europe'],
   websites: [S + '/', 'https://aimstudio.co.in/'],
   contact: { name: 'Ankit Panicker', role: 'Client Partner & Technical Lead', email: 'ankit@aimsystem.in', page: S + '/contact' },
   services: [

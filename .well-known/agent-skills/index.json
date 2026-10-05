@@ -6,7 +6,7 @@
       "type": "skill-md",
       "description": "Answer questions about AIM (aimsystem.in), a production systems engineering company: services, engagements, platforms, case studies, and how to discuss a technical problem or request an architecture review.",
       "url": "/.well-known/agent-skills/aim-company/SKILL.md",
-      "digest": "sha256:132a4ad22ea53a45d20e57d3d6489c9ebb9be76ae582909aeb39e43f7cfeb31c"
+      "digest": "sha256:e969d7f83cc5f80b286260f8f2d8099920def5d8d11b2e42173ae3d695199bab"
     }
   ]
 }

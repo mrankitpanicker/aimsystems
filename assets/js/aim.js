@@ -822,7 +822,7 @@
       { k: ['ankit', 'contact person', 'who', 'lead', 'talk'],
         a: () => `Ankit Panicker is our Client Partner & Technical Lead. He works with clients on requirements, technical direction and delivery. ${L('contact', 'Talk to Ankit')}.` },
       { k: ['where', 'location', 'based', 'india', 'timezone', 'uk', 'europe', 'msme', 'udyam', 'company'],
-        a: () => `AIM is a Udyam-registered MSME based in Madhya Pradesh, India, working with clients in India, the UK and Europe. ${L('about', 'About the agency', 'company')}.` },
+        a: () => `AIM is a Udyam-registered MSME based in Madhya Pradesh, India, working with clients in India, the UK, the US and Europe. ${L('about', 'About the agency', 'company')}.` },
       { k: ['contact', 'email', 'mail', 'reach', 'phone', 'number', 'meeting', 'call you', 'start'],
         a: () => `The quickest route is to ${L('contact', 'send a project brief')}. You can also <button type="button" class="aimbot-link" data-bot-copy="email">copy our business email</button>.` },
       { k: ['job', 'career', 'join', 'vacancy', 'opening'],

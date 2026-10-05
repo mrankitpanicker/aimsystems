@@ -191,7 +191,7 @@ FOOTER = """
           <button type="button" data-contact="email" class="tactile-convex-pill px-3.5 py-1.5 text-[11px] inline-flex items-center gap-1.5"><i data-lucide="mail" class="w-3.5 h-3.5"></i>Business email</button>
           <button type="button" data-contact="phone" hidden class="tactile-convex-pill px-3.5 py-1.5 text-[11px] inline-flex items-center gap-1.5"><i data-lucide="phone" class="w-3.5 h-3.5"></i>Phone</button>
         </div>
-        <p class="text-[var(--text-muted)]">Madhya Pradesh, India<br>Working with clients in India, the UK and Europe</p>
+        <p class="text-[var(--text-muted)]">Madhya Pradesh, India<br>Working with clients in India, the UK, the US and Europe</p>
         <div class="flex gap-3">
           <a class="hover:text-[#6438D9] inline-flex items-center gap-1.5" href="https://github.com/mrankitpanicker" target="_blank" rel="noopener"><i data-lucide="github" class="w-4 h-4"></i>GitHub</a>
           <a data-social="linkedin" hidden class="hover:text-[#6438D9] inline-flex items-center gap-1.5" href="#" target="_blank" rel="noopener"><i data-lucide="linkedin" class="w-4 h-4"></i>LinkedIn</a>
@@ -281,7 +281,7 @@ ORG = {
     'image': SITE + '/assets/img/og-aim.png',
     'email': 'ankit@aimsystem.in',
     'address': {'@type': 'PostalAddress', 'addressRegion': 'Madhya Pradesh', 'addressCountry': 'IN'},
-    'areaServed': [{'@type': 'Country', 'name': 'India'}, {'@type': 'Country', 'name': 'United Kingdom'}, {'@type': 'Place', 'name': 'Europe'}],
+    'areaServed': [{'@type': 'Country', 'name': 'India'}, {'@type': 'Country', 'name': 'United Kingdom'}, {'@type': 'Country', 'name': 'United States'}, {'@type': 'Place', 'name': 'Europe'}],
     'knowsAbout': ['Production systems engineering', 'Systems architecture', 'Software engineering', 'SaaS development', 'AI engineering',
                    'Reliability engineering', 'Multi-tenant platforms', 'LLM applications', 'AI agents', 'Retrieval-augmented generation',
                    'Voice AI', 'Cloud infrastructure', 'Kubernetes', 'DevOps', 'Workflow automation', 'WhatsApp Business API', 'Telephony'],

@@ -6,7 +6,7 @@ Name: AIM — AI Infrastructure & Machines
 Legal name: AI Infrastructure & Machines
 Also known as: AIM, AIM System, AIM Systems, AIM Studio
 Registration: Udyam-registered MSME (India)
-Location: Madhya Pradesh, India; clients in India, the UK and Europe
+Location: Madhya Pradesh, India; clients in India, the UK, the US and Europe
 Websites: https://aimsystem.in/ · https://aimstudio.co.in/
 Client Partner & Technical Lead: Ankit Panicker — works with clients to understand requirements, shape technical direction and coordinate engineering delivery.
 
