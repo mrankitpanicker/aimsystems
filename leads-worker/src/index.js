@@ -77,18 +77,19 @@ async function lead(request, env, b) {
   if (consent && Array.isArray(b.journey)) journey = JSON.stringify(b.journey.slice(-30).map(p => str(p, 200)));
   const r = {
     via: str(b.via, 16), page: str(b.page, 120), path: str(b.path, 200), service: str(b.service, 200), region_choice: str(b.region_choice, 8),
-    need: str(b.need, 120), timeline: str(b.timeline, 60), name, company: str(b.company, 160), email, message,
+    need: str(b.need, 120), timeline: str(b.timeline, 60),
+    role: str(b.role, 60), budget: str(b.budget, 60), intent: str(b.intent, 60), name, company: str(b.company, 160), email, message,
     consent, journey, landing_page: consent ? str(b.landing_page, 200) : null, first_referrer: consent ? str(b.first_referrer, 300) : null,
     utm_source: str(b.utm_source, 100), utm_medium: str(b.utm_medium, 100), utm_campaign: str(b.utm_campaign, 150),
     timezone: str(b.timezone, 60), lang: str(b.lang, 20), device: device(ua), ...w,
   };
   await env.DB.prepare(
-    `INSERT INTO leads (created_at, via, page, path, service, region_choice, need, timeline, name, company, email, message,
+    `INSERT INTO leads (created_at, via, page, path, service, region_choice, need, timeline, role, budget, intent, name, company, email, message,
       consent, session_id, visitor_id, journey, landing_page, first_referrer, utm_source, utm_medium, utm_campaign,
       ip, country, region, city, org, timezone, lang, device, user_agent)
-     VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`
+     VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`
   ).bind(
-    new Date().toISOString(), r.via, r.page, r.path, r.service, r.region_choice, r.need, r.timeline, name, r.company, email, message,
+    new Date().toISOString(), r.via, r.page, r.path, r.service, r.region_choice, r.need, r.timeline, r.role, r.budget, r.intent, name, r.company, email, message,
     consent, consent ? str(b.session_id, 64) : null, consent ? str(b.visitor_id, 64) : null, journey,
     r.landing_page, r.first_referrer, r.utm_source, r.utm_medium, r.utm_campaign,
     consent ? str(request.headers.get('CF-Connecting-IP'), 64) : null,
@@ -103,7 +104,10 @@ const b64 = s => { const bytes = new TextEncoder().encode(s); let bin = ''; for 
 const encWord = s => '=?UTF-8?B?' + b64(s) + '?=';
 
 function alertEmail(r) {
-  const subject = '[AIM System] New lead — ' + oneLine(r.service || r.need || 'Enquiry') + ' — ' + oneLine(r.company || r.name);
+  const who = oneLine(r.company || r.name);
+  const subject = r.intent
+    ? '[AIM System] ' + (r.intent === 'architecture-review' ? 'Architecture review' : oneLine(r.intent)) + ' — ' + who
+    : '[AIM System] New lead — ' + oneLine(r.service || r.need || 'Enquiry') + ' — ' + who;
   const place = [r.city, r.region, r.country].filter(Boolean).join(', ');
   let journey = '';
   try { journey = r.journey ? JSON.parse(r.journey).join(' → ') : ''; } catch (e) {}
@@ -113,6 +117,9 @@ function alertEmail(r) {
     'Company:   ' + oneLine(r.company),
     'Email:     ' + oneLine(r.email),
     'Need:      ' + oneLine(r.need),
+    'Role:      ' + (oneLine(r.role) || '-'),
+    'Budget:    ' + (oneLine(r.budget) || '-'),
+    'Intent:    ' + (oneLine(r.intent) || '-'),
     'Timeline:  ' + oneLine(r.timeline),
     '', 'Came from', '---------',
     'Page:      ' + oneLine(r.page) + (r.path ? ' (aimsystem.in' + oneLine(r.path) + ')' : ''),
