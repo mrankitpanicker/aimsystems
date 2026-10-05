@@ -1,9 +1,9 @@
-<!--meta {"title": "Contact AIM — Discuss a Project or Hire Engineers", "description": "Discuss a project or hire engineering capacity. Talk to Ankit Panicker, Client Partner & Technical Lead, about software, AI, automation and cloud.", "nav": "contact"} -->
+<!--meta {"title": "Contact AIM — Discuss a Technical Problem", "description": "Discuss a technical problem or request an architecture review. Talk to Ankit Panicker, Client Partner & Technical Lead, about software, AI and cloud.", "nav": "contact"} -->
     <section class="reveal-on-scroll">
       <div class="text-center space-y-3 max-w-3xl mx-auto">
         <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full tactile-inset-sm text-xs font-bold text-[#6438D9] dark:text-[#A78BFA]"><span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span><span>Accepting new engagements</span></div>
-        <h1 class="text-4xl sm:text-5xl font-black font-display tracking-tight leading-[1.1]">Discuss Your Project</h1>
-        <p class="text-sm sm:text-base text-[var(--text-muted)] leading-relaxed">Tell us what you're building. We'll recommend the right engineering capacity, from one engineer to a complete product team.</p>
+        <h1 class="text-4xl sm:text-5xl font-black font-display tracking-tight leading-[1.1]">Discuss a Technical Problem</h1>
+        <p class="text-sm sm:text-base text-[var(--text-muted)] leading-relaxed">Tell us where the system is today and what's in the way. You'll hear back from a senior engineer, not an account manager.</p>
       </div>
     </section>
 
@@ -13,7 +13,8 @@
           <div class="tactile-clay rounded-3xl p-6 sm:p-8 space-y-5">
             <div>
               <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#6438D9] dark:text-[#A78BFA]">Project brief</span>
-              <h2 class="text-xl font-black font-display">Tell us about the work</h2>
+              <h2 class="text-xl font-black font-display" data-form-title>Tell us about the work</h2>
+              <p data-intent-note hidden class="text-xs font-semibold text-[var(--text-main)] mt-1">Share the current architecture, the bottleneck or the production problem. We'll come back with the highest-risk parts and the shortest path forward.</p>
               <p class="text-xs text-[var(--text-muted)] mt-1">Sends the brief to us on WhatsApp or by email, with the page and service you came from. Nothing is stored on this site.</p>
             </div>
             <form id="contactForm" class="space-y-4">
@@ -38,15 +39,17 @@
                   <span class="text-[10px] font-mono font-bold uppercase text-[var(--text-muted)]">What do you need?</span>
                   <span class="tactile-inset rounded-2xl p-3 flex">
                     <select name="scope" class="bg-transparent text-sm w-full focus:outline-none">
-                      <option class="bg-[var(--canvas-bg)]">Hire an engineer</option>
-                      <option class="bg-[var(--canvas-bg)]">Hire a specialist</option>
-                      <option class="bg-[var(--canvas-bg)]">Hire an engineering pod</option>
-                      <option class="bg-[var(--canvas-bg)]">Complete product team</option>
-                      <option class="bg-[var(--canvas-bg)]">Product Engineering</option>
-                      <option class="bg-[var(--canvas-bg)]">AI Engineering</option>
-                      <option class="bg-[var(--canvas-bg)]">Platform Engineering</option>
+                      <option class="bg-[var(--canvas-bg)]">Architecture review</option>
+                      <option class="bg-[var(--canvas-bg)]">Build: a new product or platform</option>
+                      <option class="bg-[var(--canvas-bg)]">Fix: rescue an existing system</option>
+                      <option class="bg-[var(--canvas-bg)]">Integrate: connect complex systems</option>
+                      <option class="bg-[var(--canvas-bg)]">Operate: take ownership of production</option>
+                      <option class="bg-[var(--canvas-bg)]">Product Systems</option>
+                      <option class="bg-[var(--canvas-bg)]">Production AI</option>
+                      <option class="bg-[var(--canvas-bg)]">Cloud &amp; Reliability</option>
                       <option class="bg-[var(--canvas-bg)]">Automation &amp; Integrations</option>
                       <option class="bg-[var(--canvas-bg)]">APEX Connect platform</option>
+                      <option class="bg-[var(--canvas-bg)]">A dedicated engineer or team</option>
                       <option class="bg-[var(--canvas-bg)]">Something else</option>
                     </select>
                   </span>
@@ -59,6 +62,35 @@
                       <option class="bg-[var(--canvas-bg)]" selected>Within a month</option>
                       <option class="bg-[var(--canvas-bg)]">This quarter</option>
                       <option class="bg-[var(--canvas-bg)]">Planning ahead</option>
+                    </select>
+                  </span>
+                </label>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <label class="space-y-1 block">
+                  <span class="text-[10px] font-mono font-bold uppercase text-[var(--text-muted)]">What best describes you?</span>
+                  <span class="tactile-inset rounded-2xl p-3 flex">
+                    <select name="role" class="bg-transparent text-sm w-full focus:outline-none">
+                      <option class="bg-[var(--canvas-bg)]" value="">Select (optional)</option>
+                      <option class="bg-[var(--canvas-bg)]">Founder</option>
+                      <option class="bg-[var(--canvas-bg)]">CTO / VP Engineering</option>
+                      <option class="bg-[var(--canvas-bg)]">Product Lead</option>
+                      <option class="bg-[var(--canvas-bg)]">Operations</option>
+                      <option class="bg-[var(--canvas-bg)]">Agency / Partner</option>
+                      <option class="bg-[var(--canvas-bg)]">Other</option>
+                    </select>
+                  </span>
+                </label>
+                <label class="space-y-1 block">
+                  <span class="text-[10px] font-mono font-bold uppercase text-[var(--text-muted)]">Budget range (optional)</span>
+                  <span class="tactile-inset rounded-2xl p-3 flex">
+                    <select name="budget" class="bg-transparent text-sm w-full focus:outline-none">
+                      <option class="bg-[var(--canvas-bg)]">Not sure</option>
+                      <option class="bg-[var(--canvas-bg)]">Under $10k</option>
+                      <option class="bg-[var(--canvas-bg)]">$10k–25k</option>
+                      <option class="bg-[var(--canvas-bg)]">$25k–50k</option>
+                      <option class="bg-[var(--canvas-bg)]">$50k–100k</option>
+                      <option class="bg-[var(--canvas-bg)]">$100k+</option>
                     </select>
                   </span>
                 </label>
@@ -104,9 +136,9 @@
           <div class="card-sunk rounded-3xl p-5 flex items-center gap-4" tabindex="0">
             <div class="char-stage w-24 h-24 shrink-0 rounded-2xl"><img src="/assets/img/cto-team-meeting.webp" alt="Illustration of an engineering team meeting"></div>
             <div class="space-y-2 min-w-0">
-              <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#6438D9] dark:text-[#A78BFA]">Hire</span>
-              <h3 class="font-black font-display">Need engineering capacity?</h3>
-              <a href="/hire" class="tactile-convex-pill px-4 py-2 text-xs inline-flex items-center gap-2">Hire Engineering Capacity <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+              <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#6438D9] dark:text-[#A78BFA]">Engagements</span>
+              <h3 class="font-black font-display">Build, fix, integrate or operate</h3>
+              <a href="/hire" class="tactile-convex-pill px-4 py-2 text-xs inline-flex items-center gap-2">Engagement models <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
             </div>
           </div>
           <div class="tactile-raised rounded-3xl p-5 flex items-center gap-4">

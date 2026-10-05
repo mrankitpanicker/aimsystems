@@ -12,16 +12,16 @@ ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 PAGES = os.path.join(os.path.dirname(__file__), 'pages')
 SITE = 'https://aimsystem.in'
 
+# Home is the logo link and Contact is the header button, so neither is repeated here.
+# /hire (engagement models) is linked from the footer, /services, the home page and the region switch.
 NAV = [
-    ('home', '/', 'Home'),
-    ('services', '/services', 'Services'),
-    ('hire', '/hire', 'Hire'),
-    ('platforms', '/products', 'Platforms'),
     ('work', '/work', 'Work'),
+    ('services', '/services', 'Services'),
+    ('platforms', '/products', 'Platforms'),
     ('engineering', '/engineering', 'Engineering'),
     ('about', '/about', 'About'),
-    ('contact', '/contact', 'Contact'),
 ]
+CTA_LABEL = 'Discuss a Technical Problem'
 
 HEAD = """<!DOCTYPE html>
 <html lang="en">
@@ -46,7 +46,7 @@ HEAD = """<!DOCTYPE html>
   <meta property="og:image" content="{site}/assets/img/og-aim.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="AIM — AI Infrastructure &amp; Machines: Your Engineering Team, On Demand">
+  <meta property="og:image:alt" content="AIM — AI Infrastructure &amp; Machines: production systems engineering">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{title}">
   <meta name="twitter:description" content="{description}">
@@ -131,7 +131,7 @@ HEADER = """
         </div>
         <a href="/contact" class="btn-deploy-edge px-4 sm:px-5 py-2.5 text-xs tracking-wide hidden sm:inline-flex">
           <i data-lucide="send" class="w-3.5 h-3.5 opacity-90"></i>
-          <span>Discuss Your Project</span>
+          <span>Discuss a Technical Problem</span>
         </a>
         <button type="button" id="menuToggle" class="xl:hidden tactile-convex-pill w-10 h-10 flex items-center justify-center" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
           <i data-lucide="menu" class="w-4 h-4"></i>
@@ -139,7 +139,7 @@ HEADER = """
       </div>
     </div>
 
-    <nav id="mobileMenu" aria-label="Mobile" class="xl:hidden grid-cols-2 sm:grid-cols-4 gap-2.5 pt-4">
+    <nav id="mobileMenu" aria-label="Mobile" class="xl:hidden grid-cols-2 sm:grid-cols-3 gap-2.5 pt-4">
 {mobile_links}
     </nav>
   </header>
@@ -160,16 +160,17 @@ FOOTER = """
             <div class="text-[11px] text-[var(--text-muted)]">AI Infrastructure &amp; Machines</div>
           </div>
         </div>
-        <p class="text-xs text-[var(--text-muted)] leading-relaxed">A technology engineering agency. We design, build, deploy and operate software, AI systems, automation and cloud infrastructure.</p>
+        <p class="text-xs text-[var(--text-muted)] leading-relaxed">A production systems engineering company. We take technically difficult products from architecture to production, and stay accountable after launch.</p>
+        <p class="text-[11px] font-mono font-bold text-[var(--text-muted)]">Software · AI · Cloud · Automation · Reliability</p>
         <div class="flex flex-wrap gap-2">
-          <a href="/contact" class="btn-deploy-edge px-4 py-2 text-[11px]">Discuss Your Project</a>
-          <a href="/hire" class="tactile-convex-pill px-4 py-2 text-[11px] inline-flex items-center">Hire Engineering Capacity</a>
+          <a href="/contact" class="btn-deploy-edge px-4 py-2 text-[11px]">Discuss a Technical Problem</a>
+          <a href="/contact?intent=architecture-review" data-service="Architecture review" class="tactile-convex-pill px-4 py-2 text-[11px] inline-flex items-center">Request an Architecture Review</a>
         </div>
       </div>
       <div class="md:col-span-2 space-y-2.5 text-xs">
         <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--text-muted)]">Agency</div>
         <a class="block hover:text-[#6438D9]" href="/services">Services</a>
-        <a class="block hover:text-[#6438D9]" href="/hire">Hire</a>
+        <a class="block hover:text-[#6438D9]" href="/hire">Engagement models</a>
         <a class="block hover:text-[#6438D9]" href="/international">UK, US &amp; EU teams</a>
         <a class="block hover:text-[#6438D9]" href="/work">Work</a>
         <a class="block hover:text-[#6438D9]" href="/engineering">Engineering</a>
@@ -253,14 +254,17 @@ FOOTER = """
 ORG_ID = SITE + '/#organization'
 PERSON_ID = SITE + '/#ankit-panicker'
 SERVICES = [
-    ('Product Engineering', 'SaaS, web applications, APIs, backend systems, internal platforms, enterprise applications and product modernization.'),
-    ('AI Engineering', 'LLM applications, AI agents, RAG, AI automation, voice AI, STT/TTS, AI orchestration and model integrations.'),
-    ('Platform Engineering', 'Cloud, Kubernetes, infrastructure-as-code, CI/CD, observability, distributed systems and reliability engineering.'),
-    ('Automation & Integrations', 'API and CRM integrations, WhatsApp, telephony, workflow and business process automation, and data pipelines.'),
+    ('Product Systems', 'New products and platforms, from data model to deployment: SaaS, web applications, APIs, backend systems, internal platforms and product modernization.'),
+    ('Production AI', 'AI that runs inside real workflows: voice, LLM, RAG and agents, with validation, fallbacks and monitoring.'),
+    ('Cloud & Reliability', 'Infrastructure, CI/CD, observability and the failure handling that keeps systems up: cloud, Kubernetes, infrastructure-as-code and distributed systems.'),
+    ('Automation & Integrations', 'APIs, CRMs, telephony, WhatsApp and data pipelines connected end to end, with workflow and business process automation.'),
 ]
+# Section anchors on /services (the old #product, #ai, #platform ids stay as aliases on the inner cards)
+SERVICE_IDS = {'Product Systems': 'product-systems', 'Production AI': 'production-ai',
+               'Cloud & Reliability': 'cloud-reliability', 'Automation & Integrations': 'automation'}
 # Page type and breadcrumb label per page; anything else is a plain WebPage.
 PAGE_TYPES = {'about': 'AboutPage', 'contact': 'ContactPage', 'work': 'CollectionPage', 'privacy': 'WebPage'}
-CRUMBS = {'services': 'Services', 'hire': 'Hire', 'products': 'Platforms', 'work': 'Work',
+CRUMBS = {'services': 'Services', 'hire': 'Engagements', 'products': 'Platforms', 'work': 'Work',
           'engineering': 'Engineering', 'about': 'About', 'contact': 'Contact', 'privacy': 'Privacy & Compliance',
           'international': 'UK, US & EU'}
 
@@ -270,15 +274,16 @@ ORG = {
     'name': 'AIM — AI Infrastructure & Machines',
     'legalName': 'AI Infrastructure & Machines',
     'alternateName': ['AIM', 'AIM System', 'AIM Systems', 'AIM Studio'],
-    'slogan': 'Your Engineering Team, On Demand',
-    'description': 'Technology engineering agency. From one senior engineer to a complete product team, AIM designs, builds, deploys and operates production-grade software, AI systems, automation and cloud infrastructure. Udyam-registered MSME.',
+    'slogan': 'Production systems. From architecture to operations.',
+    'description': 'Production systems engineering company. AIM takes technically difficult products from architecture to production and stays accountable after launch: software, AI, cloud, automation and reliability, delivered by one senior engineer, a specialist or a complete team depending on the system. Runs its own production platform, APEX Connect. Udyam-registered MSME.',
     'url': SITE + '/',
     'logo': {'@type': 'ImageObject', 'url': SITE + '/favicon.png', 'width': 192, 'height': 192},
     'image': SITE + '/assets/img/og-aim.png',
     'email': 'ankit@aimsystem.in',
     'address': {'@type': 'PostalAddress', 'addressRegion': 'Madhya Pradesh', 'addressCountry': 'IN'},
     'areaServed': [{'@type': 'Country', 'name': 'India'}, {'@type': 'Country', 'name': 'United Kingdom'}, {'@type': 'Place', 'name': 'Europe'}],
-    'knowsAbout': ['Software engineering', 'SaaS development', 'AI engineering', 'LLM applications', 'AI agents', 'Retrieval-augmented generation',
+    'knowsAbout': ['Production systems engineering', 'Systems architecture', 'Software engineering', 'SaaS development', 'AI engineering',
+                   'Reliability engineering', 'Multi-tenant platforms', 'LLM applications', 'AI agents', 'Retrieval-augmented generation',
                    'Voice AI', 'Cloud infrastructure', 'Kubernetes', 'DevOps', 'Workflow automation', 'WhatsApp Business API', 'Telephony'],
     'sameAs': ['https://aimstudio.co.in/', 'https://github.com/mrankitpanicker'],
     'employee': {'@id': PERSON_ID},
@@ -322,7 +327,7 @@ def schema_for(name, path, meta, body):
     if name in ('index', 'about', 'contact'):
         graph.append(PERSON)
     if name == 'services':
-        graph += [{'@type': 'Service', '@id': f'{url}#{n.lower().split()[0]}', 'name': n, 'description': d,
+        graph += [{'@type': 'Service', '@id': f'{url}#{SERVICE_IDS[n]}', 'name': n, 'description': d,
                    'serviceType': n, 'provider': {'@id': ORG_ID}, 'areaServed': ORG['areaServed']} for n, d in SERVICES]
     if name == 'products':
         graph += [
@@ -370,7 +375,7 @@ def nav_html(active):
         links.append(f'        <a href="{href}"{cur} class="nav-link relative z-10 px-3.5 py-2 rounded-full transition-colors">{label}</a>')
         cls = 'btn-deploy-edge' if key == active else 'tactile-convex-pill'
         mobile.append(f'      <a href="{href}"{cur} class="{cls} px-4 py-2.5 text-xs text-center">{label}</a>')
-    mobile.append('      <a href="/contact" class="btn-deploy-edge col-span-2 sm:col-span-1 px-4 py-2.5 text-xs text-center">Discuss Your Project</a>')
+    mobile.append(f'      <a href="/contact" class="btn-deploy-edge px-3 leading-tight py-2.5 text-xs text-center">{CTA_LABEL}</a>')
     return '\n'.join(links), '\n'.join(mobile)
 
 

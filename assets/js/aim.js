@@ -795,14 +795,16 @@
     };
     const L = (slug, text, hash) => `<a href="${href(slug)}${hash ? '#' + hash : ''}">${text}</a>`;
     const KB = [
-      { k: ['hire', 'engineer', 'developer', 'capacity', 'staff', 'team', 'pod', 'specialist', 'resource'],
-        a: () => `You can hire <b>one engineer</b>, a <b>specialist</b>, an <b>engineering pod</b> or a <b>complete product team</b>. Start with the capacity you need and expand as the project grows. ${L('hire', 'Compare the options')}.` },
-      { k: ['service', 'build', 'what do you do', 'offer', 'saas', 'web app', 'api', 'product engineering'],
-        a: () => `We work across four areas: Product Engineering, AI Engineering, Platform Engineering, and Automation & Integrations. ${L('services', 'See our services')}.` },
+      { k: ['hire', 'engineer', 'developer', 'capacity', 'staff', 'team', 'pod', 'specialist', 'resource', 'engagement'],
+        a: () => `There are four ways to engage: <b>Build</b> a new system, <b>Fix</b> an existing one, <b>Integrate</b> complex systems or <b>Operate</b> production. Each is delivered by one senior engineer, a specialist or a complete team, depending on the system. ${L('hire', 'Engagement models')}.` },
+      { k: ['service', 'build', 'what do you do', 'offer', 'saas', 'web app', 'api', 'product'],
+        a: () => `AIM is a production systems engineering company. We take technically difficult products from architecture to production and stay accountable after launch, across Product Systems, Production AI, Cloud & Reliability, and Automation & Integrations. ${L('services', 'See our services')}.` },
+      { k: ['architecture', 'review', 'audit', 'bottleneck', 'broken', 'breaking', 'slow', 'rescue'],
+        a: () => `Bring your current architecture, bottleneck or production problem: we identify the highest-risk parts and recommend the shortest path forward. ${L('contact?intent=architecture-review', 'Request an Architecture Review')}.` },
       { k: ['ai', 'llm', 'agent', 'rag', 'voice ai', 'stt', 'tts', 'chatbot'],
-        a: () => `Our AI engineering covers LLM applications, AI agents, RAG, voice AI (speech-to-text and text-to-speech) and AI orchestration inside real products. ${L('services', 'AI Engineering', 'ai')}.` },
-      { k: ['cloud', 'kubernetes', 'devops', 'infrastructure', 'ci/cd', 'terraform', 'observability', 'platform engineering'],
-        a: () => `Platform Engineering covers cloud, Kubernetes, infrastructure-as-code, CI/CD, observability and reliability engineering. ${L('services', 'Read more', 'platform')}.` },
+        a: () => `Production AI is AI that runs inside real workflows: voice, LLM, RAG and agents, with validation, fallbacks and monitoring. ${L('services', 'Production AI', 'production-ai')}.` },
+      { k: ['cloud', 'kubernetes', 'devops', 'infrastructure', 'ci/cd', 'terraform', 'observability', 'reliability'],
+        a: () => `Cloud & Reliability covers infrastructure, CI/CD, observability and the failure handling that keeps systems up. ${L('services', 'Read more', 'cloud-reliability')}.` },
       { k: ['automation', 'integration', 'crm', 'whatsapp', 'telephony', 'workflow'],
         a: () => `We connect systems and automate workflows: API and CRM integrations, WhatsApp, telephony, business process automation and data pipelines. ${L('services', 'Read more', 'automation')}.` },
       { k: ['price', 'pricing', 'cost', 'quote', 'proposal', 'rate', 'budget', 'how much'],
@@ -826,11 +828,11 @@
       { k: ['job', 'career', 'join', 'vacancy', 'opening'],
         a: () => `We're always interested in strong engineers. ${L('jobs', 'See open positions')}.` },
       { k: ['hi', 'hello', 'hey', 'namaste', 'hii'],
-        a: () => `Hello! I can help with our services, hiring engineers or a team, pricing, platforms and case studies.` },
+        a: () => `Hello! I can help with our services, engagements, pricing, platforms and case studies.` },
       { k: ['thank', 'thanks', 'great', 'ok', 'cool'],
         a: () => `Happy to help. Anything else?` },
     ];
-    const CHIPS = ['Hire engineers', 'Services', 'Pricing', 'Case studies', 'Contact'];
+    const CHIPS = ['Services', 'Engagements', 'Architecture review', 'Case studies', 'Contact'];
     const score = (q, e) => e.k.reduce((n, w) => n + (q.includes(w) ? w.length : 0), 0);
     function answer(text) {
       const q = ' ' + text.toLowerCase() + ' ';
@@ -864,7 +866,7 @@
       toggle.setAttribute('aria-expanded', String(open));
       if (open) {
         sound('pop');
-        if (!greeted) { greeted = true; add(`Hi, I'm the AIM assistant. Ask me about our services, hiring an engineer or a full team, pricing or our work.`, 'bot'); }
+        if (!greeted) { greeted = true; add(`Hi, I'm the AIM assistant. Ask me about our services, how we engage, an architecture review or our production work.`, 'bot'); }
         setTimeout(() => input.focus(), 250);
       }
     }
@@ -1013,24 +1015,41 @@
     }
     // Pre-select "What do you need?" when the service names one of the options
     const scope = form.elements.scope;
-    if (lead && lead.service && scope) {
-      const want = lead.service.toLowerCase();
-      const opt = Array.from(scope.options).find(o => {
-        const t = o.textContent.toLowerCase().replace('&amp;', '&');
-        return want.includes(t) || t.includes(want) || (want.includes('pod') && t.includes('pod')) || (want.includes('specialist') && t.includes('specialist'))
-          || (want.includes('complete') && t.includes('complete')) || (want.includes('one engineer') && t.includes('an engineer'));
-      });
+    const pickScope = want => {
+      if (!scope || !want) return false;
+      want = want.toLowerCase();
+      const opts = Array.from(scope.options);
+      const opt = opts.find(o => { const t = o.textContent.toLowerCase(); return want.includes(t) || t.includes(want); })
+        || (/engineer|specialist|\bpod\b|team/.test(want) && opts.find(o => /dedicated engineer/i.test(o.textContent)));
       if (opt) scope.value = opt.value;
+      return !!opt;
+    };
+    if (lead && lead.service) pickScope(lead.service);
+    // ?intent=architecture-review: the form becomes an architecture review request
+    const INTENTS = { 'architecture-review': 'Architecture review' };
+    const urlIntent = new URLSearchParams(location.search).get('intent');
+    const intent = Object.prototype.hasOwnProperty.call(INTENTS, urlIntent) ? urlIntent : '';
+    if (intent) {
+      pickScope(INTENTS[intent]);
+      const title = $('[data-form-title]'), note = $('[data-intent-note]');
+      if (title) title.textContent = 'Request an Architecture Review';
+      if (note) note.hidden = false;
+      const msg = form.elements.message;
+      if (msg) msg.placeholder = 'Your current architecture, the bottleneck or production problem, and what you have already tried.';
     }
     form.addEventListener('submit', e => {
       e.preventDefault();
       const f = new FormData(form);
       const via = (e.submitter && e.submitter.value) || 'email';
       const need = f.get('scope');
+      const role = f.get('role') || '', budget = f.get('budget') || '';
+      const leadIntent = intent || (need === 'Architecture review' ? 'architecture-review' : '');
       const body = [
-        '[AIM System] New project enquiry',
+        leadIntent ? '[AIM System] Architecture review request' : '[AIM System] New project enquiry',
         ...leadLines(lead),
         `Need: ${need}`,
+        `Role: ${role || 'Not given'}`,
+        `Budget: ${budget || 'Not given'}`,
         `Timeline: ${f.get('timeline')}`,
         `Name: ${f.get('name')}`,
         `Company: ${f.get('org')}`,
@@ -1041,14 +1060,16 @@
       // Keep a copy of every lead in Cloudflare D1, even if the visitor never presses send in WhatsApp or email
       send('/api/lead', Object.assign(visitorContext(), {
         via, page: lead && lead.page, path: lead && lead.path, service: lead && lead.service, region_choice: lead && lead.region,
-        need, timeline: f.get('timeline'), name: f.get('name'), company: f.get('org'), email: f.get('email'), message: f.get('message'),
+        need, role, budget, intent: leadIntent, timeline: f.get('timeline'), name: f.get('name'), company: f.get('org'), email: f.get('email'), message: f.get('message'),
         website: f.get('website') || '',
       }));
       if (via === 'whatsapp' && contactValue('wa')) {
         window.open(`https://wa.me/${contactValue('wa')}?text=${encodeURIComponent(body)}`, '_blank', 'noopener');
         toast('Opening WhatsApp with your brief filled in');
       } else {
-        const subject = `[AIM System] ${(lead && lead.service) || need} — ${f.get('org')}${lead ? ` (from ${lead.page})` : ''}`;
+        const subject = leadIntent
+          ? `[AIM System] Architecture review — ${f.get('org')}`
+          : `[AIM System] ${(lead && lead.service) || need} — ${f.get('org')}${lead ? ` (from ${lead.page})` : ''}`;
         window.location.href = `mailto:${contactValue('email')}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         toast('Opening your email app with the brief filled in');
       }

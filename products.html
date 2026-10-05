@@ -23,7 +23,7 @@
   <meta property="og:image" content="https://aimsystem.in/assets/img/og-aim.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="AIM — AI Infrastructure &amp; Machines: Your Engineering Team, On Demand">
+  <meta property="og:image:alt" content="AIM — AI Infrastructure &amp; Machines: production systems engineering">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Platforms — APEX Connect, AIM Remote AI &amp; Healthcare · AIM">
   <meta name="twitter:description" content="AIM platforms and R&amp;D: APEX Connect AI customer engagement infrastructure, AIM Remote AI, the Healthcare Operations Platform and research projects.">
@@ -50,8 +50,8 @@
         "AIM Systems",
         "AIM Studio"
       ],
-      "slogan": "Your Engineering Team, On Demand",
-      "description": "Technology engineering agency. From one senior engineer to a complete product team, AIM designs, builds, deploys and operates production-grade software, AI systems, automation and cloud infrastructure. Udyam-registered MSME.",
+      "slogan": "Production systems. From architecture to operations.",
+      "description": "Production systems engineering company. AIM takes technically difficult products from architecture to production and stays accountable after launch: software, AI, cloud, automation and reliability, delivered by one senior engineer, a specialist or a complete team depending on the system. Runs its own production platform, APEX Connect. Udyam-registered MSME.",
       "url": "https://aimsystem.in/",
       "logo": {
         "@type": "ImageObject",
@@ -81,9 +81,13 @@
         }
       ],
       "knowsAbout": [
+        "Production systems engineering",
+        "Systems architecture",
         "Software engineering",
         "SaaS development",
         "AI engineering",
+        "Reliability engineering",
+        "Multi-tenant platforms",
         "LLM applications",
         "AI agents",
         "Retrieval-augmented generation",
@@ -119,24 +123,24 @@
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "name": "Product Engineering",
-              "description": "SaaS, web applications, APIs, backend systems, internal platforms, enterprise applications and product modernization."
+              "name": "Product Systems",
+              "description": "New products and platforms, from data model to deployment: SaaS, web applications, APIs, backend systems, internal platforms and product modernization."
             }
           },
           {
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "name": "AI Engineering",
-              "description": "LLM applications, AI agents, RAG, AI automation, voice AI, STT/TTS, AI orchestration and model integrations."
+              "name": "Production AI",
+              "description": "AI that runs inside real workflows: voice, LLM, RAG and agents, with validation, fallbacks and monitoring."
             }
           },
           {
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "name": "Platform Engineering",
-              "description": "Cloud, Kubernetes, infrastructure-as-code, CI/CD, observability, distributed systems and reliability engineering."
+              "name": "Cloud & Reliability",
+              "description": "Infrastructure, CI/CD, observability and the failure handling that keeps systems up: cloud, Kubernetes, infrastructure-as-code and distributed systems."
             }
           },
           {
@@ -144,7 +148,7 @@
             "itemOffered": {
               "@type": "Service",
               "name": "Automation & Integrations",
-              "description": "API and CRM integrations, WhatsApp, telephony, workflow and business process automation, and data pipelines."
+              "description": "APIs, CRMs, telephony, WhatsApp and data pipelines connected end to end, with workflow and business process automation."
             }
           }
         ]
@@ -244,7 +248,7 @@
   <script>(function (l) { if (l) l.rel = 'stylesheet'; })(document.querySelector('link[data-font]'));</script>
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800;900&family=JetBrains+Mono:wght@600;700&display=swap"></noscript>
   <link rel="stylesheet" href="/assets/css/aim.min.css?v=f736fc77">
-  <link rel="stylesheet" href="/assets/css/tw.css?v=4741e533">
+  <link rel="stylesheet" href="/assets/css/tw.css?v=8f8bedaf">
 </head>
 <body class="min-h-screen py-6 sm:py-8 px-4 sm:px-6 lg:px-12 flex flex-col items-center">
   <a href="#main" class="skip-link btn-deploy-edge px-4 py-2 text-xs">Skip to content</a>
@@ -267,14 +271,11 @@
 
       <nav id="navbarTrack" aria-label="Main" class="relative hidden xl:flex items-center p-1.5 rounded-full tactile-inset-sm text-xs font-bold text-[var(--text-muted)]">
         <div id="navIndicatorPill"></div>
-        <a href="/" class="nav-link relative z-10 px-3.5 py-2 rounded-full transition-colors">Home</a>
-        <a href="/services" class="nav-link relative z-10 px-3.5 py-2 rounded-full transition-colors">Services</a>
-        <a href="/hire" class="nav-link relative z-10 px-3.5 py-2 rounded-full transition-colors">Hire</a>
-        <a href="/products" aria-current="page" class="nav-link relative z-10 px-3.5 py-2 rounded-full transition-colors">Platforms</a>
         <a href="/work" class="nav-link relative z-10 px-3.5 py-2 rounded-full transition-colors">Work</a>
+        <a href="/services" class="nav-link relative z-10 px-3.5 py-2 rounded-full transition-colors">Services</a>
+        <a href="/products" aria-current="page" class="nav-link relative z-10 px-3.5 py-2 rounded-full transition-colors">Platforms</a>
         <a href="/engineering" class="nav-link relative z-10 px-3.5 py-2 rounded-full transition-colors">Engineering</a>
         <a href="/about" class="nav-link relative z-10 px-3.5 py-2 rounded-full transition-colors">About</a>
-        <a href="/contact" class="nav-link relative z-10 px-3.5 py-2 rounded-full transition-colors">Contact</a>
       </nav>
 
       <div class="flex items-center gap-2 sm:gap-2.5 shrink-0">
@@ -303,7 +304,7 @@
         </div>
         <a href="/contact" class="btn-deploy-edge px-4 sm:px-5 py-2.5 text-xs tracking-wide hidden sm:inline-flex">
           <i data-lucide="send" class="w-3.5 h-3.5 opacity-90"></i>
-          <span>Discuss Your Project</span>
+          <span>Discuss a Technical Problem</span>
         </a>
         <button type="button" id="menuToggle" class="xl:hidden tactile-convex-pill w-10 h-10 flex items-center justify-center" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
           <i data-lucide="menu" class="w-4 h-4"></i>
@@ -311,16 +312,13 @@
       </div>
     </div>
 
-    <nav id="mobileMenu" aria-label="Mobile" class="xl:hidden grid-cols-2 sm:grid-cols-4 gap-2.5 pt-4">
-      <a href="/" class="tactile-convex-pill px-4 py-2.5 text-xs text-center">Home</a>
-      <a href="/services" class="tactile-convex-pill px-4 py-2.5 text-xs text-center">Services</a>
-      <a href="/hire" class="tactile-convex-pill px-4 py-2.5 text-xs text-center">Hire</a>
-      <a href="/products" aria-current="page" class="btn-deploy-edge px-4 py-2.5 text-xs text-center">Platforms</a>
+    <nav id="mobileMenu" aria-label="Mobile" class="xl:hidden grid-cols-2 sm:grid-cols-3 gap-2.5 pt-4">
       <a href="/work" class="tactile-convex-pill px-4 py-2.5 text-xs text-center">Work</a>
+      <a href="/services" class="tactile-convex-pill px-4 py-2.5 text-xs text-center">Services</a>
+      <a href="/products" aria-current="page" class="btn-deploy-edge px-4 py-2.5 text-xs text-center">Platforms</a>
       <a href="/engineering" class="tactile-convex-pill px-4 py-2.5 text-xs text-center">Engineering</a>
       <a href="/about" class="tactile-convex-pill px-4 py-2.5 text-xs text-center">About</a>
-      <a href="/contact" class="tactile-convex-pill px-4 py-2.5 text-xs text-center">Contact</a>
-      <a href="/contact" class="btn-deploy-edge col-span-2 sm:col-span-1 px-4 py-2.5 text-xs text-center">Discuss Your Project</a>
+      <a href="/contact" class="btn-deploy-edge px-3 leading-tight py-2.5 text-xs text-center">Discuss a Technical Problem</a>
     </nav>
   </header>
 
@@ -513,7 +511,7 @@
           </div>
           <h3 class="text-xl font-black font-display">Automated Outreach Campaigns</h3>
           <p class="text-xs text-[var(--text-muted)] leading-relaxed">Contact lists turned into automated voice and WhatsApp campaigns with retries and outcome reporting, built on APEX Connect.</p>
-          <p class="text-xs text-[var(--text-muted)]"><b class="text-[var(--text-main)]">Capabilities:</b> list upload and validation, AI calling in Hindi and English, retry scheduling, parallel WhatsApp follow-up, per-contact outcome reports.</p>
+          <p class="text-xs text-[var(--text-muted)]"><b class="text-[var(--text-main)]">Capabilities:</b> <!-- CONFIRM: call languages (e.g. Hindi and English) before naming them here --> list upload and validation, AI voice calling, retry scheduling, parallel WhatsApp follow-up, per-contact outcome reports.</p>
           <a href="/work" class="tactile-convex-pill px-4 py-2 text-xs inline-flex items-center gap-2">See it in a case study <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></a>
         </div>
       </div>
@@ -553,7 +551,7 @@
       <div class="tactile-navy rounded-[2rem] p-6 sm:p-10 text-center space-y-4">
         <h2 class="text-2xl sm:text-3xl font-black font-display">Need a platform like these built for you?</h2>
         <p class="text-sm text-[var(--text-muted)]">The teams behind our platforms are the teams we put on client work.</p>
-        <a href="/contact" class="btn-deploy-edge px-7 py-3.5 text-xs"><i data-lucide="send" class="w-4 h-4"></i>Discuss Your Project</a>
+        <a href="/contact" class="btn-deploy-edge px-7 py-3.5 text-xs"><i data-lucide="send" class="w-4 h-4"></i>Discuss a Technical Problem</a>
       </div>
     </section>
 
@@ -569,16 +567,17 @@
             <div class="text-[11px] text-[var(--text-muted)]">AI Infrastructure &amp; Machines</div>
           </div>
         </div>
-        <p class="text-xs text-[var(--text-muted)] leading-relaxed">A technology engineering agency. We design, build, deploy and operate software, AI systems, automation and cloud infrastructure.</p>
+        <p class="text-xs text-[var(--text-muted)] leading-relaxed">A production systems engineering company. We take technically difficult products from architecture to production, and stay accountable after launch.</p>
+        <p class="text-[11px] font-mono font-bold text-[var(--text-muted)]">Software · AI · Cloud · Automation · Reliability</p>
         <div class="flex flex-wrap gap-2">
-          <a href="/contact" class="btn-deploy-edge px-4 py-2 text-[11px]">Discuss Your Project</a>
-          <a href="/hire" class="tactile-convex-pill px-4 py-2 text-[11px] inline-flex items-center">Hire Engineering Capacity</a>
+          <a href="/contact" class="btn-deploy-edge px-4 py-2 text-[11px]">Discuss a Technical Problem</a>
+          <a href="/contact?intent=architecture-review" data-service="Architecture review" class="tactile-convex-pill px-4 py-2 text-[11px] inline-flex items-center">Request an Architecture Review</a>
         </div>
       </div>
       <div class="md:col-span-2 space-y-2.5 text-xs">
         <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--text-muted)]">Agency</div>
         <a class="block hover:text-[#6438D9]" href="/services">Services</a>
-        <a class="block hover:text-[#6438D9]" href="/hire">Hire</a>
+        <a class="block hover:text-[#6438D9]" href="/hire">Engagement models</a>
         <a class="block hover:text-[#6438D9]" href="/international">UK, US &amp; EU teams</a>
         <a class="block hover:text-[#6438D9]" href="/work">Work</a>
         <a class="block hover:text-[#6438D9]" href="/engineering">Engineering</a>
@@ -652,7 +651,7 @@
     </div>
   </div>
 
-  <script defer src="/assets/js/icons.js?v=31d0926e"></script>
-  <script defer src="/assets/js/aim.min.js?v=475dc6d7"></script>
+  <script defer src="/assets/js/icons.js?v=67124616"></script>
+  <script defer src="/assets/js/aim.min.js?v=25653f1e"></script>
 </body>
 </html>
