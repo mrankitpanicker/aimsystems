@@ -76,6 +76,10 @@
           "name": "United Kingdom"
         },
         {
+          "@type": "Country",
+          "name": "United States"
+        },
+        {
           "@type": "Place",
           "name": "Europe"
         }
@@ -218,7 +222,7 @@
   <script>(function (l) { if (l) l.rel = 'stylesheet'; })(document.querySelector('link[data-font]'));</script>
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800;900&family=JetBrains+Mono:wght@600;700&display=swap"></noscript>
   <link rel="stylesheet" href="/assets/css/aim.min.css?v=f736fc77">
-  <link rel="stylesheet" href="/assets/css/tw.css?v=8f8bedaf">
+  <link rel="stylesheet" href="/assets/css/tw.css?v=a50b3f4d">
 </head>
 <body class="min-h-screen py-6 sm:py-8 px-4 sm:px-6 lg:px-12 flex flex-col items-center">
   <a href="#main" class="skip-link btn-deploy-edge px-4 py-2 text-xs">Skip to content</a>
@@ -511,11 +515,23 @@
         <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#6438D9] dark:text-[#A78BFA]">Engagements</span>
         <h2 class="text-2xl sm:text-3xl font-black font-display">Four ways to start.</h2>
       </div>
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
-        <a href="/hire#build" data-service="Build: a new product or platform" class="tactile-raised rounded-3xl p-5 space-y-2 block"><span class="text-[10px] font-mono font-bold text-[#6438D9] dark:text-[#A78BFA]">01</span><h3 class="font-black font-display">Build</h3><p class="text-xs text-[var(--text-muted)]">A new product or platform, from architecture to production.</p></a>
-        <a href="/hire#fix" data-service="Fix: rescue an existing system" class="tactile-navy rounded-3xl p-5 space-y-2 block"><span class="text-[10px] font-mono font-bold text-[#B9C8FF]">02</span><h3 class="font-black font-display">Fix</h3><p class="text-xs text-[var(--text-muted)]">Rescue an existing system: reliability, performance, modernization.</p></a>
-        <a href="/hire#integrate" data-service="Integrate: connect complex systems" class="tactile-raised rounded-3xl p-5 space-y-2 block"><span class="text-[10px] font-mono font-bold text-[#6438D9] dark:text-[#A78BFA]">03</span><h3 class="font-black font-display">Integrate</h3><p class="text-xs text-[var(--text-muted)]">Connect AI, APIs, telephony, WhatsApp and CRMs into one working flow.</p></a>
-        <a href="/hire#operate" data-service="Operate: take ownership of production" class="tactile-raised rounded-3xl p-5 space-y-2 block"><span class="text-[10px] font-mono font-bold text-[#6438D9] dark:text-[#A78BFA]">04</span><h3 class="font-black font-display">Operate</h3><p class="text-xs text-[var(--text-muted)]">Take ownership of production: observability, reliability, ongoing engineering.</p></a>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-5">
+        <a href="/hire#build" data-service="Build: a new product or platform" class="tactile-navy rounded-3xl p-3 space-y-3 block">
+          <div class="char-stage aspect-[5/4]"><img loading="lazy" decoding="async" src="/assets/img/eng-build.webp" alt="Illustration of an engineer building and launching a new product"></div>
+          <div class="px-2 pb-2 space-y-1"><div class="text-[10px] font-mono font-bold text-[#B9C8FF]">01</div><h3 class="text-sm font-black">Build</h3><p class="text-[11px] text-[var(--text-muted)]">A new product or platform, from architecture to production.</p></div>
+        </a>
+        <a href="/hire#fix" data-service="Fix: rescue an existing system" class="tactile-navy rounded-3xl p-3 space-y-3 block">
+          <div class="char-stage aspect-[5/4]"><img loading="lazy" decoding="async" src="/assets/img/eng-fix.webp" alt="Illustration of an engineer moving failing servers to healthy ones"></div>
+          <div class="px-2 pb-2 space-y-1"><div class="text-[10px] font-mono font-bold text-[#B9C8FF]">02</div><h3 class="text-sm font-black">Fix</h3><p class="text-[11px] text-[var(--text-muted)]">Rescue an existing system: reliability, performance, modernization.</p></div>
+        </a>
+        <a href="/hire#integrate" data-service="Integrate: connect complex systems" class="tactile-navy rounded-3xl p-3 space-y-3 block">
+          <div class="char-stage aspect-[5/4]"><img loading="lazy" decoding="async" src="/assets/img/eng-integrate.webp" alt="Illustration of AI, APIs, telephony, WhatsApp and CRM connected through one hub"></div>
+          <div class="px-2 pb-2 space-y-1"><div class="text-[10px] font-mono font-bold text-[#B9C8FF]">03</div><h3 class="text-sm font-black">Integrate</h3><p class="text-[11px] text-[var(--text-muted)]">Connect AI, APIs, telephony, WhatsApp and CRMs into one working flow.</p></div>
+        </a>
+        <a href="/hire#operate" data-service="Operate: take ownership of production" class="tactile-navy rounded-3xl p-3 space-y-3 block">
+          <div class="char-stage aspect-[5/4]"><img loading="lazy" decoding="async" src="/assets/img/eng-operate.webp" alt="Illustration of an engineer monitoring production dashboards"></div>
+          <div class="px-2 pb-2 space-y-1"><div class="text-[10px] font-mono font-bold text-[#B9C8FF]">04</div><h3 class="text-sm font-black">Operate</h3><p class="text-[11px] text-[var(--text-muted)]">Take ownership of production: observability, reliability, ongoing engineering.</p></div>
+        </a>
       </div>
       <div class="flex flex-wrap items-center justify-between gap-3 tactile-inset rounded-3xl p-5">
         <p class="text-sm text-[var(--text-muted)]">Delivered by one senior engineer, a specialist or a complete team, depending on the system.</p>
@@ -616,7 +632,7 @@
           <button type="button" data-contact="email" class="tactile-convex-pill px-3.5 py-1.5 text-[11px] inline-flex items-center gap-1.5"><i data-lucide="mail" class="w-3.5 h-3.5"></i>Business email</button>
           <button type="button" data-contact="phone" hidden class="tactile-convex-pill px-3.5 py-1.5 text-[11px] inline-flex items-center gap-1.5"><i data-lucide="phone" class="w-3.5 h-3.5"></i>Phone</button>
         </div>
-        <p class="text-[var(--text-muted)]">Madhya Pradesh, India<br>Working with clients in India, the UK and Europe</p>
+        <p class="text-[var(--text-muted)]">Madhya Pradesh, India<br>Working with clients in India, the UK, the US and Europe</p>
         <div class="flex gap-3">
           <a class="hover:text-[#6438D9] inline-flex items-center gap-1.5" href="https://github.com/mrankitpanicker" target="_blank" rel="noopener"><i data-lucide="github" class="w-4 h-4"></i>GitHub</a>
           <a data-social="linkedin" hidden class="hover:text-[#6438D9] inline-flex items-center gap-1.5" href="#" target="_blank" rel="noopener"><i data-lucide="linkedin" class="w-4 h-4"></i>LinkedIn</a>
@@ -670,6 +686,6 @@
   </div>
 
   <script defer src="/assets/js/icons.js?v=67124616"></script>
-  <script defer src="/assets/js/aim.min.js?v=25653f1e"></script>
+  <script defer src="/assets/js/aim.min.js?v=e37478e1"></script>
 </body>
 </html>
