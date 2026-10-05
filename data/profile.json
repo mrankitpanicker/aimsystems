@@ -7,8 +7,8 @@
     "AIM Systems",
     "AIM Studio"
   ],
-  "tagline": "Your Engineering Team, On Demand",
-  "summary": "Technology engineering agency. From one senior engineer to a complete product team, AIM designs, builds, deploys and operates production-grade software, AI systems, automation and cloud infrastructure.",
+  "tagline": "Production systems. From architecture to operations.",
+  "summary": "AIM is a production systems engineering company. We take technically difficult products from architecture to production, and stay accountable after launch. Software · AI · Cloud · Automation · Reliability. Delivered by one senior engineer, a specialist or a complete team, depending on the system.",
   "registration": "Udyam-registered MSME (India)",
   "location": "Madhya Pradesh, India",
   "markets": [
@@ -28,7 +28,17 @@
   },
   "services": [
     {
-      "name": "Product Engineering",
+      "name": "Systems Architecture",
+      "summary": "Every engagement starts with the architecture: boundaries, data, failure paths and how it will be operated.",
+      "scope": [
+        "architecture review",
+        "system design",
+        "technical planning"
+      ]
+    },
+    {
+      "name": "Product Systems",
+      "summary": "New products and platforms, from data model to deployment.",
       "scope": [
         "SaaS",
         "web applications",
@@ -40,20 +50,21 @@
       ]
     },
     {
-      "name": "AI Engineering",
+      "name": "Production AI",
+      "summary": "AI that runs inside real workflows, with validation, fallbacks and monitoring.",
       "scope": [
-        "LLM applications",
-        "AI agents",
-        "RAG",
-        "AI automation",
         "voice AI",
+        "LLM applications",
+        "RAG",
+        "AI agents",
         "STT/TTS",
         "AI orchestration",
         "model integrations"
       ]
     },
     {
-      "name": "Platform Engineering",
+      "name": "Cloud & Reliability",
+      "summary": "Infrastructure, CI/CD, observability and the failure handling that keeps systems up.",
       "scope": [
         "cloud",
         "Kubernetes",
@@ -66,6 +77,7 @@
     },
     {
       "name": "Automation & Integrations",
+      "summary": "APIs, CRMs, telephony, WhatsApp and data pipelines connected end to end.",
       "scope": [
         "API and CRM integrations",
         "WhatsApp",
@@ -76,13 +88,39 @@
       ]
     }
   ],
-  "engagementModels": [
+  "engagements": [
     {
-      "name": "Hire an Engineer",
-      "detail": "Backend, frontend, full-stack, AI, cloud, DevOps or platform engineer."
+      "name": "Build",
+      "promise": "A new product or platform: architecture → engineering → production.",
+      "firstDeliverable": "Architecture document and delivery plan."
     },
     {
-      "name": "Hire a Specialist",
+      "name": "Fix",
+      "promise": "Rescue an existing system: architecture review → reliability → performance → modernization.",
+      "firstDeliverable": "Risk map and a stabilisation plan."
+    },
+    {
+      "name": "Integrate",
+      "promise": "Connect complex systems: AI, APIs, telephony, WhatsApp, CRMs, workflows, infrastructure.",
+      "firstDeliverable": "Integration design and a working path end to end."
+    },
+    {
+      "name": "Operate",
+      "promise": "Take ownership of production: observability, reliability, optimisation, ongoing engineering.",
+      "firstDeliverable": "Monitoring, alerting and a runbook."
+    }
+  ],
+  "architectureReview": {
+    "summary": "Bring your current architecture, bottleneck or production problem. AIM identifies the highest-risk parts and recommends the shortest path forward.",
+    "url": "https://aimsystem.in/contact?intent=architecture-review"
+  },
+  "engagementModels": [
+    {
+      "name": "One Senior Engineer",
+      "detail": "Focused work owned by one senior engineer: backend, frontend, full-stack, AI, cloud, DevOps or platform."
+    },
+    {
+      "name": "Specialist",
       "detail": "AI architecture, voice AI, cloud infrastructure, distributed systems, API architecture, automation, DevOps, system modernization."
     },
     {
@@ -90,22 +128,23 @@
       "detail": "Cross-functional team, e.g. technical lead, backend, frontend, AI/platform engineer, QA."
     },
     {
-      "name": "Complete Product Team",
+      "name": "Complete Team",
       "detail": "Product strategy, UX/UI, architecture, frontend, backend, AI, infrastructure, DevOps, QA, deployment, operations."
     }
   ],
+  "team": "Senior-led: a small senior team, with specialists added for larger engagements.",
   "pricing": "Dedicated engineers and pods are custom engagements; product development is a scoped proposal; AI and infrastructure work is priced from the architecture.",
-  "positioning": "One team owns it, architecture to on-call: architecture, backend, frontend, AI, cloud, CI/CD and monitoring, with no handoffs between vendors and no orphaned code. AIM runs production platforms itself.",
+  "positioning": "Production systems engineering: one technical owner across the entire system, from architecture to production and after launch. AIM runs its own production platform, APEX Connect.",
   "differentiators": [
-    "Single point of ownership: one team covers architecture, build, deploy and operate.",
-    "Runs what it builds: APEX Connect, a multi-tenant voice and WhatsApp platform, is in production for hospitals and colleges.",
-    "Every build ships with monitoring, CI/CD and a runbook; observability and documentation are never an upsell.",
-    "Named stack: Python/FastAPI, Node/TypeScript, React/Next.js, PostgreSQL, Redis, Docker, Kubernetes, Terraform on AWS, Azure or GCP.",
-    "No account managers: clients talk directly to the engineers writing the code."
+    "We run what we build: APEX Connect, a multi-tenant voice and WhatsApp platform, runs in production for a hospital and a college.",
+    "No layers between client and engineering: clients brief the person designing the system and review the architecture with the person building it.",
+    "One technical owner and no vendor handoffs.",
+    "Monitoring, CI/CD and a runbook in every build.",
+    "Named, maintainable stack: Python/FastAPI, Node/TypeScript, React/Next.js, PostgreSQL, Redis, Docker, Kubernetes, Terraform on AWS, Azure or GCP."
   ],
   "process": [
     {
-      "step": "Discover",
+      "step": "Understand",
       "deliverable": "Scope brief: goals, users, constraints and success measures."
     },
     {
@@ -153,24 +192,29 @@
   ],
   "work": [
     {
-      "title": "AI-Powered Patient Communication",
+      "title": "Patient outreach on APEX Connect",
       "industry": "Healthcare",
       "client": "Apple Hospital",
       "status": "production",
-      "outcome": "15K+ calls processed, 6.8K+ answered, ~45% connected/answered."
+      "url": "https://aimsystem.in/work#healthcare",
+      "architecture": "Patient list → Validation → Campaign queue → Voice workers → Retry engine → WhatsApp follow-up → Outcome reporting",
+      "aimOwned": "Architecture, backend workers, telephony and WhatsApp integration, retry scheduling, tenant isolation, deployment and production operation.",
+      "outcome": "15K+ production calls processed, 6.8K+ answered, ~45% connected/answered."
     },
     {
-      "title": "Multi-Tenant Institutional Communication",
+      "title": "Dedicated tenant for institutional communication",
       "industry": "Education",
       "client": "BIMTS College",
       "status": "production",
-      "outcome": "Dedicated tenant for voice outreach and WhatsApp automation."
+      "url": "https://aimsystem.in/work#education",
+      "outcome": "Dedicated, isolated tenant on the same multi-tenant platform: campaign automation, independent configuration, billing separation, outreach tracking."
     },
     {
-      "title": "Digital Experience Engineering",
+      "title": "Digital experience, UK delivery",
       "industry": "Hospitality",
       "client": "Café Ciel at The OWO, London",
       "status": "delivered",
+      "url": "https://aimsystem.in/work#hospitality",
       "outcome": "Delivered on schedule on a compressed timeline."
     }
   ],

@@ -67,8 +67,17 @@
                     "services": {
                       "type": "array"
                     },
+                    "engagements": {
+                      "type": "array"
+                    },
+                    "architectureReview": {
+                      "type": "object"
+                    },
                     "engagementModels": {
                       "type": "array"
+                    },
+                    "team": {
+                      "type": "string"
                     },
                     "pricing": {
                       "type": "string"

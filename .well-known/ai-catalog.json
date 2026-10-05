@@ -24,7 +24,7 @@
       "representativeQueries": [
         "what case studies does AIM have in healthcare",
         "list AIM engineering services",
-        "how do I hire a dedicated engineer from AIM"
+        "how do I request an architecture review from AIM"
       ]
     },
     {
@@ -32,7 +32,7 @@
       "displayName": "AIM company skill",
       "type": "text/markdown; profile=\"urn:air:agent-skills\"",
       "url": "https://aimsystem.in/.well-known/agent-skills/aim-company/SKILL.md",
-      "description": "Agent skill for answering questions about AIM and helping a user hire engineers or start a project.",
+      "description": "Agent skill for answering questions about AIM and helping a user discuss a technical problem or request an architecture review.",
       "representativeQueries": [
         "who is AIM aimsystem.in",
         "how do I contact AIM about a project",

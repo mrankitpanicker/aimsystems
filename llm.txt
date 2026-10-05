@@ -1,16 +1,16 @@
 # AIM — AI Infrastructure & Machines
-> AIM is a technology engineering agency: "Your Engineering Team, On Demand." From one senior engineer to a complete product team, AIM designs, builds, deploys and operates production-grade software, AI systems, automation and cloud infrastructure. One team owns it, architecture to on-call: no handoffs between vendors, no orphaned code, and every build ships with monitoring, CI/CD and a runbook. AIM runs its own production platform (APEX Connect). Udyam-registered MSME based in Madhya Pradesh, India; contracts with UK, US and EU companies. Client Partner & Technical Lead: Ankit Panicker.
+> AIM is a production systems engineering company. We take technically difficult products from architecture to production — and stay accountable after launch. Software · AI · Cloud · Automation · Reliability. Delivered by one senior engineer, a specialist or a complete team, depending on the system. AIM runs its own production platform (APEX Connect). Senior-led; Udyam-registered MSME based in Madhya Pradesh, India; clients in India, the UK and Europe. Client Partner & Technical Lead: Ankit Panicker.
 
 ## Pages on aimsystem.in
-- [Home](https://aimsystem.in/): Positioning, services, engineering capacity, production experience, how we work.
-- [Services](https://aimsystem.in/services): Product Engineering, AI Engineering, Platform Engineering, Automation & Integrations.
-- [Hire](https://aimsystem.in/hire): One engineer, a specialist, an engineering pod or a complete product team; engagement pricing; client ownership; FAQ.
+- [Home](https://aimsystem.in/): Positioning, production results, what we do, APEX Connect architecture, case studies, engagements, how we work, architecture review.
+- [Services](https://aimsystem.in/services): Systems Architecture, Product Systems, Production AI, Cloud & Reliability, Automation & Integrations.
+- [Engagements](https://aimsystem.in/hire): Build, Fix, Integrate, Operate; team shape; pricing; client ownership; FAQ.
 - [UK, US & EU teams](https://aimsystem.in/international): Engineers and teams for UK, US and European companies — hours overlap per region, one B2B contract, client cloud and region, client-owned code; FAQ.
 - [Platforms](https://aimsystem.in/products): APEX Connect, AIM Remote AI, Healthcare Operations Platform (in development), outreach campaigns, R&D.
-- [Work](https://aimsystem.in/work): Selected engineering work — AI-powered patient communication (healthcare), multi-tenant institutional communication (education), digital experience engineering (hospitality, London); workloads and delivery process.
+- [Work](https://aimsystem.in/work): Case studies — Apple Hospital (healthcare, production), BIMTS College (education, production), Café Ciel at The OWO, London (hospitality, UK delivery).
 - [Engineering](https://aimsystem.in/engineering): Engineering principles, interactive lab, security & reliability, technology.
-- [About](https://aimsystem.in/about): The agency, the engineering team, client contact, company information.
-- [Contact](https://aimsystem.in/contact): Discuss a project or hire engineering capacity.
+- [About](https://aimsystem.in/about): The company, the engineering team, client contact, company information.
+- [Contact](https://aimsystem.in/contact): Discuss a technical problem, or request an architecture review (https://aimsystem.in/contact?intent=architecture-review).
 - [Privacy & Compliance](https://aimsystem.in/privacy): Privacy policy, data processing, retention, subprocessors, AI transparency, security, terms.
 - [Careers](https://aimsystem.in/jobs)
 - [Full profile](https://aimsystem.in/llms-full.txt)
@@ -22,20 +22,19 @@
 - MCP server (read-only, Streamable HTTP, no auth): https://aimsystem.in/api/mcp — [server card](https://aimsystem.in/.well-known/mcp/server-card.json).
 - In-browser agents: WebMCP tools get_aim_profile, get_aim_contact, open_aim_page.
 
-
-
-## Ways to work with AIM
-1. Hire an Engineer — backend, frontend, full-stack, AI, cloud, DevOps, platform.
-2. Hire a Specialist — AI architecture, voice AI, cloud infrastructure, distributed systems, API architecture, automation, DevOps, system modernization, technical architecture.
-3. Hire an Engineering Pod — flexible cross-functional team, e.g. technical lead, backend, frontend, AI/platform engineer, QA.
-4. Hire a Complete Product Team — product strategy, UX/UI, architecture, frontend, backend, AI, infrastructure, DevOps, QA, deployment, operations.
-Pricing: dedicated engineer and pods are custom engagements; product development is a scoped proposal; AI/infrastructure work is architecture-based.
+## Engagements
+1. Build — a new product or platform: architecture → engineering → production. First deliverable: architecture document and delivery plan.
+2. Fix — rescue an existing system: architecture review → reliability → performance → modernization. First deliverable: risk map and a stabilisation plan.
+3. Integrate — connect complex systems: AI, APIs, telephony, WhatsApp, CRMs, workflows, infrastructure. First deliverable: integration design and a working path end to end.
+4. Operate — take ownership of production: observability, reliability, optimisation, ongoing engineering. First deliverable: monitoring, alerting and a runbook.
+Team shape: one senior engineer, a specialist, an engineering pod or a complete team. Architecture review: bring the current architecture, bottleneck or production problem; AIM identifies the highest-risk parts and recommends the shortest path forward.
+Pricing: dedicated engineers and pods are custom engagements; product development is a scoped proposal; AI/infrastructure work is architecture-based.
 
 ## Production experience
-15K+ production calls processed, 6.8K+ answered (~45% connected/answered) on APEX Connect for Apple Hospital (AI-powered patient communication); a dedicated multi-tenant communication environment for BIMTS College; a digital experience for Café Ciel at The OWO, London, delivered on schedule. Three industry verticals served: healthcare, education, hospitality.
+APEX Connect for Apple Hospital (healthcare): 15K+ production calls processed, 6.8K+ answered, ~45% connected/answered; patient outreach by voice and WhatsApp. BIMTS College (education): dedicated, isolated tenant on the same multi-tenant platform, in production. Café Ciel at The OWO, London (hospitality, UK): digital experience delivered on schedule on a compressed timeline. Three industries in production: healthcare, education, hospitality.
 
 ## Platforms
-- APEX Connect — AI-powered customer engagement infrastructure: multi-tenant platform for voice, messaging and AI workflows. Usage-based pricing varies by call duration, communication provider and AI processing requirements. https://aimstudio.co.in/app
+- APEX Connect — multi-tenant communication infrastructure: voice, WhatsApp and AI orchestration. Architecture: Tenant → API → Queue → Supervisor → AI → Communication → Analytics. Usage-based pricing varies by call duration, communication provider and AI processing requirements. https://aimstudio.co.in/app
 - AIM Remote AI — AI operating layer for your machines (Windows, Android, Chrome). https://aimstudio.co.in/remoteai
 - Healthcare Operations Platform — in development.
 

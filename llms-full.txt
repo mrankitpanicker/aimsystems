@@ -1,5 +1,5 @@
-# AIM — AI Infrastructure & Machines — Agency Profile
-> Technology engineering agency. Your Engineering Team, On Demand.
+# AIM — AI Infrastructure & Machines — Company Profile
+> Production systems engineering company. We take technically difficult products from architecture to production — and stay accountable after launch.
 
 ## Organization
 Name: AIM — AI Infrastructure & Machines
@@ -11,14 +11,12 @@ Websites: https://aimsystem.in/ · https://aimstudio.co.in/
 Client Partner & Technical Lead: Ankit Panicker — works with clients to understand requirements, shape technical direction and coordinate engineering delivery.
 
 ## Positioning
-One team owns it, architecture to on-call. Architecture, backend, frontend, AI, cloud, CI/CD, monitoring: no handoffs between vendors, no orphaned code. AIM runs production platforms itself, so what it builds is built to stay up. From one senior engineer to a complete product team.
+Production systems. From architecture to operations. AIM designs, builds and operates software, AI and cloud systems for companies that need one technical owner across the entire system. Software · AI · Cloud · Automation · Reliability. Delivered by one senior engineer, a specialist or a complete team, depending on the system. Senior-led: a small senior team, with specialists added for larger engagements.
 
-## Why clients work with AIM
-- Architecture to on-call, one owner: one team covers architecture, build, deploy and operate, instead of three or four vendors.
-- Runs what it builds: APEX Connect, a multi-tenant voice and WhatsApp platform, is in production for hospitals and colleges.
-- Every build ships with monitoring, CI/CD and a runbook; observability and documentation are never an upsell.
-- Named stack: Python/FastAPI, Node/TypeScript, React/Next.js, PostgreSQL, Redis, Docker, Kubernetes, Terraform on AWS, Azure or GCP.
-- No account managers: clients talk directly to the engineers writing the code.
+## The difference
+- We run what we build: APEX Connect, our multi-tenant voice and WhatsApp platform, runs in production for a hospital and a college. Scale, tenant isolation and failure handling are problems we operate.
+- No layers between you and engineering: you brief the person designing the system and review the architecture with the person building it. No account managers.
+- One technical owner · no vendor handoffs · monitoring, CI/CD and a runbook in every build · named, maintainable stack (Python/FastAPI, Node/TypeScript, React/Next.js, PostgreSQL, Redis, Docker, Kubernetes, Terraform on AWS, Azure or GCP).
 
 ## UK, US & EU teams (https://aimsystem.in/international)
 Engineers, specialists, pods or complete teams for UK, US and European companies. One business-to-business contract with AIM.
@@ -28,14 +26,20 @@ Engineers, specialists, pods or complete teams for UK, US and European companies
 Work happens in the client's cloud accounts, under the client's security policies and data-processing terms. Client owns all code from the first commit. Delivered in London: Café Ciel at The OWO.
 
 ## Services
-- Product Engineering: SaaS, web applications, APIs, backend systems, internal platforms, enterprise applications, product modernization.
-- AI Engineering: LLM applications, AI agents, RAG, AI automation, voice AI, STT/TTS, AI orchestration, model integrations.
-- Platform Engineering: cloud, Kubernetes, infrastructure-as-code, CI/CD, observability, distributed systems, reliability engineering.
-- Automation & Integrations: API and CRM integrations, WhatsApp, telephony, workflow and business process automation, data pipelines.
+- Systems Architecture: every engagement starts with the architecture — boundaries, data, failure paths and how it will be operated.
+- Product Systems: new products and platforms, from data model to deployment — SaaS, web applications, APIs, backend systems, internal platforms, product modernization.
+- Production AI: AI that runs inside real workflows — voice, LLM, RAG, agents — with validation, fallbacks and monitoring.
+- Cloud & Reliability: infrastructure, CI/CD, observability and the failure handling that keeps systems up — cloud, Kubernetes, infrastructure-as-code, distributed systems.
+- Automation & Integrations: APIs, CRMs, telephony, WhatsApp and data pipelines connected end to end.
 
-## Engagement models
-One Engineer · Specialist · Engineering Pod · Complete Product Team. Start with the capacity you need and expand as the project grows.
-How we work, with the deliverable of each step: Discover (scope brief) → Architect (architecture document and infrastructure plan) → Assemble (named team, roles, delivery plan) → Build (working increments in the client repository, with tests and CI) → Deploy (production release, monitoring dashboards, runbook) → Operate (on-call cover, regular reports, improvement backlog).
+## Engagements (https://aimsystem.in/hire)
+- Build — a new product or platform: architecture → engineering → production. First deliverable: architecture document and delivery plan.
+- Fix — rescue an existing system: architecture review → reliability → performance → modernization. First deliverable: risk map and a stabilisation plan.
+- Integrate — connect complex systems: AI, APIs, telephony, WhatsApp, CRMs, workflows, infrastructure. First deliverable: integration design and a working path end to end.
+- Operate — take ownership of production: observability, reliability, optimisation, ongoing engineering. First deliverable: monitoring, alerting and a runbook.
+Team shape: one senior engineer · specialist · engineering pod · complete team.
+Architecture review (https://aimsystem.in/contact?intent=architecture-review): bring your current architecture, bottleneck or production problem; AIM identifies the highest-risk parts and recommends the shortest path forward.
+How we work, with the deliverable of each step: Understand (scope brief) → Architect (architecture document and infrastructure plan) → Assemble (named team, roles, delivery plan) → Build (working increments in the client repository, with tests and CI) → Deploy (production release, monitoring dashboards, runbook) → Operate (on-call cover, regular reports, improvement backlog).
 Client ownership: client cloud, client API accounts, client-controlled credentials, documented deployment, source ownership, transferable infrastructure.
 
 ## Engineering principles
@@ -52,7 +56,7 @@ Python, FastAPI, Node.js, TypeScript, React, Next.js; PostgreSQL, Redis, Firesto
 - R&D: Shortz media pipeline, Apex Core deterministic automation, Free Tools.
 
 ## Selected engineering work
-- Healthcare — AI-Powered Patient Communication (Apple Hospital; production): multi-tenant communication platform for automated patient outreach across voice and WhatsApp, with campaign management, scheduling and outcome tracking. Engineering: campaign orchestration, queue-based workers, retry scheduling, per-tenant capacity controls, provider integrations, outcome tracking, automated reporting. Stack: APEX Connect, Python, Redis, PostgreSQL, telephony, STT, LLM, TTS, WhatsApp Business API. Campaign flow: List → Call → Retry → WhatsApp → Report. Outcome: 15K+ calls processed, 6.8K+ answered, ~45% connected/answered.
+- Healthcare — Apple Hospital, patient outreach on APEX Connect (production; https://aimsystem.in/work#healthcare). Problem: reaching large patient lists for outreach while keeping the operational workload on hospital teams manageable. Constraints: multi-tenant platform shared with other institutions; per-tenant capacity limits; multiple communication providers; voice and WhatsApp in one flow. Architecture: Patient list → Validation → Campaign queue → Voice workers → Retry engine → WhatsApp follow-up → Outcome reporting. AIM owned: architecture, backend workers, telephony and WhatsApp integration, retry scheduling, tenant isolation, deployment and production operation. Stack: APEX Connect, Python, Redis, PostgreSQL, telephony, STT, LLM, TTS, WhatsApp Business API. Result: 15K+ production calls processed, 6.8K+ answered, ~45% connected/answered.
 - Education — Multi-Tenant Institutional Communication (BIMTS College; production): dedicated environment for voice outreach and WhatsApp automation with isolated tenant operations. Engineering: isolated tenant architecture, campaign automation, independent tenant configuration, billing separation, outreach tracking.
 - Hospitality — Digital Experience Engineering (Café Ciel at The OWO, London; delivered): complete digital experience covering implementation, iterative revisions, deployment and technical delivery on a compressed timeline. Delivery: Design → Implementation → Revisions → Deployment. Delivered on schedule. Testimonial (Vedika, Café Ciel): "Ankit independently delivered a production digital experience for Café Ciel at The OWO, London, within a highly compressed timeline… We would confidently recommend him for future technical engagements."
 
